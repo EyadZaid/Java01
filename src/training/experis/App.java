@@ -127,32 +127,44 @@ public class App {
         print(matrix);
     }
 
-    public static void mergeImportantElements(int[] v1, int[] v2){
-        if (v1 == null || v2 == null) {
-            System.out.println("Exception: Arrays is null");
+    public static void mergeImportantElements(int[] array1, int[] array2){
+        if (array1 == null ) {
+            System.out.println("Exception: First array is null");
         }
 
-        int len1 = v1.length - v2.length;
-        int len2 = v2.length;
-        int v3[] = new int[len1+len2];
-        int k, i, j;
-        k = i = j = 0;
-        while (i<len1 && j <len2) {
-            if (v1[i] < v2[j]) {
-                v3[k++] = v1[i++];
+        if (array2 == null ) {
+            System.out.println("Exception: second array is null");
+        }
+
+        if (array1 == array2){
+            return;
+        }
+
+        if (array2.length == 0){
+            return;
+        }
+
+        int lenArr1 = array1.length - array2.length;
+        int lenArr2 = array2.length;
+        int newArray[] = new int[lenArr1+lenArr2];
+        int indexArr1, indexArr2, indexNewArr;
+        indexNewArr = indexArr1 = indexArr2 = 0;
+        while (indexArr1<lenArr1 && indexArr2 <lenArr2) {
+            if (array1[indexArr1] < array2[indexArr2]) {
+                newArray[indexNewArr++] = array1[indexArr1++];
             }
             else
-                v3[k++] = v2[j++];
+                newArray[indexNewArr++] = array2[indexArr2++];
         }
 
-        while (i < len1) {
-            v3[k++] = v1[i++];
+        while (indexArr1 < lenArr1) {
+            newArray[indexNewArr++] = array1[indexArr1++];
         }
-        
-        while (j < len2) {
-            v3[k++] = v2[j++];
+
+        while (indexArr2 < lenArr2) {
+            newArray[indexNewArr++] = array2[indexArr2++];
         }
-        print(v3);
+        print(newArray);
     }
 
     public static void testCode(){
