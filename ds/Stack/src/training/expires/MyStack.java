@@ -15,6 +15,7 @@ public class MyStack {
             System.exit(0);
         }
         data = new int[size];
+        currIndex = 0;
     }
 
     public boolean isEmpty() {
@@ -38,6 +39,7 @@ public class MyStack {
         else {
             System.out.println("Exception: The stack is empty.");
             return -1;  // is not good
+            //throw new RuntimeException("Exception: The stack is empty.");
         }
     }
 
@@ -48,6 +50,7 @@ public class MyStack {
         else {
             System.out.println("Exception: The stack is empty.");
             return -1;  // is not good
+            //throw new RuntimeException("Exception: The stack is empty.");
         }
     }
 
