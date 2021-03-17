@@ -47,11 +47,11 @@ public class App {
         if (v == null) {
             System.out.println("Exception: Array is null");
         }
-        int temp, len = v.length;
+        int len = v.length;
         for (int i = 0; i < len; i++) {
             for (int j = 1; j < (len - i); j++) {
                 if (v[j - 1] > v[j]) {
-                    temp = v[j - 1];
+                    int temp = v[j - 1];
                     v[j - 1] = v[j];
                     v[j] = temp;
                 }
@@ -64,9 +64,9 @@ public class App {
         if (v == null) {
             System.out.println("Exception: Array is null");
         }
-        for (int i = 0; i < v.length; i++)
-        {
-            int rand_index = new Random().nextInt(v.length);
+        Random rnd = new Random();
+        for (int i = 0; i < v.length; i++) {
+            int rand_index = rnd.nextInt(v.length);
             int temp = v[rand_index];
             v[rand_index] = v[i];
             v[i] = temp;

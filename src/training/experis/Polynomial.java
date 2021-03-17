@@ -52,7 +52,7 @@ public class Polynomial {
         System.out.println(str);
     }
 
-    
+
     public double calculatePolynom(double x, double ... coef ){
         int degree = coef.length - 1;
         double result = 0;
