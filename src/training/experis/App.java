@@ -40,7 +40,6 @@ public class App {
         for (int i=0; i<len; i++){
             v[i] = start + step * num++;
         }
-        print(v);
     }
 
 
@@ -58,7 +57,6 @@ public class App {
                 }
             }
         }
-        print(v);
     }
 
 
@@ -73,7 +71,6 @@ public class App {
             v[rand_index] = v[i];
             v[i] = temp;
         }
-        print(v);
     }
 
 
@@ -95,7 +92,6 @@ public class App {
             }
             m[row_num][col_num] = i;
         }
-        print(m);
     }
 
 
@@ -124,7 +120,6 @@ public class App {
             i++;
             j=0;
         }
-        print(matrix);
     }
 
     public static void mergeImportantElements(int[] array1, int[] array2){
@@ -144,57 +139,70 @@ public class App {
             return;
         }
 
-        int lenArr1 = array1.length - array2.length;
-        int lenArr2 = array2.length;
-        int newArray[] = new int[lenArr1+lenArr2];
-        int indexArr1, indexArr2, indexNewArr;
-        indexNewArr = indexArr1 = indexArr2 = 0;
-        while (indexArr1<lenArr1 && indexArr2 <lenArr2) {
-            if (array1[indexArr1] < array2[indexArr2]) {
+        int lenArr1 = array1.length;
+        int partIndex = array1.length - array2.length;
+        int j=0;
+
+        //copy all elements from array 2 to last array 1
+        for (int i=partIndex; i<array1.length; i++){
+            array1[i] = array2[j++];
+        }
+
+        int newArray[] = new int[lenArr1];
+        int indexArr1=0, indexPart2=partIndex, indexNewArr=0;
+        while (indexArr1<partIndex && indexPart2 <lenArr1) {
+            if (array1[indexArr1] < array1[indexPart2]) {
                 newArray[indexNewArr++] = array1[indexArr1++];
             }
             else
-                newArray[indexNewArr++] = array2[indexArr2++];
+                newArray[indexNewArr++] = array1[indexPart2++];
         }
 
-        while (indexArr1 < lenArr1) {
+        while (indexArr1 < partIndex) {
             newArray[indexNewArr++] = array1[indexArr1++];
         }
 
-        while (indexArr2 < lenArr2) {
-            newArray[indexNewArr++] = array2[indexArr2++];
+        while (indexPart2 < lenArr1) {
+            newArray[indexNewArr++] = array1[indexPart2++];
         }
-        print(newArray);
+
+        for (int i=0; i<array1.length; i++){
+            array1[i] = newArray[i];
+        }
     }
 
-    public static void testCode(){
+
+    public static void testMergeImportantElements(){
         int[] v1 = {10, 25, 6, 3, -2};
         int[] v2 = {0, 1, 2, 7, 8, 9, 9, 10, 12, 15, 20};
         int[] v3 = {3, 7, 8, 12, 19};
         int[] v4 = {0, 1, 2, 4, 5, 7, 9, 10, 12, 15, 20};
-        int[] v5 = {3, 7, 11, 12, 19};
-        int[][] m1 = {
-                {3, 1, 6, 3, 88},
-                {10, 25, 62, 15, -2}
-        };
-        int[][] m2 = new int[3][3];
+        int[] v5 = {2, 5, 16, 18, 22};
 
-        System.out.println("\nMake array by steps:");
-        makeArray(8, -2, 3);
-        System.out.println("\nBubble sort:");
-        bubbleSort(v1);
-        System.out.println("\nShake array:");
-        shakeArray(v1);
-        System.out.println("\nMerge important elements: ");
         mergeImportantElements(v4, v5);
-        System.out.println("\nMagic square: ");
-        initMagicSquare(m2);
-        System.out.println("Make a matrix: ");
-        makeMatrix(3,3);
+        print(v4);
+    }
+
+    public static void testPolynomial(){
+        Polynomial polynom = new Polynomial();
+        double[] p1 = {4, 5, -3};
+        double[] p2 = {2, 0, -3};
+        double[] p3 = {2};
+
+        polynom.printPolynom(p1);
+        polynom.printPolynom(p2);
+        polynom.printPolynom(p3);
+
+        System.out.println("Result: " + polynom.calculatePolynom(3, p1));
+        System.out.println("Result: " + polynom.calculatePolynom(2, p2));
+        System.out.println("Result: " + polynom.calculatePolynom(1, p3));
     }
 
 
     public static void main(String[] args) {
-        testCode();
+        System.out.println("Test Merge Important Elements: ");
+        testMergeImportantElements();
+        System.out.println("\n\nTest Polynomial: ");
+        testPolynomial();
     }
 }
