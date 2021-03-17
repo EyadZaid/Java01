@@ -1,17 +1,19 @@
 package training.expires;
 
-public class InitStack {
+import java.util.Arrays;
+
+public class IntStack {
     private int[] data;
     private int currIndex;
 
-    public InitStack(){
+    public IntStack(){
         this(32);
     }
 
-    public InitStack(int size){
+    public IntStack(int size){
         if (size < 0){
             System.out.println("Exception: Size must be a positive number.");
-            System.exit(0);
+            System.exit(1);
         }
         data = new int[size];
         currIndex = 0;
@@ -19,6 +21,10 @@ public class InitStack {
 
     public boolean isEmpty() {
         return currIndex == 0;
+    }
+
+    public Boolean isFull() {
+        return currIndex == data.length;
     }
 
     public void push(int n){
@@ -69,5 +75,23 @@ public class InitStack {
         for (int i=0; i<minFree; i++){
             push(numbers[i]);
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder("Stack{ data=[");
+        if (currIndex > 0){
+            for (int i=0; i<currIndex; i++){
+                if (i != currIndex-1){
+                    str.append(data[i] + ",");
+                }
+                else {
+                    str.append(data[i]);
+                }
+            }
+        }
+        str.append("], currIndex=" + currIndex + '}');
+
+        return str.toString();
     }
 }

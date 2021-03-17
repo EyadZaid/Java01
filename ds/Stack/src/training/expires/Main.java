@@ -2,6 +2,45 @@ package training.expires;
 
 public class Main {
 
+    public static void testIntQueue(){
+        IntQueue queue = new IntQueue(2);
+
+        System.out.println(queue);
+
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.dequeue();
+        queue.enqueue(3);
+
+        System.out.println(queue);
+
+        System.out.println("Dequeue: " + queue.dequeue());
+        System.out.println("Dequeue: " + queue.dequeue());
+        System.out.println("Dequeue: " + queue.dequeue());
+        System.out.println("Dequeue: " + queue.dequeue());
+
+        System.out.println(queue);
+    }
+
+
+    public static void testIntQueueWithStack(){
+        IntQueueWithStack queue = new IntQueueWithStack(3);
+
+        System.out.println(queue);
+
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+
+        System.out.println(queue);
+
+        System.out.println("Dequeue: " + queue.dequeue());
+        System.out.println("Dequeue: " + queue.dequeue());
+        System.out.println("Dequeue: " + queue.dequeue());
+        System.out.println("Dequeue: " + queue.dequeue());
+    }
+
+
     public static void testIntStackMin(){
         IntStackMin stack = new IntStackMin();
 
@@ -27,7 +66,7 @@ public class Main {
 
 
     public static void testMyStack(){
-        InitStack myStack = new InitStack();
+        IntStack myStack = new IntStack();
 
         System.out.println("Stack is empty: " + myStack.isEmpty() );
 
@@ -52,11 +91,13 @@ public class Main {
         myStack.push(nums);
 
         //Create new Stack with size
-        InitStack stack = new InitStack(-5);
+        IntStack stack = new IntStack(-5);
     }
 
     public static void main(String[] args) {
         //testMyStack();
-        testIntStackMin();
+        //testIntStackMin();
+        //testIntQueue();
+        testIntQueueWithStack();
     }
 }

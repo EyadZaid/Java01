@@ -2,7 +2,7 @@ package training.expires;
 
 public class IntStackMin {
     private int[] data;
-    private InitStack minStack;
+    private IntStack minStack;
     private int dataIndex;
 
     public IntStackMin(){
@@ -12,10 +12,10 @@ public class IntStackMin {
     public IntStackMin(int size){
         if (size < 0){
             System.out.println("Exception: Size must be a positive number.");
-            System.exit(0);
+            System.exit(1);
         }
         data = new int[size];
-        minStack = new InitStack(size);
+        minStack = new IntStack(size);
         dataIndex = 0;
     }
 
