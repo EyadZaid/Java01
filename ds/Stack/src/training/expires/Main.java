@@ -27,7 +27,7 @@ public class Main {
 
 
     public static void testMyStack(){
-        MyStack myStack = new MyStack();
+        InitStack myStack = new InitStack();
 
         System.out.println("Stack is empty: " + myStack.isEmpty() );
 
@@ -52,7 +52,7 @@ public class Main {
         myStack.push(nums);
 
         //Create new Stack with size
-        MyStack stack = new MyStack(-5);
+        InitStack stack = new InitStack(-5);
     }
 
     public static void main(String[] args) {

@@ -1,14 +1,14 @@
 package training.expires;
 
-public class MyStack {
+public class InitStack {
     private int[] data;
     private int currIndex;
 
-    public MyStack(){
+    public InitStack(){
         this(32);
     }
 
-    public MyStack(int size){
+    public InitStack(int size){
         if (size < 0){
             System.out.println("Exception: Size must be a positive number.");
             System.exit(0);

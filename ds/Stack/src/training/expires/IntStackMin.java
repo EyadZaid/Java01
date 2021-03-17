@@ -2,7 +2,7 @@ package training.expires;
 
 public class IntStackMin {
     private int[] data;
-    private MyStack minStack;
+    private InitStack minStack;
     private int dataIndex;
 
     public IntStackMin(){
@@ -15,7 +15,7 @@ public class IntStackMin {
             System.exit(0);
         }
         data = new int[size];
-        minStack = new MyStack(size);
+        minStack = new InitStack(size);
         dataIndex = 0;
     }
 
