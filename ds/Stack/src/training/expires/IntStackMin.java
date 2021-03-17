@@ -2,9 +2,8 @@ package training.expires;
 
 public class IntStackMin {
     private int[] data;
-    private int[] minArr;
+    private MyStack minStack;
     private int dataIndex;
-    private int minArrIndex;
 
     public IntStackMin(){
         this(32);
@@ -16,9 +15,8 @@ public class IntStackMin {
             System.exit(0);
         }
         data = new int[size];
-        minArr = new int[size];
+        minStack = new MyStack(size);
         dataIndex = 0;
-        minArrIndex = 0;
     }
 
     public boolean isEmpty() {
@@ -27,7 +25,7 @@ public class IntStackMin {
 
     public void push(int n){
         if (dataIndex != data.length){
-            insertMinNumToArray(n);
+            insertMinNumToStack(n);
             data[dataIndex++] = n;
         }
         else {
@@ -35,32 +33,32 @@ public class IntStackMin {
         }
     }
 
-    private void insertMinNumToArray(int n){
-        if (minArrIndex == 0){
-            minArr[minArrIndex++] = n;
+
+    private void insertMinNumToStack(int n){
+        if (minStack.isEmpty()){
+            minStack.push(n);
         }
-        else if (n <= minArr[minArrIndex-1]){
-            minArr[minArrIndex++] = n;
+        else if (minStack.peek() >= n) {
+            minStack.push(n);
         }
     }
 
     public int pop(){
         if (!isEmpty()){
-            if (minArr[minArrIndex-1] == data[dataIndex-1]){
-                minArrIndex--;
+            if (minStack.peek() == data[dataIndex-1]){
+                minStack.pop();
             }
             return data[--dataIndex];
         }
         else {
             System.out.println("Exception: The stack is empty.");
             return -1;  // is not good
-            //throw new RuntimeException("Exception: The stack is empty.");
         }
     }
 
     public int min(){
         if(!isEmpty()){
-            return minArr[minArrIndex-1];
+            return minStack.peek();
         }
         else {
             System.out.println("Exception: The stack is empty.");
@@ -75,7 +73,6 @@ public class IntStackMin {
         else {
             System.out.println("Exception: The stack is empty.");
             return -1;  // is not good
-            //throw new RuntimeException("Exception: The stack is empty.");
         }
     }
 
@@ -85,7 +82,6 @@ public class IntStackMin {
 
     public void clear(){
         dataIndex = 0;
-        minArrIndex = 0;
     }
 
     public void push(int... numbers){
