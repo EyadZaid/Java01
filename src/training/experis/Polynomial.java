@@ -1,25 +1,6 @@
 package training.experis;
 
 public class Polynomial {
-    public double calculatePolynom(double x, double ... coef ){
-        int degree = coef.length - 1;
-        double result = 0;
-
-        if (degree == 0){
-            return coef[0];
-        }
-
-        if (x == 0){
-            return coef[coef.length-1];
-        }
-
-        for (int i=0; i<coef.length; i++){
-            result = result + (coef[i] * Math.pow(x,degree));
-            degree--;
-        }
-        return result;
-    }
-
 
     public void printPolynom(double ... coef) {
         StringBuilder str = new StringBuilder("P(x)=");
@@ -69,5 +50,25 @@ public class Polynomial {
             degree--;
         }
         System.out.println(str);
+    }
+
+    
+    public double calculatePolynom(double x, double ... coef ){
+        int degree = coef.length - 1;
+        double result = 0;
+
+        if (degree == 0){
+            return coef[0];
+        }
+
+        if (x == 0){
+            return coef[coef.length-1];
+        }
+
+        for (int i=0; i<coef.length; i++){
+            result = result + (coef[i] * Math.pow(x,degree));
+            degree--;
+        }
+        return result;
     }
 }
