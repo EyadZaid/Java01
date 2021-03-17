@@ -23,6 +23,10 @@ public class Main {
         myStack.pop();
         myStack.pop();
 
+        //Exception: Out of range, stack is full
+        int[] nums = {5, -3, 3, 6, 1568, 26, 58, -26, 99};
+        myStack.push(nums);
+
         //Create new Stack with size
         MyStack stack = new MyStack(-5);
     }
