@@ -2,6 +2,30 @@ package training.expires;
 
 public class Main {
 
+    public static void testIntStackMin(){
+        IntStackMin stack = new IntStackMin();
+
+        stack.push(1, 2, 16, 2, 1, 25, -5, 17);
+
+        System.out.println("Min = " + stack.min());
+
+        System.out.println("Pop = " + stack.pop());
+        System.out.println("Pop = " + stack.pop());
+
+        System.out.println("Min = " + stack.min());
+
+        System.out.println("Pop = " + stack.pop());
+
+        System.out.println("Min = " + stack.min());
+
+        System.out.println("Pop = " + stack.pop());
+        System.out.println("Pop = " + stack.pop());
+
+        System.out.println("Min = " + stack.min());
+
+    }
+
+
     public static void testMyStack(){
         MyStack myStack = new MyStack();
 
@@ -32,6 +56,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        testMyStack();
+        //testMyStack();
+        testIntStackMin();
     }
 }
