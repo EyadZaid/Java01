@@ -38,6 +38,11 @@ public class IntStack {
     }
 
     public int pop(){
+        /*
+        assert !isEmpty();
+        return data[--currIndex];
+        */
+
         if (!isEmpty()){
             return data[--currIndex];
         }
@@ -49,6 +54,11 @@ public class IntStack {
     }
 
     public int peek(){
+         /*
+        assert !isEmpty();
+        return data[currIndex-1];
+        */
+
         if (!isEmpty()){
             return data[currIndex-1];
         }

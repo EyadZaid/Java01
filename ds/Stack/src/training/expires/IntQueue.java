@@ -42,6 +42,15 @@ public class IntQueue {
     }
 
     public int dequeue() {
+        /*
+        assert !isEmpty();
+
+        int value = data[head];
+        head = (head+1) % data.length;
+        currSize--;
+        return value;
+        */
+
         if (! isEmpty()){
             int value = data[head];
             head = (head+1) % data.length;
@@ -50,7 +59,7 @@ public class IntQueue {
         }
         else {
             System.out.println("Exception: Queue is Empty.");
-            return -999;
+            return -1;
         }
     }
 
@@ -59,6 +68,11 @@ public class IntQueue {
     }
 
     public int peek() {
+        /*
+        assert !isEmpty();
+        return data[head];
+        */
+
         if (! isEmpty()) {
             return data[head];
         }
