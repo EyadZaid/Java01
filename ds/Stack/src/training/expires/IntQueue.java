@@ -78,7 +78,7 @@ public class IntQueue {
         }
         else {
             System.out.println("Exception: Queue is Empty.");
-            return -999;
+            return -1;
         }
     }
 
