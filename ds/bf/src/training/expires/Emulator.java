@@ -4,6 +4,7 @@ public class Emulator {
     private Memory memory;
     private Code code;
 
+
     public Emulator(char[] newCode){
         memory = new Memory();
         code = new Code(newCode);
@@ -11,7 +12,8 @@ public class Emulator {
 
     public void runCurrentOpcode() {
         while (!code.isOver()){
-            switch (code.GetCurrentOpcode()){
+            char ch = code.getCurrentOpcode();
+            switch (ch){
 
                 case ('+'):
                     memory.increment();
@@ -30,7 +32,19 @@ public class Emulator {
                     break;
 
                 case ('.'):
+                    memory.printCode(ch);
+                    break;
+
+                case ('!'):
                     memory.printValue();
+                    break;
+
+                case ('['):
+                    //memory.printCode(ch);
+                    break;
+
+                case (']'):
+                    //memory.printValue();
                     break;
 
                 default:

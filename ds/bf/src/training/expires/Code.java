@@ -10,9 +10,9 @@ public class Code {
         currIndex = 0;
     }
 
-    public char GetCurrentOpcode(){
+    public char getCurrentOpcode(){
         int index = currIndex;
-        IncCurrentIndex();
+        incCurrentIndex();
         return items[index];
     }
 
@@ -20,11 +20,11 @@ public class Code {
         return currIndex == items.length;
     }
 
-    public int GetCurrentIndex(){
+    public int getCurrentIndex(){
         return currIndex;
     }
 
-    public void IncCurrentIndex(){
+    public void incCurrentIndex(){
         assert currIndex < items.length;
         currIndex++;
     }
