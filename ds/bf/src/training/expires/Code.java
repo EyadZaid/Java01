@@ -16,6 +16,11 @@ public class Code {
         return items[index];
     }
 
+    public char getCurrentOpcodeByIndex(int index){
+        assert index >= 0 && index < items.length;
+        return items[index];
+    }
+
     public boolean isOver(){
         return currIndex == items.length;
     }
@@ -29,11 +34,8 @@ public class Code {
         currIndex++;
     }
 
-    /*
-    public void DicCurrentIndex(){
-        assert currIndex > 0;
-        currIndex--;
+    public int getSize(){
+        return items.length;
     }
-    */
 
 }

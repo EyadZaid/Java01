@@ -40,11 +40,11 @@ public class Emulator {
                     break;
 
                 case ('['):
-                    //memory.printCode(ch);
+                    //-------------------------------
                     break;
 
                 case (']'):
-                    //memory.printValue();
+                    //------------------------------
                     break;
 
                 default:
