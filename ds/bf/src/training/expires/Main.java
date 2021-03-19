@@ -7,9 +7,9 @@ public class Main {
     }
 
     public static void testEmulator(){
-        char[] code = {'+', '+', '+', '-', '-', '!'};
-        //char[] code = {'+', '+', '+', '+', '[', '>', '+', '+', '+', '<', '-', ']', '.'};
-        Emulator emulator = new Emulator(code);
+        char[] code1 = {'+', '+', '+', '-', '-', '!'};
+        char[] code2 = {'+', '+', '+', '+', '[', '>', '+', '+', '+', '<', '-', ']', '>', '!'};
+        Emulator emulator = new Emulator(code2);
 
         emulator.runCurrentOpcode();
 

@@ -37,25 +37,36 @@ public class Memory {
     }
 
     public void executeLoop(Code code) {
-        int index = code.getCurrentIndex();
         char opcode;
 
-        if (stack.isEmpty() || stack.peek() != index) {
-            stack.push(index);
+        if (stack.isEmpty() || stack.peek() != code.getCurrentIndex()) {
+            stack.push(code.getCurrentIndex());
         }
 
         if (data[currIndex] == 0) {
-            opcode = code.getCurrentOpcodeByIndex(index);
+            opcode = code.getCurrentOpcodeByIndex(code.getCurrentIndex());
             while (opcode != ']') {
-                index++;
-                if (index == code.getSize()) {
+                code.incCurrentIndex();
+                if (code.getCurrentIndex() == code.getSize()) {
                     System.out.println("Exception");
+                    return;
                 } else {
-                    opcode = code.getCurrentOpcodeByIndex(index);
+                    opcode = code.getCurrentOpcodeByIndex(code.getCurrentIndex());
                 }
             }
             stack.pop();
+            code.incCurrentIndex();
         }
+    }
+
+    public void endLoop(Code code) {
+        if (stack.isEmpty()) {
+            System.out.println("Exception");
+            return;
+        }
+
+        code.setCurrIndex(stack.peek());
+        code.dicCurrentIndex();
     }
 
 

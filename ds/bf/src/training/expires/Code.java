@@ -38,4 +38,14 @@ public class Code {
         return items.length;
     }
 
+    public void setCurrIndex(int index){
+        assert index >= 0 && index < items.length;
+        currIndex = index;
+    }
+
+    public void dicCurrentIndex(){
+        assert currIndex > 0;
+        currIndex--;
+    }
+
 }

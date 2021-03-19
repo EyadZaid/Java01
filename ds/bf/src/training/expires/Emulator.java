@@ -40,11 +40,11 @@ public class Emulator {
                     break;
 
                 case ('['):
-                    //-------------------------------
+                    memory.executeLoop(code);
                     break;
 
                 case (']'):
-                    //------------------------------
+                    memory.endLoop(code);
                     break;
 
                 default:
