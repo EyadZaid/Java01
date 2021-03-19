@@ -13,37 +13,38 @@ public class Emulator {
     public void runCurrentOpcode() {
         while (!code.isOver()){
             char ch = code.getCurrentOpcode();
-            switch (ch){
+            Opcodes opcode = code.getOpcode(ch);
+            switch (opcode){
 
-                case ('+'):
+                case INCREMENT:
                     memory.increment();
                     break;
 
-                case ('-'):
+                case DECREMENT:
                     memory.decrement();
                     break;
 
-                case ('>'):
+                case MOVE_RIGHT:
                     memory.moveRight();
                     break;
 
-                case ('<'):
+                case MOVE_LEFT:
                     memory.moveLeft();
                     break;
 
-                case ('.'):
+                case PRINT_CODE:
                     memory.printCode(ch);
                     break;
 
-                case ('!'):
+                case PRINT_VALUE:
                     memory.printValue();
                     break;
 
-                case ('['):
+                case START_LOOP:
                     memory.executeLoop(code);
                     break;
 
-                case (']'):
+                case END_LOOP:
                     memory.endLoop(code);
                     break;
 

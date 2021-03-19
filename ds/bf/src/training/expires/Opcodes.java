@@ -3,6 +3,9 @@ package training.expires;
 public enum Opcodes {
     INCREMENT, DECREMENT, MOVE_LEFT, MOVE_RIGHT, PRINT_CODE, PRINT_VALUE, START_LOOP, END_LOOP;
 
+
+
+    /*
     public char getOpcode(){
         switch(this){
             case INCREMENT:
@@ -34,5 +37,6 @@ public enum Opcodes {
                 return '!';
         }
     }
+     */
 
 }

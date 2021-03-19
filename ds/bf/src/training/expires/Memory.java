@@ -2,13 +2,14 @@ package training.expires;
 
 public class Memory {
     private final static int CAPACITY = 16;
+    private final static int INCREASE_DATA = 10;
     private int[] data;
     private int currIndex;
     private IntStack stack;
 
     public Memory(){
         data = new int[CAPACITY];
-        currIndex = data.length/2;
+        currIndex = CAPACITY/2;
         stack = new IntStack(64);
     }
 
@@ -21,11 +22,25 @@ public class Memory {
     }
 
     public void moveRight() {
-        currIndex = (currIndex + 1) % data.length;
+        if (currIndex == getSizeData() -1){
+            int[] newData = new int[getSizeData()+INCREASE_DATA];
+            for (int i=0; i<data.length; i++){
+                newData[i] = data[i];
+            }
+            data = newData;
+        }
+        currIndex++;
     }
 
     public void moveLeft() {
-        currIndex = (currIndex - 1) % data.length;
+        if (currIndex == 0){
+            int[] newData = new int[getSizeData()+INCREASE_DATA];
+            for (int i=0; i<data.length; i++){
+                newData[i+INCREASE_DATA] = data[i];
+            }
+            data = newData;
+        }
+        currIndex--;
     }
 
     public void printValue() {
@@ -37,21 +52,21 @@ public class Memory {
     }
 
     public void executeLoop(Code code) {
-        char opcode;
-
-        if (stack.isEmpty() || stack.peek() != code.getCurrentIndex()) {
-            stack.push(code.getCurrentIndex());
+        int indexOfCode = code.getCurrentIndex();
+        if (stack.isEmpty() || stack.peek() != indexOfCode) {
+            stack.push(indexOfCode);
         }
 
         if (data[currIndex] == 0) {
-            opcode = code.getCurrentOpcodeByIndex(code.getCurrentIndex());
+            char opcode = code.getCurrentOpcodeByIndex(indexOfCode);
             while (opcode != ']') {
                 code.incCurrentIndex();
-                if (code.getCurrentIndex() == code.getSize()) {
+                indexOfCode = code.getCurrentIndex();
+                if (indexOfCode == code.getSize()) {
                     System.out.println("Exception");
                     return;
                 } else {
-                    opcode = code.getCurrentOpcodeByIndex(code.getCurrentIndex());
+                    opcode = code.getCurrentOpcodeByIndex(indexOfCode);
                 }
             }
             stack.pop();
@@ -67,6 +82,10 @@ public class Memory {
 
         code.setCurrIndex(stack.peek());
         code.dicCurrentIndex();
+    }
+
+    public int getSizeData(){
+        return data.length;
     }
 
 

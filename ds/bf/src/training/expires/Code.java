@@ -48,4 +48,36 @@ public class Code {
         currIndex--;
     }
 
+    public Opcodes getOpcode(char ch){
+        switch(ch){
+            case '+':
+                return Opcodes.INCREMENT;
+
+            case '-':
+                return Opcodes.DECREMENT;
+
+            case '<':
+                return Opcodes.MOVE_LEFT;
+
+            case '>':
+                return Opcodes.MOVE_RIGHT;
+
+            case '.':
+                return Opcodes.PRINT_CODE;
+
+            case '!':
+                return Opcodes.PRINT_VALUE;
+
+            case '[':
+                return Opcodes.START_LOOP;
+
+            case ']':
+                return Opcodes.END_LOOP;
+
+            default:
+                assert false;
+                return Opcodes.PRINT_CODE;
+        }
+    }
+
 }
