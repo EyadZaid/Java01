@@ -55,7 +55,6 @@ public class Emulator {
                     break;
 
                 default:
-                    System.out.println("Exception");
             }
         }
     }

@@ -39,6 +39,7 @@ public class Memory {
                 newData[i+INCREASE_DATA] = data[i];
             }
             data = newData;
+            currIndex = INCREASE_DATA;
         }
         currIndex--;
     }
@@ -57,7 +58,7 @@ public class Memory {
             stack.push(indexOfCode);
         }
 
-        if (data[currIndex] == 0) {
+        if (data[currIndex] <= 0) {
             char opcode = code.getCurrentOpcodeByIndex(indexOfCode);
             while (opcode != ']') {
                 code.incCurrentIndex();
@@ -76,7 +77,6 @@ public class Memory {
 
     public void endLoop(Code code) {
         if (stack.isEmpty()) {
-            System.out.println("Exception");
             return;
         }
 
