@@ -44,11 +44,11 @@ public class Memory {
     }
 
     public void printValue() {
-        System.out.println(data[currIndex]);
+        System.out.print(data[currIndex]);
     }
 
-    public void printCode(char c) {
-        System.out.println(c);
+    public void printCode() {
+        System.out.print((char)data[currIndex]);
     }
 
     public void executeLoop(Code code) {

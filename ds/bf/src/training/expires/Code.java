@@ -1,12 +1,18 @@
 package training.expires;
 
 public class Code {
+    private final static int CAPACITY = 16;
     private char[] items;
     private int currIndex;
 
     public Code(char[] newCode){
         assert newCode != null;
         items = newCode;
+        currIndex = 0;
+    }
+
+    public Code(){
+        items = new char[16];
         currIndex = 0;
     }
 

@@ -3,14 +3,20 @@ package training.expires;
 public class Emulator {
     private Memory memory;
     private Code code;
+    private Display display;
 
 
-    public Emulator(char[] newCode){
+    public Emulator(Display display){
         memory = new Memory();
+        code = new Code();
+        this.display = display;
+    }
+
+    public void load(char[] newCode){
         code = new Code(newCode);
     }
 
-    public void runCurrentOpcode() {
+    public void run() {
         while (!code.isOver()){
             char ch = code.getCurrentOpcode();
             Opcodes opcode = code.getOpcode(ch);
@@ -33,7 +39,7 @@ public class Emulator {
                     break;
 
                 case PRINT_CODE:
-                    memory.printCode(ch);
+                    memory.printCode();
                     break;
 
                 case PRINT_VALUE:
