@@ -59,4 +59,8 @@ public class Emulator {
             }
         }
     }
+
+    public void displayInput(){
+        display.printInput(code.getItemsOfCode());
+    }
 }

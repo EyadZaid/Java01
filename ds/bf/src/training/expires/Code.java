@@ -54,6 +54,10 @@ public class Code {
         currIndex--;
     }
 
+    public char[] getItemsOfCode(){
+        return items;
+    }
+
     public Opcodes getOpcode(char ch){
         switch(ch){
             case '+':
