@@ -15,7 +15,7 @@ public class ArraySegments {
                 currSegment.insert(num);
                 return;
             }
-            currSegment = currSegment.next;
+            currSegment = currSegment.getNext();
         }
 
         Segment newSegment = new Segment();
@@ -23,11 +23,11 @@ public class ArraySegments {
         if(head != null){
             newSegment.insert(num);
             if (isRight){
-                head.next = newSegment;
+                head.setNext(newSegment);
             }
             else {
-                head.prev = newSegment;
-                newSegment.next = head;
+                head.setPrev(newSegment);
+                newSegment.setNext(head);
                 head = newSegment;
             }
         }
@@ -44,12 +44,9 @@ public class ArraySegments {
         while (currSegment != null) {
             currSegment.printSegment();
             //next segment
-            currSegment = currSegment.next;
+            currSegment = currSegment.getNext();
         }
 
     }
-
-
-
 
 }

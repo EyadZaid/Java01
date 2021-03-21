@@ -4,8 +4,8 @@ public class Segment {
     private static final int CAPACITY = 8;
     private int[] data;
     private int currIndex;
-    Segment next;
-    Segment prev;
+    private Segment next;
+    private Segment prev;
 
     public Segment() {
         data = new int[CAPACITY];
@@ -38,5 +38,21 @@ public class Segment {
         for (int i=0; i<currIndex; i++){
             System.out.print(getCurrValueByIndex(i) + " ");
         }
+    }
+
+    public Segment getNext() {
+        return next;
+    }
+
+    public Segment getPrev() {
+        return prev;
+    }
+
+    public void setNext(Segment next){
+        this.next = next;
+    }
+
+    public void setPrev(Segment prev){
+        this.prev = prev;
     }
 }
