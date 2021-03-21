@@ -12,12 +12,19 @@ public class Main {
     public static void testArraySegments(){
         ArraySegments arraySegments = new ArraySegments();
 
+        /*
         for (int i=0; i<15; i++){
             arraySegments.insertNum(i);
         }
+        arraySegments.printArraySegments();
+        */
 
+        for (int i=0; i<15; i++){
+            arraySegments.insertNumRightAndLeft(i, false);
+        }
         arraySegments.printArraySegments();
     }
+
 
     public static void testEmulator(){
         ArrayList<String> sources = new ArrayList<>();

@@ -5,11 +5,13 @@ public class Segment {
     private int[] data;
     private int currIndex;
     Segment next;
+    Segment prev;
 
     public Segment() {
         data = new int[CAPACITY];
         currIndex = 0;
         next = null;
+        prev = null;
     }
 
     public void insert(int num){

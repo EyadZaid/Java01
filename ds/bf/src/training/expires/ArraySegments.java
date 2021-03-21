@@ -7,8 +7,7 @@ public class ArraySegments {
         head = new Segment();
     }
 
-    //Right insert --------------------
-    public void insertNum(int num){
+    public void insertNumRightAndLeft(int num, boolean isRight){
         Segment currSegment = head;
 
         while (currSegment != null) {
@@ -23,7 +22,14 @@ public class ArraySegments {
 
         if(head != null){
             newSegment.insert(num);
-            head.next = newSegment;
+            if (isRight){
+                head.next = newSegment;
+            }
+            else {
+                head.prev = newSegment;
+                newSegment.next = head;
+                head = newSegment;
+            }
         }
         else {
             newSegment.insert(num);
