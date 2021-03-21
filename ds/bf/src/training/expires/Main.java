@@ -12,7 +12,7 @@ public class Main {
     public static void testArraySegments(){
         ArraySegments arraySegments = new ArraySegments();
 
-        for (int i=0; i<10; i++){
+        for (int i=0; i<15; i++){
             arraySegments.insertNum(i);
         }
 

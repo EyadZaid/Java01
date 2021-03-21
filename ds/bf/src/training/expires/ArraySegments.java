@@ -9,10 +9,14 @@ public class ArraySegments {
 
     //Right insert --------------------
     public void insertNum(int num){
+        Segment currSegment = head;
 
-        if(head != null && !head.isFull()){
-            head.insert(num);
-            return;
+        while (currSegment != null) {
+            if (!currSegment.isFull()){
+                currSegment.insert(num);
+                return;
+            }
+            currSegment = currSegment.next;
         }
 
         Segment newSegment = new Segment();
