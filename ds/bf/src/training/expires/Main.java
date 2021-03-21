@@ -5,7 +5,18 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        testEmulator();
+        //testEmulator();
+        testArraySegments();
+    }
+
+    public static void testArraySegments(){
+        ArraySegments arraySegments = new ArraySegments();
+
+        for (int i=0; i<10; i++){
+            arraySegments.insertNum(i);
+        }
+
+        arraySegments.printArraySegments();
     }
 
     public static void testEmulator(){
