@@ -11,7 +11,7 @@ public class DoublyLinkedList<T> {
         int index = 0;
         Node<T> currNode = head;
         while (currNode != null) {
-            if (currNode.getData() == item){
+            if (currNode.getData().equals(item)){
                 return index;
             }
             index++;
