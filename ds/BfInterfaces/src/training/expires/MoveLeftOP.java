@@ -1,10 +1,9 @@
 package training.expires;
 
-public class IncrementOP implements IOpcodeExecutable {
-
+public class MoveLeftOP implements IOpcodeExecutable{
 
     @Override
     public void execute(Memory memory) {
-        memory.increment();
+        memory.moveLeft();
     }
 }

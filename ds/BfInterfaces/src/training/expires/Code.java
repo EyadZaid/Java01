@@ -57,15 +57,16 @@ public class Code {
     public char[] getItemsOfCode(){
         return items;
     }
-
-    public Opcodes getOpcode(char ch){
+/*
+    public IOpcodeExecutable getOpcode(char ch){
         switch(ch){
             case '+':
-                return Opcodes.INCREMENT;
+                return new IncrementOP();
 
             case '-':
-                return Opcodes.DECREMENT;
+                return new DecrementOP();
 
+                /*
             case '<':
                 return Opcodes.MOVE_LEFT;
 
@@ -89,5 +90,5 @@ public class Code {
                 return Opcodes.PRINT_CODE;
         }
     }
-
+*/
 }

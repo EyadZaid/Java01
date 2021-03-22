@@ -5,57 +5,72 @@ public class Emulator {
     private Code code;
     private Display display;
 
+    private IncrementOP incrementOP;
+    private DecrementOP decrementOP;
+    private MoveLeftOP moveLeftOP;
+    private MoveRightOP moveRightOP;
+    private StartLoopOP startLoopOP;
+    private EndLoopOP endLoopOP;
+    private PutValueOP putValueOP;
+    private PutCharOP putCharOP;
+
 
     public Emulator(Display display){
         memory = new Memory();
         code = new Code();
         this.display = display;
+        incrementOP = new IncrementOP();
+        decrementOP = new DecrementOP();
+        moveLeftOP = new MoveLeftOP();
+        moveRightOP = new MoveRightOP();
+        startLoopOP = new StartLoopOP(code);
+        endLoopOP = new EndLoopOP(code);
+        putCharOP = new PutCharOP(display);
+        putValueOP = new PutValueOP(display);
     }
 
     public void load(char[] newCode){
         code = new Code(newCode);
     }
 
+    public IOpcodeExecutable getOpcode(char ch){
+        switch(ch){
+            case '+':
+                return incrementOP;
+
+            case '-':
+                return decrementOP;
+
+            case '<':
+                return moveLeftOP;
+
+            case '>':
+                return moveRightOP;
+
+            case '.':
+                return putValueOP;
+
+            case '!':
+                return putCharOP;
+
+            case '[':
+                return startLoopOP;
+
+            case ']':
+                return endLoopOP;
+
+            default:
+                assert false;
+                return null;
+        }
+    }
+
+
     public void run() {
         while (!code.isOver()){
             char ch = code.getCurrentOpcode();
-            Opcodes opcode = code.getOpcode(ch);
-            switch (opcode){
-
-                case INCREMENT:
-                    memory.increment();
-                    break;
-
-                case DECREMENT:
-                    memory.decrement();
-                    break;
-
-                case MOVE_RIGHT:
-                    memory.moveRight();
-                    break;
-
-                case MOVE_LEFT:
-                    memory.moveLeft();
-                    break;
-
-                case PRINT_CODE:
-                    memory.printCode();
-                    break;
-
-                case PRINT_VALUE:
-                    memory.printValue();
-                    break;
-
-                case START_LOOP:
-                    memory.executeLoop(code);
-                    break;
-
-                case END_LOOP:
-                    memory.endLoop(code);
-                    break;
-
-                default:
-            }
+            IOpcodeExecutable opcode = getOpcode(ch);
+            opcode.execute(memory);
         }
     }
 

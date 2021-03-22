@@ -57,7 +57,7 @@ public class Main {
 
         InputParser inputParser = new InputParser();
         Display display = new Display();
-        char[] input = inputParser.inputParsing(sources.get(8));
+        char[] input = inputParser.inputParsing(sources.get(0));
 
         Emulator emulator = new Emulator(display);
         emulator.load(input);

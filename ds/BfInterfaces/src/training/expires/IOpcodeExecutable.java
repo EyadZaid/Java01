@@ -1,5 +1,5 @@
 package training.expires;
 
 public interface IOpcodeExecutable {
-    void execute();
+    void execute(Memory memory);
 }

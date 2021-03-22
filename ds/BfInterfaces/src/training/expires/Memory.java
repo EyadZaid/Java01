@@ -13,6 +13,7 @@ public class Memory {
         stack = new IntStack(64);
     }
 
+
     public void increment() {
         data[currIndex]++;
     }
@@ -44,8 +45,8 @@ public class Memory {
         currIndex--;
     }
 
-    public void printValue() {
-        System.out.print(data[currIndex]);
+    public int getValue() {
+        return data[currIndex];
     }
 
     public void printCode() {
