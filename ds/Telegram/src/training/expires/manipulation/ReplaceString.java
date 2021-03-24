@@ -1,6 +1,6 @@
-package training.expires;
+package training.expires.manipulation;
 
-public class ReplaceString {
+public class ReplaceString implements IReplaceString {
 
     // Replace string in the text
     public String replace(String text, String oldString, String newString) {

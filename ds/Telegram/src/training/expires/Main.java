@@ -1,5 +1,9 @@
 package training.expires;
 
+import training.expires.manipulation.CaesarCipher;
+import training.expires.manipulation.ReplaceString;
+import training.expires.manipulation.XORCipher;
+
 public class Main {
 
     public static void main(String[] args) {

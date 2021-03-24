@@ -2,7 +2,7 @@ package training.expires;
 
 import java.util.Scanner;
 
-public class InputConsole {
+public class InputConsole implements IInputConsole{
 
     public String input(){
         Scanner scanner = new Scanner(System.in);

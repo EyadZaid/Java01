@@ -1,4 +1,4 @@
-package training.expires;
+package training.expires.manipulation;
 
 public class UpperCase {
 

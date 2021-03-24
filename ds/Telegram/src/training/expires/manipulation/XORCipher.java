@@ -1,6 +1,6 @@
-package training.expires;
+package training.expires.manipulation;
 
-public class XORCipher {
+public class XORCipher implements IXORCipher{
 
     // Encrypts text - XOR Cipher
     public String encrypt(String text, char key) {
