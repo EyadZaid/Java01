@@ -1,7 +1,7 @@
 package training.expires.inputOutput;
 
 public interface IInput {
-    String line();
+    String readline();
 
     Boolean isEnd();
 
