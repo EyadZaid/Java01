@@ -1,12 +1,8 @@
 package training.expires;
 
-import training.expires.inputOutput.ConsoleRead;
-import training.expires.inputOutput.ReadText;
+import training.expires.inputOutput.*;
 import training.expires.manipulation.CaesarCipher;
-import training.expires.manipulation.ReplaceString;
-import training.expires.manipulation.XORCipher;
-
-import java.util.List;
+import training.expires.manipulation.IEncoder;
 
 public class Main {
 
@@ -15,6 +11,15 @@ public class Main {
     }
 
     public static void testTelegram(){
+        IInput iInput = new ConsoleRead();
+        IOutput iOutput = new ConsoleWrite();
+        IEncoder iEncoder = new CaesarCipher(5);
+
+        Telegram telegram = new Telegram(iInput, iOutput, iEncoder);
+        telegram.encode();
+
+
+        /*
         ConsoleRead consoleRead = new ConsoleRead();
         ReadText readText = new ReadText(consoleRead);
         List<String> text = readText.read();
@@ -35,7 +40,7 @@ public class Main {
         ReplaceString replace = new ReplaceString("cd", "#");
         result = replace.encode(text.toString());
         System.out.println(result);
-
+*/
 
 
     }
