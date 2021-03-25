@@ -16,18 +16,18 @@ public class Main {
         String result;
 
         System.out.println("Caesar Cipher:");
-        CaesarCipher caesar = new CaesarCipher();
-        result = caesar.encrypt(text, 5);
+        CaesarCipher caesar = new CaesarCipher(5);
+        result = caesar.encode(text);
         System.out.println(result);
 
         System.out.println("\nXOR Cipher:");
-        XORCipher xor = new XORCipher();
-        result = xor.encrypt(text, 'm');
+        XORCipher xor = new XORCipher('m');
+        result = xor.encode(text);
         System.out.println(result);
 
         System.out.println("\nReplace String:");
-        ReplaceString replace = new ReplaceString();
-        result = replace.replace(text, "cd", "#");
+        ReplaceString replace = new ReplaceString("cd", "#");
+        result = replace.encode(text);
         System.out.println(result);
 
 
