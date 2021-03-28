@@ -9,8 +9,8 @@ public class FileWrite implements IOutput{
     private BufferedWriter bufferedWriter;
 
     public FileWrite(String fileName) throws IOException {
-        FileWriter writer = new FileWriter(fileName, true);
-        BufferedWriter bufferedWriter = new BufferedWriter(writer);
+        writer = new FileWriter(fileName, true);
+        bufferedWriter = new BufferedWriter(writer);
     }
 
     @Override

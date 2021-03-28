@@ -4,15 +4,20 @@ import training.expires.inputs.*;
 import training.expires.manipulation.IEncoder;
 import training.expires.manipulation.XORCipher;
 import training.expires.outputs.ConsoleWrite;
+import training.expires.outputs.FileWrite;
 import training.expires.outputs.IOutput;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Main {
 
     public static void main(String[] args) {
-        testTelegram();
+        //testConsoleTelegram();
+        testFileTelegram();
     }
 
-    public static void testTelegram(){
+    public static void testConsoleTelegram(){
         IInput iInput = new ConsoleRead();
         IOutput iOutput = new ConsoleWrite();
         IEncoder encoder = new XORCipher('m');
@@ -45,5 +50,27 @@ public class Main {
 */
 
 
+    }
+
+    public static void testFileTelegram(){
+
+        IInput iInput = null;
+        try {
+            iInput = new FileRead("input.txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        IOutput iOutput = null;
+        try {
+            iOutput = new FileWrite("output.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        IEncoder encoder = new XORCipher('m');
+
+        Telegram telegram = new Telegram(iInput, iOutput, encoder);
+        telegram.encode();
     }
 }
