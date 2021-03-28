@@ -19,10 +19,14 @@ public class FileRead implements IInput{
     }
 
     @Override
-    public String readline() throws IOException {
+    public String readline() {
         prevLine = lineStr;
-        if ((lineStr = bufferedReader.readLine()) != null) {
-            return lineStr;
+        try {
+            if ((lineStr = bufferedReader.readLine()) != null) {
+                return lineStr;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return "";
     }
@@ -36,7 +40,11 @@ public class FileRead implements IInput{
     }
 
     @Override
-    public void close() throws IOException {
-        reader.close();
+    public void close() {
+        try {
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

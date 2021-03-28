@@ -14,13 +14,21 @@ public class FileWrite implements IOutput{
     }
 
     @Override
-    public void write(String line) throws IOException {
-        bufferedWriter.write(line);
-        bufferedWriter.newLine();
+    public void write(String line) {
+        try {
+            bufferedWriter.write(line);
+            bufferedWriter.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void close() throws IOException {
-        bufferedWriter.close();
+    public void close() {
+        try {
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
