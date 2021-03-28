@@ -1,6 +1,7 @@
 package training.expires;
 
 import training.expires.inputs.*;
+import training.expires.manipulation.CaesarCipher;
 import training.expires.manipulation.IEncoder;
 import training.expires.manipulation.XORCipher;
 import training.expires.outputs.ConsoleWrite;
@@ -13,43 +14,19 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) {
-        testConsoleTelegram();
-        //testFileTelegram();
+        //testConsoleTelegram();
+        testFileTelegram();
     }
 
     public static void testConsoleTelegram(){
         IInput iInput = new ConsoleRead();
         IOutput iOutput = new ConsoleWrite();
-        IEncoder encoder = new XORCipher("abc");
+        IEncoder[] encoders = new IEncoder[2];
+        encoders[0] = new CaesarCipher(5);
+        encoders[1] = new XORCipher("abc");
 
-        Telegram telegram = new Telegram(iInput, iOutput, encoder);
+        Telegram telegram = new Telegram(iInput, iOutput, encoders);
         telegram.encode();
-
-
-        /*
-        ConsoleRead consoleRead = new ConsoleRead();
-        ReadText readText = new ReadText(consoleRead);
-        List<String> text = readText.read();
-
-        String result;
-
-        System.out.println("Caesar Cipher:");
-        CaesarCipher caesar = new CaesarCipher(5);
-        result = caesar.encode(text.toString());
-        System.out.println(result);
-
-        System.out.println("\nXOR Cipher:");
-        XORCipher xor = new XORCipher('m');
-        result = xor.encode(text.toString());
-        System.out.println(result);
-
-        System.out.println("\nReplace String:");
-        ReplaceString replace = new ReplaceString("cd", "#");
-        result = replace.encode(text.toString());
-        System.out.println(result);
-*/
-
-
     }
 
     public static void testFileTelegram(){
@@ -68,9 +45,11 @@ public class Main {
             e.printStackTrace();
         }
 
-        IEncoder encoder = new XORCipher("abc");
+        IEncoder[] encoders = new IEncoder[2];
+        encoders[0] = new CaesarCipher(3);
+        encoders[1] = new XORCipher("you");
 
-        Telegram telegram = new Telegram(iInput, iOutput, encoder);
+        Telegram telegram = new Telegram(iInput, iOutput, encoders);
         telegram.encode();
     }
 }
