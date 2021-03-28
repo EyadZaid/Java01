@@ -1,32 +1,40 @@
 package training.expires;
 
-import training.expires.inputOutput.IInput;
-import training.expires.inputOutput.IOutput;
+import training.expires.inputs.IInput;
+import training.expires.outputs.IOutput;
 import training.expires.manipulation.IEncoder;
 
 public class Telegram {
 
     private IInput iInput;
     private IOutput iOutput;
-    private IEncoder iEncoder;
+    private IEncoder[] encoders;
 
-    public Telegram(IInput iInput, IOutput iOutput, IEncoder iEncoder){
+    public Telegram(IInput iInput, IOutput iOutput, IEncoder ... encoders){
         this.iInput = iInput;
         this.iOutput = iOutput;
-        this.iEncoder = iEncoder;
+        this.encoders = encoders;
     }
+
 
     public void encode(){
         String manipLine, readLine;
 
         while (!iInput.isEnd()){
             readLine = iInput.readline();
-            manipLine = iEncoder.encode(readLine);
+            manipLine = manipulation(readLine);
             iOutput.write(manipLine);
         }
         iInput.close();
         iOutput.close();
     }
 
+    private String manipulation(String line){
+        String manipLine = line;
+        for (int i=0; i<encoders.length; i++){
+            manipLine = encoders[i].encode(manipLine);
+        }
+        return manipLine;
+    }
 
 }

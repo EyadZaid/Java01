@@ -1,4 +1,4 @@
-package training.expires.inputOutput;
+package training.expires.inputs;
 
 import java.util.ArrayList;
 import java.util.List;

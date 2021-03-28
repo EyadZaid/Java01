@@ -1,8 +1,10 @@
 package training.expires;
 
-import training.expires.inputOutput.*;
-import training.expires.manipulation.CaesarCipher;
+import training.expires.inputs.*;
 import training.expires.manipulation.IEncoder;
+import training.expires.manipulation.XORCipher;
+import training.expires.outputs.ConsoleWrite;
+import training.expires.outputs.IOutput;
 
 public class Main {
 
@@ -13,9 +15,9 @@ public class Main {
     public static void testTelegram(){
         IInput iInput = new ConsoleRead();
         IOutput iOutput = new ConsoleWrite();
-        IEncoder iEncoder = new CaesarCipher(5);
+        IEncoder encoder = new XORCipher('m');
 
-        Telegram telegram = new Telegram(iInput, iOutput, iEncoder);
+        Telegram telegram = new Telegram(iInput, iOutput, encoder);
         telegram.encode();
 
 

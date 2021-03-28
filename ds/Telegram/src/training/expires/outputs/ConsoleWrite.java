@@ -1,4 +1,4 @@
-package training.expires.inputOutput;
+package training.expires.outputs;
 
 public class ConsoleWrite implements IOutput{
     @Override
