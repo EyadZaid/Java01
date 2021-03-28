@@ -22,6 +22,9 @@ public class Telegram {
 
         while (!iInput.isEnd()){
             readLine = iInput.readline();
+            if (readLine.equals(".") || readLine.equals("")){
+                continue;
+            }
             manipLine = manipulation(readLine);
             iOutput.write(manipLine);
         }

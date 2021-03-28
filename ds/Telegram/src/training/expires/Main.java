@@ -13,14 +13,14 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) {
-        //testConsoleTelegram();
-        testFileTelegram();
+        testConsoleTelegram();
+        //testFileTelegram();
     }
 
     public static void testConsoleTelegram(){
         IInput iInput = new ConsoleRead();
         IOutput iOutput = new ConsoleWrite();
-        IEncoder encoder = new XORCipher('m');
+        IEncoder encoder = new XORCipher("abc");
 
         Telegram telegram = new Telegram(iInput, iOutput, encoder);
         telegram.encode();
@@ -68,7 +68,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        IEncoder encoder = new XORCipher('m');
+        IEncoder encoder = new XORCipher("abc");
 
         Telegram telegram = new Telegram(iInput, iOutput, encoder);
         telegram.encode();

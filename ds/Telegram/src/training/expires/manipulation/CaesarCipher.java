@@ -16,13 +16,13 @@ public class CaesarCipher implements IEncoder {
         StringBuilder result = new StringBuilder();
 
         for (int i = 0; i < text.length(); i++) {
-            if (Character.isUpperCase(text.charAt(i))) {
-                char ch = (char) (((int) text.charAt(i) + shift - UPPER) % RANGE + UPPER);
-                result.append(ch);
-            } else {
-                char ch = (char) (((int) text.charAt(i) + shift - Lower) % RANGE + Lower);
-                result.append(ch);
+            char ch = text.charAt(i);
+            if (Character.isUpperCase(ch)) {
+                ch = (char) (((int) ch + shift - UPPER) % RANGE + UPPER);
+            } else if(Character.isLowerCase(ch)) {
+                ch = (char) (((int) ch + shift - Lower) % RANGE + Lower);
             }
+            result.append(ch);
         }
         return result.toString();
     }

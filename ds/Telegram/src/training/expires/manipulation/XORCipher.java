@@ -1,9 +1,9 @@
 package training.expires.manipulation;
 
 public class XORCipher implements IEncoder{
-    private int key;
+    private String key;
 
-    public XORCipher(int key){
+    public XORCipher(String key){
         this.key = key;
     }
 
@@ -13,9 +13,11 @@ public class XORCipher implements IEncoder{
         String result = "";
 
         for (int i = 0; i < text.length(); i++) {
-            result += Character.toString((char) (text.charAt(i) ^ key));
-        }
+            char ch = text.charAt(i);
+            int res = (key.charAt(i%key.length())) ^ ch;
 
+            result += (char) res;
+        }
         return result;
     }
 }
