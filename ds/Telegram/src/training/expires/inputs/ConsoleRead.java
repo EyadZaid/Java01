@@ -30,6 +30,6 @@ public class ConsoleRead implements IInput{
 
     @Override
     public void close() {
-        System.out.println("Closed");
+        scanner.close();
     }
 }
