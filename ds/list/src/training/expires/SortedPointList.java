@@ -37,6 +37,9 @@ public class SortedPointList {
         }
     }
 
+    public void remove(int index){
+        list.remove(index);
+    }
 
     @Override
     public String toString() {
@@ -70,12 +73,14 @@ public class SortedPointList {
         Node<Point> previous = null;
         list.setTail(list.getHead());
         Node<Point> current = list.getHead();
+
         while(current != null){
             previous = current.getPrev();
             current.setPrev(current.getNext());
             current.setNext(previous);
             current = current.getPrev();
         }
+
         if(previous != null){
             list.setHead(previous.getPrev());
         }
