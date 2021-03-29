@@ -33,7 +33,8 @@ public class Main {
         SortedPointList list = new SortedPointList(new PointComparator() {
             @Override
             public int compare(Point a, Point b) {
-                return (int)Math.sqrt((a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y));
+                return (int) (Math.sqrt((a.x)*(a.x) + (a.y)*(a.y)) -
+                        Math.sqrt((b.x)*(b.x) + (b.y)*(b.y)));
             }
         });
 
@@ -51,7 +52,8 @@ public class Main {
         SortedPointList list = new SortedPointList(new PointComparator() {
             @Override
             public int compare(Point a, Point b) {
-                return (int)Math.sqrt((a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y)) * -1;
+                return (int) (Math.sqrt((a.x)*(a.x) + (a.y)*(a.y)) -
+                        Math.sqrt((b.x)*(b.x) + (b.y)*(b.y))) * -1;
             }
         });
 
