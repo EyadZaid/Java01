@@ -44,4 +44,25 @@ public class SortedList<T> {
     public String toString() {
         return sortedList.toString();
     }
+
+    public void reverseRecur(){
+        sortedList.setHead(reverseRecur(sortedList.getHead()));
+    }
+
+    public Node<T> reverseRecur(Node<T> current){
+        if (current == null) {
+            return current;
+        }
+
+        if (current.getNext() == null) {
+            current.setPrev(null);
+            return current;
+        }
+
+        Node<T> node = reverseRecur(current.getNext());
+        current.getNext().setNext(current);
+        current.setPrev(current.getNext());
+        current.setNext(null);
+        return node;
+    }
 }

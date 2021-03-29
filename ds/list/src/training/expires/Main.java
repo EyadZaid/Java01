@@ -14,12 +14,7 @@ public class Main {
     }
 
     public static void testSortedList(){
-        SortedList<Integer> list = new SortedList<>(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer a, Integer b) {
-                return a - b;
-            }
-        });
+        SortedList<Integer> list = new SortedList<>(new IntegerComparator());
 
         list.add(5);
         list.add(1);
@@ -27,6 +22,10 @@ public class Main {
         list.add(2);
 
         System.out.println("Sorted List:");
+        System.out.println(list);
+
+        System.out.println("Reverse Sorted List:");
+        list.reverseRecur();
         System.out.println(list);
     }
 
