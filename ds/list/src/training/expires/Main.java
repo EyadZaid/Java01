@@ -4,7 +4,11 @@ public class Main {
 
     public static void main(String[] args) {
         //testDoublyLinkedList();
+
         testSortedPointListByX();
+        testSortedPointListByLength();
+        testSortedPointListByLengthDesc();
+
     }
 
     public static void testSortedPointListByX() {
@@ -20,9 +24,46 @@ public class Main {
         list.addPoint(new Point(15, 6));
         list.addPoint(new Point(-4, 48));
 
-
+        System.out.println("Sorted Points List By X:");
         System.out.println(list);
     }
+
+
+    public static void testSortedPointListByLength() {
+        SortedPointList list = new SortedPointList(new PointComparator() {
+            @Override
+            public int compare(Point a, Point b) {
+                return (int)Math.sqrt((a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y));
+            }
+        });
+
+        list.addPoint(new Point(5, 8));
+        list.addPoint(new Point(2, 4));
+        list.addPoint(new Point(15, 6));
+        list.addPoint(new Point(-4, 48));
+
+        System.out.println("Sorted Points List By length:");
+        System.out.println(list);
+    }
+
+
+    public static void testSortedPointListByLengthDesc() {
+        SortedPointList list = new SortedPointList(new PointComparator() {
+            @Override
+            public int compare(Point a, Point b) {
+                return (int)Math.sqrt((a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y)) * -1;
+            }
+        });
+
+        list.addPoint(new Point(5, 8));
+        list.addPoint(new Point(2, 4));
+        list.addPoint(new Point(15, 6));
+        list.addPoint(new Point(-4, 48));
+
+        System.out.println("Sorted Points List By length (Desc):");
+        System.out.println(list);
+    }
+
 
     public static void testDoublyLinkedList(){
         DoublyLinkedList<Integer> list = new DoublyLinkedList<>();
