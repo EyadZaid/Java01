@@ -205,4 +205,11 @@ public class DoublyLinkedList<T> {
         return Objects.equals(head, list.head) && Objects.equals(tail, list.tail);
     }
 
+    public void setTail(Node<T> tail) {
+        this.tail = tail;
+    }
+
+    public void setHead(Node<T> head) {
+        this.head = head;
+    }
 }

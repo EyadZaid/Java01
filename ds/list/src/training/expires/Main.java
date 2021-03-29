@@ -26,6 +26,11 @@ public class Main {
 
         System.out.println("Sorted Points List By X:");
         System.out.println(list);
+
+        System.out.println("Reverse Sorted Points List By X:");
+        list.reverseRecur();
+
+        System.out.println(list);
     }
 
 

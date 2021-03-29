@@ -43,6 +43,44 @@ public class SortedPointList {
         return list.toString();
     }
 
+    public void reverseRecur(){
+        list.setHead(reverseRecur(list.getHead()));
+    }
+
+
+    public Node<Point> reverseRecur(Node<Point> current){
+        if (current == null) {
+            return current;
+        }
+
+        if (current.getNext() == null) {
+            current.setPrev(null);
+            return current;
+        }
+
+        Node<Point> node = reverseRecur(current.getNext());
+        current.getNext().setNext(current);
+        current.setPrev(current.getNext());
+        current.setNext(null);
+        return node;
+    }
+
+
+    public void reverseList(){
+        Node<Point> previous = null;
+        list.setTail(list.getHead());
+        Node<Point> current = list.getHead();
+        while(current != null){
+            previous = current.getPrev();
+            current.setPrev(current.getNext());
+            current.setNext(previous);
+            current = current.getPrev();
+        }
+        if(previous != null){
+            list.setHead(previous.getPrev());
+        }
+    }
+
 
 
     /*
