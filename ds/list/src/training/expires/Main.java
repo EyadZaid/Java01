@@ -3,12 +3,31 @@ package training.expires;
 public class Main {
 
     public static void main(String[] args) {
+
+        testSortedList();
+
         //testDoublyLinkedList();
+        //testSortedPointListByX();
+        //testSortedPointListByLength();
+        //testSortedPointListByLengthDesc();
 
-        testSortedPointListByX();
-        testSortedPointListByLength();
-        testSortedPointListByLengthDesc();
+    }
 
+    public static void testSortedList(){
+        SortedList<Integer> list = new SortedList<>(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer a, Integer b) {
+                return a - b;
+            }
+        });
+
+        list.add(5);
+        list.add(1);
+        list.add(-3);
+        list.add(2);
+
+        System.out.println("Sorted List:");
+        System.out.println(list);
     }
 
     public static void testSortedPointListByX() {
@@ -33,7 +52,6 @@ public class Main {
         System.out.println(list);
     }
 
-
     public static void testSortedPointListByLength() {
         SortedPointList list = new SortedPointList(new PointComparator() {
             @Override
@@ -52,7 +70,6 @@ public class Main {
         System.out.println(list);
     }
 
-
     public static void testSortedPointListByLengthDesc() {
         SortedPointList list = new SortedPointList(new PointComparator() {
             @Override
@@ -70,7 +87,6 @@ public class Main {
         System.out.println("Sorted Points List By length (Desc):");
         System.out.println(list);
     }
-
 
     public static void testDoublyLinkedList(){
         DoublyLinkedList<Integer> list = new DoublyLinkedList<>();

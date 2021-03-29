@@ -42,10 +42,10 @@ public class DoublyLinkedList<T> {
             return head.getData();
         }
 
-        for (int i=0; currNode!=null && i<index-1; i++)
+        for (int i=0; currNode!=null && i<index; i++)
             currNode = currNode.getNext();
 
-        if (currNode == null || currNode.getNext() == null)
+        if (currNode == null)
             return null;
 
         return currNode.getData();
@@ -82,20 +82,37 @@ public class DoublyLinkedList<T> {
     }
 
     //Insert at given index
-    public void insert(T item, int at){
-        Node<T> currNode, prevNode;
-        currNode = head;
-        for (int i=0; i<at; i++){
-            if (currNode != null){
-                currNode = currNode.getNext();
-            }
-            else {
-                System.out.println("Exception: Given node cannot be NULL");
-                return;
-            }
+    public void insert(T item, int index){
+        if (index < 0 || index > size()){
+            System.out.println("Exception: Given index out of range");
+            return;
         }
-        prevNode = currNode.getPrev();
-        insertAfter(item, prevNode);
+
+        Node<T> newNode = new Node<>(item);
+        if (head == null) {		// list is empty, index must be 0
+            head = newNode;
+            tail = newNode;
+        }
+        else if (index == 0) {			// insert before head
+            newNode.setNext(head);
+            head.setPrev(newNode);
+            head = newNode;
+        }
+        else if (index == size()) { 	// insert after tail
+            newNode.setPrev(tail);
+            tail.setNext(newNode);
+            tail = newNode;
+        }
+        else {
+            Node<T> nodeRef = head;
+            for (int i = 1; i < index; i++) {
+                nodeRef = nodeRef.getNext();
+            }
+            newNode.setNext(nodeRef.getNext());
+            nodeRef.setNext(newNode);
+            newNode.setPrev(nodeRef);
+            newNode.getNext().setPrev(newNode);
+        }
     }
 
 
