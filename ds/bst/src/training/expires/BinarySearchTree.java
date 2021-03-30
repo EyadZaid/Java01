@@ -1,5 +1,7 @@
 package training.expires;
 
+import java.util.function.Function;
+
 public class BinarySearchTree<T> {
 
    private class Node<T> {
@@ -56,42 +58,61 @@ public class BinarySearchTree<T> {
 
 
     public boolean contains(T item){
-        return contains(root, item);
-    }
-
-
-    private boolean contains(Node<T> rTree, T item){
-        if (rTree == null ||  comparator.compare(rTree.item, item) == 0){
+        if (contains(root, item) != null){
             return true;
         }
-
-        if (comparator.compare(rTree.item, item) < 0) { // new item > root
-            contains(rTree.right, item);
-        }
-
-        contains(rTree.left, item);  // new item < root
-
         return false;
     }
 
 
-    public T find(T item){
-        return find(root, item);
-    }
-
-
-    private T find(Node<T> rTree, T item){
+    private Node<T> contains(Node<T> rTree, T item){
         if (rTree == null ||  comparator.compare(rTree.item, item) == 0){
-            return rTree.item;
+            return root;
         }
 
         if (comparator.compare(rTree.item, item) < 0) { // new item > root
-            find(rTree.right, item);
+            return contains(rTree.right, item);
         }
 
-        find(rTree.left, item);  // new item < root
+        return contains(rTree.left, item);  // new item < root
+    }
 
+
+    public T find(T item){
+        Node<T> node = find(root, item);
+        if (node != null){
+            return node.item;
+        }
         return null;
+    }
+
+
+    private Node<T> find(Node<T> rTree, T item){
+        if (rTree == null ||  comparator.compare(rTree.item, item) == 0){
+            return rTree;
+        }
+
+        if (comparator.compare(rTree.item, item) < 0) { // new item > root
+            return find(rTree.right, item);
+        }
+
+        return find(rTree.left, item);  // new item < root
+    }
+
+    public void forEach(Function func){
+
+    }
+
+    public void inorderPrint() {
+        inorderPrint(root);
+    }
+
+    void inorderPrint(Node rootTree) {
+        if (rootTree != null) {
+            inorderPrint(rootTree.left);
+            System.out.println(rootTree.item);
+            inorderPrint(rootTree.right);
+        }
     }
 
 
