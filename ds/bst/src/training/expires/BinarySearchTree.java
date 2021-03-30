@@ -21,17 +21,21 @@ public class BinarySearchTree<T> {
         this.comparator = comparator;
     }
 
+
     public int size(){
         return size;
     }
+
 
     public boolean isEmpty(){
         return size == 0;
     }
 
+
     public void insert(T item) {
         root = insert(root, item);
     }
+
 
     private Node<T> insert(Node<T> root, T item) {
         if (root == null) {
@@ -47,9 +51,51 @@ public class BinarySearchTree<T> {
                 root.right = insert(root.right, item);
             }
         }
-
         return root;
     }
+
+
+    public boolean contains(T item){
+        return contains(root, item);
+    }
+
+
+    private boolean contains(Node<T> rTree, T item){
+        if (rTree == null ||  comparator.compare(rTree.item, item) == 0){
+            return true;
+        }
+
+        if (comparator.compare(rTree.item, item) < 0) { // new item > root
+            contains(rTree.right, item);
+        }
+
+        contains(rTree.left, item);  // new item < root
+
+        return false;
+    }
+
+
+    public T find(T item){
+        return find(root, item);
+    }
+
+
+    private T find(Node<T> rTree, T item){
+        if (rTree == null ||  comparator.compare(rTree.item, item) == 0){
+            return rTree.item;
+        }
+
+        if (comparator.compare(rTree.item, item) < 0) { // new item > root
+            find(rTree.right, item);
+        }
+
+        find(rTree.left, item);  // new item < root
+
+        return null;
+    }
+
+
+
 
 
 }
