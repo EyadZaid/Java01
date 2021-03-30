@@ -4,7 +4,7 @@ import java.util.function.Function;
 
 public class BinarySearchTree<T> {
 
-   private class Node<T> {
+   private static class Node<T> {
         T item;
         Node left, right;
 
@@ -36,6 +36,7 @@ public class BinarySearchTree<T> {
 
     public void insert(T item) {
         root = insert(root, item);
+        size++;
     }
 
 
@@ -99,7 +100,8 @@ public class BinarySearchTree<T> {
         return find(rTree.left, item);  // new item < root
     }
 
-    public void forEach(Function func){
+    public void forEach(Action func){
+
 
     }
 
@@ -114,6 +116,8 @@ public class BinarySearchTree<T> {
             inorderPrint(rootTree.right);
         }
     }
+
+
 
 
 
