@@ -27,6 +27,8 @@ public class Main {
         System.out.println("Reverse Sorted List:");
         list.reverseRecur();
         System.out.println(list);
+
+        //list.printList();
     }
 
     public static void testSortedPointListByX() {

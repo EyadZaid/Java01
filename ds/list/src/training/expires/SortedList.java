@@ -1,5 +1,8 @@
 package training.expires;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SortedList<T> {
     private DoublyLinkedList<T> sortedList;
     private Comparator<T> comparator;
@@ -64,5 +67,21 @@ public class SortedList<T> {
         current.setPrev(current.getNext());
         current.setNext(null);
         return node;
+    }
+
+    private List<T> linkedListToList(){
+        List<T> list = new ArrayList<>();
+        Node<T> node = sortedList.getHead();
+        while (node != null) {
+            list.add(node.getData());
+            node = node.getNext();
+        }
+        return list;
+    }
+
+    public void printList(){
+        List<T> list = linkedListToList();
+        list.forEach(System.out::println);
+        //list.stream().forEach(System.out::println);
     }
 }
