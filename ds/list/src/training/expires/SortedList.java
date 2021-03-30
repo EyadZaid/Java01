@@ -49,6 +49,7 @@ public class SortedList<T> {
     }
 
     public void reverseRecur(){
+        sortedList.setTail(sortedList.getHead());
         sortedList.setHead(reverseRecur(sortedList.getHead()));
     }
 
