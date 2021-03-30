@@ -1,5 +1,5 @@
 package training.expires;
 
-public interface Comparator<T> {
-    int compare(T a, T b);
+public interface Comparator<K> {
+    int compare(K a, K b);
 }
