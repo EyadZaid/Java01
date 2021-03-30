@@ -6,7 +6,7 @@ public class BinarySearchTree<T> {
 
    private static class Node<T> {
         T item;
-        Node left, right;
+        Node<T> left, right;
 
         public Node(T item) {
             this.item = item;
