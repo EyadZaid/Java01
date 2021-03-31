@@ -126,8 +126,15 @@ public class BinarySearchTree<T,K> {
      */
 
     public void forEach(Action func){
+       forEach(root, func);
+    }
 
-
+    private void forEach(Node<T,K> rootTree, Action func){
+        if (rootTree != null) {
+            forEach(rootTree.left, func);
+            func.apply(rootTree.key);
+            forEach(rootTree.right, func);
+        }
     }
 
 
@@ -201,7 +208,7 @@ public class BinarySearchTree<T,K> {
         inorderPrint(root);
     }
 
-    void inorderPrint(Node rootTree) {
+    void inorderPrint(Node<T,K> rootTree) {
         if (rootTree != null) {
             inorderPrint(rootTree.left);
             System.out.println(rootTree.value);
