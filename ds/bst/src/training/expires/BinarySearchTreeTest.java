@@ -82,4 +82,13 @@ class BinarySearchTreeTest {
         assertEquals(p, binarySearchTree.max());
     }
 
+    @org.junit.jupiter.api.Test
+    void min(){
+        insrtElemnts();
+        Person p = new Person("Person 1", 1);
+        keyExtractor.addItem(p,p.getId());
+        binarySearchTree.insert(p);
+        assertEquals(p, binarySearchTree.min());
+    }
+
 }

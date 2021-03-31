@@ -193,7 +193,7 @@ public class BinarySearchTree<T,K> {
         if (node.left == null) {
             return node;
         } else {
-            return max(node.left);
+            return min(node.left);
         }
     }
 
