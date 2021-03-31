@@ -73,4 +73,13 @@ class BinarySearchTreeTest {
         assertEquals(4, binarySearchTree.size());
     }
 
+    @org.junit.jupiter.api.Test
+    void max(){
+        insrtElemnts();
+        Person p = new Person("Person 10", 10);
+        keyExtractor.addItem(p,p.getId());
+        binarySearchTree.insert(p);
+        assertEquals(p, binarySearchTree.max());
+    }
+
 }

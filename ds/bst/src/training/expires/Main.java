@@ -36,5 +36,7 @@ public class Main {
         //binarySearchTree.forEach(a -> System.out.println(a), Traversal.PREORDER);
         binarySearchTree.forEach(a -> System.out.println(a), Traversal.INORDER);
         //binarySearchTree.forEach(a -> System.out.println(a), Traversal.POSTORDER);
+
+        System.out.println("\nMax=" + binarySearchTree.max());
     }
 }
