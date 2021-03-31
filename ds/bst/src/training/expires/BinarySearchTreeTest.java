@@ -1,6 +1,9 @@
 package training.expires;
 
 import org.junit.jupiter.api.BeforeEach;
+
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BinarySearchTreeTest {
@@ -40,6 +43,36 @@ class BinarySearchTreeTest {
     void insert(){
         insrtElemnts();
         assertEquals(4, binarySearchTree.size());
+    }
+
+    @org.junit.jupiter.api.Test
+    void forEachPreorder(){
+        insrtElemnts();
+        ArrayList<Person> persons = new ArrayList<>();
+        binarySearchTree.forEach(p -> persons.add((Person)p), Traversal.PREORDER);
+        for (Person p : persons) {
+            assertTrue(binarySearchTree.contains(p));
+        }
+    }
+
+    @org.junit.jupiter.api.Test
+    void forEachInorder(){
+        insrtElemnts();
+        ArrayList<Person> persons = new ArrayList<>();
+        binarySearchTree.forEach(p -> persons.add((Person)p), Traversal.INORDER);
+        for (Person p : persons) {
+            assertTrue(binarySearchTree.contains(p));
+        }
+    }
+
+    @org.junit.jupiter.api.Test
+    void forEachPostorder(){
+        insrtElemnts();
+        ArrayList<Person> persons = new ArrayList<>();
+        binarySearchTree.forEach(p -> persons.add((Person)p), Traversal.POSTORDER);
+        for (Person p : persons) {
+            assertTrue(binarySearchTree.contains(p));
+        }
     }
 
     @org.junit.jupiter.api.Test

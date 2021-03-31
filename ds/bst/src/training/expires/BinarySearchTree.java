@@ -319,12 +319,6 @@ public class BinarySearchTree<T,K> {
     }
 
 
-    private void removeMin() {
-        if (root != null){
-            root = removeMin(root);
-            size--;
-        }
-    }
 
     private Node<T> removeMin(Node<T> node) {
         if (node.left == null){
