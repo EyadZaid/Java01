@@ -2,19 +2,17 @@ package training.expires;
 
 public class BinarySearchTree<T,K> {
 
-   private static class Node<T,K> {
-       private final K key;
-       private final T value;
-       private Node<T,K> left, right;
+   private static class Node<T> {
+       private final T item;
+       private Node<T> left, right;
 
-        public Node(K key, T value) {
-            this.key = key;
-            this.value = value;
+        public Node(T value) {
+            this.item = value;
             left = right = null;
         }
     }
 
-    private Node<T,K> root;
+    private Node<T> root;
     private Comparator<K> comparator;
     private KeyExtractor<T,K> keyExtractor;
     private int size;
@@ -36,48 +34,52 @@ public class BinarySearchTree<T,K> {
     }
 
 
-    public void insert(K key, T value) {
-        root = insert(root, key, value);
+    public void insert(T item) {
+        root = insert(root, item);
         size++;
     }
 
 
-    private Node<T,K> insert(Node<T,K> root, K key, T value) {
+    private Node<T> insert(Node<T> root, T item) {
         if (root == null) {
-            root = new Node(key, value);
+            root = new Node(item);
             return root;
         }
 
-        if (comparator.compare(root.key, key) > 0){   // new item < root
-            root.left = insert(root.left, key, value);
+        K keyNewItem = keyExtractor.getKey(item);
+        K rootKey = keyExtractor.getKey(root.item);
+        if (comparator.compare(rootKey, keyNewItem) > 0){   // new item < root
+            root.left = insert(root.left, item);
         }
         else {
-            if (comparator.compare(root.key, key) < 0){  // new item > root
-                root.right = insert(root.right, key, value);
+            if (comparator.compare(rootKey, keyNewItem) < 0){  // new item > root
+                root.right = insert(root.right, item);
             }
         }
         return root;
     }
 
 
-    public boolean contains(K key){
-        if (contains(root, key) != null){
+    public boolean contains(T item){
+        if (contains(root, item) != null){
             return true;
         }
         return false;
     }
 
 
-    private Node<T, K> contains(Node<T,K> node, K key){
-        if (node == null ||  comparator.compare(node.key, key) == 0){
+    private Node<T> contains(Node<T> node, T item){
+        K keyItem = keyExtractor.getKey(item);
+        K nodeKey = keyExtractor.getKey(node.item);
+        if (node == null ||  comparator.compare(nodeKey, keyItem) == 0){
             return root;
         }
 
-        if (comparator.compare(node.key, key) < 0) { // new item > root
-            return contains(node.right, key);
+        if (comparator.compare(nodeKey, keyItem) < 0) { // new item > root
+            return contains(node.right, item);
         }
 
-        return contains(node.left, key);  // new item < root
+        return contains(node.left, item);  // new item < root
     }
 
 
@@ -86,8 +88,8 @@ public class BinarySearchTree<T,K> {
     }
 
 
-    private T find(Node<T,K> node, K needle) {
-        T val = node.value;
+    private T find(Node<T> node, K needle) {
+        T val = node.item;
         var key = keyExtractor.getKey(val);
         int c = comparator.compare(key,needle);
 
@@ -129,24 +131,24 @@ public class BinarySearchTree<T,K> {
        forEach(root, func);
     }
 
-    private void forEach(Node<T,K> rootTree, Action func){
+    private void forEach(Node<T> rootTree, Action func){
         if (rootTree != null) {
             forEach(rootTree.left, func);
-            func.apply(rootTree.key);
+            func.apply(rootTree.item);
             forEach(rootTree.right, func);
         }
     }
 
 
-    public K max() {
+    public T max() {
         if (root != null){
-            return max(root).key;
+            return max(root).item;
         }
         return null;
     }
 
 
-    private Node<T,K> max(Node<T,K> node) {
+    private Node<T> max(Node<T> node) {
         if (node.right == null) {
             return node;
         } else {
@@ -155,15 +157,15 @@ public class BinarySearchTree<T,K> {
     }
 
 
-    public K min() {
+    public T min() {
         if (root != null){
-            return min(root).key;
+            return min(root).item;
         }
         return null;
     }
 
 
-    private Node<T,K> min(Node<T,K> node) {
+    private Node<T> min(Node<T> node) {
         if (node.left == null) {
             return node;
         } else {
@@ -172,6 +174,7 @@ public class BinarySearchTree<T,K> {
     }
 
 
+      /*
     public void remove(K key) {
         if (key != null){
             root = remove(root, key);
@@ -179,7 +182,8 @@ public class BinarySearchTree<T,K> {
         }
     }
 
-    private Node<T,K> remove(Node<T,K> node, K key) {
+
+    private Node<T> remove(Node<T> node, K key) {
         if (node == null){
             return null;
         }
@@ -211,11 +215,11 @@ public class BinarySearchTree<T,K> {
     void inorderPrint(Node<T,K> rootTree) {
         if (rootTree != null) {
             inorderPrint(rootTree.left);
-            System.out.println(rootTree.value);
+            System.out.println(rootTree.item);
             inorderPrint(rootTree.right);
         }
     }
-
+*/
 
 
 
