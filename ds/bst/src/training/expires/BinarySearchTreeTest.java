@@ -183,4 +183,14 @@ class BinarySearchTreeTest {
         assertEquals(3, binarySearchTree.size());
     }
 
+
+    @org.junit.jupiter.api.Test
+    void BFS() {
+        insrtElemnts();
+        ArrayList<Person> persons = new ArrayList<>();
+        binarySearchTree.forEach(p -> persons.add((Person) p), Traversal.BFS);
+        for (Person p : persons) {
+            assertTrue(binarySearchTree.contains(p));
+        }
+    }
 }
