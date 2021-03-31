@@ -6,18 +6,18 @@ public class BinarySearchTree<T,K> {
        private final T item;
        private Node<T> left, right;
 
-        public Node(T value) {
-            this.item = value;
+        public Node(T item) {
+            this.item = item;
             left = right = null;
         }
     }
 
     private Node<T> root;
     private Comparator<K> comparator;
-    private KeyExtractor<T,K> keyExtractor;
+    private IKeyExtractor<T,K> keyExtractor;
     private int size;
 
-    public BinarySearchTree(KeyExtractor<T,K> keyExtractor, Comparator<K> comparator) {
+    public BinarySearchTree(IKeyExtractor<T,K> keyExtractor, Comparator<K> comparator) {
         root = null;
         this.comparator = comparator;
         this.keyExtractor = keyExtractor;
@@ -84,22 +84,26 @@ public class BinarySearchTree<T,K> {
 
 
     public T find(K needle){
-       return find(root, needle);
+        Node<T> node = find(root, needle);
+        if (node != null){
+            return node.item;
+        }
+        return null;
     }
 
 
-    private T find(Node<T> node, K needle) {
+    private Node<T> find(Node<T> node, K needle) {
         T val = node.item;
         var key = keyExtractor.getKey(val);
         int c = comparator.compare(key,needle);
 
         if(c == 0){
-            return val;
+            return node;
         }
         else if( c > 0){
-            return find(node.right, needle);
-        } else{
             return find(node.left, needle);
+        } else{
+            return find(node.right, needle);
         }
     }
 

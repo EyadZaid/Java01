@@ -1,0 +1,76 @@
+package training.expires;
+
+import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
+
+class BinarySearchTreeTest {
+
+    BinarySearchTree<Person, Integer> binarySearchTree;
+    IKeyExtractor<Person, Integer> keyExtractor;
+
+    @BeforeEach
+    void setup(){
+        keyExtractor = new KeyExtractorImpl<>();
+        binarySearchTree = new BinarySearchTree<>(keyExtractor, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer a, Integer b) {
+                return a - b;
+            }
+        });
+    }
+
+    void insrtElemnts(){
+        Person p1 = new Person("Person 5", 5);
+        Person p2 = new Person("Person 2", 2);
+        Person p3 = new Person("Person 8", 8);
+        Person p4 = new Person("Person 3", 3);
+
+        keyExtractor.addItem(p1,p1.getId());
+        keyExtractor.addItem(p2,p2.getId());
+        keyExtractor.addItem(p3,p3.getId());
+        keyExtractor.addItem(p4,p4.getId());
+
+        binarySearchTree.insert(p1);
+        binarySearchTree.insert(p2);
+        binarySearchTree.insert(p3);
+        binarySearchTree.insert(p4);
+    }
+
+    @org.junit.jupiter.api.Test
+    void insert(){
+        insrtElemnts();
+        assertEquals(4, binarySearchTree.size());
+    }
+
+    @org.junit.jupiter.api.Test
+    void find(){
+        insrtElemnts();
+        Person p = new Person("Person 10", 10);
+        keyExtractor.addItem(p,p.getId());
+        binarySearchTree.insert(p);
+        assertEquals(p, binarySearchTree.find(10));
+    }
+
+    @org.junit.jupiter.api.Test
+    void contains(){
+        insrtElemnts();
+        Person p = new Person("Person 10", 10);
+        keyExtractor.addItem(p,p.getId());
+        binarySearchTree.insert(p);
+
+        assertTrue(binarySearchTree.contains(p));
+    }
+
+    @org.junit.jupiter.api.Test
+    void isEmpty(){
+        insrtElemnts();
+        assertFalse(binarySearchTree.isEmpty());
+    }
+
+    @org.junit.jupiter.api.Test
+    void size(){
+        insrtElemnts();
+        assertEquals(4, binarySearchTree.size());
+    }
+
+}
