@@ -174,7 +174,6 @@ public class BinarySearchTree<T,K> {
     }
 
 
-      /*
     public void remove(K key) {
         if (key != null){
             root = remove(root, key);
@@ -187,7 +186,8 @@ public class BinarySearchTree<T,K> {
         if (node == null){
             return null;
         }
-        int c = comparator.compare(key, node.key);
+        K nodeKey = keyExtractor.getKey(node.item);
+        int c = comparator.compare(key, nodeKey);
         if (c < 0){
             node.left  = remove(node.left,  key);
         }
@@ -212,16 +212,13 @@ public class BinarySearchTree<T,K> {
         inorderPrint(root);
     }
 
-    void inorderPrint(Node<T,K> rootTree) {
+    void inorderPrint(Node<T> rootTree) {
         if (rootTree != null) {
             inorderPrint(rootTree.left);
             System.out.println(rootTree.item);
             inorderPrint(rootTree.right);
         }
     }
-*/
-
-
 
 
 
