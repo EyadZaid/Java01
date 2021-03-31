@@ -100,4 +100,10 @@ class BinarySearchTreeTest {
         assertEquals(p, binarySearchTree.max_nth(5));
     }
 
+    @org.junit.jupiter.api.Test
+    void height(){
+        insrtElemnts();
+        assertEquals(3, binarySearchTree.height());
+    }
+
 }

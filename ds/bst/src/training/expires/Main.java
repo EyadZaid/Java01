@@ -40,5 +40,7 @@ public class Main {
         System.out.println("\nMax=" + binarySearchTree.max());
 
         System.out.println("\nMax by n=" + binarySearchTree.max_nth(4));
+
+        System.out.println("\nHeight=" + binarySearchTree.height());
     }
 }

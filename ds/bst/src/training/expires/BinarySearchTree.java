@@ -219,6 +219,26 @@ public class BinarySearchTree<T,K> {
         }
     }
 
+    public int height(){
+        return height(root);
+    }
+
+    private int height(Node<T> node) {
+        if (node == null) {
+            return 0;
+        }
+        else {
+            int lDepth = height(node.left);
+            int rDepth = height(node.right);
+            if (lDepth > rDepth) {
+                return (lDepth + 1);
+            }
+            else {
+                return (rDepth + 1);
+            }
+        }
+    }
+
 
     public void remove(K key) {
         if (key != null){
