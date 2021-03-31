@@ -1,6 +1,5 @@
 package training.expires;
 
-import java.sql.Array;
 import java.util.ArrayList;
 
 public class BinarySearchTree<T,K> {
@@ -327,7 +326,6 @@ public class BinarySearchTree<T,K> {
         node.left = removeMin(node.left);
         return node;
     }
-
 
 
 }
