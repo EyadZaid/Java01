@@ -138,6 +138,7 @@ public class BinarySearchTree<T,K> {
             case PREORDER -> preorder(root, func);
             case INORDER -> inorder(root, func);
             case POSTORDER -> postOrder(root, func);
+            case BFS -> BFS(func);
         }
     }
 
@@ -162,6 +163,28 @@ public class BinarySearchTree<T,K> {
             postOrder(rootTree.left, func);
             postOrder(rootTree.right, func);
             func.apply(rootTree.item);
+        }
+    }
+
+    private void BFS(Action func){
+        for (int i=1; i<=height(); i++) {
+            BFS(root, i, func);
+        }
+    }
+
+
+    private void BFS(Node<T> node, int currHeight, Action func){
+        if (node == null) {
+            return;
+        }
+        if (currHeight == 1) {
+            func.apply(node.item);
+        }
+        else {
+            if (currHeight > 1) {
+                BFS(node.left, currHeight - 1, func);
+                BFS(node.right, currHeight - 1, func);
+            }
         }
     }
 

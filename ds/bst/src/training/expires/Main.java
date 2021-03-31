@@ -34,8 +34,9 @@ public class Main {
 
 
         //binarySearchTree.forEach(a -> System.out.println(a), Traversal.PREORDER);
-        binarySearchTree.forEach(a -> System.out.println(a), Traversal.INORDER);
+        //binarySearchTree.forEach(a -> System.out.println(a), Traversal.INORDER);
         //binarySearchTree.forEach(a -> System.out.println(a), Traversal.POSTORDER);
+        binarySearchTree.forEach(a -> System.out.println(a), Traversal.BFS);
 
         System.out.println("\nMax=" + binarySearchTree.max());
 
@@ -44,7 +45,7 @@ public class Main {
         System.out.println("\nHeight=" + binarySearchTree.height());
 
 
-        binarySearchTree.remove(5);
-        binarySearchTree.forEach(a -> System.out.println(a), Traversal.INORDER);
+        //binarySearchTree.remove(5);
+        //binarySearchTree.forEach(a -> System.out.println(a), Traversal.INORDER);
     }
 }
