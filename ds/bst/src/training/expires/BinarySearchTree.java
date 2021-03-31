@@ -240,6 +240,27 @@ public class BinarySearchTree<T,K> {
     }
 
 
+    public boolean isPerfect(){
+        return isPerfect(root, height(), 0);
+    }
+
+    private boolean isPerfect(Node<T> node, int height, int currHeight){
+        if (node == null) {
+            return true;
+        }
+
+        if (node.left == null && node.right == null) {
+            return (height == currHeight + 1);
+        }
+
+        if (node.left == null || node.right == null) {
+            return false;
+        }
+
+        return isPerfect(node.left, height, currHeight+1) && isPerfect(node.right, height, currHeight+1);
+    }
+
+
     public void remove(K key) {
         if (key != null){
             root = remove(root, key);
