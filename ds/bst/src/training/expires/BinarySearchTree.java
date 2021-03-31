@@ -131,15 +131,35 @@ public class BinarySearchTree<T,K> {
     }
      */
 
-    public void forEach(Action func){
-       forEach(root, func);
+    public void forEach(Action func, Traversal order){
+        switch (order){
+            case PREORDER -> preorder(root, func);
+            case INORDER -> inorder(root, func);
+            case POSTORDER -> postOrder(root, func);
+        }
     }
 
-    private void forEach(Node<T> rootTree, Action func){
+    private void preorder(Node<T> rootTree, Action func){
         if (rootTree != null) {
-            forEach(rootTree.left, func);
             func.apply(rootTree.item);
-            forEach(rootTree.right, func);
+            preorder(rootTree.left, func);
+            preorder(rootTree.right, func);
+        }
+    }
+
+    private void inorder(Node<T> rootTree, Action func){
+        if (rootTree != null) {
+            inorder(rootTree.left, func);
+            func.apply(rootTree.item);
+            inorder(rootTree.right, func);
+        }
+    }
+
+    private void postOrder(Node<T> rootTree, Action func){
+        if (rootTree != null) {
+            postOrder(rootTree.left, func);
+            postOrder(rootTree.right, func);
+            func.apply(rootTree.item);
         }
     }
 
