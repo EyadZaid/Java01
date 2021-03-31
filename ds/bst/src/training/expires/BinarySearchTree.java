@@ -308,27 +308,32 @@ public class BinarySearchTree<T,K> {
                 if (node.left  == null) {
                     return node.right;
                 }
+
+                Node<T> temp = node;
+                node = min(temp.right);
+                node.right = removeMin(temp.right);
+                node.left = temp.left;
             }
         }
         return node;
     }
 
 
-
-
-    /*
-    public void inorderPrint() {
-        inorderPrint(root);
-    }
-
-    void inorderPrint(Node<T> rootTree) {
-        if (rootTree != null) {
-            inorderPrint(rootTree.left);
-            System.out.println(rootTree.item);
-            inorderPrint(rootTree.right);
+    private void removeMin() {
+        if (root != null){
+            root = removeMin(root);
+            size--;
         }
     }
-     */
+
+    private Node<T> removeMin(Node<T> node) {
+        if (node.left == null){
+            return node.right;
+        }
+        node.left = removeMin(node.left);
+        return node;
+    }
+
 
 
 }

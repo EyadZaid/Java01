@@ -136,4 +136,13 @@ class BinarySearchTreeTest {
         assertTrue(binarySearchTree.isComplete());
     }
 
+
+    @org.junit.jupiter.api.Test
+    void removeByKey(){
+        insrtElemnts();
+        binarySearchTree.remove(5);
+        int size =binarySearchTree.size();
+        assertEquals(3, binarySearchTree.size());
+    }
+
 }
