@@ -121,4 +121,19 @@ class BinarySearchTreeTest {
         assertTrue(binarySearchTree.isPerfect());
     }
 
+    @org.junit.jupiter.api.Test
+    void isComplete(){
+        Person p1 = new Person("Person 5", 5);
+        Person p2 = new Person("Person 2", 2);
+        Person p3 = new Person("Person 8", 8);
+        keyExtractor.addItem(p1,p1.getId());
+        keyExtractor.addItem(p2,p2.getId());
+        keyExtractor.addItem(p3,p3.getId());
+        binarySearchTree.insert(p1);
+        binarySearchTree.insert(p2);
+        binarySearchTree.insert(p3);
+
+        assertTrue(binarySearchTree.isComplete());
+    }
+
 }

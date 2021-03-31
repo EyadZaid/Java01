@@ -261,6 +261,25 @@ public class BinarySearchTree<T,K> {
     }
 
 
+    public boolean isComplete(){
+        return isComplete(root, 0, size);
+    }
+
+
+    private boolean isComplete(Node<T> root, int index, int sizeTree) {
+        if (root == null) {
+            return true;
+        }
+
+        if (index >= sizeTree) {
+            return false;
+        }
+
+        return (isComplete(root.left, 2 * index + 1, sizeTree)
+                && isComplete(root.right, 2 * index + 2, sizeTree));
+    }
+
+
     public void remove(K key) {
         if (key != null){
             root = remove(root, key);
