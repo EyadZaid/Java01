@@ -1,5 +1,8 @@
 package training.expires;
 
+import java.sql.Array;
+import java.util.ArrayList;
+
 public class BinarySearchTree<T,K> {
 
    private static class Node<T> {
@@ -194,6 +197,25 @@ public class BinarySearchTree<T,K> {
             return node;
         } else {
             return min(node.left);
+        }
+    }
+
+
+    public T max_nth(int num){
+        ArrayList<T> list = new ArrayList<>();
+        max_nth(root, list);
+        if (num > 0 && num <= list.size()){
+            return list.get(num-1);
+        }
+        return null;
+    }
+
+
+    private void max_nth(Node<T> node, ArrayList<T> list){
+        if (node != null) {
+            max_nth(node.left, list);
+            list.add(node.item);
+            max_nth(node.right, list);
         }
     }
 

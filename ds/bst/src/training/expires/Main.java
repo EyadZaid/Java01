@@ -38,5 +38,7 @@ public class Main {
         //binarySearchTree.forEach(a -> System.out.println(a), Traversal.POSTORDER);
 
         System.out.println("\nMax=" + binarySearchTree.max());
+
+        System.out.println("\nMax by n=" + binarySearchTree.max_nth(4));
     }
 }
