@@ -130,6 +130,73 @@ public class BinarySearchTree<T,K> {
 
     }
 
+
+    public K max() {
+        if (root != null){
+            return max(root).key;
+        }
+        return null;
+    }
+
+
+    private Node<T,K> max(Node<T,K> node) {
+        if (node.right == null) {
+            return node;
+        } else {
+            return max(node.right);
+        }
+    }
+
+
+    public K min() {
+        if (root != null){
+            return min(root).key;
+        }
+        return null;
+    }
+
+
+    private Node<T,K> min(Node<T,K> node) {
+        if (node.left == null) {
+            return node;
+        } else {
+            return max(node.left);
+        }
+    }
+
+
+    public void remove(K key) {
+        if (key != null){
+            root = remove(root, key);
+            size--;
+        }
+    }
+
+    private Node<T,K> remove(Node<T,K> node, K key) {
+        if (node == null){
+            return null;
+        }
+        int c = comparator.compare(key, node.key);
+        if (c < 0){
+            node.left  = remove(node.left,  key);
+        }
+        else {
+            if (c > 0) {
+                node.right = remove(node.right, key);
+            }
+            else {
+                if (node.right == null) {
+                    return node.left;
+                }
+                if (node.left  == null) {
+                    return node.right;
+                }
+            }
+        }
+        return node;
+    }
+
+
     public void inorderPrint() {
         inorderPrint(root);
     }
