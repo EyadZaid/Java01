@@ -368,19 +368,21 @@ public class BinarySearchTree<T,K> {
         return node;
     }
 
+
     /*
     public <R> R reduce(R r, BiFunc<R,T,R> func){
         return reduce(root, r, func);
     }
 
-
     private <R> R reduce(Node<T> rootTree, R r, BiFunc<R,T,R> func){
         if (rootTree != null) {
-            return func.apply(r, rootTree.item) + reduce(rootTree.left, r, func) +
-                    reduce(rootTree.right, r, func);
+            reduce(rootTree.left, r, func);
+            reduce(rootTree.right, r, func);
+            return func.apply(r, rootTree.item);
         }
-        return 0;
+        return r;
     }
-*/
+    */
+
 
 }
