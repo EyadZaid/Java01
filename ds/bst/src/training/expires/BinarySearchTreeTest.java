@@ -33,10 +33,14 @@ class BinarySearchTreeTest {
         keyExtractor.addItem(p3,p3.getId());
         keyExtractor.addItem(p4,p4.getId());
 
-        binarySearchTree.insert(p1);
-        binarySearchTree.insert(p2);
-        binarySearchTree.insert(p3);
-        binarySearchTree.insert(p4);
+        try {
+            binarySearchTree.insert(p1);
+            binarySearchTree.insert(p2);
+            binarySearchTree.insert(p3);
+            binarySearchTree.insert(p4);
+        } catch (ItemExistsException e) {
+            e.printStackTrace();
+        }
     }
 
     @org.junit.jupiter.api.Test
@@ -80,7 +84,11 @@ class BinarySearchTreeTest {
         insrtElemnts();
         Person p = new Person("Person 10", 10);
         keyExtractor.addItem(p,p.getId());
-        binarySearchTree.insert(p);
+        try {
+            binarySearchTree.insert(p);
+        } catch (ItemExistsException e) {
+            e.printStackTrace();
+        }
         assertEquals(p, binarySearchTree.find(10));
     }
 
@@ -89,7 +97,11 @@ class BinarySearchTreeTest {
         insrtElemnts();
         Person p = new Person("Person 10", 10);
         keyExtractor.addItem(p,p.getId());
-        binarySearchTree.insert(p);
+        try {
+            binarySearchTree.insert(p);
+        } catch (ItemExistsException e) {
+            e.printStackTrace();
+        }
 
         assertTrue(binarySearchTree.contains(p));
     }
@@ -111,7 +123,11 @@ class BinarySearchTreeTest {
         insrtElemnts();
         Person p = new Person("Person 10", 10);
         keyExtractor.addItem(p,p.getId());
-        binarySearchTree.insert(p);
+        try {
+            binarySearchTree.insert(p);
+        } catch (ItemExistsException e) {
+            e.printStackTrace();
+        }
         assertEquals(p, binarySearchTree.max());
     }
 
@@ -120,7 +136,11 @@ class BinarySearchTreeTest {
         insrtElemnts();
         Person p = new Person("Person 1", 1);
         keyExtractor.addItem(p,p.getId());
-        binarySearchTree.insert(p);
+        try {
+            binarySearchTree.insert(p);
+        } catch (ItemExistsException e) {
+            e.printStackTrace();
+        }
         assertEquals(p, binarySearchTree.min());
     }
 
@@ -129,7 +149,11 @@ class BinarySearchTreeTest {
         insrtElemnts();
         Person p = new Person("Person 100", 100);
         keyExtractor.addItem(p,p.getId());
-        binarySearchTree.insert(p);
+        try {
+            binarySearchTree.insert(p);
+        } catch (ItemExistsException e) {
+            e.printStackTrace();
+        }
         assertEquals(p, binarySearchTree.max_nth(5));
     }
 
@@ -147,9 +171,13 @@ class BinarySearchTreeTest {
         keyExtractor.addItem(p1,p1.getId());
         keyExtractor.addItem(p2,p2.getId());
         keyExtractor.addItem(p3,p3.getId());
-        binarySearchTree.insert(p1);
-        binarySearchTree.insert(p2);
-        binarySearchTree.insert(p3);
+        try {
+            binarySearchTree.insert(p1);
+            binarySearchTree.insert(p2);
+            binarySearchTree.insert(p3);
+        } catch (ItemExistsException e) {
+            e.printStackTrace();
+        }
 
         assertTrue(binarySearchTree.isPerfect());
     }
@@ -162,9 +190,13 @@ class BinarySearchTreeTest {
         keyExtractor.addItem(p1,p1.getId());
         keyExtractor.addItem(p2,p2.getId());
         keyExtractor.addItem(p3,p3.getId());
-        binarySearchTree.insert(p1);
-        binarySearchTree.insert(p2);
-        binarySearchTree.insert(p3);
+        try {
+            binarySearchTree.insert(p1);
+            binarySearchTree.insert(p2);
+            binarySearchTree.insert(p3);
+        } catch (ItemExistsException e) {
+            e.printStackTrace();
+        }
 
         assertTrue(binarySearchTree.isComplete());
     }

@@ -36,7 +36,10 @@ public class BinarySearchTree<T,K> {
     }
 
 
-    public void insert(T item) {
+    public void insert(T item) throws ItemExistsException {
+        if (contains(item)){
+            throw new ItemExistsException("Exception: Item already exists");
+        }
         root = insert(root, item);
         size++;
     }
@@ -63,25 +66,36 @@ public class BinarySearchTree<T,K> {
 
 
     public boolean contains(T item){
-        if (contains(root, item) != null){
+        if (contains(root, item)){
             return true;
         }
         return false;
     }
 
 
-    private Node<T> contains(Node<T> node, T item){
+    private boolean contains(Node<T> node, T item){
+
+        if (node == null){
+            return false;
+        }
+
         K keyItem = keyExtractor.getKey(item);
         K nodeKey = keyExtractor.getKey(node.item);
-        if (node == null ||  comparator.compare(nodeKey, keyItem) == 0){
-            return root;
+        int c = comparator.compare(keyItem, nodeKey);
+
+        if (c == 0){
+            return true;
         }
 
-        if (comparator.compare(nodeKey, keyItem) < 0) { // new item > root
-            return contains(node.right, item);
+        if(c < 0 && node.left != null && contains(node.left, item)){
+            return true;
         }
 
-        return contains(node.left, item);  // new item < root
+        if(c > 0 && node.right != null && contains(node.right, item)) {
+            return true;
+        }
+
+        return false;
     }
 
 

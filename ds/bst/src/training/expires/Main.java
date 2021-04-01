@@ -27,10 +27,14 @@ public class Main {
         keyExtractor.addItem(p3,p3.getId());
         keyExtractor.addItem(p4,p4.getId());
 
-        binarySearchTree.insert(p1);
-        binarySearchTree.insert(p2);
-        binarySearchTree.insert(p3);
-        binarySearchTree.insert(p4);
+        try {
+            binarySearchTree.insert(p1);
+            binarySearchTree.insert(p2);
+            binarySearchTree.insert(p3);
+            binarySearchTree.insert(p4);
+        } catch (ItemExistsException e) {
+            e.printStackTrace();
+        }
 
 
         //binarySearchTree.forEach(a -> System.out.println(a), Traversal.PREORDER);
