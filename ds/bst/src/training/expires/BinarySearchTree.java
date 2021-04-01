@@ -99,7 +99,11 @@ public class BinarySearchTree<T,K> {
     }
 
 
-    public T find(K needle){
+    public T find(K needle) throws ItemExistsException {
+        if (! contains(keyExtractor.getItem(needle))){
+            throw new ItemExistsException("Exception: Item not exists");
+        }
+
         Node<T> node = find(root, needle);
         if (node != null){
             return node.item;

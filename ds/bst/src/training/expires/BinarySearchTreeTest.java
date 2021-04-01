@@ -89,7 +89,11 @@ class BinarySearchTreeTest {
         } catch (ItemExistsException e) {
             e.printStackTrace();
         }
-        assertEquals(p, binarySearchTree.find(10));
+        try {
+            assertEquals(p, binarySearchTree.find(10));
+        } catch (ItemExistsException e) {
+            e.printStackTrace();
+        }
     }
 
     @org.junit.jupiter.api.Test
