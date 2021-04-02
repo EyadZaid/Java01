@@ -28,7 +28,7 @@ public class FileRead {
     }
 
     public Boolean isEnd() {
-        if (line.equals("")){
+        if (line == null || line.equals("")){
             return true;
         }
         return false;

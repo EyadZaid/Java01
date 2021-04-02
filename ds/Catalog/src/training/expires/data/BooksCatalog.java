@@ -29,7 +29,7 @@ public class BooksCatalog {
 
     private Book inputParser(String line){
 
-        String[] details = line.split("|");
+        String[] details = line.split("\\|");
         if (details.length != 5){
             return null;
         }
@@ -47,16 +47,15 @@ public class BooksCatalog {
         Book book;
         Boolean isFirstLine = true;
 
+        fileRead.readline();
+        if (fileRead.isEnd()){
+            return;
+        }
+        line = fileRead.readline();
         while (!fileRead.isEnd()){
-            line = fileRead.readline();
-
-            if (isFirstLine){
-                isFirstLine = false;
-                continue;
-            }
-
             book = inputParser(line);
             allBooks.add(book);
+            line = fileRead.readline();
         }
         fileRead.close();
     }
