@@ -3,13 +3,13 @@ package training.expires.data;
 import java.util.Objects;
 
 public class Book {
-    private String isbn;
+    private Isbn isbn;
     private String bookTitle;
     private String bookAuthor;
     private int yearOfPublication;
     private String publisher;
 
-    public Book(String isbn, String bookTitle, String bookAuthor, int yearOfPublication, String publisher) {
+    public Book(Isbn isbn, String bookTitle, String bookAuthor, int yearOfPublication, String publisher) {
         this.isbn = isbn;
         this.bookTitle = bookTitle;
         this.bookAuthor = bookAuthor;
@@ -17,7 +17,7 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public String getIsbn() {
+    public Isbn getIsbn() {
         return isbn;
     }
 

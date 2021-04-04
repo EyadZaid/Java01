@@ -1,6 +1,7 @@
 package training.expires.inputs;
 
 import training.expires.data.Book;
+import training.expires.data.Isbn;
 
 public class InputParser implements IDataFormat {
 
@@ -16,6 +17,6 @@ public class InputParser implements IDataFormat {
         String bookAuthor = details[2];
         int yearOfPublication = Integer.parseInt(details[3]);
         String publisher = details[4];
-        return new Book(isbn, bookTitle, bookAuthor, yearOfPublication, publisher);
+        return new Book(new Isbn(isbn), bookTitle, bookAuthor, yearOfPublication, publisher);
     }
 }
