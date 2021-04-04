@@ -3,6 +3,7 @@ package training.expires.test;
 import org.junit.jupiter.api.BeforeEach;
 import training.expires.BooksCatalog;
 import training.expires.data.Book;
+import training.expires.data.Isbn;
 import training.expires.inputs.InputParser;
 import training.expires.searches.SearchByIsbn;
 import training.expires.searches.SearchByTitle;
@@ -38,13 +39,13 @@ class BooksCatalogTest {
 
     @org.junit.jupiter.api.Test
     void searchByIsbn() {
-        Book book = searchByIsbn.search("771074670");
+        Book book = searchByIsbn.search(new Isbn("771074670"));
         assertEquals("771074670", book.getIsbn());
     }
 
     @org.junit.jupiter.api.Test
     void searchByIsbn2() {
-        Book book = searchByIsbn.search("393045218");
+        Book book = searchByIsbn.search(new Isbn("393045218"));
         assertEquals("393045218", book.getIsbn());
     }
 

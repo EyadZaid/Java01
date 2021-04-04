@@ -1,6 +1,7 @@
 package training.expires.searches;
 
 import training.expires.data.Book;
+import training.expires.data.Isbn;
 
 import java.util.HashSet;
 import java.util.Scanner;
@@ -12,7 +13,7 @@ public class SearchByIsbn implements ISearch{
         this.allBooks = allBooks;
     }
 
-    public Book search(String isbn){
+    public Book search(Isbn isbn){
         for (Book b: allBooks){
             if (b.getIsbn().equals(isbn)){
                 return b;
@@ -25,7 +26,7 @@ public class SearchByIsbn implements ISearch{
     public void searchFromConsole(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter isbn:");
-        String isbn = scanner.nextLine();
+        Isbn isbn = new Isbn(scanner.nextLine());
         Book book = search(isbn);
         if (book != null){
             System.out.println(book.displayByLines());
