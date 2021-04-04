@@ -66,8 +66,8 @@ class BooksCatalogTest {
 
     @org.junit.jupiter.api.Test
     void searchByAuthor() {
-        Book book = searchByAuthor.search("Dr. Seuss");
-        assertEquals(new Isbn("039480001X"), book.getIsbn());
+        ArrayList<Book> books = searchByAuthor.search("Dr. Seuss");
+        assertEquals(new Isbn("039480001X"), books.get(0).getIsbn());
     }
 
 }
