@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class FileRead {
+public class FileRead implements IInput{
     private String line;
     private FileReader reader;
     private BufferedReader bufferedReader;
@@ -16,6 +16,7 @@ public class FileRead {
         bufferedReader = new BufferedReader(reader);
     }
 
+    @Override
     public String readline() {
         try {
             if ((line = bufferedReader.readLine()) != null) {
@@ -27,6 +28,7 @@ public class FileRead {
         return "";
     }
 
+    @Override
     public Boolean isEnd() {
         if (line == null || line.equals("")){
             return true;
@@ -34,6 +36,7 @@ public class FileRead {
         return false;
     }
 
+    @Override
     public void close() {
         try {
             reader.close();

@@ -1,5 +1,7 @@
 package training.expires.data;
 
+import java.util.Objects;
+
 public class Book {
     private String isbn;
     private String bookTitle;
@@ -15,6 +17,34 @@ public class Book {
         this.publisher = publisher;
     }
 
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public String getBookTitle() {
+        return bookTitle;
+    }
+
+    public String getBookAuthor() {
+        return bookAuthor;
+    }
+
+    public int getYearOfPublication() {
+        return yearOfPublication;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(isbn, book.isbn);
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -24,5 +54,25 @@ public class Book {
                 ", yearOfPublication=" + yearOfPublication +
                 ", publisher='" + publisher + '\'' +
                 '}';
+    }
+
+    public String display(){
+        StringBuilder str = new StringBuilder();
+        str.append(isbn + "|");
+        str.append(bookTitle + "|");
+        str.append(bookAuthor + "|");
+        str.append(yearOfPublication + "|");
+        str.append(publisher);
+        return str.toString();
+    }
+
+    public String displayByLines(){
+        StringBuilder str = new StringBuilder();
+        str.append("ISBN:\t" + isbn + "\n");
+        str.append("Title:\t" + bookTitle + "\n");
+        str.append("Author:\t" + bookAuthor + "\n");
+        str.append("Year:\t" + yearOfPublication + "\n");
+        str.append("Publisher:\t" + publisher + "\n");
+        return str.toString();
     }
 }

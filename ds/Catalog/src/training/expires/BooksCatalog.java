@@ -1,18 +1,24 @@
-package training.expires.data;
+package training.expires;
 
+import training.expires.data.Book;
 import training.expires.inputs.FileRead;
+import training.expires.inputs.InputParser;
+import training.expires.searches.SearchByIsbn;
+import training.expires.searches.SearchByTitle;
 
 import java.io.FileNotFoundException;
-import java.util.HashSet;
+import java.util.*;
 
 public class BooksCatalog {
     private HashSet<Book> allBooks;
     private FileRead fileRead;
+    private InputParser inputParser;
 
 
-    public BooksCatalog() throws FileNotFoundException {
-        this.allBooks = new HashSet<>();;
-        this.fileRead = new FileRead("books-small.txt");
+    public BooksCatalog(String fileName) throws FileNotFoundException {
+        allBooks = new HashSet<>();;
+        fileRead = new FileRead(fileName);
+        inputParser = new InputParser();
     }
 
     public boolean addBook(Book book){
@@ -27,22 +33,7 @@ public class BooksCatalog {
         return allBooks;
     }
 
-    private Book inputParser(String line){
-
-        String[] details = line.split("\\|");
-        if (details.length != 5){
-            return null;
-        }
-        String isbn = details[0];
-        String bookTitle = details[1];
-        String bookAuthor = details[2];
-        int yearOfPublication = Integer.parseInt(details[3]);
-        String publisher = details[4];
-        return new Book(isbn, bookTitle, bookAuthor, yearOfPublication, publisher);
-    }
-
-
-    public void addAllBooks(){
+    public void addBooksFromFile(){
         String line;
         Book book;
         Boolean isFirstLine = true;
@@ -53,11 +44,21 @@ public class BooksCatalog {
         }
         line = fileRead.readline();
         while (!fileRead.isEnd()){
-            book = inputParser(line);
+            book = inputParser.consoleParse(line);
             allBooks.add(book);
             line = fileRead.readline();
         }
         fileRead.close();
+    }
+
+    public void searchByIsbn(){
+        SearchByIsbn searchByIsbn = new SearchByIsbn(allBooks);
+        searchByIsbn.searchFromConsole();
+    }
+
+    public void searchByTitle(){
+        SearchByTitle searchByTitle = new SearchByTitle(allBooks);
+        searchByTitle.searchFromConsole();
     }
 
 
