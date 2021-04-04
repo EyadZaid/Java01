@@ -26,9 +26,9 @@ public class Isbn {
         return isbn;
     }
 
-    public boolean checkValidIsbn(String isbn) {
+    public boolean checkValidIsbn() {
         int length = isbn.length();
-        if (length >= 9 && length <= 10) {
+        if (length != 10) {
             return false;
         }
 
