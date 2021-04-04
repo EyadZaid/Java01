@@ -5,6 +5,7 @@ import training.expires.BooksCatalog;
 import training.expires.data.Book;
 import training.expires.data.Isbn;
 import training.expires.inputs.InputParser;
+import training.expires.searches.SearchByAuthor;
 import training.expires.searches.SearchByIsbn;
 import training.expires.searches.SearchByTitle;
 
@@ -18,6 +19,7 @@ class BooksCatalogTest {
     BooksCatalog booksCatalog;
     SearchByIsbn searchByIsbn;
     SearchByTitle searchByTitle;
+    SearchByAuthor searchByAuthor;
 
     @BeforeEach
     void setup() {
@@ -30,6 +32,7 @@ class BooksCatalogTest {
         }
         searchByIsbn = new SearchByIsbn(booksCatalog.getAllBooks());
         searchByTitle = new SearchByTitle(booksCatalog.getAllBooks());
+        searchByAuthor = new SearchByAuthor(booksCatalog.getAllBooks());
     }
 
     @org.junit.jupiter.api.Test
@@ -52,7 +55,7 @@ class BooksCatalogTest {
     @org.junit.jupiter.api.Test
     void searchByTitle() {
         ArrayList<Book> books = searchByTitle.search("middle black -black");
-        assertEquals(new Isbn("446677450"), books.get(0).getIsbn());
+        assertEquals(new Isbn("887841740"), books.get(0).getIsbn());
     }
 
     @org.junit.jupiter.api.Test
@@ -60,4 +63,11 @@ class BooksCatalogTest {
         ArrayList<Book> books = searchByTitle.search("black -black");
         assertEquals(0, books.size());
     }
+
+    @org.junit.jupiter.api.Test
+    void searchByAuthor() {
+        Book book = searchByAuthor.search("Dr. Seuss");
+        assertEquals(new Isbn("039480001X"), book.getIsbn());
+    }
+
 }
