@@ -5,6 +5,7 @@ import training.expires.inputs.FileRead;
 import training.expires.inputs.IDataFormat;
 import training.expires.inputs.IInputData;
 import training.expires.inputs.InputParser;
+import training.expires.searches.SearchByAuthor;
 import training.expires.searches.SearchByIsbn;
 import training.expires.searches.SearchByTitle;
 
@@ -60,6 +61,10 @@ public class BooksCatalog {
         searchByTitle.searchFromConsole();
     }
 
+    public void searchByAuthor(){
+        SearchByAuthor searchByAuthor = new SearchByAuthor(allBooks);
+        searchByAuthor.searchFromConsole();
+    }
 
     @Override
     public String toString() {

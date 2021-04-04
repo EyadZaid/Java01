@@ -25,7 +25,8 @@ public class Main {
         while (inputLoop){
             System.out.println("Enter 1. to search by ISBN");
             System.out.println("Enter 2. to Search by Title");
-            System.out.println("Enter 3. to exit");
+            System.out.println("Enter 3. to Search by Author");
+            System.out.println("Enter 4. to exit");
 
             Scanner reader = new Scanner(System.in);
             char input = reader.next().charAt(0);
@@ -35,7 +36,9 @@ public class Main {
 
                 case '2' -> booksCatalog.searchByTitle();
 
-                case '3' -> inputLoop = false;
+                case '3' -> booksCatalog.searchByAuthor();
+
+                case '4' -> inputLoop = false;
             }
         }
     }
