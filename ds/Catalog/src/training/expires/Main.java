@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-
         executeApp();
     }
 
@@ -33,11 +32,8 @@ public class Main {
 
             switch (input){
                 case '1' -> booksCatalog.searchByIsbn();
-
                 case '2' -> booksCatalog.searchByTitle();
-
                 case '3' -> booksCatalog.searchByAuthor();
-
                 case '4' -> inputLoop = false;
             }
         }
