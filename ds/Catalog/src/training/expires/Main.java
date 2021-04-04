@@ -23,10 +23,10 @@ public class Main {
         boolean inputLoop = true;
 
         while (inputLoop){
-            System.out.println("Enter 1. to search by ISBN");
-            System.out.println("Enter 2. to Search by Title");
-            System.out.println("Enter 3. to Search by Author");
-            System.out.println("Enter 4. to exit");
+            System.out.println("Enter 1 to search by ISBN");
+            System.out.println("Enter 2 to Search by Title");
+            System.out.println("Enter 3 to Search by Author");
+            System.out.println("Enter 4 to exit");
 
             Scanner reader = new Scanner(System.in);
             char input = reader.next().charAt(0);

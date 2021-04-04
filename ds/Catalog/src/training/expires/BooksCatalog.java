@@ -4,7 +4,7 @@ import training.expires.data.Book;
 import training.expires.inputs.FileRead;
 import training.expires.inputs.IDataFormat;
 import training.expires.inputs.IInputData;
-import training.expires.inputs.InputParser;
+import training.expires.searches.ISearch;
 import training.expires.searches.SearchByAuthor;
 import training.expires.searches.SearchByIsbn;
 import training.expires.searches.SearchByTitle;
@@ -15,6 +15,7 @@ import java.util.*;
 public class BooksCatalog {
     private HashSet<Book> allBooks;
     private IInputData inputData;
+    private ISearch search;
 
     public BooksCatalog() {
         allBooks = new HashSet<>();;
@@ -52,18 +53,18 @@ public class BooksCatalog {
     }
 
     public void searchByIsbn(){
-        SearchByIsbn searchByIsbn = new SearchByIsbn(allBooks);
-        searchByIsbn.searchFromConsole();
+        search = new SearchByIsbn(allBooks);
+        search.searchFromConsole();
     }
 
     public void searchByTitle(){
-        SearchByTitle searchByTitle = new SearchByTitle(allBooks);
-        searchByTitle.searchFromConsole();
+        search = new SearchByTitle(allBooks);
+        search.searchFromConsole();
     }
 
     public void searchByAuthor(){
-        SearchByAuthor searchByAuthor = new SearchByAuthor(allBooks);
-        searchByAuthor.searchFromConsole();
+        search = new SearchByAuthor(allBooks);
+        search.searchFromConsole();
     }
 
     @Override
