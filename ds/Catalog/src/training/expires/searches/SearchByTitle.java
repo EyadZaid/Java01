@@ -17,7 +17,7 @@ public class SearchByTitle implements ISearch{
         result = new ArrayList<>();
     }
 
-    private ArrayList<Book> search(String inputSearch){
+    public ArrayList<Book> search(String inputSearch){
         handleInput(inputSearch);
 
         for (Book b : allBooks){
