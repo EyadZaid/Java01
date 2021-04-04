@@ -2,6 +2,8 @@ package training.expires;
 
 import training.expires.data.Book;
 import training.expires.inputs.FileRead;
+import training.expires.inputs.IDataFormat;
+import training.expires.inputs.IInputData;
 import training.expires.inputs.InputParser;
 import training.expires.searches.SearchByIsbn;
 import training.expires.searches.SearchByTitle;
@@ -11,14 +13,10 @@ import java.util.*;
 
 public class BooksCatalog {
     private HashSet<Book> allBooks;
-    private FileRead fileRead;
-    private InputParser inputParser;
+    private IInputData inputData;
 
-
-    public BooksCatalog(String fileName) throws FileNotFoundException {
+    public BooksCatalog() {
         allBooks = new HashSet<>();;
-        fileRead = new FileRead(fileName);
-        inputParser = new InputParser();
     }
 
     public boolean addBook(Book book){
@@ -33,22 +31,23 @@ public class BooksCatalog {
         return allBooks;
     }
 
-    public void addBooksFromFile(){
+    public void addBooksFromFile(String fileName, IDataFormat dataFormat) throws FileNotFoundException {
+        inputData = new FileRead(fileName);
         String line;
         Book book;
         Boolean isFirstLine = true;
 
-        fileRead.readline();
-        if (fileRead.isEnd()){
+        inputData.readline();
+        if (inputData.isEnd()){
             return;
         }
-        line = fileRead.readline();
-        while (!fileRead.isEnd()){
-            book = inputParser.consoleParse(line);
+        line = inputData.readline();
+        while (!inputData.isEnd()){
+            book = dataFormat.inputParse(line);
             allBooks.add(book);
-            line = fileRead.readline();
+            line = inputData.readline();
         }
-        fileRead.close();
+        inputData.close();
     }
 
     public void searchByIsbn(){

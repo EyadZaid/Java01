@@ -2,10 +2,10 @@ package training.expires.inputs;
 
 import training.expires.data.Book;
 
-public class InputParser {
+public class InputParser implements IDataFormat {
 
-
-    public Book consoleParse(String line){
+    @Override
+    public Book inputParse(String line){
 
         String[] details = line.split("\\|");
         if (details.length != 5){

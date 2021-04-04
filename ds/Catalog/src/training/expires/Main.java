@@ -1,5 +1,7 @@
 package training.expires;
 
+import training.expires.inputs.InputParser;
+
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -11,11 +13,9 @@ public class Main {
     }
 
     private static void executeApp() {
-        BooksCatalog booksCatalog = null;
+        BooksCatalog booksCatalog = new BooksCatalog();
         try {
-            booksCatalog = new BooksCatalog("books-small.txt");
-            booksCatalog.addBooksFromFile();
-
+            booksCatalog.addBooksFromFile("books-small.txt", new InputParser());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

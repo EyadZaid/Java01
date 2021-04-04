@@ -3,6 +3,7 @@ package training.expires.test;
 import org.junit.jupiter.api.BeforeEach;
 import training.expires.BooksCatalog;
 import training.expires.data.Book;
+import training.expires.inputs.InputParser;
 import training.expires.searches.SearchByIsbn;
 import training.expires.searches.SearchByTitle;
 
@@ -19,9 +20,9 @@ class BooksCatalogTest {
 
     @BeforeEach
     void setup() {
+        booksCatalog = new BooksCatalog();
         try {
-            booksCatalog = new BooksCatalog("books-small.txt");
-            booksCatalog.addBooksFromFile();
+            booksCatalog.addBooksFromFile("books-small.txt", new InputParser());
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

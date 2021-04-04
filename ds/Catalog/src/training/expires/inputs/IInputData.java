@@ -1,6 +1,6 @@
 package training.expires.inputs;
 
-public interface IInput {
+public interface IInputData {
     String readline();
 
     Boolean isEnd();
