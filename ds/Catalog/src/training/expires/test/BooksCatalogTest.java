@@ -40,19 +40,19 @@ class BooksCatalogTest {
     @org.junit.jupiter.api.Test
     void searchByIsbn() {
         Book book = searchByIsbn.search(new Isbn("771074670"));
-        assertEquals("771074670", book.getIsbn());
+        assertEquals(new Isbn("771074670"), book.getIsbn());
     }
 
     @org.junit.jupiter.api.Test
     void searchByIsbn2() {
         Book book = searchByIsbn.search(new Isbn("393045218"));
-        assertEquals("393045218", book.getIsbn());
+        assertEquals(new Isbn("393045218"), book.getIsbn());
     }
 
     @org.junit.jupiter.api.Test
     void searchByTitle() {
         ArrayList<Book> books = searchByTitle.search("middle black -black");
-        assertEquals("887841740", books.get(0).getIsbn());
+        assertEquals(new Isbn("446677450"), books.get(0).getIsbn());
     }
 
     @org.junit.jupiter.api.Test
