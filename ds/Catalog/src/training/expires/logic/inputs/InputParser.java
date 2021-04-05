@@ -2,15 +2,16 @@ package training.expires.logic.inputs;
 
 import training.expires.dao.Book;
 import training.expires.dao.Isbn;
+import training.expires.logic.IllegalDataFormatException;
 
 public class InputParser implements IDataFormat {
 
     @Override
-    public Book inputParse(String line){
+    public Book inputParse(String line) throws IllegalDataFormatException{
 
         String[] details = line.split("\\|");
         if (details.length != 5){
-            return null;
+            throw new IllegalDataFormatException("Invalid file format");
         }
         String isbn = details[0];
         String bookTitle = details[1];

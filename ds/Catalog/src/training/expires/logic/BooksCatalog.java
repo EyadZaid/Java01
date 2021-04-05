@@ -32,7 +32,7 @@ public class BooksCatalog {
     public void addBooksFromFile(String fileName, IDataFormat dataFormat) throws FileNotFoundException {
         inputData = new FileRead(fileName);
         String line;
-        Book book;
+        Book book = null;
 
         inputData.readline();
         if (inputData.isEnd()){
@@ -40,8 +40,14 @@ public class BooksCatalog {
         }
         line = inputData.readline();
         while (!inputData.isEnd()){
-            book = dataFormat.inputParse(line);
-            allBooks.add(book);
+            try {
+                book = dataFormat.inputParse(line);
+            } catch (IllegalDataFormatException e) {
+                e.printStackTrace();
+            }
+            if (book != null){
+                allBooks.add(book);
+            }
             line = inputData.readline();
         }
         inputData.close();
