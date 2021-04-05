@@ -21,10 +21,20 @@ public class SearchByTitle implements ISearch{
         handleInput(inputSearch);
 
         for (Book b : allBooks){
+            List<String> wordsList = new ArrayList<>();
             boolean isSuitable = true;
             String bookTitle = b.getBookTitle().toLowerCase();
             String[] wordsTitle = bookTitle.split("\\ ");
-            List<String> wordsList = Arrays.asList(wordsTitle);
+            for (int i=0; i<wordsTitle.length; i++){
+                String word = wordsTitle[i];
+                if (word.length() > 1){
+                    char ch = word.charAt(word.length()-1);
+                    if (ch == '.' || ch == ','){
+                        word = word.substring(0, word.length()-1);
+                    }
+                    wordsList.add(word);
+                }
+            }
 
             for (int i=0; i<notIncludeWords.size(); i++){
                 if (wordsList.contains(notIncludeWords.get(i))){

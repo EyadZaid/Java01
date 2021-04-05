@@ -46,9 +46,13 @@ public class BooksCatalog {
         line = inputData.readline();
         while (!inputData.isEnd()){
             book = dataFormat.inputParse(line);
+            /*
             if (book.getIsbn().checkValidIsbn()){
-                allBooks.add(book);
+
             }
+             */
+
+            allBooks.add(book);
             line = inputData.readline();
         }
         inputData.close();
