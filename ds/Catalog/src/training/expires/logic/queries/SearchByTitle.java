@@ -6,7 +6,6 @@ import java.util.*;
 
 public class SearchByTitle implements ISearch{
     private HashSet<Book> allBooks;
-    private ArrayList<Book> result;
     private Set<String> includeWords;
     private Set<String> notIncludeWords;
 
@@ -14,35 +13,22 @@ public class SearchByTitle implements ISearch{
         this.allBooks = allBooks;
         includeWords = new HashSet<>();
         notIncludeWords = new HashSet<>();
-        result = new ArrayList<>();
     }
 
+    @Override
     public ArrayList<Book> search(String inputSearch){
+        ArrayList<Book> result = new ArrayList<>();
         handleInput(inputSearch);
-
         for (Book b : allBooks){
-            List<String> wordsList = new ArrayList<>();
             boolean isSuitable = true;
-            String bookTitle = b.getBookTitle().toLowerCase();
-            String[] wordsTitle = bookTitle.split("\\ ");
-            for (int i=0; i<wordsTitle.length; i++){
-                String word = wordsTitle[i];
-                if (word.length() > 1){
-                    char ch = word.charAt(word.length()-1);
-                    if (ch == '.' || ch == ','){
-                        word = word.substring(0, word.length()-1);
-                    }
-                    wordsList.add(word);
-                }
-            }
-
+            String bookTitle = b.getBookTitle();
+            ArrayList<String> wordsList = titleToWordsList(bookTitle);
             for (String word : notIncludeWords){
                 if (wordsList.contains(word)){
                     isSuitable = false;
                     break;
                 }
             }
-
             if (isSuitable){
                 for (String word : includeWords){
                     if (wordsList.contains(word)){
@@ -53,6 +39,23 @@ public class SearchByTitle implements ISearch{
             }
         }
         return result;
+    }
+
+    private ArrayList<String> titleToWordsList(String title){
+        ArrayList<String> wordsList = new ArrayList<>();
+        String bookTitle = title.toLowerCase();
+        String[] wordsTitle = bookTitle.split("\\ ");
+        for (int i=0; i<wordsTitle.length; i++){
+            String word = wordsTitle[i];
+            if (word.length() > 1){
+                char ch = word.charAt(word.length()-1);
+                if (ch == '.' || ch == ','){
+                    word = word.substring(0, word.length()-1);
+                }
+                wordsList.add(word);
+            }
+        }
+        return wordsList;
     }
 
     private void handleInput(String inputSearch) {

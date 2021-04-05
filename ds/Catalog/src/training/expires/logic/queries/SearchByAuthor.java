@@ -16,9 +16,10 @@ public class SearchByAuthor implements ISearch{
         result = new ArrayList<>();
     }
 
-    public ArrayList<Book> search(String author){
+    @Override
+    public ArrayList<Book> search(String inputSearch){
         for (Book b: allBooks){
-            if (b.getBookAuthor().toLowerCase().equals(author.toLowerCase())){
+            if (b.getBookAuthor().toLowerCase().equals(inputSearch.toLowerCase())){
                 result.add(b);
             }
         }
