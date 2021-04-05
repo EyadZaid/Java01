@@ -4,10 +4,10 @@ import org.junit.jupiter.api.BeforeEach;
 import training.expires.BooksCatalog;
 import training.expires.dao.Book;
 import training.expires.dao.Isbn;
-import training.expires.inputs.InputParser;
-import training.expires.searches.SearchByAuthor;
-import training.expires.searches.SearchByIsbn;
-import training.expires.searches.SearchByTitle;
+import training.expires.logic.inputs.InputParser;
+import training.expires.logic.queries.SearchByAuthor;
+import training.expires.logic.queries.SearchByIsbn;
+import training.expires.logic.queries.SearchByTitle;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package training.expires.inputs;
+package training.expires.logic.inputs;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

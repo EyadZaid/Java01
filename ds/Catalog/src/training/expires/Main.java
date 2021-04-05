@@ -1,6 +1,6 @@
 package training.expires;
 
-import training.expires.inputs.InputParser;
+import training.expires.logic.inputs.InputParser;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;

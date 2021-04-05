@@ -1,4 +1,4 @@
-package training.expires.inputs;
+package training.expires.logic.inputs;
 
 import training.expires.dao.Book;
 import training.expires.dao.Isbn;

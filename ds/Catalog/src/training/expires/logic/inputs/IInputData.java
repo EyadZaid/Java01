@@ -1,4 +1,4 @@
-package training.expires.inputs;
+package training.expires.logic.inputs;
 
 public interface IInputData {
     String readline();

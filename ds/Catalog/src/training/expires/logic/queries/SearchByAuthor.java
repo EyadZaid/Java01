@@ -1,4 +1,4 @@
-package training.expires.searches;
+package training.expires.logic.queries;
 
 import training.expires.dao.Book;
 
