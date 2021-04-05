@@ -6,13 +6,9 @@ import training.expires.logic.inputs.InputParser;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class Main {
+public class UserInterface {
 
-    public static void main(String[] args) {
-        executeApp();
-    }
-
-    private static void executeApp() {
+    public void executeApp() {
         BooksCatalog booksCatalog = new BooksCatalog();
         try {
             booksCatalog.addBooksFromFile("books-small.txt", new InputParser());
