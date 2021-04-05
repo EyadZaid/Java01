@@ -1,5 +1,6 @@
-package training.expires;
+package training.expires.ui;
 
+import training.expires.logic.BooksCatalog;
 import training.expires.logic.inputs.InputParser;
 
 import java.io.FileNotFoundException;

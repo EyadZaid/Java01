@@ -1,7 +1,7 @@
 package training.expires.test;
 
 import org.junit.jupiter.api.BeforeEach;
-import training.expires.BooksCatalog;
+import training.expires.logic.BooksCatalog;
 import training.expires.dao.Book;
 import training.expires.dao.Isbn;
 import training.expires.logic.inputs.InputParser;

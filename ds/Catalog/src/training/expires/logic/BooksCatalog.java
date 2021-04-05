@@ -1,4 +1,4 @@
-package training.expires;
+package training.expires.logic;
 
 import training.expires.dao.Book;
 import training.expires.logic.inputs.FileRead;
@@ -21,10 +21,6 @@ public class BooksCatalog {
         allBooks = new HashSet<>();;
     }
 
-    public boolean addBook(Book book){
-        return allBooks.add(book);
-    }
-
     public int amountOfBooks(){
         return allBooks.size();
     }
@@ -37,7 +33,6 @@ public class BooksCatalog {
         inputData = new FileRead(fileName);
         String line;
         Book book;
-        Boolean isFirstLine = true;
 
         inputData.readline();
         if (inputData.isEnd()){
@@ -46,12 +41,6 @@ public class BooksCatalog {
         line = inputData.readline();
         while (!inputData.isEnd()){
             book = dataFormat.inputParse(line);
-            /*
-            if (book.getIsbn().checkValidIsbn()){
-
-            }
-             */
-
             allBooks.add(book);
             line = inputData.readline();
         }
