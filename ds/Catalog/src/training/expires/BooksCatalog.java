@@ -1,6 +1,6 @@
 package training.expires;
 
-import training.expires.data.Book;
+import training.expires.dao.Book;
 import training.expires.inputs.FileRead;
 import training.expires.inputs.IDataFormat;
 import training.expires.inputs.IInputData;

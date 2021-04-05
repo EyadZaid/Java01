@@ -1,6 +1,6 @@
 package training.expires.inputs;
 
-import training.expires.data.Book;
+import training.expires.dao.Book;
 
 public interface IDataFormat {
 

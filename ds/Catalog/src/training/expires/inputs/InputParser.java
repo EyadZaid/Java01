@@ -1,7 +1,7 @@
 package training.expires.inputs;
 
-import training.expires.data.Book;
-import training.expires.data.Isbn;
+import training.expires.dao.Book;
+import training.expires.dao.Isbn;
 
 public class InputParser implements IDataFormat {
 

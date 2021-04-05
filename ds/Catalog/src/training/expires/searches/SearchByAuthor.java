@@ -1,6 +1,6 @@
 package training.expires.searches;
 
-import training.expires.data.Book;
+import training.expires.dao.Book;
 
 import java.util.ArrayList;
 import java.util.HashSet;

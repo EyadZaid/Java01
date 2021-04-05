@@ -2,8 +2,8 @@ package training.expires.test;
 
 import org.junit.jupiter.api.BeforeEach;
 import training.expires.BooksCatalog;
-import training.expires.data.Book;
-import training.expires.data.Isbn;
+import training.expires.dao.Book;
+import training.expires.dao.Isbn;
 import training.expires.inputs.InputParser;
 import training.expires.searches.SearchByAuthor;
 import training.expires.searches.SearchByIsbn;

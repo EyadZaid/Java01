@@ -1,7 +1,7 @@
 package training.expires.searches;
 
-import training.expires.data.Book;
-import training.expires.data.Isbn;
+import training.expires.dao.Book;
+import training.expires.dao.Isbn;
 
 import java.util.HashSet;
 import java.util.Scanner;
