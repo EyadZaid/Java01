@@ -7,13 +7,13 @@ import java.util.*;
 public class SearchByTitle implements ISearch{
     private HashSet<Book> allBooks;
     private ArrayList<Book> result;
-    private ArrayList<String> includeWords;
-    private ArrayList<String> notIncludeWords;
+    private Set<String> includeWords;
+    private Set<String> notIncludeWords;
 
     public SearchByTitle(HashSet<Book> allBooks){
         this.allBooks = allBooks;
-        includeWords = new ArrayList<>();
-        notIncludeWords = new ArrayList<>();
+        includeWords = new HashSet<>();
+        notIncludeWords = new HashSet<>();
         result = new ArrayList<>();
     }
 
@@ -36,15 +36,16 @@ public class SearchByTitle implements ISearch{
                 }
             }
 
-            for (int i=0; i<notIncludeWords.size(); i++){
-                if (wordsList.contains(notIncludeWords.get(i))){
+            for (String word : notIncludeWords){
+                if (wordsList.contains(word)){
                     isSuitable = false;
                     break;
                 }
             }
+
             if (isSuitable){
-                for (int i=0; i<includeWords.size(); i++){
-                    if (wordsList.contains(includeWords.get(i))){
+                for (String word : includeWords){
+                    if (wordsList.contains(word)){
                         result.add(b);
                         break;
                     }
