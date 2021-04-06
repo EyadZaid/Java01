@@ -4,10 +4,7 @@ import training.expires.dao.Book;
 import training.expires.logic.inputs.FileRead;
 import training.expires.logic.inputs.IDataFormat;
 import training.expires.logic.inputs.IInputData;
-import training.expires.logic.queries.ISearch;
-import training.expires.logic.queries.SearchByAuthor;
-import training.expires.logic.queries.SearchByIsbn;
-import training.expires.logic.queries.SearchByTitle;
+import training.expires.logic.queries.*;
 
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -65,6 +62,11 @@ public class BooksCatalog {
 
     public ArrayList<Book> searchByAuthor(String inputSearch){
         query = new SearchByAuthor(allBooks);
+        return query.search(inputSearch);
+    }
+
+    public ArrayList<Book> searchByTitleAndAuthor(String inputSearch){
+        query = new SearchByTitleAndAuthor(allBooks);
         return query.search(inputSearch);
     }
 

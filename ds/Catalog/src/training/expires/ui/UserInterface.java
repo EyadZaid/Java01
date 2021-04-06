@@ -28,7 +28,8 @@ public class UserInterface {
             System.out.println("Enter 1 to search by ISBN");
             System.out.println("Enter 2 to Search by Title");
             System.out.println("Enter 3 to Search by Author");
-            System.out.println("Enter 4 to exit");
+            System.out.println("Enter 4 to Search by title and Author");
+            System.out.println("Enter 5 to exit");
 
             Scanner reader = new Scanner(System.in);
             char input = reader.next().charAt(0);
@@ -37,7 +38,8 @@ public class UserInterface {
                 case '1' -> searchByIsbn();
                 case '2' -> searchByTitle();
                 case '3' -> searchByAuthor();
-                case '4' -> inputLoop = false;
+                case '4' -> searchByTitleAndAuthor();
+                case '5' -> inputLoop = false;
             }
         }
     }
@@ -75,6 +77,19 @@ public class UserInterface {
         System.out.println("Enter book author name:");
         String inputSearch = scanner.nextLine();
         ArrayList<Book> books = booksCatalog.searchByAuthor(inputSearch);
+        if (books.size() > 0){
+            printResult(books);
+        }
+        else {
+            System.out.println("Book does not exist");
+        }
+    }
+
+    public void searchByTitleAndAuthor(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter book title and author name:");
+        String inputSearch = scanner.nextLine();
+        ArrayList<Book> books = booksCatalog.searchByTitleAndAuthor(inputSearch);
         if (books.size() > 0){
             printResult(books);
         }
