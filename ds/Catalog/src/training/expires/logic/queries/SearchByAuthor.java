@@ -22,19 +22,9 @@ public class SearchByAuthor implements ISearch{
     public ArrayList<Book> search(String inputSearch){
         handleInput(inputSearch);
         for (Book b: allBooks){
-            boolean isSuitable = false;
             String bookAuthor = b.getBookAuthor();
             ArrayList<String> wordsList = authorToWordsList(bookAuthor);
-            for (String word : includeWords){
-                if (wordsList.contains(word)){
-                    isSuitable = true;
-                }
-                else {
-                    isSuitable = false;
-                    break;
-                }
-            }
-            if (isSuitable){
+            if (wordsList.containsAll(includeWords)){
                 result.add(b);
             }
         }

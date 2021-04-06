@@ -34,10 +34,12 @@ public class SearchByTitleAndAuthor implements ISearch{
             inputAuthor = titleAndAuthor[1];
         }
         else{
-            titleAndAuthor = titleAndAuthor[1].split("\\ ", 2);
-            if (titleAndAuthor.length == 2){
-                inputAuthor = titleAndAuthor[0];
-                inputTitle = titleAndAuthor[1];
+            if (titleAndAuthor.length == 2) {
+                titleAndAuthor = titleAndAuthor[1].split("\\ ", 2);
+                if (titleAndAuthor.length == 2) {
+                    inputAuthor = titleAndAuthor[0];
+                    inputTitle = titleAndAuthor[1];
+                }
             }
         }
     }
