@@ -55,6 +55,11 @@ public class SearchByTitle implements ISearch{
     }
 
     private void handleInput(String inputSearch) {
+        /*
+        if (inputSearch.equals("")){
+            throw new IllegalQueryException("Query cannot be empty");
+        }
+         */
         String[] words = inputSearch.split("\\ ");
         for (int i=0; i<words.length; i++){
             String word = words[i].toLowerCase();
