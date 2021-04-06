@@ -23,19 +23,15 @@ public class SearchByTitle implements ISearch{
             boolean isSuitable = true;
             String bookTitle = b.getBookTitle();
             ArrayList<String> wordsList = titleToWordsList(bookTitle);
+
             for (String word : notIncludeWords){
                 if (wordsList.contains(word)){
                     isSuitable = false;
                     break;
                 }
             }
-            if (isSuitable){
-                for (String word : includeWords){
-                    if (wordsList.contains(word)){
-                        result.add(b);
-                        break;
-                    }
-                }
+            if (isSuitable && wordsList.containsAll(includeWords)){
+                result.add(b);
             }
         }
         return result;
