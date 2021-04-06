@@ -4,9 +4,38 @@ import training.expires.dao.Book;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
 
 public class SearchByTitleAndAuthor implements ISearch{
+    private HashSet<Book> allBooks;
+    private String inputAuthor;
+    private String inputTitle;
+
+    public SearchByTitleAndAuthor(HashSet<Book> allBooks){
+        this.allBooks = allBooks;
+    }
+
+    @Override
+    public ArrayList<Book> search(String inputSearch) {
+        handleInput(inputSearch);
+        HashSet<Book> booksByAuthor = new HashSet<>();
+        ArrayList<Book> result = new SearchByAuthor(allBooks).search(inputAuthor);
+        booksByAuthor.addAll(result);
+        result = new SearchByTitle(booksByAuthor).search(inputTitle);
+
+        return result;
+    }
+
+    private void handleInput(String inputSearch) {
+        String[] titleAndAuthor = inputSearch.split("author:");
+        if (titleAndAuthor.length != 2){
+            return;
+        }
+        inputTitle = titleAndAuthor[0];
+        inputAuthor = titleAndAuthor[1];
+    }
+
+
+    /*
     private HashSet<Book> allBooks;
     private Set<String> includeWords;
     private Set<String> notIncludeWords;
@@ -87,6 +116,6 @@ public class SearchByTitleAndAuthor implements ISearch{
         }
         author = titleAndAuthor[1];
     }
-
+*/
 
 }
