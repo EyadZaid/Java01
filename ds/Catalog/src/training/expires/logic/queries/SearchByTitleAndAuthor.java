@@ -12,6 +12,8 @@ public class SearchByTitleAndAuthor implements ISearch{
 
     public SearchByTitleAndAuthor(HashSet<Book> allBooks){
         this.allBooks = allBooks;
+        inputAuthor = "";
+        inputTitle = "";
     }
 
     @Override
@@ -27,11 +29,17 @@ public class SearchByTitleAndAuthor implements ISearch{
 
     private void handleInput(String inputSearch) {
         String[] titleAndAuthor = inputSearch.split("author:");
-        if (titleAndAuthor.length != 2){
-            return;
+        if (titleAndAuthor.length == 2){
+            inputTitle = titleAndAuthor[0];
+            inputAuthor = titleAndAuthor[1];
         }
-        inputTitle = titleAndAuthor[0];
-        inputAuthor = titleAndAuthor[1];
+        else{
+            titleAndAuthor = titleAndAuthor[0].split("\\ ", 2);
+            if (titleAndAuthor.length == 2){
+                inputAuthor = titleAndAuthor[0];
+                inputTitle = titleAndAuthor[1];
+            }
+        }
     }
 
 
