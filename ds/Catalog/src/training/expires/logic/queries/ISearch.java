@@ -8,5 +8,4 @@ public interface ISearch {
 
     ArrayList<Book> search(String inputSearch);
 
-    void searchFromConsole();
 }

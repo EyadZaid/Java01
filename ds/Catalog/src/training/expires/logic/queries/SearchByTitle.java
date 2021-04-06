@@ -74,26 +74,4 @@ public class SearchByTitle implements ISearch{
         }
     }
 
-
-    @Override
-    public void searchFromConsole(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter book title:");
-        String inputSearch = scanner.nextLine();
-        ArrayList<Book> books = search(inputSearch);
-        if (books.size() > 0){
-            printResult(books);
-        }
-        else {
-            System.out.println("Book does not exist");
-        }
-    }
-
-    private void printResult(ArrayList<Book> books){
-        for (Book b : books){
-            System.out.println(b.display());
-        }
-
-
-    }
 }
