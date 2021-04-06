@@ -15,7 +15,7 @@ import java.util.*;
 public class BooksCatalog {
     private HashSet<Book> allBooks;
     private IInputData inputData;
-    private ISearch search;
+    private ISearch query;
 
     public BooksCatalog() {
         allBooks = new HashSet<>();;
@@ -53,19 +53,19 @@ public class BooksCatalog {
         inputData.close();
     }
 
-    public void searchByIsbn(){
-        search = new SearchByIsbn(allBooks);
-        search.searchFromConsole();
+    public ArrayList<Book> searchByIsbn(String inputSearch){
+        query = new SearchByIsbn(allBooks);
+        return query.search(inputSearch);
     }
 
-    public void searchByTitle(){
-        search = new SearchByTitle(allBooks);
-        search.searchFromConsole();
+    public ArrayList<Book> searchByTitle(String inputSearch){
+        query = new SearchByTitle(allBooks);
+        return query.search(inputSearch);
     }
 
-    public void searchByAuthor(){
-        search = new SearchByAuthor(allBooks);
-        search.searchFromConsole();
+    public ArrayList<Book> searchByAuthor(String inputSearch){
+        query = new SearchByAuthor(allBooks);
+        return query.search(inputSearch);
     }
 
     @Override

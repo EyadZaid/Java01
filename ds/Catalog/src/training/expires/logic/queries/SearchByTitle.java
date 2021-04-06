@@ -74,6 +74,7 @@ public class SearchByTitle implements ISearch{
         }
     }
 
+
     @Override
     public void searchFromConsole(){
         Scanner scanner = new Scanner(System.in);
@@ -92,6 +93,7 @@ public class SearchByTitle implements ISearch{
         for (Book b : books){
             System.out.println(b.display());
         }
+
 
     }
 }
