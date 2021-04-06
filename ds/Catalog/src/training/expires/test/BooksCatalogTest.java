@@ -8,6 +8,7 @@ import training.expires.logic.inputs.InputParser;
 import training.expires.logic.queries.SearchByAuthor;
 import training.expires.logic.queries.SearchByIsbn;
 import training.expires.logic.queries.SearchByTitle;
+import training.expires.logic.queries.SearchByTitleAndAuthor;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ class BooksCatalogTest {
     SearchByIsbn searchByIsbn;
     SearchByTitle searchByTitle;
     SearchByAuthor searchByAuthor;
+    SearchByTitleAndAuthor searchByTitleAndAuthor;
 
     @BeforeEach
     void setup() {
@@ -33,6 +35,7 @@ class BooksCatalogTest {
         searchByIsbn = new SearchByIsbn(booksCatalog.getAllBooks());
         searchByTitle = new SearchByTitle(booksCatalog.getAllBooks());
         searchByAuthor = new SearchByAuthor(booksCatalog.getAllBooks());
+        searchByTitleAndAuthor = new SearchByTitleAndAuthor(booksCatalog.getAllBooks());
     }
 
     @org.junit.jupiter.api.Test
@@ -54,8 +57,10 @@ class BooksCatalogTest {
 
     @org.junit.jupiter.api.Test
     void searchByTitle() {
-        ArrayList<Book> books = searchByTitle.search("middle black -black");
-        assertEquals(new Isbn("887841740"), books.get(0).getIsbn());
+        Book book = new Book(new Isbn("887841740"), "The Middle Stories", "Sheila Heti",
+                2004, "House of Anansi Press");
+        ArrayList<Book> books = searchByTitle.search("middle");
+        assertTrue(books.contains(book));
     }
 
     @org.junit.jupiter.api.Test
@@ -66,8 +71,27 @@ class BooksCatalogTest {
 
     @org.junit.jupiter.api.Test
     void searchByAuthor() {
-        ArrayList<Book> books = searchByAuthor.search("Dr. Seuss");
-        assertEquals(new Isbn("039480001X"), books.get(0).getIsbn());
+        Book book = new Book(new Isbn("452279690"), "Cavedweller", "Dorothy Allison",
+                1999, "Plume Books");
+        ArrayList<Book> books = searchByAuthor.search("Dorothy Allison");
+        assertTrue(books.contains(book));
     }
+
+    @org.junit.jupiter.api.Test
+    void searchByAuthor2() {
+        Book book = new Book(new Isbn("452279690"), "Cavedweller", "Dorothy Allison",
+                1999, "Plume Books");
+        ArrayList<Book> books = searchByAuthor.search("dorothy");
+        assertTrue(books.contains(book));
+    }
+
+    @org.junit.jupiter.api.Test
+    void setSearchByTitleAndAuthor() {
+        Book book = new Book(new Isbn("446612545"), "The Beach House", "James Patterson",
+                2003, "Warner Books");
+        ArrayList<Book> books = searchByTitleAndAuthor.search("house -black author:James");
+        assertTrue(books.contains(book));
+    }
+
 
 }
