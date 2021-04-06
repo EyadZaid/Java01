@@ -29,12 +29,12 @@ public class SearchByTitleAndAuthor implements ISearch{
 
     private void handleInput(String inputSearch) {
         String[] titleAndAuthor = inputSearch.split("author:");
-        if (titleAndAuthor.length == 2){
+        if (titleAndAuthor.length == 2 && titleAndAuthor[0] != ""){
             inputTitle = titleAndAuthor[0];
             inputAuthor = titleAndAuthor[1];
         }
         else{
-            titleAndAuthor = titleAndAuthor[0].split("\\ ", 2);
+            titleAndAuthor = titleAndAuthor[1].split("\\ ", 2);
             if (titleAndAuthor.length == 2){
                 inputAuthor = titleAndAuthor[0];
                 inputTitle = titleAndAuthor[1];
