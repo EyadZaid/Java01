@@ -25,7 +25,7 @@ public class SearchByTitleAndAuthor implements ISearch{
         handleInput(inputSearch);
         for (Book b : allBooks){
             if (!b.getBookAuthor().toLowerCase().equals(author.toLowerCase())) {
-                break;
+                continue;
             }
             boolean isSuitable = true;
             String bookTitle = b.getBookTitle();
