@@ -96,10 +96,29 @@ public class Utils {
     }
 
 
+    public static <T extends Comparable<T>> List<T> bubbleSortList(List<T> list){
+        if (list == null || list.size() == 0){
+            return null;
+        }
 
+        int size = list.size();
+        if (list.size() == 1){
+            return list;
+        }
 
+        for (int i=0; i<size-1; i++) {
+            for (int j=0; j< size-i-1; j++) {
+                if (list.get(j).compareTo(list.get(j+1)) > 0) {
 
+                    T temp = list.get(j);
+                    list.set(j, list.get(j+1));
+                    list.set(j+1, temp);
+                }
+            }
+        }
 
+        return list;
+    }
 
 
 
