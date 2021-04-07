@@ -98,13 +98,13 @@ public class Utils {
     }
 
 
-    public static <T extends Comparable<T>> MinAndMax<T> minAndMaxElementInList(List<T> list){
+    public static <T extends Comparable<T>> MinAndMaxPair<T> minAndMaxElementInList(List<T> list){
         if (list == null || list.size() == 0){
             return null;
         }
 
         if (list.size() == 1){
-            return new MinAndMax<T>(list.get(0), list.get(0));
+            return new MinAndMaxPair<T>(list.get(0), list.get(0));
         }
 
         T max, min;
@@ -118,7 +118,7 @@ public class Utils {
                 min = element;
             }
         }
-        return new MinAndMax<T>(min, max);
+        return new MinAndMaxPair<T>(min, max);
     }
 
 
