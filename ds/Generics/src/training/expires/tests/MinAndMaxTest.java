@@ -8,20 +8,22 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MinElementTest {
+class MinAndMaxTest {
 
     @BeforeEach
     void setUp() {
     }
 
     @Test
-    void minElementInList() {
+    void minAndMaxElementInList() {
         var list = Arrays.asList(8, 6, 2, 23, -13, 4);
-        int n = -698;
-        var v1= Integer.valueOf(n);
-        var v2= Integer.valueOf(n);
+        int n1 = -698;
+        int n2 = 1516;
+        var v1= Integer.valueOf(n1);
+        var v2= Integer.valueOf(n2);
         list.set(1,v1);
         list.set(4, v2);
-        assertEquals(v1, Utils.minElementInList(list));
+        assertEquals(v1, Utils.minAndMaxElementInList(list).getMin());
+        assertEquals(v2, Utils.minAndMaxElementInList(list).getMax());
     }
 }
