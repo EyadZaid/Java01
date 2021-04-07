@@ -46,7 +46,6 @@ public class Utils {
         }
 
         T max = list.get(0);
-
         for (int i=1; i<list.size(); i++){
             T element = list.get(i);
             if (element.compareTo(max) > 0){
@@ -68,7 +67,6 @@ public class Utils {
 
         T max, min;
         max = min = list.get(0);
-
         for (int i=1; i<list.size(); i++){
             T element = list.get(i);
             if (element.compareTo(max) > 0){
@@ -80,6 +78,24 @@ public class Utils {
         }
         return new MinAndMax<T>(min, max);
     }
+
+
+    public static <T extends Comparable<T>> boolean removeMinInList(List<T> list){
+        if (list == null || list.size() == 0){
+            return false;
+        }
+
+        if (list.size() == 1){
+            list.remove(0);
+            return true;
+        }
+
+        T min = minAndMaxElementInList(list).getMin();
+        list.remove(min);
+        return true;
+    }
+
+
 
 
 
