@@ -1,8 +1,9 @@
-package training.expires;
+package training.expires.tests;
+
+import org.junit.jupiter.api.Assertions;
+import training.expires.Utils;
 
 import java.util.Arrays;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class MaxElementTest {
 
@@ -18,6 +19,6 @@ class MaxElementTest {
         var v2= Integer.valueOf(n);
         list.set(1,v1);
         list.set(4, v2);
-        assertEquals(v2, Utils.maxElementInList(list));
+        Assertions.assertEquals(v2, Utils.maxElementInList(list));
     }
 }
