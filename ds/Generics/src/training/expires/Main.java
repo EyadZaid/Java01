@@ -1,7 +1,6 @@
 package training.expires;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -19,6 +18,6 @@ public class Main {
         System.out.println(Utils.minAndMaxElementInList(list));
         System.out.println(Utils.bubbleSortList(list));
         System.out.println(Utils.removeMinInList(list));
-
+        System.out.println(list);
     }
 }
