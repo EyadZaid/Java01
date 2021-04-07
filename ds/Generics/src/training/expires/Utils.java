@@ -114,8 +114,10 @@ public class Utils {
             if (element.compareTo(max) > 0){
                 max = element;
             }
-            if (element.compareTo(min) < 0){
-                min = element;
+            else {
+                if (element.compareTo(min) < 0){
+                    min = element;
+                }
             }
         }
         return new MinAndMaxPair<T>(min, max);
