@@ -14,12 +14,12 @@ public class Utils {
             return list.get(0);
         }
 
-        Number sum=0;
+        double sum=0;
         for (Number num : list){
-            sum = sum.doubleValue() + num.doubleValue();
+            sum += num.doubleValue();
         }
 
-        return sum.doubleValue()/(double)list.size();
+        return sum/(double)list.size();
     }
 
 
@@ -48,11 +48,53 @@ public class Utils {
         T max = list.get(0);
         for (int i=1; i<list.size(); i++){
             T element = list.get(i);
-            if (element.compareTo(max) > 0){
+            if (element.compareTo(max) >= 0){
                 max = element;
             }
         }
         return max;
+    }
+
+
+    public static <T extends Comparable<T>> T minElementInList(List<T> list){
+        if (list == null || list.size() == 0){
+            return null;
+        }
+
+        if (list.size() == 1){
+            return list.get(0);
+        }
+
+        T min = list.get(0);
+        for (int i=1; i<list.size(); i++){
+            T element = list.get(i);
+            if (element.compareTo(min) < 0){
+                min = element;
+            }
+        }
+        return min;
+    }
+
+
+    public static <T extends Comparable<T>> int indexOFMinInList(List<T> list){
+        if (list == null || list.size() == 0){
+            return -1;
+        }
+
+        if (list.size() == 1){
+            return 0;
+        }
+
+        T min = list.get(0);
+        int indexMin = 0;
+        for (int i=1; i<list.size(); i++){
+            T element = list.get(i);
+            if (element.compareTo(min) < 0){
+                min = element;
+                indexMin = i;
+            }
+        }
+        return indexMin;
     }
 
 
@@ -80,19 +122,17 @@ public class Utils {
     }
 
 
-    public static <T extends Comparable<T>> boolean removeMinInList(List<T> list){
+    public static <T extends Comparable<T>> T removeMinInList(List<T> list){
         if (list == null || list.size() == 0){
-            return false;
+            return null;
         }
 
         if (list.size() == 1){
-            list.remove(0);
-            return true;
+            return list.remove(0);
         }
 
-        T min = minAndMaxElementInList(list).getMin();
-        list.remove(min);
-        return true;
+        int indexMin = indexOFMinInList(list);
+        return list.remove(indexMin);
     }
 
 
