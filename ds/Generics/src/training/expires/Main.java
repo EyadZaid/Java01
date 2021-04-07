@@ -13,11 +13,11 @@ public class Main {
         list.add(4.3);
         list.add(20.5);
 
+        System.out.println(Utils.removeMinInList(list));
         System.out.println(Utils.averageOfList(list));
         System.out.println(Utils.midElementOfList(list));
         System.out.println(Utils.minAndMaxElementInList(list));
         System.out.println(Utils.bubbleSortList(list));
-        System.out.println(Utils.removeMinInList(list));
         System.out.println(list);
     }
 }

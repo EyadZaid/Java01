@@ -132,6 +132,10 @@ public class Utils {
         }
 
         int indexMin = indexOFMinInList(list);
+        if (indexMin == -1){
+            return null;
+        }
+
         return list.remove(indexMin);
     }
 
