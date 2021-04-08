@@ -21,4 +21,18 @@ class BubbleSortTest {
         var sortedList = Arrays.asList(-13, 2, 4, 6, 8, 23);
         Assertions.assertEquals(sortedList, Utils.bubbleSortList(list));
     }
+
+    @Test
+    void bubbleSortList_OneElement() {
+        var list = Arrays.asList(23);
+        var sortedList = Arrays.asList(23);
+        Assertions.assertEquals(sortedList, Utils.bubbleSortList(list));
+    }
+
+    @Test
+    void bubbleSortList_Duplicated() {
+        var list = Arrays.asList(5,5,5,5,5,5,5,5);
+        var sortedList = Arrays.asList(5,5,5,5,5,5,5,5);
+        Assertions.assertEquals(sortedList, Utils.bubbleSortList(list));
+    }
 }
