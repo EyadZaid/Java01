@@ -301,7 +301,7 @@ public class Utils {
     }
 
 
-    public static <T> List<T> listGenerator(T start, T step, int size, BiFunc<T, T, T> add){
+    public static <T> List<T> listGeneratorGeneric(T start, T step, int size, BiFunc<T, T, T> add){
         List<T> list = new ArrayList<>();
         T obj = start;
         list.add(obj);

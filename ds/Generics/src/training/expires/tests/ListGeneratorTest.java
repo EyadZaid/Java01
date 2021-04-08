@@ -15,4 +15,11 @@ class ListGeneratorTest {
         var li = Arrays.asList(0, 3, 6, 9, 12, 15);
         assertEquals(li, list);
     }
+
+    @Test
+    void listGenerator2() {
+        var list = Utils.listGeneratorGeneric(0, 3, 6, (a, b) -> a.intValue() + b.intValue());
+        var li = Arrays.asList(0, 3, 6, 9, 12, 15);
+        assertEquals(li, list);
+    }
 }
