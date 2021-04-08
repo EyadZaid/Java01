@@ -250,4 +250,54 @@ public class Utils {
         return new MinAndMaxPair<T>(min, max);
     }
 
+
+    public static <T extends Comparable<T>> MinAndMaxPair<T> MinAndMaxAdvancedWithIterator(List<T> list) {
+        if (list == null || list.isEmpty()) {
+            return null;
+        }
+
+        int size = list.size();
+        if (size == 1) {
+            return new MinAndMaxPair<T>(list.get(0), list.get(0));
+        }
+
+        T max, min, a, b;
+        Iterator<T> it = list.iterator();
+        a = it.next();
+        b = it.next();
+        if (a.compareTo(b) > 0) {
+            max = a;
+            min = b;
+        }
+        else {
+            max = b;
+            min = a;
+        }
+
+        while (it.hasNext()){
+            a = it.next();
+            if (it.hasNext()){
+                b = it.next();
+            }
+            else {
+                break;
+            }
+
+            if (a.compareTo(b) > 0) {
+                min = min.compareTo(b) > 0 ? b : min;
+                max = max.compareTo(a) < 0 ? a : max;
+            } else {
+                min = min.compareTo(a) > 0 ? a : min;
+                max = max.compareTo(b) < 0 ? b : max;
+            }
+        }
+
+        if (size % 2 == 1) {
+            min = min.compareTo(a) > 0 ? a : min;
+            max = max.compareTo(a) < 0 ? a : max;
+        }
+
+        return new MinAndMaxPair<T>(min, max);
+    }
+
 }
