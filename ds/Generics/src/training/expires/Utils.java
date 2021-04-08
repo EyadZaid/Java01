@@ -299,18 +299,17 @@ public class Utils {
         return list;
     }
 
-/*
-    public static List<Object> listGenerator(Object start, Object step, int size){
-        List<Object> list = new ArrayList<>();
-        Object obj = start;
+
+    public static <T> List<T> listGenerator(T start, T step, int size, BiFunc<T, T, T> add){
+        List<T> list = new ArrayList<>();
+        T obj = start;
         list.add(obj);
 
         for (int i=1; i<size; i++){
-            obj += step;
+            obj = add.apply(obj, step);
             list.add(obj);
         }
         return list;
     }
- */
 
 }
