@@ -18,7 +18,8 @@ class ListGeneratorTest {
 
     @Test
     void listGenerator2() {
-        var list = Utils.listGeneratorGeneric(0, 3, 6, (a, b) -> a.intValue() + b.intValue());
+        var list = Utils.listGeneratorGeneric(0, 3, 6, (a, b) -> a.intValue() + b.intValue(),
+                x -> new Integer(x));
         var li = Arrays.asList(0, 3, 6, 9, 12, 15);
         assertEquals(li, list);
     }

@@ -3,6 +3,7 @@ package training.expires;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Function;
 
 public class Utils {
 
@@ -301,14 +302,14 @@ public class Utils {
     }
 
 
-    public static <T> List<T> listGeneratorGeneric(T start, T step, int size, BiFunc<T, T, T> add){
+    public static <E,T> List<T> listGeneratorGeneric(E start, E step, int size, BiFunc<E, E, E> next,
+                                                     Function<E,T> generat){
         List<T> list = new ArrayList<>();
-        T obj = start;
-        list.add(obj);
+        list.add(generat.apply(start));
 
         for (int i=1; i<size; i++){
-            obj = add.apply(obj, step);
-            list.add(obj);
+            start = next.apply(start,step);
+            list.add(generat.apply(start));
         }
         return list;
     }
