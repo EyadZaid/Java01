@@ -1,5 +1,6 @@
 package training.expires;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -7,7 +8,7 @@ public class Utils {
 
 
     public static Number averageOfList(List<? extends Number> list){
-        if (list == null || list.size() == 0){
+        if (list == null || list.isEmpty()){
             return null;
         }
 
@@ -25,7 +26,7 @@ public class Utils {
 
 
     public static <T> T midElementOfList(List<T> list){
-        if (list == null || list.size() == 0){
+        if (list == null || list.isEmpty()){
             return null;
         }
 
@@ -38,7 +39,7 @@ public class Utils {
 
 
     public static <T extends Comparable<T>> T maxElementInList(List<T> list){
-        if (list == null || list.size() == 0){
+        if (list == null || list.isEmpty()){
             return null;
         }
 
@@ -58,7 +59,7 @@ public class Utils {
 
 
     public static <T extends Comparable<T>> T minElementInList(List<T> list){
-        if (list == null || list.size() == 0){
+        if (list == null || list.isEmpty()){
             return null;
         }
 
@@ -78,7 +79,7 @@ public class Utils {
 
 
     public static <T extends Comparable<T>> int indexOFMinInList(List<T> list){
-        if (list == null || list.size() == 0){
+        if (list == null || list.isEmpty()){
             return -1;
         }
 
@@ -100,7 +101,7 @@ public class Utils {
 
 
     public static <T extends Comparable<T>> MinAndMaxPair<T> minAndMaxElementInList(List<T> list){
-        if (list == null || list.size() == 0){
+        if (list == null || list.isEmpty()){
             return null;
         }
 
@@ -126,7 +127,7 @@ public class Utils {
 
 
     public static <T extends Comparable<T>> T removeMinInList(List<T> list){
-        if (list == null || list.size() == 0){
+        if (list == null || list.isEmpty()){
             return null;
         }
 
@@ -144,7 +145,7 @@ public class Utils {
 
 
     public static <T extends Comparable<T>> List<T> bubbleSortList(List<T> list){
-        if (list == null || list.size() == 0){
+        if (list == null || list.isEmpty()){
             return null;
         }
 
@@ -178,8 +179,6 @@ public class Utils {
     //
     //
 
-
-
     public static <T extends Comparable<T>> T minElementWithIterator(List<T> list){
         if (list == null || list.isEmpty()){
             return null;
@@ -199,5 +198,56 @@ public class Utils {
 
 
 
+    public static List<Number> listGenerator(double start, double step, int size){
+        List<Number> list = new ArrayList<>();
+        double n = start;
+        list.add(n);
+
+        for (int i=1; i<size; i++){
+            n += step;
+            list.add(n);
+        }
+        return list;
+    }
+
+
+    public static <T extends Comparable<T>> MinAndMaxPair<T> MinAndMaxAdvanced(List<T> list) {
+        if (list == null || list.isEmpty()) {
+            return null;
+        }
+
+        if (list.size() == 1) {
+            return new MinAndMaxPair<T>(list.get(0), list.get(0));
+        }
+
+        T max, min;
+
+        if (list.get(0).compareTo(list.get(1)) > 0) {
+            max = list.get(0);
+            min = list.get(1);
+        }
+        else {
+            max = list.get(1);
+            min = list.get(0);
+        }
+
+        for (int i = 2; i <= list.size()- 2; i+=2) {
+            if (list.get(i).compareTo(list.get(i+1)) > 0) {
+                min = min.compareTo(list.get(i+1)) > 0 ? list.get(i+1) : min;
+                max = max.compareTo(list.get(i)) < 0 ? list.get(i) : max;
+            } else {
+                min = min.compareTo(list.get(i)) > 0 ? list.get(i) : min;
+                max = max.compareTo(list.get(i+1)) < 0 ? list.get(i+1) : max;
+            }
+        }
+
+        int size = list.size();
+        if (size % 2 == 1) {
+            min = min.compareTo(list.get(size-1)) > 0 ? list.get(size-1) : min;
+            max = max.compareTo(list.get(size-1)) < 0 ? list.get(size-1) : max;
+        }
+
+        return new MinAndMaxPair<T>(min, max);
+    }
 
 }
