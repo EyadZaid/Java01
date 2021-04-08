@@ -16,7 +16,7 @@ public class Main {
         System.out.println(Utils.removeMinInList(list));
         System.out.println(Utils.averageOfList(list));
         System.out.println(Utils.midElementOfList(list));
-        System.out.println(Utils.minAndMaxElementInList(list));
+        System.out.println(Utils.MinAndMaxAdvanced(list));
         System.out.println(Utils.bubbleSortList(list));
         System.out.println(list);
     }
