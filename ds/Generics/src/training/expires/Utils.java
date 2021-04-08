@@ -174,10 +174,8 @@ public class Utils {
     }
 
 
-    //
-    //
-    //
-    //
+
+    //  ######################  8/4/2021  ######################
     //
 
     public static <T extends Comparable<T>> T minElementWithIterator(List<T> list){
@@ -243,15 +241,16 @@ public class Utils {
             return null;
         }
 
-        int size = list.size();
-        if (size == 1) {
-            return new MinAndMaxPair<T>(list.get(0), list.get(0));
+        T max, min;
+        boolean isOdd = false;
+        Iterator<T> it = list.iterator();
+        T a = it.next();
+
+        if (!it.hasNext()) {
+            return new MinAndMaxPair<T>(a, a);
         }
 
-        T max, min, a, b;
-        Iterator<T> it = list.iterator();
-        a = it.next();
-        b = it.next();
+        T b = it.next();
         if (a.compareTo(b) > 0) {
             max = a;
             min = b;
@@ -267,6 +266,7 @@ public class Utils {
                 b = it.next();
             }
             else {
+                isOdd = true;
                 break;
             }
 
@@ -279,7 +279,7 @@ public class Utils {
             }
         }
 
-        if (size % 2 == 1) {
+        if (isOdd) {
             min = min.compareTo(a) > 0 ? a : min;
             max = max.compareTo(a) < 0 ? a : max;
         }
