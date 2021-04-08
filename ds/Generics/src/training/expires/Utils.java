@@ -1,5 +1,6 @@
 package training.expires;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class Utils {
@@ -169,6 +170,33 @@ public class Utils {
         }
         return list;
     }
+
+
+    //
+    //
+    //
+    //
+    //
+
+
+
+    public static <T extends Comparable<T>> T minElementWithIterator(List<T> list){
+        if (list == null || list.isEmpty()){
+            return null;
+        }
+
+        Iterator<T> iterator = list.iterator();
+        T min = iterator.next();
+
+        while (iterator.hasNext()){
+            T element = iterator.next();
+            if (element.compareTo(min) < 0){
+                min = element;
+            }
+        }
+        return min;
+    }
+
 
 
 
