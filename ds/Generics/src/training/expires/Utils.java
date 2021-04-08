@@ -287,13 +287,14 @@ public class Utils {
     }
 
 
-    public static List<Number> listGenerator(double start, double step, int size){
+    public static List<Number> listGenerator(Number start, Number step, int size,
+                                             BiFunc<Number, Number, Number> add){
         List<Number> list = new ArrayList<>();
-        double n = start;
+        Number n = start;
         list.add(n);
 
         for (int i=1; i<size; i++){
-            n += step;
+            n = add.apply(n, step);
             list.add(n);
         }
         return list;
