@@ -197,20 +197,6 @@ public class Utils {
     }
 
 
-
-    public static List<Number> listGenerator(double start, double step, int size){
-        List<Number> list = new ArrayList<>();
-        double n = start;
-        list.add(n);
-
-        for (int i=1; i<size; i++){
-            n += step;
-            list.add(n);
-        }
-        return list;
-    }
-
-
     public static <T extends Comparable<T>> MinAndMaxPair<T> MinAndMaxAdvanced(List<T> list) {
         if (list == null || list.isEmpty()) {
             return null;
@@ -299,5 +285,32 @@ public class Utils {
 
         return new MinAndMaxPair<T>(min, max);
     }
+
+
+    public static List<Number> listGenerator(double start, double step, int size){
+        List<Number> list = new ArrayList<>();
+        double n = start;
+        list.add(n);
+
+        for (int i=1; i<size; i++){
+            n += step;
+            list.add(n);
+        }
+        return list;
+    }
+
+/*
+    public static List<Object> listGenerator(Object start, Object step, int size){
+        List<Object> list = new ArrayList<>();
+        Object obj = start;
+        list.add(obj);
+
+        for (int i=1; i<size; i++){
+            obj += step;
+            list.add(obj);
+        }
+        return list;
+    }
+ */
 
 }
