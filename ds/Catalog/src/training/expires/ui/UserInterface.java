@@ -58,7 +58,6 @@ public class UserInterface {
         }
     }
 
-
     public void searchByTitle(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter book title:");
