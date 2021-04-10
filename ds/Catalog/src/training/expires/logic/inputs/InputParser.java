@@ -13,11 +13,14 @@ public class InputParser implements IDataFormat {
         if (details.length != 5){
             throw new IllegalDataFormatException("Invalid file format");
         }
-        String isbn = details[0];
+        Isbn isbn = new Isbn(details[0]);
+        if (!isbn.checkValidIsbn()){
+            return null;
+        }
         String bookTitle = details[1];
         String bookAuthor = details[2];
         int yearOfPublication = Integer.parseInt(details[3]);
         String publisher = details[4];
-        return new Book(new Isbn(isbn), bookTitle, bookAuthor, yearOfPublication, publisher);
+        return new Book(isbn, bookTitle, bookAuthor, yearOfPublication, publisher);
     }
 }

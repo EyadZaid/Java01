@@ -46,6 +46,14 @@ class SearchByAuthorTest {
     }
 
     @Test
+    void searchByAuthorTwoWordsExist() {
+        Book book = new Book(new Isbn("439136350"), "Harry Potter and the Prisoner of Azkaban (Book 3)",
+                "J. K. Rowling", 1999, "Scholastic");
+        ArrayList<Book> books = searchByAuthor.search("j. k. rowling");
+        assertTrue(books.contains(book));
+    }
+
+    @Test
     void searchByAuthorLastName() {
         Book book = new Book(new Isbn("452279690"), "Cavedweller", "Dorothy Allison",
                 1999, "Plume Books");

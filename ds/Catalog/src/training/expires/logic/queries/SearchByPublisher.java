@@ -50,10 +50,6 @@ public class SearchByPublisher implements ISearch{
         for (int i=0; i<wordsPublisher.length; i++){
             String word = wordsPublisher[i];
             if (word.length() > 1){
-                char ch = word.charAt(word.length()-1);
-                if (ch == '.' || ch == ','){
-                    word = word.substring(0, word.length()-1);
-                }
                 wordsList.add(word);
             }
         }
