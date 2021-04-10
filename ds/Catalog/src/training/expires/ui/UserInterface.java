@@ -58,7 +58,7 @@ public class UserInterface {
             System.out.println(result.get(0).displayByLines());
         }
         else {
-            System.out.println("Book does not exist");
+            System.out.println("Book does not exist or the query is invalid");
         }
     }
 
@@ -72,7 +72,7 @@ public class UserInterface {
             printResult(books);
         }
         else {
-            System.out.println("Book does not exist");
+            System.out.println("Book does not exist or the query is invalid");
         }
     }
 
@@ -85,7 +85,7 @@ public class UserInterface {
             printResult(books);
         }
         else {
-            System.out.println("Book does not exist");
+            System.out.println("Book does not exist or the query is invalid");
         }
     }
 
@@ -98,7 +98,7 @@ public class UserInterface {
             printResult(books);
         }
         else {
-            System.out.println("Book does not exist");
+            System.out.println("Book does not exist or the query is invalid");
         }
     }
 
@@ -111,7 +111,7 @@ public class UserInterface {
             printResult(books);
         }
         else {
-            System.out.println("Book does not exist");
+            System.out.println("Book does not exist or the query is invalid");
         }
     }
 
@@ -124,7 +124,7 @@ public class UserInterface {
             printResult(books);
         }
         else {
-            System.out.println("Book does not exist");
+            System.out.println("Book does not exist or the query is invalid");
         }
     }
 
