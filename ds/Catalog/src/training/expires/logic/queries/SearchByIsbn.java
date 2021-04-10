@@ -1,27 +1,31 @@
 package training.expires.logic.queries;
 
-import training.expires.dao.Book;
-import training.expires.dao.Isbn;
+import training.expires.data.Book;
+import training.expires.data.BooksCatalog;
+import training.expires.data.Isbn;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class SearchByIsbn implements ISearch{
-    private HashSet<Book> allBooks;
+    private BooksCatalog booksCatalog;
+    private Map<String, Set<Book>> booksByIsbn;
 
-    public SearchByIsbn(HashSet<Book> allBooks) {
-        this.allBooks = allBooks;
+
+    public SearchByIsbn() {
+        booksCatalog = BooksCatalog.getInstance();
+        booksByIsbn = booksCatalog.getIndex(QueryType.ISBN);
     }
 
     @Override
     public ArrayList<Book> search(String inputSearch){
         ArrayList<Book> result = new ArrayList<>();
         Isbn isbn = new Isbn(inputSearch);
-        for (Book b: allBooks){
-            if (b.getIsbn().equals(isbn)){
-                result.add(b);
-                break;
-            }
+        Set<Book> resultSet = booksByIsbn.get(isbn.toString());
+        if (resultSet != null){
+            result.addAll(resultSet);
         }
         return result;
     }

@@ -1,4 +1,4 @@
-package training.expires.dao;
+package training.expires.data;
 
 import java.util.Objects;
 

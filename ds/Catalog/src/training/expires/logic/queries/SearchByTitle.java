@@ -1,39 +1,51 @@
 package training.expires.logic.queries;
 
-import training.expires.dao.Book;
+import training.expires.data.Book;
+import training.expires.data.BooksCatalog;
 
 import java.util.*;
 
 public class SearchByTitle implements ISearch{
-    private HashSet<Book> allBooks;
+    private BooksCatalog booksCatalog;
+    private Map<String, Set<Book>> booksByTitle;
     private Set<String> includeWords;
     private Set<String> notIncludeWords;
 
-    public SearchByTitle(HashSet<Book> allBooks){
-        this.allBooks = allBooks;
+    public SearchByTitle(){
+        booksCatalog = BooksCatalog.getInstance();
+        booksByTitle = booksCatalog.getIndex(QueryType.TITLE);
         includeWords = new HashSet<>();
         notIncludeWords = new HashSet<>();
     }
 
     @Override
     public ArrayList<Book> search(String inputSearch){
+        HashSet<Book> res = new HashSet<>();
         ArrayList<Book> result = new ArrayList<>();
         handleInput(inputSearch);
-        for (Book b : allBooks){
-            boolean isSuitable = true;
-            String bookTitle = b.getBookTitle();
-            ArrayList<String> wordsList = titleToWordsList(bookTitle);
 
-            for (String word : notIncludeWords){
-                if (wordsList.contains(word)){
-                    isSuitable = false;
-                    break;
+        for (var word : includeWords){
+            Set<Book> booksIncWord = booksByTitle.get(word);
+            if (booksIncWord != null) {
+                for (var r : booksIncWord) {
+                    if (includeWords.size() > 1) {
+                        ArrayList<String> titleList = titleToWordsList(r.getBookTitle());
+                        if (!titleList.containsAll(includeWords)) {
+                            continue;
+                        }
+                    }
+                    res.add(r);
                 }
             }
-            if (isSuitable && wordsList.containsAll(includeWords)){
-                result.add(b);
+        }
+
+        for (var word : notIncludeWords){
+            Set<Book> booksUnIncWord = booksByTitle.get(word);
+            if (booksUnIncWord != null) {
+                res.removeAll(booksUnIncWord);
             }
         }
+        result.addAll(res);
         return result;
     }
 
@@ -55,11 +67,6 @@ public class SearchByTitle implements ISearch{
     }
 
     private void handleInput(String inputSearch) {
-        /*
-        if (inputSearch.equals("")){
-            throw new IllegalQueryException("Query cannot be empty");
-        }
-         */
         String[] words = inputSearch.split("\\ ");
         for (int i=0; i<words.length; i++){
             String word = words[i].toLowerCase();

@@ -1,9 +1,9 @@
-package training.expires.test;
+package training.expires.tests;
 
 import org.junit.jupiter.api.BeforeEach;
-import training.expires.logic.BooksCatalog;
-import training.expires.dao.Book;
-import training.expires.dao.Isbn;
+import training.expires.data.BooksCatalog;
+import training.expires.data.Book;
+import training.expires.data.Isbn;
 import training.expires.logic.inputs.InputParser;
 import training.expires.logic.queries.SearchByAuthor;
 import training.expires.logic.queries.SearchByIsbn;
@@ -25,17 +25,17 @@ class BooksCatalogTest {
 
     @BeforeEach
     void setup() {
-        booksCatalog = new BooksCatalog();
+        booksCatalog = BooksCatalog.getInstance();
         try {
             booksCatalog.addBooksFromFile("books-small.txt", new InputParser());
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        searchByIsbn = new SearchByIsbn(booksCatalog.getAllBooks());
-        searchByTitle = new SearchByTitle(booksCatalog.getAllBooks());
-        searchByAuthor = new SearchByAuthor(booksCatalog.getAllBooks());
-        searchByTitleAndAuthor = new SearchByTitleAndAuthor(booksCatalog.getAllBooks());
+        searchByIsbn = new SearchByIsbn();
+        searchByTitle = new SearchByTitle();
+        searchByAuthor = new SearchByAuthor();
+        searchByTitleAndAuthor = new SearchByTitleAndAuthor();
     }
 
     @org.junit.jupiter.api.Test
@@ -85,6 +85,7 @@ class BooksCatalogTest {
         assertTrue(books.contains(book));
     }
 
+
     @org.junit.jupiter.api.Test
     void setSearchByTitleAndAuthor() {
         Book book = new Book(new Isbn("446612545"), "The Beach House", "James Patterson",
@@ -92,6 +93,4 @@ class BooksCatalogTest {
         ArrayList<Book> books = searchByTitleAndAuthor.search("house -black author:James");
         assertTrue(books.contains(book));
     }
-
-
 }

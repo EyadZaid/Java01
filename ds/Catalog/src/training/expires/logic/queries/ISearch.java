@@ -1,6 +1,6 @@
 package training.expires.logic.queries;
 
-import training.expires.dao.Book;
+import training.expires.data.Book;
 
 import java.util.ArrayList;
 
