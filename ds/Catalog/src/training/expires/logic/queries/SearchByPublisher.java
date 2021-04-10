@@ -49,7 +49,7 @@ public class SearchByPublisher implements ISearch{
         String[] wordsPublisher = bookPublisher.split("\\ ");
         for (int i=0; i<wordsPublisher.length; i++){
             String word = wordsPublisher[i];
-            if (word.length() > 1){
+            if (word.length() > 0){
                 wordsList.add(word);
             }
         }

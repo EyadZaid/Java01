@@ -50,7 +50,7 @@ public class SearchByAuthor implements ISearch{
         String[] wordsAuthor = bookAuthor.split("\\ ");
         for (int i=0; i<wordsAuthor.length; i++){
             String word = wordsAuthor[i];
-            if (word.length() > 1){
+            if (word.length() > 0){
                 wordsList.add(word);
             }
         }

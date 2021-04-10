@@ -55,7 +55,7 @@ public class SearchByTitle implements ISearch{
         String[] wordsTitle = bookTitle.split("\\ ");
         for (int i=0; i<wordsTitle.length; i++){
             String word = wordsTitle[i];
-            if (word.length() > 1){
+            if (word.length() > 0){
                 wordsList.add(word);
             }
         }
