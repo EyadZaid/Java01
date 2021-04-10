@@ -46,6 +46,14 @@ class SearchByAuthorTest {
     }
 
     @Test
+    void searchByAuthorLastName() {
+        Book book = new Book(new Isbn("452279690"), "Cavedweller", "Dorothy Allison",
+                1999, "Plume Books");
+        ArrayList<Book> books = searchByAuthor.search("allison");
+        assertTrue(books.contains(book));
+    }
+
+    @Test
     void searchByAuthorEmpty() {
         ArrayList<Book> books = searchByAuthor.search("");
         assertTrue(books.isEmpty());
