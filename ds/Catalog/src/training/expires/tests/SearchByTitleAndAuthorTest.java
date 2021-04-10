@@ -6,7 +6,6 @@ import training.expires.data.Book;
 import training.expires.data.BooksCatalog;
 import training.expires.data.Isbn;
 import training.expires.logic.inputs.InputParser;
-import training.expires.logic.queries.SearchByPublisher;
 import training.expires.logic.queries.SearchByTitleAndAuthor;
 
 import java.io.FileNotFoundException;
