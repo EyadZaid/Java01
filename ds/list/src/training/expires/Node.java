@@ -1,9 +1,9 @@
 package training.expires;
 
 public class Node<T> {
-    private T data;
-    private Node next;
-    private Node prev;
+    private final T data;
+    private Node<T> next;
+    private Node<T> prev;
 
     public Node(T d){
         data = d;
@@ -11,19 +11,19 @@ public class Node<T> {
         prev =null;
     }
 
-    public Node getNext() {
+    public Node<T> getNext() {
         return next;
     }
 
-    public Node getPrev() {
+    public Node<T> getPrev() {
         return prev;
     }
 
-    public void setNext(Node next) {
+    public void setNext(Node<T> next) {
         this.next = next;
     }
 
-    public void setPrev(Node prev) {
+    public void setPrev(Node<T> prev) {
         this.prev = prev;
     }
 

@@ -237,15 +237,21 @@ public class DoublyLinkedList<T> implements Iterable<T> {
     }
 
     private class listIterator implements Iterator<T>{
+        private Node<T> current = head;
 
         @Override
         public boolean hasNext() {
-            return false;
+            return current != null;
         }
 
         @Override
         public T next() {
-            return null;
+            if (!hasNext()){
+                return null;
+            }
+            T currentData = current.getData();
+            current = current.getNext();
+            return currentData;
         }
     }
 }
