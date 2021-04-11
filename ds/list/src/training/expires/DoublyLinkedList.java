@@ -1,8 +1,9 @@
 package training.expires;
 
+import java.util.Iterator;
 import java.util.Objects;
 
-public class DoublyLinkedList<T> {
+public class DoublyLinkedList<T> implements Iterable<T> {
     private Node<T> head;
     private Node<T> tail;
 
@@ -228,5 +229,23 @@ public class DoublyLinkedList<T> {
 
     public void setHead(Node<T> head) {
         this.head = head;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new  listIterator();
+    }
+
+    private class listIterator implements Iterator<T>{
+
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @Override
+        public T next() {
+            return null;
+        }
     }
 }
