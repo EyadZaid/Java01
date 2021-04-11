@@ -1,16 +1,30 @@
 package training.expires;
 
+import java.util.Iterator;
+
 public class Main {
 
     public static void main(String[] args) {
-
-        testSortedList();
-
+        testListWithIterator();
+        //testSortedList();
         //testDoublyLinkedList();
         //testSortedPointListByX();
         //testSortedPointListByLength();
         //testSortedPointListByLengthDesc();
+    }
 
+    public static void testListWithIterator(){
+        DoublyLinkedList<Integer> list = new DoublyLinkedList<>();
+
+        for (int i=1; i<=10; i++){
+            list.addAtTail(i);
+        }
+
+        Iterator<Integer> iterator = list.iterator();
+
+        while (iterator.hasNext()){
+            System.out.print(iterator.next() + " ");
+        }
     }
 
     public static void testSortedList(){
@@ -110,6 +124,10 @@ public class Main {
 
         System.out.println("Find item by index:  Index= " + list.find(1));
         System.out.println("Find item by index:  Index= " + list.find(30));
+
+
+
+        Iterator<Integer> iterator = list.iterator();
         
     }
 }
