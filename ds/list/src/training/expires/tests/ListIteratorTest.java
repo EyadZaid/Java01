@@ -44,4 +44,19 @@ class ListIteratorTest {
         Iterator<Integer> iterator = linkedList.iterator();
         assertFalse(iterator.hasNext());
     }
+
+    @Test
+    void listIteratorCheckFirstItemTest(){
+        var givenList = Arrays.asList(-5, 43, 3, -4, 5, 6, 62, 8, 56, 39);
+        List<Integer> resultList = new ArrayList<>();
+
+        for (var item : givenList){
+            linkedList.addAtTail(item);
+        }
+
+        Iterator<Integer> iterator = linkedList.iterator();
+
+        assertTrue(iterator.hasNext());
+        assertEquals(givenList.get(0), iterator.next());
+    }
 }
