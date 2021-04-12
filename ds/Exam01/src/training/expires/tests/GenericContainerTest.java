@@ -42,6 +42,8 @@ class GenericContainerTest {
         assertEquals(8, container.min());
         assertEquals(8, container.pop());
         assertEquals(13, container.min());
+        assertEquals(13, container.pop());
+        assertEquals(null, container.pop());
     }
 
     @Test

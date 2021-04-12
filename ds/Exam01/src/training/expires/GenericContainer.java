@@ -43,7 +43,7 @@ public class GenericContainer<T extends Comparable<T>> implements Iterable<T> {
 
     public T min(){
         if (!minStack.isEmpty()){
-            return minStack.pop();
+            return minStack.peek();
         }
         return null;
     }
@@ -52,6 +52,10 @@ public class GenericContainer<T extends Comparable<T>> implements Iterable<T> {
     @Override
     public Iterator<T> iterator() {
         return stack.iterator();
+    }
+
+    public int size(){
+        return stack.size();
     }
 
 
