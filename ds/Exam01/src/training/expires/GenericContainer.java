@@ -1,8 +1,9 @@
 package training.expires;
 
+import java.util.Iterator;
 import java.util.Stack;
 
-public class GenericContainer<T extends Comparable<T>> {
+public class GenericContainer<T extends Comparable<T>> implements Iterable<T> {
     private Stack<T> stack;
     private Stack<T> minStack;
 
@@ -46,6 +47,10 @@ public class GenericContainer<T extends Comparable<T>> {
     }
 
 
+    @Override
+    public Iterator<T> iterator() {
+        return stack.iterator();
+    }
 
 
 }
