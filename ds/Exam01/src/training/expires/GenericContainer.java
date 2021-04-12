@@ -25,5 +25,19 @@ public class GenericContainer<T extends Comparable<T>> {
         }
     }
 
+    public T pop(){
+        if (stack.isEmpty()){
+            return null;
+        }
+
+        T item = stack.pop();
+        if (minStack.peek().compareTo(item) == 0){
+            minStack.pop();
+        }
+        return item;
+    }
+
+
+
 
 }
