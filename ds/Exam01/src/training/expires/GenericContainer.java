@@ -12,11 +12,13 @@ public class GenericContainer<T extends Comparable<T>> implements Iterable<T> {
         minStack = new Stack<>();
     }
 
+    //Insert item to the container
     public void push(T item){
         stack.push(item);
         insertMinToStack(item);
     }
 
+    //Insert minimum item if needed
     private void insertMinToStack(T item){
         if (minStack.isEmpty()){
             minStack.push(item);
@@ -28,6 +30,7 @@ public class GenericContainer<T extends Comparable<T>> implements Iterable<T> {
         }
     }
 
+    //Remove last item inserted to the container and return it
     public T pop(){
         if (stack.isEmpty()){
             return null;
@@ -41,6 +44,7 @@ public class GenericContainer<T extends Comparable<T>> implements Iterable<T> {
     }
 
 
+    //Get current minimum item in the container
     public T min(){
         if (!minStack.isEmpty()){
             return minStack.peek();
@@ -51,7 +55,7 @@ public class GenericContainer<T extends Comparable<T>> implements Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return stack.iterator();
+        return stack.iterator();  //java.util.Stack implements Iterable
     }
 
     public int size(){
