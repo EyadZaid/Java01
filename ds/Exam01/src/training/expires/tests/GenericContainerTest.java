@@ -44,5 +44,19 @@ class GenericContainerTest {
         assertEquals(13, container.min());
     }
 
+    @Test
+    void iteratorTest(){
+        int array[] = {6, -2, 8, 13};
+
+        for (var e : array){
+            container.push(e);
+        }
+
+        int index = 0;
+        for (var v : container){
+            assertEquals(array[index++], v);
+        }
+    }
+
 
 }
