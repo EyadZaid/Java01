@@ -29,4 +29,20 @@ class GenericContainerTest {
     }
 
 
+    @Test
+    void getMinTest(){
+        container.push(13);
+        container.push(8);
+        container.push(-2);
+        container.push(6);
+
+        assertEquals(-2, container.min());
+        assertEquals(6, container.pop());
+        assertEquals(-2, container.pop());
+        assertEquals(8, container.min());
+        assertEquals(8, container.pop());
+        assertEquals(13, container.min());
+    }
+
+
 }

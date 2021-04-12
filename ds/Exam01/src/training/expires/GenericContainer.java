@@ -21,8 +21,10 @@ public class GenericContainer<T extends Comparable<T>> implements Iterable<T> {
         if (minStack.isEmpty()){
             minStack.push(item);
         }
-        else if (minStack.peek().compareTo(item) >= 0) {
-            minStack.push(item);
+        else {
+            if (minStack.peek().compareTo(item) >= 0) {
+                minStack.push(item);
+            }
         }
     }
 
