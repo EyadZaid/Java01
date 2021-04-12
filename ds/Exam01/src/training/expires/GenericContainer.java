@@ -38,6 +38,14 @@ public class GenericContainer<T extends Comparable<T>> {
     }
 
 
+    public T min(){
+        if (!minStack.isEmpty()){
+            return minStack.pop();
+        }
+        return null;
+    }
+
+
 
 
 }
