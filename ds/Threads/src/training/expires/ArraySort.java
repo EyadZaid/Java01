@@ -13,8 +13,8 @@ public class ArraySort {
 
     public int[] sort(){
         int middle = array.length/2;
-        int[] arrLeft = subArray(array, 0, middle);
-        int[] arrRight = subArray(array, middle, array.length);
+        int[] arrLeft = subArray(array, 0, middle-1);
+        int[] arrRight = subArray(array, middle, array.length-1);
 
         SortRunnable sortLeft = new SortRunnable(arrLeft);
         SortRunnable sortRight = new SortRunnable(arrRight);
