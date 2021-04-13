@@ -2,22 +2,26 @@ package training.expires;
 
 import java.util.Arrays;
 
-public class ArraySort implements Runnable {
+public class ArraySort {
     public int[] array;
-    private int middle;
+
 
     public ArraySort(int[] array) {
         this.array = array;
-        this.middle = array.length / 2;
     }
 
-    @Override
-    public void run() {
-        ArraySort arrLeft = new ArraySort(subArray(array, 0, middle));
-        ArraySort arrRight = new ArraySort(subArray(array, middle, array.length));
 
-        Thread tLeft = new Thread(arrLeft);
-        Thread tRight = new Thread((arrRight));
+    public int[] sort(){
+        int middle = array.length/2;
+        int[] arrLeft = subArray(array, 0, middle);
+        int[] arrRight = subArray(array, middle, array.length);
+
+        SortRunnable sortLeft = new SortRunnable(arrLeft);
+        SortRunnable sortRight = new SortRunnable(arrRight);
+
+
+        Thread tLeft = new Thread(sortLeft);
+        Thread tRight = new Thread(sortRight);
 
         tRight.start();
         tLeft.start();
@@ -29,8 +33,10 @@ public class ArraySort implements Runnable {
             e.printStackTrace();
         }
 
-        merge(arrLeft.array, arrRight.array);
+        merge(arrLeft, arrRight);
+        return array;
     }
+
 
     private void merge(int[] left, int[] right) {
         int i = 0, j = 0, k = 0;
@@ -61,6 +67,24 @@ public class ArraySort implements Runnable {
 
     public int[] subArray(int[] array, int from, int to) {
         return Arrays.copyOfRange(array, from, to + 1);
+    }
+
+
+    class SortRunnable implements Runnable{
+        private int[] array;
+
+        public SortRunnable(int[] array) {
+            this.array = array;
+        }
+
+        @Override
+        public void run() {
+            Arrays.sort(array);
+        }
+
+        public int[] getArray() {
+            return array;
+        }
     }
 
 }
