@@ -65,12 +65,12 @@ public class ArraySort {
     }
 
 
-    public int[] subArray(int[] array, int from, int to) {
+    private int[] subArray(int[] array, int from, int to) {
         return Arrays.copyOfRange(array, from, to + 1);
     }
 
 
-    class SortRunnable implements Runnable{
+    private class SortRunnable implements Runnable{
         private int[] array;
 
         public SortRunnable(int[] array) {
