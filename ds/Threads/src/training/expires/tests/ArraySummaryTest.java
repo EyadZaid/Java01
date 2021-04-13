@@ -14,24 +14,17 @@ class ArraySummaryTest {
     @Test
     void arraySummaryTest(){
         int[] arr = {3, 6, 8, 2, 4, 1, 0, 7, 5, 6};  //Sum = 42
-        ArraySummary arrSum1 = new ArraySummary(arr, 0, 5);
-        ArraySummary arrSum2 = new ArraySummary(arr, 5, arr.length);
 
-        Thread t1 = new Thread(arrSum1);
-        Thread t2 = new Thread(arrSum2);
+        ArraySummary arraySummary = new ArraySummary(arr);
 
-        t1.start();
-        t2.start();
-
-        try {
-            t1.join();
-            t2.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        int sum = arrSum1.getSum() + arrSum2.getSum();
-        System.out.println(sum);
+        int sum = arraySummary.summary();
         assertEquals(42, sum);
     }
+
+
+    @Test
+    void largeArrayTest(){
+        int[] arr = new int[1000000];
+    }
+
 }
