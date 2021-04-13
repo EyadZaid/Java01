@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ad991e43-963f-427a-a7a0-49002ecb92ea" name="Default Changelist" comment="Exam01 : Added new tests to NonRepeating" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1r42eMGJS47HfhFNp0oLBDDyA0T" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="company" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Repository.Attach.Annotations" value="true" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="training.expires.tests" />
+      <recent name="training.expires" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.training.expires.tests in Exam01">
+    <configuration name="NonRepeatingGenericTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Exam01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="training.expires.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="training.expires.tests" />
+      <option name="MAIN_CLASS_NAME" value="training.expires.tests.NonRepeatingGenericTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NonRepeatingGenericTest.first_non_repeatingOneItemInArrayTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Exam01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="training.expires.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="training.expires.tests" />
+      <option name="MAIN_CLASS_NAME" value="training.expires.tests.NonRepeatingGenericTest" />
+      <option name="METHOD_NAME" value="first_non_repeatingOneItemInArrayTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NonRepeatingNumTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Exam01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="training.expires.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="training.expires.tests" />
+      <option name="MAIN_CLASS_NAME" value="training.expires.tests.NonRepeatingNumTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="training.expires in Exam01" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Exam01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="training.expires.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="training.expires" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="training.expires.tests in Exam01" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Exam01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="training.expires.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="training.expires.tests" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.training.expires.tests in Exam01" />
+      <item itemvalue="JUnit.training.expires in Exam01" />
+      <item itemvalue="JUnit.NonRepeatingGenericTest" />
+      <item itemvalue="JUnit.NonRepeatingGenericTest.first_non_repeatingOneItemInArrayTest" />
+      <item itemvalue="JUnit.NonRepeatingNumTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.training.expires.tests in Exam01" />
+        <item itemvalue="JUnit.NonRepeatingNumTest" />
+        <item itemvalue="JUnit.NonRepeatingGenericTest" />
+        <item itemvalue="JUnit.NonRepeatingGenericTest.first_non_repeatingOneItemInArrayTest" />
+        <item itemvalue="JUnit.training.expires in Exam01" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ad991e43-963f-427a-a7a0-49002ecb92ea" name="Default Changelist" comment="" />
+      <created>1618221137865</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1618221137865</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Exam01 : Initialize new project">
+      <created>1618221251358</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1618221251358</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Exam01 : Initialize Non Repeating Number class">
+      <created>1618221858024</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1618221858024</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Exam01 : Implement first_non_repeating_num function">
+      <created>1618222590653</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1618222590653</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Exam01 : Added test first_non_repeating_num function">
+      <created>1618222932795</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1618222932795</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Exam01 : Implement first_non_repeating generic function">
+      <created>1618223252069</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1618223252069</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Exam01 : Added first_non_repeating generic test">
+      <created>1618223583331</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1618223583331</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Exam01 : Implement push function in class GenericContainer">
+      <created>1618225527794</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1618225527794</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Exam01 : Implement pop function in class GenericContainer">
+      <created>1618225766527</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1618225766527</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Exam01 : Implement min function in class GenericContainer">
+      <created>1618226103242</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1618226103242</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Exam01 : Implement iterator in class GenericContainer">
+      <created>1618226691745</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1618226691745</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Exam01 : Added test for push and pop functions">
+      <created>1618227156146</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1618227156146</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Exam01 : Added test for get min function">
+      <created>1618227858314</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1618227858314</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Exam01 : Added test for iterator function">
+      <created>1618228375187</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1618228375187</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Exam01 : Fixed bug in get min function">
+      <created>1618228952252</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1618228952252</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Exam01 : Added comments to GenericContainer">
+      <created>1618230180608</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1618230180608</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Exam01 : Added new tests to NonRepeating">
+      <created>1618230608840</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1618230608840</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Exam01 : Initialize new project" />
+    <MESSAGE value="Exam01 : Initialize Non Repeating Number class" />
+    <MESSAGE value="Exam01 : Implement first_non_repeating_num function" />
+    <MESSAGE value="Exam01 : Added test first_non_repeating_num function" />
+    <MESSAGE value="Exam01 : Implement first_non_repeating generic function" />
+    <MESSAGE value="Exam01 : Added first_non_repeating generic test" />
+    <MESSAGE value="Exam01 : Implement push function in class GenericContainer" />
+    <MESSAGE value="Exam01 : Implement pop function in class GenericContainer" />
+    <MESSAGE value="Exam01 : Implement min function in class GenericContainer" />
+    <MESSAGE value="Exam01 : Implement iterator in class GenericContainer" />
+    <MESSAGE value="Exam01 : Added test for push and pop functions" />
+    <MESSAGE value="Exam01 : Added test for get min function" />
+    <MESSAGE value="Exam01 : Added test for iterator function" />
+    <MESSAGE value="Exam01 : Fixed bug in get min function" />
+    <MESSAGE value="Exam01 : Added comments to GenericContainer" />
+    <MESSAGE value="Exam01 : Added new tests to NonRepeating" />
+    <option name="LAST_COMMIT_MESSAGE" value="Exam01 : Added new tests to NonRepeating" />
+  </component>
+</project>
