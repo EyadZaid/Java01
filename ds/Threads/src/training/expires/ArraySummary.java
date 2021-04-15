@@ -1,9 +1,7 @@
 package training.expires;
 
-import java.util.Arrays;
-
 public class ArraySummary {
-    private int[] array;
+    private final int[] array;
 
     public ArraySummary(int[] array) {
         this.array = array;
@@ -11,15 +9,11 @@ public class ArraySummary {
 
     public int summary(){
         int middle = array.length/2;
-        int[] arrLeft = subArray(array, 0, middle-1);
-        int[] arrRight = subArray(array, middle, array.length-1);
+        SumRunnable sumLeft = new SumRunnable(array, 0, middle - 1);
+        SumRunnable sumRight = new SumRunnable(array, middle, array.length - 1);
 
-        SumRunnable sortLeft = new SumRunnable(arrLeft);
-        SumRunnable sortRight = new SumRunnable(arrRight);
-
-
-        Thread tLeft = new Thread(sortLeft);
-        Thread tRight = new Thread(sortRight);
+        Thread tLeft = new Thread(sumLeft);
+        Thread tRight = new Thread(sumRight);
 
         tRight.start();
         tLeft.start();
@@ -31,27 +25,27 @@ public class ArraySummary {
             e.printStackTrace();
         }
 
-        return sortLeft.getSum() + sortRight.getSum();
-    }
-
-    private int[] subArray(int[] array, int from, int to) {
-        return Arrays.copyOfRange(array, from, to + 1);
+        return sumLeft.getSum() + sumRight.getSum();
     }
 
 
     private class SumRunnable implements Runnable{
-        private int[] array;
+        private final int[] array;
         private int sum;
+        private final int startIndex;
+        private final int endIndex;
 
-        public SumRunnable(int[] array) {
+        public SumRunnable(int[] array, int startIndex, int endIndex) {
             this.array = array;
             this.sum = 0;
+            this.startIndex = startIndex;
+            this.endIndex = endIndex;
         }
 
         @Override
         public void run() {
-            for (var e : array){
-                sum += e;
+            for (int i=startIndex; i<=endIndex; i++){
+                sum += array[i];
             }
         }
 
