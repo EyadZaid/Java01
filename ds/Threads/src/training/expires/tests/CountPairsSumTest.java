@@ -14,12 +14,23 @@ class CountPairsSumTest {
     }
 
     @Test
-    void countPairsWithSum() {
+    void countTwoPairsWithSumFive() {
         int[] arr = {3, 1, 9, 4, 5, 2, 8};
 
         CountPairsSum countPairsSum = new CountPairsSum();
 
         int count = countPairsSum.countPairsWithSum(arr, 5, 3);
         assertEquals(2, count);
+    }
+
+
+    @Test
+    void countOnePairsWithSumThree() {
+        int[] arr = {1, 3, 2, 2, 2, 4};
+
+        CountPairsSum countPairsSum = new CountPairsSum();
+
+        int count = countPairsSum.countPairsWithSum(arr, 3, 3);
+        assertEquals(1, count);
     }
 }
