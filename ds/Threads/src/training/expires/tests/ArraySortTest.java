@@ -47,4 +47,15 @@ class ArraySortTest {
             assertEquals(arrExpected[i], sortedArr[i]);
         }
     }
+
+
+    @Test
+    void arraySortTestEmptyArray() {
+        int[] arr = {};
+
+        ArraySort arraySort = new ArraySort(arr);
+        int[] sortedArr = arraySort.sort();
+
+        assertEquals(0, sortedArr.length);
+    }
 }
