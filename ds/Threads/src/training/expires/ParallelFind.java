@@ -4,6 +4,9 @@ public class ParallelFind {
 
     public boolean search(int[] arr, int x, int nThreads){
         int sizeArr = arr.length;
+        if (sizeArr < 1){
+            return false;
+        }
         if (nThreads > sizeArr || nThreads < 1) {
             nThreads = sizeArr;
         }
