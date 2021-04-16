@@ -3,6 +3,8 @@ package training.expires.tests;
 import org.junit.jupiter.api.Test;
 import training.expires.ArraySummary;
 
+import java.util.Random;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ArraySummaryTest {
@@ -24,7 +26,27 @@ class ArraySummaryTest {
 
     @Test
     void largeArrayTest(){
-        int[] arr = new int[1000000];
+        Random rng = new Random();
+        int[] arr = new int[100];
+        int sum = 0;
+        for (int i=0; i<arr.length; i++){
+            int rndNum = rng.nextInt(1000 - 10)  + 10;
+            arr[i] = rndNum;
+            sum += rndNum;
+        }
+
+        ArraySummary arraySummary = new ArraySummary(arr);
+
+        assertEquals(sum, arraySummary.summary());
+    }
+
+    @Test
+    void emptyArrayTest(){
+        int[] arr = {};
+
+        ArraySummary arraySummary = new ArraySummary(arr);
+
+        assertEquals(0, arraySummary.summary());
     }
 
 }
