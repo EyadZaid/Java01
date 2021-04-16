@@ -2,7 +2,7 @@ package training.expires;
 
 public class ParallelFind {
 
-    public boolean search(int[] arr, int x, int nThreads){
+    public boolean search(int[] arr, int findElement, int nThreads){
         int sizeArr = arr.length;
         if (sizeArr < 1){
             return false;
@@ -15,9 +15,9 @@ public class ParallelFind {
 
         FindRunnable[] finds = new FindRunnable[nThreads+1];
         for (int i=0; i<nThreads; i++){
-            finds[i] = new FindRunnable(arr, x, i*segment, i*segment + segment);
+            finds[i] = new FindRunnable(arr, findElement, i*segment, i*segment + segment);
         }
-        finds[nThreads] = new FindRunnable(arr, x, sizeArr-leftOver, sizeArr);
+        finds[nThreads] = new FindRunnable(arr, findElement, sizeArr-leftOver, sizeArr);
 
         Thread[] tFinds = new Thread[nThreads+1];
         for (int i=0; i<finds.length; i++){
