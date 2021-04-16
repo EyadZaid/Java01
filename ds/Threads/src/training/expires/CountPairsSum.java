@@ -13,7 +13,10 @@ public class CountPairsSum {
 
     public int countPairsWithSum(int[] arr, int sum, int nThreads){
         int sizeArr = arr.length;
-        if (nThreads > sizeArr || nThreads < 1) {
+        if (sizeArr < 1){
+            return 0;
+        }
+        if (nThreads > sizeArr) {
             nThreads = sizeArr;
         }
         int segment = sizeArr / nThreads;

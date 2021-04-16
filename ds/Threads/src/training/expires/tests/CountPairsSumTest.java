@@ -33,4 +33,14 @@ class CountPairsSumTest {
         int count = countPairsSum.countPairsWithSum(arr, 3, 3);
         assertEquals(1, count);
     }
+
+    @Test
+    void countPairsWithSumEmptyArray() {
+        int[] arr = {};
+
+        CountPairsSum countPairsSum = new CountPairsSum();
+
+        int count = countPairsSum.countPairsWithSum(arr, 3, 3);
+        assertEquals(0, count);
+    }
 }
