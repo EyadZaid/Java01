@@ -41,22 +41,22 @@ public class ParallelFind {
 
     private class FindRunnable implements Runnable{
         private final int[] array;
-        private final int startIndex;
-        private final int endIndex;
+        private final int start;
+        private final int end;
         private final int findElement;
         private boolean isExist;
 
-        public FindRunnable(int[] array, int findElement, int startIndex, int endIndex) {
+        public FindRunnable(int[] array, int findElement, int start, int end) {
             this.array = array;
-            this.startIndex = startIndex;
-            this.endIndex = endIndex;
+            this.start = start;
+            this.end = end;
             this.findElement = findElement;
             this.isExist = false;
         }
 
         @Override
         public void run() {
-            for (int i=startIndex; i<=endIndex; i++){
+            for (int i = start; i< end; i++){
                 if (array[i] == findElement){
                     isExist = true;
                     break;
