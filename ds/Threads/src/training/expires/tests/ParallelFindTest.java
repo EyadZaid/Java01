@@ -2,7 +2,6 @@ package training.expires.tests;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import training.expires.ArraySummary;
 import training.expires.ParallelFind;
 
 import java.util.Random;

@@ -34,7 +34,7 @@ public class ParallelFind {
         }
 
         for (var e : finds){
-            if (e.isExist){
+            if (e.isExist()){
                 return true;
             }
         }
