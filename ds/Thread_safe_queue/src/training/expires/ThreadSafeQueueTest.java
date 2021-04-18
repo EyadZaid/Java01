@@ -17,17 +17,17 @@ class ThreadSafeQueueTest {
 
     @Test
     void FIFOTest_oneThread() {
-        for (int i=0; i<10; i++){
+        for (int i=0; i<100; i++){
             queue.enqueue(i);
         }
 
-        for (int i=0; i<10; i++){
+        for (int i=0; i<100; i++){
             assertEquals(i, queue.dequeue());
         }
     }
 
     @Test
-    void twoThreadTest() {
+    void testWith_1producer_1consumer() {
         int n = 105;
         List<Integer> list = generateList(n);
         Producer producer = new Producer(queue, list);
@@ -48,6 +48,12 @@ class ThreadSafeQueueTest {
         }
 
         assertArrayEquals(list.toArray(), consumer.getResult().toArray());
+    }
+
+
+    @Test
+    void testWith_2producers_1consumer() {
+
     }
 
 
