@@ -12,7 +12,7 @@ class ThreadSafeQueueTest {
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
-        queue = new ThreadSafeQueue<>(100);
+        queue = new ThreadSafeQueue<>(10000);
     }
 
     @Test
@@ -47,40 +47,35 @@ class ThreadSafeQueueTest {
             fail();
         }
 
+        assertEquals(list.size(), consumer.getResult().size());
         assertArrayEquals(list.toArray(), consumer.getResult().toArray());
     }
 
 
     @Test
     void testWith_2producers_1consumer() {
+        int n = 100;
+        List<Integer> list = generateList(n);
+        var tg = new ThreadGroup(2, () -> new Producer(queue, list) );
+        tg.start();
+        tg.join();
 
-    }
-
-
-    @Test
-    void nThreadTest() {
-        /*
-        int n = 10;
-        int m = 5;
-        Producer[] producers = new Producer[n];
-        Consumer[] consumers = new Consumer[m];
-        Thread[] threads = new Thread[n + m];
-
-        for (int i=0; i<n; i++){
-            producers[i] = new Producer(queue, i+1);
-            threads[i] = new Thread(producers[i]);
+        Consumer consumer = new Consumer(queue, n);
+        Thread tConsumer = new Thread(consumer);
+        tConsumer.start();
+        try {
+            tConsumer.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            fail();
         }
 
-        for (int i=0; i<m; i++){
-            consumers[i] = new Consumer(queue, i+1);
-            threads[i + n] = new Thread(consumers[i]);
-        }
+        System.out.println(list);
+        System.out.println(consumer.getResult());
 
+        assertEquals(list.size(), consumer.getResult().size());
+        //assertArrayEquals(list.toArray(), consumer.getResult().toArray());
 
-        for (int i=0; i<threads.length; i++){
-            threads[i].start();
-        }
-         */
     }
 
     private List<Integer> generateList(int size){
