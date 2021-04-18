@@ -20,20 +20,34 @@ public class ThreadSafeQueue<T> {
     }
 
     public int getSize(){
-        return size;
+        synchronized (lock) {
+            return size;
+        }
     }
 
     public boolean isEmpty(){
-        return size == 0;
+        synchronized (lock) {
+            return size == 0;
+        }
     }
 
     public boolean isFull(){
+        synchronized (lock) {
+            return size == capacity;
+        }
+    }
+
+    private boolean empty(){
+        return size == 0;
+    }
+
+    private boolean full(){
         return size == capacity;
     }
 
     public void enqueue(T item){
         synchronized (lock) {
-            while(present){
+            while(full()){
                 try {
                     lock.wait();
                 } catch (InterruptedException e) {
@@ -44,17 +58,13 @@ public class ThreadSafeQueue<T> {
             rear = (rear + 1) % capacity;
             data[rear] = item;
             size++;
-
-            if (isFull()) {
-                present = true;
-                lock.notify();
-            }
+            lock.notifyAll();
         }
     }
 
     public T dequeue() {
         synchronized (lock) {
-            while(!present){
+            while(empty()){
                 try {
                     lock.wait();
                 } catch (InterruptedException e) {
@@ -65,11 +75,7 @@ public class ThreadSafeQueue<T> {
             T item = data[front];
             front = (front + 1) % capacity;
             size--;
-
-            if (isEmpty()) {
-                present = false;
-                lock.notify();
-            }
+            lock.notifyAll();
 
             return item;
         }
