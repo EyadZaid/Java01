@@ -19,6 +19,10 @@ public class ThreadSafeQueue<T> {
         return size == 0;
     }
 
+    public boolean isFull(){
+        return size == capacity;
+    }
+
 
 
 
