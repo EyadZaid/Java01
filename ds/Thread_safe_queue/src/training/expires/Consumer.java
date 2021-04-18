@@ -1,10 +1,10 @@
 package training.expires;
 
-public class Producer implements Runnable{
+public class Consumer implements Runnable{
     private ThreadSafeQueue<Integer> queue;
     private final int number;
 
-    public Producer(ThreadSafeQueue<Integer> queue, int number) {
+    public Consumer(ThreadSafeQueue<Integer> queue, int number) {
         this.queue = queue;
         this.number = number;
     }
@@ -12,8 +12,8 @@ public class Producer implements Runnable{
     @Override
     public void run() {
         for (int i=0; i<10; i++){
-            queue.enqueue(i);
-            System.out.println("Producer " + number + " enqueue: " + i);
+            System.out.println("Consumer " + number + " dequeue: " + queue.dequeue());
         }
+
     }
 }
