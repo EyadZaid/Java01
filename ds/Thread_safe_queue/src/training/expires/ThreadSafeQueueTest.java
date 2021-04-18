@@ -34,4 +34,29 @@ class ThreadSafeQueueTest {
         tProducer1.start();
         tConsumer1.start();
     }
+
+
+    @Test
+    void nThreadTest() {
+        int n = 10;
+        int m = 5;
+        Producer[] producers = new Producer[n];
+        Consumer[] consumers = new Consumer[m];
+        Thread[] threads = new Thread[n + m];
+
+        for (int i=0; i<n; i++){
+            producers[i] = new Producer(queue, i+1);
+            threads[i] = new Thread(producers[i]);
+        }
+
+        for (int i=0; i<m; i++){
+            consumers[i] = new Consumer(queue, i+1);
+            threads[i + n] = new Thread(consumers[i]);
+        }
+
+
+        for (int i=0; i<threads.length; i++){
+            threads[i].start();
+        }
+    }
 }
