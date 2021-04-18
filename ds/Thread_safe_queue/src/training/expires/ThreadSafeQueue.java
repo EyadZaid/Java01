@@ -8,7 +8,18 @@ public class ThreadSafeQueue<T> {
     public ThreadSafeQueue(int capacity) {
         this.capacity = capacity;
         this.data = (T[]) new Object[capacity];
+        this.size = 0;
     }
+
+    public int getSize(){
+        return size;
+    }
+
+    public boolean isEmpty(){
+        return size == 0;
+    }
+
+
 
 
 }
