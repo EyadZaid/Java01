@@ -1,18 +1,20 @@
 package training.expires;
 
 public class ThreadSafeQueue<T> {
-    private T[] data;
-    private int capacity;
+    private final T[] data;
+    private final int capacity;
+    private boolean present;
     private int size;
     private int front;
     private int rear;
 
     public ThreadSafeQueue(int capacity) {
         this.capacity = capacity;
-        this.data = (T[]) new Object[capacity];
-        this.size = 0;
-        this.front = 0;
-        this.rear = capacity - 1;
+        data = (T[]) new Object[capacity];
+        size = 0;
+        front = 0;
+        rear = capacity - 1;
+        present = true;
     }
 
     public int getSize(){
@@ -28,27 +30,47 @@ public class ThreadSafeQueue<T> {
     }
 
     public void enqueue(T item){
-        if (isFull()){
-            return;
-        }
+        synchronized (data) {
+            while(present){
+                try {
+                    data.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
 
-        rear = (rear + 1)  % capacity;
-        data[rear] = item;
-        size++;
+            rear = (rear + 1) % capacity;
+            data[rear] = item;
+            size++;
+
+            if (isFull()) {
+                present = true;
+                data.notify();
+            }
+        }
     }
 
-    public T dequeue(){
-        if (isEmpty()){
-            return null;
+    public T dequeue() {
+        synchronized (data) {
+            while(!present){
+                try {
+                    data.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            T item = data[front];
+            front = (front + 1) % capacity;
+            size--;
+
+            if (isEmpty()) {
+                present = false;
+                data.notify();
+            }
+
+            return item;
         }
-
-        T item = data[front];
-        front = (front + 1) % capacity;
-        size--;
-        return item;
     }
-
-
-
 
 }
