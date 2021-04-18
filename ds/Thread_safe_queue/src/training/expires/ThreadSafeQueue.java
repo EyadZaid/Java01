@@ -1,5 +1,6 @@
 package training.expires;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class ThreadSafeQueue<T> {
@@ -83,7 +84,6 @@ public class ThreadSafeQueue<T> {
         }
     }
 
-
     public void enqueue(List<T> items) {
         synchronized (lock) {
             for (var i : items){
@@ -92,4 +92,11 @@ public class ThreadSafeQueue<T> {
         }
     }
 
+    public void enqueue(T... items) {
+        synchronized (lock) {
+            for (var i : items){
+                enqueue(i);
+            }
+        }
+    }
 }
