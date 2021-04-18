@@ -4,6 +4,7 @@ public class ThreadSafeQueue<T> {
     private final T[] data;
     private final int capacity;
     private boolean present;
+    private final Object lock;
     private int size;
     private int front;
     private int rear;
@@ -15,6 +16,7 @@ public class ThreadSafeQueue<T> {
         front = 0;
         rear = capacity - 1;
         present = true;
+        lock = new Object();
     }
 
     public int getSize(){
@@ -30,10 +32,10 @@ public class ThreadSafeQueue<T> {
     }
 
     public void enqueue(T item){
-        synchronized (data) {
+        synchronized (lock) {
             while(present){
                 try {
-                    data.wait();
+                    lock.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -45,16 +47,16 @@ public class ThreadSafeQueue<T> {
 
             if (isFull()) {
                 present = true;
-                data.notify();
+                lock.notify();
             }
         }
     }
 
     public T dequeue() {
-        synchronized (data) {
+        synchronized (lock) {
             while(!present){
                 try {
-                    data.wait();
+                    lock.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -66,7 +68,7 @@ public class ThreadSafeQueue<T> {
 
             if (isEmpty()) {
                 present = false;
-                data.notify();
+                lock.notify();
             }
 
             return item;
