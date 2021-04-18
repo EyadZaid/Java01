@@ -1,5 +1,7 @@
 package training.expires;
 
+import java.util.List;
+
 public class ThreadSafeQueue<T> {
     private final T[] data;
     private final int capacity;
@@ -78,6 +80,15 @@ public class ThreadSafeQueue<T> {
             lock.notifyAll();
 
             return item;
+        }
+    }
+
+
+    public void enqueue(List<T> items) {
+        synchronized (lock) {
+            for (var i : items){
+                enqueue(i);
+            }
         }
     }
 
