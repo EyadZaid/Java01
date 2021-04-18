@@ -15,7 +15,7 @@ public class ThreadSafeQueue<T> {
         size = 0;
         front = 0;
         rear = capacity - 1;
-        present = true;
+        present = false;
         lock = new Object();
     }
 
