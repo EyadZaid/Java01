@@ -122,7 +122,41 @@ class ThreadSafeQueueTest {
 
     @Test
     void testWith_nProducer_mConsumers() {
+        int nProducers = 5;
+        int mConsumers = 5;
+        int capacity = 100;
+        int enqueue_n = 100;  //for 1 producer
+        int dequeue_n = (enqueue_n * nProducers) / mConsumers;  //for 1 consumer
 
+        queue = new ThreadSafeQueue<>(capacity);
+        List<Integer> list = generateList(enqueue_n);
+        var tg = new ThreadGroup(nProducers, () -> new Producer(queue, list) );
+        tg.start();
+
+        Consumer[] consumers = new Consumer[mConsumers];
+        Thread[] tConsumers = new Thread[mConsumers];
+
+        for (int i=0; i<mConsumers; i++) {
+            consumers[i] = new Consumer(queue, dequeue_n);
+            tConsumers[i] = new Thread(consumers[i]);
+            tConsumers[i].start();
+        }
+
+        try {
+            tg.join();
+            for (var th : tConsumers){
+                th.join();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            fail();
+        }
+
+        assertTrue(queue.isEmpty());
+
+        for (var c : consumers) {
+            assertEquals(dequeue_n, c.getResult().size());
+        }
 
     }
 
