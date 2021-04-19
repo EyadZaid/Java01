@@ -12,11 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class ThreadSafeQueueTest {
     private ThreadSafeQueue<Integer> queue;
 
-    @org.junit.jupiter.api.BeforeEach
-    void setUp() {
-    }
-
-
     @Test
     void FIFOTest_oneThread() {
         queue = new ThreadSafeQueue<>(100);
@@ -126,18 +121,16 @@ class ThreadSafeQueueTest {
     }
 
     @Test
-    void testWith_nProducer_mConsumers() {
-        /*
+    void testWith_nProducers_mConsumers() {
         int nProducers = 5;
         int mConsumers = 4;
         int capacity = 100;
         int enqueue_n = 100;  //for 1 producer
-        int dequeue_n = (enqueue_n * nProducers) / mConsumers;  //for 1 consumer   /////-------------
 
         queue = new ThreadSafeQueue<>(capacity);
         List<Integer> list = generateList(enqueue_n);
-        var tg = new ThreadGroup(nProducers, () -> new Producer(queue, list) );
-        tg.start();
+        var producers = new ThreadGroup(nProducers, () -> new Producer(queue, list));
+        producers.start();
 
         Consumer[] consumers = new Consumer[mConsumers];
         Thread[] tConsumers = new Thread[mConsumers];
@@ -149,7 +142,10 @@ class ThreadSafeQueueTest {
         }
 
         try {
-            tg.join();
+            producers.join();
+            for (int i=0; i<mConsumers; i++){
+                queue.enqueue(-1);
+            }
             for (var th : tConsumers){
                 th.join();
             }
@@ -160,13 +156,13 @@ class ThreadSafeQueueTest {
 
         assertTrue(queue.isEmpty());
 
+        List<List<Integer>> results = new ArrayList<>();
         for (var c : consumers) {
-            assertEquals(dequeue_n, c.getResult().size());
+            results.add(c.getResult());
         }
 
-        //assertTrue(checkResultFor_nProducers(list, consumers[0].getResult(), nProducers));
+        assertTrue(checkResultFor_nProducers(list, results, nProducers));
 
-         */
     }
 
 
@@ -218,20 +214,31 @@ class ThreadSafeQueueTest {
         return true;
     }
 
-    private boolean checkResultFor_nProducers(List<Integer> list, List<Integer> result, int nProducers) {
-        int list_size = list.size();
-        if (list_size * nProducers != result.size()){
+    private boolean checkResultFor_nProducers(List<Integer> list, List<List<Integer>> results, int nProducers) {
+        int sizeAllResults = 0;
+
+        for (var r : results){
+            sizeAllResults += r.size();
+        }
+
+        if (list.size() * nProducers != sizeAllResults) {
             return false;
         }
-        List<Integer> values = new ArrayList<>(Collections.nCopies(nProducers, 0));
 
-        for (int k=0; k<result.size(); k++){
-            if (values.contains(result.get(k))) {
+        List<Integer> values = new ArrayList<>(Collections.nCopies(nProducers, 1));
 
+        for (var res : results) {
+            for (var r : res) {
+                int index = values.indexOf(r);
+                if (index != -1) {
+                    values.set(index, r+1);
+                }
+                else {
+                    return false;
+                }
             }
-
         }
-
+        //System.out.println(values);
         return true;
     }
 
