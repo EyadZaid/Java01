@@ -58,8 +58,7 @@ class ThreadSafeQueueTest {
     @Test
     void testWith_2producers_1consumer() {
         int capacity = 1000;
-        int enqueue_n = 10000;  //for 1 producer
-        int dequeue_n = enqueue_n * 2;
+        int enqueue_n = 10000;  //10000 elements for each producer
 
         queue = new ThreadSafeQueue<>(capacity);
         List<Integer> list = generateList(enqueue_n);
@@ -79,15 +78,14 @@ class ThreadSafeQueueTest {
         }
 
         assertTrue(queue.isEmpty());
-        assertEquals(dequeue_n, consumer.getResult().size());
+        assertEquals(enqueue_n * 2, consumer.getResult().size());
         assertTrue(checkResultFor_2producers(list, consumer.getResult()));
     }
 
     @Test
     void testWith_1producer_2consumers() {
         int capacity = 1000;
-        int enqueue_n = 10000;  //for 1 producer
-        int dequeue_n = enqueue_n / 2; //for 1 consumer
+        int enqueue_n = 10000;  //10000 for 1 producer
 
         queue = new ThreadSafeQueue<>(capacity);
         List<Integer> list = generateList(enqueue_n);
@@ -125,7 +123,7 @@ class ThreadSafeQueueTest {
         int nProducers = 5;
         int mConsumers = 4;
         int capacity = 100;
-        int enqueue_n = 100;  //for 1 producer
+        int enqueue_n = 100;  //100 elements for each producer
 
         queue = new ThreadSafeQueue<>(capacity);
         List<Integer> list = generateList(enqueue_n);
@@ -162,7 +160,6 @@ class ThreadSafeQueueTest {
         }
 
         assertTrue(checkResultFor_nProducers(list, results, nProducers));
-
     }
 
 
