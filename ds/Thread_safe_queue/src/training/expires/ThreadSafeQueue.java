@@ -1,24 +1,23 @@
 package training.expires;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
 public class ThreadSafeQueue<T> {
     private final T[] data;
     private final int capacity;
-    private boolean present;
     private final Object lock;
     private int size;
-    private int front;
-    private int rear;
+    private int head;
+    private int tail;
 
     public ThreadSafeQueue(int capacity) {
         this.capacity = capacity;
         data = (T[]) new Object[capacity];
         size = 0;
-        front = 0;
-        rear = capacity - 1;
-        present = false;
+        head = 0;
+        tail = capacity - 1;
         lock = new Object();
     }
 
@@ -58,8 +57,8 @@ public class ThreadSafeQueue<T> {
                 }
             }
 
-            rear = (rear + 1) % capacity;
-            data[rear] = item;
+            tail = (tail + 1) % capacity;
+            data[tail] = item;
             size++;
             lock.notifyAll();
         }
@@ -75,8 +74,8 @@ public class ThreadSafeQueue<T> {
                 }
             }
 
-            T item = data[front];
-            front = (front + 1) % capacity;
+            T item = data[head];
+            head = (head + 1) % capacity;
             size--;
             lock.notifyAll();
 
@@ -84,19 +83,15 @@ public class ThreadSafeQueue<T> {
         }
     }
 
-    public void enqueue(List<T> items) {
+    public void enqueue(Iterator<T> iterator) {
         synchronized (lock) {
-            for (var i : items){
-                enqueue(i);
+            while (iterator.hasNext()){
+                enqueue(iterator.next());
             }
         }
     }
 
-    public void enqueue(T... items) {
-        synchronized (lock) {
-            for (var i : items){
-                enqueue(i);
-            }
-        }
+    public void enqueue(T... allItems) {
+        enqueue(Arrays.stream(allItems).iterator());
     }
 }
