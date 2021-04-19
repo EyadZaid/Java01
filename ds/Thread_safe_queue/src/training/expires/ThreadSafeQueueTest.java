@@ -24,6 +24,8 @@ class ThreadSafeQueueTest {
         for (int i=0; i<100; i++){
             assertEquals(i, queue.dequeue());
         }
+
+        assertTrue(queue.isEmpty());
     }
 
     @Test
@@ -49,16 +51,16 @@ class ThreadSafeQueueTest {
             fail();
         }
 
+        assertTrue(queue.isEmpty());
         assertEquals(list.size(), consumer.getResult().size());
         assertArrayEquals(list.toArray(), consumer.getResult().toArray());
     }
-
 
     @Test
     void testWith_2producers_1consumer() {
         int capacity = 1000;
         int enqueue_n = 10000;  //for 1 producer
-        int dequeue_n = enqueue_n * 2 - capacity;
+        int dequeue_n = enqueue_n * 2;
 
         queue = new ThreadSafeQueue<>(capacity);
         List<Integer> list = generateList(enqueue_n);
@@ -79,6 +81,7 @@ class ThreadSafeQueueTest {
         //System.out.println(list);
         //System.out.println(consumer.getResult());
 
+        assertTrue(queue.isEmpty());
         assertEquals(dequeue_n, consumer.getResult().size());
         //assertArrayEquals(list.toArray(), consumer.getResult().toArray());
 
