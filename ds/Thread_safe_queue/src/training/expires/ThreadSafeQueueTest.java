@@ -28,8 +28,9 @@ class ThreadSafeQueueTest {
 
     @Test
     void testWith_1producer_1consumer() {
-        int n = 10000;
-        queue = new ThreadSafeQueue<>(5000);
+        int capacity = 100;
+        int n = 100000;
+        queue = new ThreadSafeQueue<>(capacity);
         List<Integer> list = generateList(n);
         Producer producer = new Producer(queue, list);
         Consumer consumer = new Consumer(queue, n);
@@ -55,27 +56,30 @@ class ThreadSafeQueueTest {
 
     @Test
     void testWith_2producers_1consumer() {
-        int n = 100;
-        queue = new ThreadSafeQueue<>(500);
-        List<Integer> list = generateList(n);
+        int capacity = 1000;
+        int enqueue_n = 10000;  //for 1 producer
+        int dequeue_n = enqueue_n * 2 - capacity;
+
+        queue = new ThreadSafeQueue<>(capacity);
+        List<Integer> list = generateList(enqueue_n);
         var tg = new ThreadGroup(2, () -> new Producer(queue, list) );
         tg.start();
-        tg.join();
 
-        Consumer consumer = new Consumer(queue, n);
+        Consumer consumer = new Consumer(queue, dequeue_n);
         Thread tConsumer = new Thread(consumer);
         tConsumer.start();
         try {
+            tg.join();
             tConsumer.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
             fail();
         }
 
-        System.out.println(list);
-        System.out.println(consumer.getResult());
+        //System.out.println(list);
+        //System.out.println(consumer.getResult());
 
-        assertEquals(list.size(), consumer.getResult().size());
+        assertEquals(dequeue_n, consumer.getResult().size());
         //assertArrayEquals(list.toArray(), consumer.getResult().toArray());
 
     }
