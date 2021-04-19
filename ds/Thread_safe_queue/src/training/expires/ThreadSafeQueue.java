@@ -85,12 +85,27 @@ public class ThreadSafeQueue<T> {
     public void enqueue(Iterator<T> iterator) {
         synchronized (lock) {
             while (iterator.hasNext()){
-                enqueue(iterator.next());
+                put(iterator.next());
             }
         }
     }
 
     public void enqueue(T... allItems) {
         enqueue(Arrays.stream(allItems).iterator());
+    }
+
+    private void put(T item) {
+        while(full()){
+            try {
+                lock.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        tail = (tail + 1) % capacity;
+        data[tail] = item;
+        size++;
+        lock.notifyAll();
     }
 }
