@@ -3,9 +3,11 @@ package training.expires;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ThreadSafeQueueTest {
     private ThreadSafeQueue<Integer> queue;
@@ -36,7 +38,7 @@ class ThreadSafeQueueTest {
         queue = new ThreadSafeQueue<>(capacity);
         List<Integer> list = generateList(n);
         Producer producer = new Producer(queue, list);
-        Consumer consumer = new Consumer(queue, n);
+        Consumer consumer = new Consumer(queue);
 
         Thread tProducer = new Thread(producer);
         Thread tConsumer = new Thread(consumer);
@@ -46,6 +48,7 @@ class ThreadSafeQueueTest {
 
         try {
             tProducer.join();
+            queue.enqueue(-1);
             tConsumer.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -65,14 +68,15 @@ class ThreadSafeQueueTest {
 
         queue = new ThreadSafeQueue<>(capacity);
         List<Integer> list = generateList(enqueue_n);
-        var tg = new ThreadGroup(2, () -> new Producer(queue, list) );
+        var tg = new ThreadGroup(2, () -> new Producer(queue, list));
         tg.start();
 
-        Consumer consumer = new Consumer(queue, dequeue_n);
+        Consumer consumer = new Consumer(queue);
         Thread tConsumer = new Thread(consumer);
         tConsumer.start();
         try {
             tg.join();
+            queue.enqueue(-1);
             tConsumer.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -94,8 +98,8 @@ class ThreadSafeQueueTest {
         List<Integer> list = generateList(enqueue_n);
 
         Producer producer = new Producer(queue, list);
-        Consumer consumer1 = new Consumer(queue, dequeue_n);
-        Consumer consumer2 = new Consumer(queue, dequeue_n);
+        Consumer consumer1 = new Consumer(queue);
+        Consumer consumer2 = new Consumer(queue);
 
         Thread tProducer = new Thread(producer);
         Thread tConsumer1 = new Thread(consumer1);
@@ -123,10 +127,10 @@ class ThreadSafeQueueTest {
     @Test
     void testWith_nProducer_mConsumers() {
         int nProducers = 5;
-        int mConsumers = 5;
+        int mConsumers = 4;
         int capacity = 100;
         int enqueue_n = 100;  //for 1 producer
-        int dequeue_n = (enqueue_n * nProducers) / mConsumers;  //for 1 consumer
+        int dequeue_n = (enqueue_n * nProducers) / mConsumers;  //for 1 consumer   /////-------------
 
         queue = new ThreadSafeQueue<>(capacity);
         List<Integer> list = generateList(enqueue_n);
@@ -137,7 +141,7 @@ class ThreadSafeQueueTest {
         Thread[] tConsumers = new Thread[mConsumers];
 
         for (int i=0; i<mConsumers; i++) {
-            consumers[i] = new Consumer(queue, dequeue_n);
+            consumers[i] = new Consumer(queue);
             tConsumers[i] = new Thread(consumers[i]);
             tConsumers[i].start();
         }
@@ -158,6 +162,7 @@ class ThreadSafeQueueTest {
             assertEquals(dequeue_n, c.getResult().size());
         }
 
+        //assertTrue(checkResultFor_nProducers(list, consumers[0].getResult(), nProducers));
     }
 
 
@@ -209,10 +214,27 @@ class ThreadSafeQueueTest {
         return true;
     }
 
+    private boolean checkResultFor_nProducers(List<Integer> list, List<Integer> result, int nProducers) {
+        int list_size = list.size();
+        if (list_size * nProducers != result.size()){
+            return false;
+        }
+        List<Integer> values = new ArrayList<>(Collections.nCopies(nProducers, 0));
+
+        for (int k=0; k<result.size(); k++){
+            if (values.contains(result.get(k))) {
+
+            }
+
+        }
+
+        return true;
+    }
+
     private List<Integer> generateList(int size){
         List<Integer> list = new ArrayList<>();
         for (int i=0; i<size; i++){
-            list.add(i);
+            list.add(i+1);
         }
         return list;
     }
