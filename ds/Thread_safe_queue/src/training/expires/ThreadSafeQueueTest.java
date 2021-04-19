@@ -14,6 +14,7 @@ class ThreadSafeQueueTest {
     void setUp() {
     }
 
+
     @Test
     void FIFOTest_oneThread() {
         queue = new ThreadSafeQueue<>(100);
@@ -78,13 +79,37 @@ class ThreadSafeQueueTest {
             fail();
         }
 
-        //System.out.println(list);
-        //System.out.println(consumer.getResult());
-
         assertTrue(queue.isEmpty());
         assertEquals(dequeue_n, consumer.getResult().size());
-        //assertArrayEquals(list.toArray(), consumer.getResult().toArray());
+        assertTrue(checkResultFor_2producers(list, consumer.getResult()));
+    }
 
+
+    private boolean checkResultFor_2producers(List<Integer> list, List<Integer> result) {
+        int list_size = list.size();
+        if (list_size * 2 != result.size()){
+            return false;
+        }
+
+        List<Integer> list1 = new ArrayList<>(list);
+        List<Integer> list2 = new ArrayList<>(list);
+
+        int i = 0, j = 0;
+        for (int k=0; k<result.size(); k++){
+            if (result.get(k) == list1.get(i)){
+                i = (i < list_size-1) ? (i + 1) : i;
+            }
+            else {
+                if (result.get(k) == list2.get(j)){
+                    j = (j < list_size-1) ? (j + 1) : j;
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     private List<Integer> generateList(int size){
