@@ -3,7 +3,6 @@ package training.expires;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,11 +12,11 @@ class ThreadSafeQueueTest {
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
-        queue = new ThreadSafeQueue<>(10000);
     }
 
     @Test
     void FIFOTest_oneThread() {
+        queue = new ThreadSafeQueue<>(100);
         for (int i=0; i<100; i++){
             queue.enqueue(i);
         }
@@ -29,7 +28,8 @@ class ThreadSafeQueueTest {
 
     @Test
     void testWith_1producer_1consumer() {
-        int n = 105;
+        int n = 10000;
+        queue = new ThreadSafeQueue<>(5000);
         List<Integer> list = generateList(n);
         Producer producer = new Producer(queue, list);
         Consumer consumer = new Consumer(queue, n);
@@ -56,6 +56,7 @@ class ThreadSafeQueueTest {
     @Test
     void testWith_2producers_1consumer() {
         int n = 100;
+        queue = new ThreadSafeQueue<>(500);
         List<Integer> list = generateList(n);
         var tg = new ThreadGroup(2, () -> new Producer(queue, list) );
         tg.start();
