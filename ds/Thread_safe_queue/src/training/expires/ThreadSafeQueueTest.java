@@ -3,7 +3,7 @@ package training.expires;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -79,7 +79,7 @@ class ThreadSafeQueueTest {
 
         assertTrue(queue.isEmpty());
         assertEquals(enqueue_n * 2, consumer.getResult().size());
-        assertTrue(checkResultFor_2producers(list, consumer.getResult()));
+        assertTrue(checkResults_2producers(list, consumer.getResult()));
     }
 
     @Test
@@ -115,7 +115,7 @@ class ThreadSafeQueueTest {
 
         assertTrue(queue.isEmpty());
         assertEquals(enqueue_n, consumer1.getResult().size() + consumer2.getResult().size());
-        assertTrue(checkResultFor_2consumers(list, consumer1.getResult(), consumer2.getResult()));
+        assertTrue(checkResults_2consumers(list, consumer1.getResult(), consumer2.getResult()));
     }
 
     @Test
@@ -159,11 +159,11 @@ class ThreadSafeQueueTest {
             results.add(c.getResult());
         }
 
-        assertTrue(checkResultFor_nProducers(list, results, nProducers));
+        assertTrue(checkResults_nProd_mCons(list, results, nProducers));
     }
 
 
-    private boolean checkResultFor_2producers(List<Integer> list, List<Integer> result) {
+    private boolean checkResults_2producers(List<Integer> list, List<Integer> result) {
         int list_size = list.size();
         if (list_size * 2 != result.size()){
             return false;
@@ -187,20 +187,21 @@ class ThreadSafeQueueTest {
         return true;
     }
 
-    private boolean checkResultFor_2consumers(List<Integer> list, List<Integer> result1, List<Integer> result2) {
+    private boolean checkResults_2consumers(List<Integer> list, List<Integer> result1, List<Integer> result2) {
         if (list.size() != (result1.size() + result2.size())){
             return false;
         }
-        int result_size = result1.size();
+        int result1_size = result1.size();
+        int result2_size = result2.size();
 
         int i = 0, j = 0;
         for (int k=0; k<list.size(); k++){
             if (list.get(k) == result1.get(i)){
-                i = (i < result_size-1) ? (i + 1) : i;
+                i = (i < result1_size-1) ? (i + 1) : i;
             }
             else {
                 if (list.get(k) == result2.get(j)){
-                    j = (j < result_size-1) ? (j + 1) : j;
+                    j = (j < result2_size-1) ? (j + 1) : j;
                 }
                 else {
                     return false;
@@ -211,7 +212,7 @@ class ThreadSafeQueueTest {
         return true;
     }
 
-    private boolean checkResultFor_nProducers(List<Integer> list, List<List<Integer>> results, int nProducers) {
+    private boolean checkResults_nProd_mCons(List<Integer> list, List<List<Integer>> results, int nProducers) {
         int sizeAllResults = 0;
 
         for (var r : results){
@@ -222,21 +223,30 @@ class ThreadSafeQueueTest {
             return false;
         }
 
-        List<Integer> values = new ArrayList<>(Collections.nCopies(nProducers, 1));
+        int[] values = new int[nProducers];
+        Arrays.fill(values, 1);
 
         for (var res : results) {
             for (var r : res) {
-                int index = values.indexOf(r);
+                int index = findIndex(values, r);
                 if (index != -1) {
-                    values.set(index, r+1);
+                    values[index]++;
                 }
                 else {
                     return false;
                 }
             }
         }
-        //System.out.println(values);
         return true;
+    }
+
+    private int findIndex(int arr[], int value) {
+        for (int i=0; i<arr.length; i++){
+            if (arr[i] == value){
+                return i;
+            }
+        }
+        return -1;
     }
 
     private List<Integer> generateList(int size){
