@@ -85,7 +85,7 @@ class ThreadSafeQueueTest {
     }
 
     @Test
-    void testWith_1producer_2consumer() {
+    void testWith_1producer_2consumers() {
         int capacity = 1000;
         int enqueue_n = 10000;  //for 1 producer
         int dequeue_n = enqueue_n / 2; //for 1 consumer
@@ -118,6 +118,11 @@ class ThreadSafeQueueTest {
         assertEquals(dequeue_n, consumer1.getResult().size());
         assertEquals(dequeue_n, consumer2.getResult().size());
         assertTrue(checkResultFor_2consumers(list, consumer1.getResult(), consumer2.getResult()));
+    }
+
+    @Test
+    void testWith_nProducer_mConsumers() {
+
     }
 
 
