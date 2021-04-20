@@ -2,14 +2,19 @@ package training.expires;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class ThreadSafeQueue<T> {
     private final T[] data;
     private final int capacity;
-    private final Object lock;
     private int size;
     private int head;
     private int tail;
+    private Lock lock;
+    private Condition haveSomeItems;
+    private Condition haveSomeVacancies;
 
     public ThreadSafeQueue(int capacity) {
         this.capacity = capacity;
@@ -17,25 +22,30 @@ public class ThreadSafeQueue<T> {
         size = 0;
         head = 0;
         tail = capacity - 1;
-        lock = new Object();
+        lock = new ReentrantLock();
+        haveSomeItems = lock.newCondition();
+        haveSomeVacancies = lock.newCondition();
     }
 
     public int getSize(){
-        synchronized (lock) {
-            return size;
-        }
+        lock.lock();
+        int temp = size;
+        lock.unlock();
+        return temp;
     }
 
     public boolean isEmpty(){
-        synchronized (lock) {
-            return size == 0;
-        }
+        lock.lock();
+        boolean temp = size == 0;
+        lock.unlock();
+        return temp;
     }
 
     public boolean isFull(){
-        synchronized (lock) {
-            return size == capacity;
-        }
+        lock.lock();
+        boolean temp = size == capacity;
+        lock.unlock();
+        return temp;
     }
 
     private boolean empty(){
@@ -47,46 +57,61 @@ public class ThreadSafeQueue<T> {
     }
 
     public void enqueue(T item){
-        synchronized (lock) {
+        lock.lock();
+        try {
             while(full()){
-                try {
-                    lock.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                haveSomeVacancies.await();
             }
-
             tail = (tail + 1) % capacity;
             data[tail] = item;
             size++;
-            lock.notifyAll();
+
+            haveSomeItems.signal();
+
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        finally {
+            lock.unlock();
         }
     }
 
     public T dequeue() {
-        synchronized (lock) {
+        T item = null;
+
+        lock.lock();
+        try {
             while(empty()){
-                try {
-                    lock.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                haveSomeItems.await();
             }
 
-            T item = data[head];
+            item = data[head];
             head = (head + 1) % capacity;
             size--;
-            lock.notifyAll();
 
-            return item;
+            haveSomeVacancies.signal();
+
         }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        finally {
+            lock.unlock();
+        }
+
+        return item;
     }
 
     public void enqueue(Iterator<T> iterator) {
-        synchronized (lock) {
+        lock.lock();
+        try {
             while (iterator.hasNext()){
                 put(iterator.next());
             }
+        }
+        finally {
+            lock.unlock();
         }
     }
 
