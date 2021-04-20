@@ -120,7 +120,7 @@ class ThreadSafeQueueTest {
 
     @Test
     void testWith_nProducers_mConsumers() {
-        int nProducers = 5;
+        int nProducers = 2;
         int mConsumers = 4;
         int capacity = 100;
         int enqueue_n = 100;  //100 elements for each producer
