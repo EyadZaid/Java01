@@ -105,32 +105,14 @@ public class ThreadSafeQueue<T> {
 
     public void enqueue(Iterator<T> iterator) {
         lock.lock();
-        try {
-            while (iterator.hasNext()){
-                put(iterator.next());
-            }
+        while (iterator.hasNext()){
+            enqueue(iterator.next());
         }
-        finally {
-            lock.unlock();
-        }
+        lock.unlock();
     }
 
     public void enqueue(T... allItems) {
         enqueue(Arrays.stream(allItems).iterator());
     }
 
-    private void put(T item) {
-        while(full()){
-            try {
-                lock.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-        tail = (tail + 1) % capacity;
-        data[tail] = item;
-        size++;
-        lock.notifyAll();
-    }
 }
