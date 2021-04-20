@@ -12,9 +12,9 @@ public class ThreadSafeQueue<T> {
     private int size;
     private int head;
     private int tail;
-    private Lock lock;
-    private Condition haveSomeItems;
-    private Condition haveSomeVacancies;
+    private final Lock lock;
+    private final Condition haveSomeItems;
+    private final Condition haveSomeVacancies;
 
     public ThreadSafeQueue(int capacity) {
         this.capacity = capacity;
