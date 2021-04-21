@@ -14,7 +14,7 @@ public class Main {
         scheduler.schedule(task2, 1000, TimeUnit.MILLISECONDS);
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         }
         catch (InterruptedException e) {
             e.printStackTrace();
@@ -23,7 +23,7 @@ public class Main {
         scheduler.suspend(task1);
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         }
         catch (InterruptedException e) {
             e.printStackTrace();

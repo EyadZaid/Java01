@@ -1,17 +1,21 @@
 package training.expires;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class PeriodicScheduler {
     private final List<Task> runningTasks;
     private final List<Task> suspendTasks;
+    private final Map<Task, TaskRunnable> tasksRunnable;
     private final List<Thread> threads;
 
     public PeriodicScheduler() {
         runningTasks = new ArrayList<>();
         suspendTasks = new ArrayList<>();
+        tasksRunnable = new HashMap<>();
         threads = new ArrayList<>();
     }
 
@@ -22,6 +26,7 @@ public class PeriodicScheduler {
         thread.start();
         runningTasks.add(task);
         threads.add(thread);
+        tasksRunnable.put(task, taskRunnable);
     }
 
     public void stop(Task task) {
@@ -39,17 +44,20 @@ public class PeriodicScheduler {
     public void suspend(Task task) {
         task.setStatus(TaskStatus.SUSPENDED);
         suspendTasks.add(task);
+        runningTasks.remove(task);
     }
 
     public void resume(Task task) {
         if (suspendTasks.contains(task)) {
             task.setStatus(TaskStatus.RUNNING);
+            tasksRunnable.get(task).run();
             runningTasks.add(task);
             suspendTasks.remove(task);
         }
     }
 
     public void reSchedule(Task task, long period) {
+
 
 
     }
