@@ -2,6 +2,7 @@ package training.expires;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class PeriodicScheduler {
     private final List<Task> runningTasks;
@@ -14,8 +15,8 @@ public class PeriodicScheduler {
         threads = new ArrayList<>();
     }
 
-    public void schedule(Task task, long period) {
-        TaskRunnable taskRunnable = new TaskRunnable(task, period);
+    public void schedule(Task task, long period, TimeUnit unit) {
+        TaskRunnable taskRunnable = new TaskRunnable(task, period, unit);
         Thread thread = new Thread(taskRunnable);
         task.setStatus(TaskStatus.RUNNING);
         thread.start();

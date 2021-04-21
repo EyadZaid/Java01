@@ -1,5 +1,7 @@
 package training.expires;
 
+import java.util.concurrent.TimeUnit;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -8,7 +10,7 @@ public class Main {
         Task task2 = new Task(() -> System.out.println("Task #2 running"));
 
 
-        scheduler.schedule(task1, 1000);
-        scheduler.schedule(task2, 1000);
+        scheduler.schedule(task1, 1000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(task2, 1000, TimeUnit.MILLISECONDS);
     }
 }

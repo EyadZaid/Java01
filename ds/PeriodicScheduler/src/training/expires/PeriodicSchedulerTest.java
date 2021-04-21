@@ -2,6 +2,8 @@ package training.expires;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PeriodicSchedulerTest {
@@ -18,8 +20,8 @@ class PeriodicSchedulerTest {
         Task task2 = new Task(() -> System.out.println("Task #2 running"));
 
 
-        scheduler.schedule(task1, 1000);
-        scheduler.schedule(task2, 1000);
+        scheduler.schedule(task1, 1000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(task2, 1000, TimeUnit.MILLISECONDS);
 
     }
 }
