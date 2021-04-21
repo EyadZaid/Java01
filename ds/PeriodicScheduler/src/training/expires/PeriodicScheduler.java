@@ -30,21 +30,24 @@ public class PeriodicScheduler {
     }
 
     public void stop(Task task) {
-        task.setStatus(TaskStatus.STOPPED);
-        runningTasks.remove(task);
+        if (runningTasks.contains(task)) {
+            task.setStatus(TaskStatus.STOPPED);
+            runningTasks.remove(task);
+        }
     }
 
     public void stopAll() {
-        for (var task: runningTasks) {
-            task.setStatus(TaskStatus.STOPPED);
+        for (int i=0; i<runningTasks.size(); i++) {
+            stop(runningTasks.get(i));
         }
-        runningTasks.clear();
     }
 
     public void suspend(Task task) {
-        task.setStatus(TaskStatus.SUSPENDED);
-        suspendTasks.add(task);
-        runningTasks.remove(task);
+        if (runningTasks.contains(task)) {
+            task.setStatus(TaskStatus.SUSPENDED);
+            suspendTasks.add(task);
+            runningTasks.remove(task);
+        }
     }
 
     public void resume(Task task) {
@@ -63,9 +66,6 @@ public class PeriodicScheduler {
             taskRunnable.setUnit(unit);
             resume(task);
         }
-
-
-
     }
 
     public void getScdInfo() {
