@@ -4,8 +4,8 @@ import java.util.concurrent.TimeUnit;
 
 public class TaskRunnable implements Runnable{
     private final Task task;
-    private final long period;
-    private final TimeUnit unit;
+    private long period;
+    private TimeUnit unit;
     private boolean active;
 
     public TaskRunnable(Task task, long period, TimeUnit unit) {
@@ -42,7 +42,13 @@ public class TaskRunnable implements Runnable{
     }
 
 
+    public void setPeriod(long period) {
+        this.period = period;
+    }
 
+    public void setUnit(TimeUnit unit) {
+        this.unit = unit;
+    }
 
 
 
