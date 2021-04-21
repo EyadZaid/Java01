@@ -29,7 +29,15 @@ public class Main {
             e.printStackTrace();
         }
 
-        scheduler.resume(task1);
+        scheduler.reSchedule(task1, 500, TimeUnit.MILLISECONDS);
 
+        try {
+            Thread.sleep(3000);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        scheduler.stopAll();
     }
 }

@@ -25,8 +25,8 @@ public class PeriodicScheduler {
         task.setStatus(TaskStatus.RUNNING);
         thread.start();
         runningTasks.add(task);
-        threads.add(thread);
         tasksRunnable.put(task, taskRunnable);
+        threads.add(thread);
     }
 
     public void stop(Task task) {
@@ -69,6 +69,10 @@ public class PeriodicScheduler {
     }
 
     public void getScdInfo() {
+        System.out.println("Number of active tasks: " + tasksRunnable.size());
+        System.out.println("Number of suspend tasks: " + suspendTasks.size());
+
+
 
 
     }
