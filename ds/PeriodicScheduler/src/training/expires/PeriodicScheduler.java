@@ -1,80 +1,74 @@
 package training.expires;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 public class PeriodicScheduler {
-    private final List<Task> runningTasks;
-    private final List<Task> suspendTasks;
-    private final Map<Task, TaskRunnable> tasksRunnable;
-    private final List<Thread> threads;
+    private final Map<Runnable, TaskThread> allTasks;
 
     public PeriodicScheduler() {
-        runningTasks = new ArrayList<>();
-        suspendTasks = new ArrayList<>();
-        tasksRunnable = new HashMap<>();
-        threads = new ArrayList<>();
+        allTasks = new ConcurrentHashMap<>();
     }
 
-    public void schedule(Task task, long period, TimeUnit unit) {
-        TaskRunnable taskRunnable = new TaskRunnable(task, period, unit);
-        Thread thread = new Thread(taskRunnable);
-        task.setStatus(TaskStatus.RUNNING);
-        thread.start();
-        runningTasks.add(task);
-        tasksRunnable.put(task, taskRunnable);
-        threads.add(thread);
+    public void schedule(Runnable runnable, long period, TimeUnit unit) {
+        if (allTasks.get(runnable) == null) {
+            Task task = new Task(runnable, period,unit);
+            Thread thread = new Thread(task);
+            TaskThread taskThread = new TaskThread(task, thread);
+            allTasks.put(runnable, taskThread);
+            thread.start();
+        }
     }
 
-    public void stop(Task task) {
-        if (runningTasks.contains(task)) {
-            task.setStatus(TaskStatus.STOPPED);
-            runningTasks.remove(task);
+    public void stop(Runnable runnable) {
+        var taskThread = allTasks.get(runnable);
+        if (taskThread != null) {
+            var task = taskThread.getTask();
+            var thread = taskThread.getThread();
+            task.updateStatus(TaskStatus.SUSPENDED);
+            try {
+                thread.join();
+            }
+            catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     public void stopAll() {
-        for (var task : runningTasks) {
-            task.setStatus(TaskStatus.STOPPED);
-        }
-        runningTasks.clear();
-    }
-
-    public void suspend(Task task) {
-        if (runningTasks.contains(task)) {
-            task.setStatus(TaskStatus.SUSPENDED);
-            suspendTasks.add(task);
-            runningTasks.remove(task);
+        for (var runnable : allTasks.keySet()) {
+            stop(runnable);
         }
     }
 
-    public void resume(Task task) {
-        if (suspendTasks.contains(task)) {
-            task.setStatus(TaskStatus.RUNNING);
-            tasksRunnable.get(task).run();
-            runningTasks.add(task);
-            suspendTasks.remove(task);
+    public void suspend(Runnable runnable) {
+        var task = allTasks.get(runnable).getTask();
+        if (task != null) {
+            task.updateStatus(TaskStatus.SUSPENDED);
         }
     }
 
-    public void reSchedule(Task task, long period, TimeUnit unit) {
-        if (suspendTasks.contains(task)) {
-            TaskRunnable taskRunnable = tasksRunnable.get(task);
-            taskRunnable.setPeriod(period);
-            taskRunnable.setUnit(unit);
-            resume(task);
+    public void resume(Runnable runnable) {
+        var task = allTasks.get(runnable).getTask();
+        if (task != null) {
+            task.updateStatus(TaskStatus.RUNNING);
+        }
+    }
+
+    public void reSchedule(Runnable runnable, long period, TimeUnit unit) {
+        var task = allTasks.get(runnable).getTask();
+        if (task != null) {
+            task.setPeriodAndUnit(period, unit);
+            task.updateStatus(TaskStatus.RUNNING);
         }
     }
 
     public void getScdInfo() {
+        /*
         System.out.println("Number of active tasks: " + tasksRunnable.size());
         System.out.println("Number of suspend tasks: " + suspendTasks.size());
-
-
-
+*/
 
     }
 

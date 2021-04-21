@@ -52,7 +52,7 @@ public class Task implements Runnable{
         }
     }
 
-    public void reschedule(long period, TimeUnit unit) {
+    public void setPeriodAndUnit(long period, TimeUnit unit) {
         guard.lock();
         try {
             this.period = period;
