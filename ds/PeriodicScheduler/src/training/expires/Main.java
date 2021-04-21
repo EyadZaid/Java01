@@ -13,6 +13,7 @@ public class Main {
         scheduler.schedule(task1, 1000, TimeUnit.MILLISECONDS);
         scheduler.schedule(task2, 1000, TimeUnit.MILLISECONDS);
 
+
         try {
             Thread.sleep(3000);
         }
@@ -39,5 +40,6 @@ public class Main {
         }
 
         scheduler.stopAll();
+
     }
 }

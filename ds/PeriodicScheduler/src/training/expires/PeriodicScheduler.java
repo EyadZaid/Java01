@@ -37,9 +37,10 @@ public class PeriodicScheduler {
     }
 
     public void stopAll() {
-        for (int i=0; i<runningTasks.size(); i++) {
-            stop(runningTasks.get(i));
+        for (var task : runningTasks) {
+            task.setStatus(TaskStatus.STOPPED);
         }
+        runningTasks.clear();
     }
 
     public void suspend(Task task) {
