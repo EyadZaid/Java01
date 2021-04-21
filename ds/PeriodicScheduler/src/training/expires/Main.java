@@ -12,5 +12,7 @@ public class Main {
 
         scheduler.schedule(task1, 1000, TimeUnit.MILLISECONDS);
         scheduler.schedule(task2, 1000, TimeUnit.MILLISECONDS);
+
+
     }
 }

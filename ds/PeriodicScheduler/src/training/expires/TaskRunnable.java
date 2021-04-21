@@ -20,13 +20,14 @@ public class TaskRunnable implements Runnable{
             task.execute();
             long timeSpan = System.nanoTime() - start;
 
-            long timeSleep =  unit.toNanos(period) - timeSpan;
-            if (timeSleep < 0) {
-                timeSleep = 0;
+            long timeSleep_nano =  unit.toNanos(period) - timeSpan;
+            if (timeSleep_nano < 0) {
+                timeSleep_nano = 0;
             }
 
+            long timeSleep_millis = TimeUnit.NANOSECONDS.toMillis(timeSleep_nano);
             try {
-                Thread.sleep(TimeUnit.NANOSECONDS.toMillis(timeSleep));
+                Thread.sleep(timeSleep_millis);
             }
             catch (InterruptedException e) {
                 e.printStackTrace();

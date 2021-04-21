@@ -23,5 +23,14 @@ class PeriodicSchedulerTest {
         scheduler.schedule(task1, 1000, TimeUnit.MILLISECONDS);
         scheduler.schedule(task2, 1000, TimeUnit.MILLISECONDS);
 
+        try {
+            Thread.sleep(1000);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        scheduler.stop(task1);
     }
 }
