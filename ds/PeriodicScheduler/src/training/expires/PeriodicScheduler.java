@@ -56,7 +56,13 @@ public class PeriodicScheduler {
         }
     }
 
-    public void reSchedule(Task task, long period) {
+    public void reSchedule(Task task, long period, TimeUnit unit) {
+        if (suspendTasks.contains(task)) {
+            TaskRunnable taskRunnable = tasksRunnable.get(task);
+            taskRunnable.setPeriod(period);
+            taskRunnable.setUnit(unit);
+            resume(task);
+        }
 
 
 
