@@ -35,11 +35,20 @@ public class Task implements Runnable{
             waitTimeNano = 0;
         }
 
+        long waitTimeMillis = TimeUnit.NANOSECONDS.toMillis(waitTimeNano);
+        try {
+            Thread.sleep(waitTimeMillis);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        /*
         try {
             running.awaitNanos(waitTimeNano);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+         */
     }
 
     public void updateStatus(TaskStatus status) {
@@ -78,10 +87,11 @@ public class Task implements Runnable{
                 e.printStackTrace();
             }
             finally {
-                guard.unlock();
+                guard.lock();
             }
         }
         guard.unlock();
+
     }
 
 

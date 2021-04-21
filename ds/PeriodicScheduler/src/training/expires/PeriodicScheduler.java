@@ -26,7 +26,7 @@ public class PeriodicScheduler {
         if (taskThread != null) {
             var task = taskThread.getTask();
             var thread = taskThread.getThread();
-            task.updateStatus(TaskStatus.SUSPENDED);
+            task.updateStatus(TaskStatus.STOPPED);
             try {
                 thread.join();
             }
