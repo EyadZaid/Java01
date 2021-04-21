@@ -42,7 +42,11 @@ public class PeriodicScheduler {
     }
 
     public void resume(Task task) {
-
+        if (suspendTasks.contains(task)) {
+            task.setStatus(TaskStatus.RUNNING);
+            runningTasks.add(task);
+            suspendTasks.remove(task);
+        }
     }
 
     public void reSchedule(Task task, long period) {

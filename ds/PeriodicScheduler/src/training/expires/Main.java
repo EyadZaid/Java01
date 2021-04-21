@@ -20,7 +20,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        scheduler.stop(task1);
+        scheduler.suspend(task1);
 
         try {
             Thread.sleep(1000);
