@@ -3,6 +3,7 @@ package training.expires.tests;
 import org.junit.jupiter.api.Test;
 import training.expires.PeriodicScheduler;
 import training.expires.tasksFunctions.Func1;
+import training.expires.tasksFunctions.Func2;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,15 +17,14 @@ class SchedulerTest {
         scheduler = new PeriodicScheduler();
     }
 
-
     @Test
     void schedulerStopAllTest() {
-        /*
-        Task task1 = new Task(() -> System.out.println("Task #1 running"));
-        Task task2 = new Task(() -> System.out.println("Task #2 running"));
+        scheduler = new PeriodicScheduler();
+        Func1 f1 = new Func1();
+        Func2 f2 = new Func2();
 
-        scheduler.schedule(task1, 1000, TimeUnit.MILLISECONDS);
-        scheduler.schedule(task2, 1000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(f1, 1000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(f2, 1000, TimeUnit.MILLISECONDS);
 
         try {
             Thread.sleep(3000);
@@ -34,17 +34,16 @@ class SchedulerTest {
         }
 
         scheduler.stopAll();
-
-         */
     }
 
-
     @Test
-    void SuspendTest() {
+    void SchedulerTest() {
         scheduler = new PeriodicScheduler();
-
         Func1 f1 = new Func1();
+        Func2 f2 = new Func2();
+
         scheduler.schedule(f1, 1000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(f2, 1000, TimeUnit.MILLISECONDS);
 
         try {
             Thread.sleep(3000);
@@ -62,7 +61,6 @@ class SchedulerTest {
             e.printStackTrace();
         }
 
-        /*
         scheduler.resume(f1);
 
         try {
@@ -71,7 +69,7 @@ class SchedulerTest {
         catch (InterruptedException e) {
             e.printStackTrace();
         }
-*/
+
         scheduler.stopAll();
     }
 }

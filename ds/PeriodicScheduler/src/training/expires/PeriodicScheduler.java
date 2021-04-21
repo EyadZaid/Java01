@@ -24,11 +24,9 @@ public class PeriodicScheduler {
     public void stop(Runnable runnable) {
         var taskThread = allTasks.get(runnable);
         if (taskThread != null) {
-            var task = taskThread.getTask();
-            var thread = taskThread.getThread();
-            task.updateStatus(TaskStatus.STOPPED);
+            taskThread.getTask().stop();
             try {
-                thread.join();
+                taskThread.getThread().join();
             }
             catch (InterruptedException e) {
                 e.printStackTrace();
@@ -42,33 +40,36 @@ public class PeriodicScheduler {
         }
     }
 
+    public void suspendAll() {
+        for (var runnable : allTasks.keySet()) {
+            suspend(runnable);
+        }
+    }
+
     public void suspend(Runnable runnable) {
-        var task = allTasks.get(runnable).getTask();
-        if (task != null) {
-            task.updateStatus(TaskStatus.SUSPENDED);
+        var taskThread = allTasks.get(runnable);
+        if (taskThread != null) {
+            taskThread.getTask().suspend();
         }
     }
 
     public void resume(Runnable runnable) {
-        var task = allTasks.get(runnable).getTask();
-        if (task != null) {
-            task.updateStatus(TaskStatus.RUNNING);
+        var taskThread = allTasks.get(runnable);
+        if (taskThread != null) {
+            taskThread.getTask().resume();
         }
     }
 
     public void reSchedule(Runnable runnable, long period, TimeUnit unit) {
-        var task = allTasks.get(runnable).getTask();
-        if (task != null) {
+        var taskThread = allTasks.get(runnable);
+        if (taskThread != null) {
+            var task = taskThread.getTask();
             task.setPeriodAndUnit(period, unit);
-            task.updateStatus(TaskStatus.RUNNING);
+            task.resume();
         }
     }
 
     public void getScdInfo() {
-        /*
-        System.out.println("Number of active tasks: " + tasksRunnable.size());
-        System.out.println("Number of suspend tasks: " + suspendTasks.size());
-*/
 
     }
 

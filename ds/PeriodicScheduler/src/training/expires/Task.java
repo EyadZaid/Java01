@@ -42,6 +42,8 @@ public class Task implements Runnable{
         catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+
         /*
         try {
             running.awaitNanos(waitTimeNano);
@@ -51,10 +53,42 @@ public class Task implements Runnable{
          */
     }
 
+    /*
     public void updateStatus(TaskStatus status) {
         guard.lock();
         try {
             this.status = status;
+        }
+        finally {
+            guard.unlock();
+        }
+    }
+    */
+
+    public void stop() {
+        guard.lock();
+        try {
+            this.status = TaskStatus.STOPPED;
+        }
+        finally {
+            guard.unlock();
+        }
+    }
+
+    public void resume() {
+        guard.lock();
+        try {
+            this.status = TaskStatus.RUNNING;
+        }
+        finally {
+            guard.unlock();
+        }
+    }
+
+    public void suspend() {
+        guard.lock();
+        try {
+            this.status = TaskStatus.SUSPENDED;
         }
         finally {
             guard.unlock();
@@ -74,6 +108,7 @@ public class Task implements Runnable{
 
     @Override
     public void run() {
+
         guard.lock();
         while (status != TaskStatus.STOPPED) {
             try {
@@ -92,11 +127,48 @@ public class Task implements Runnable{
         }
         guard.unlock();
 
+
+
+        /*
+        while (status != TaskStatus.STOPPED) {
+            guard.lock();
+            try {
+                while (status == TaskStatus.SUSPENDED) {
+                    running.await();
+                }
+                //executeTask();
+            }
+            catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            finally {
+                guard.unlock();
+            }
+        }
+       */
+
+
+        /*
+        guard.lock();
+        while (status != TaskStatus.STOPPED) {
+            try {
+                while (status == TaskStatus.SUSPENDED) {
+                    running.await();
+                }
+                guard.unlock();
+                executeTask();
+            }
+            catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            finally {
+                guard.lock();
+            }
+        }
+        guard.unlock();
+    */
+
     }
-
-
-
-
 
 
 }
