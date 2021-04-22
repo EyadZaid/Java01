@@ -5,31 +5,32 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class Task implements Runnable{
-    private final Runnable runnable;
+class Task implements Runnable{
+    private final Runnable userRunnable;
     private final Lock guard;
     private final Condition running;
+    private long periodNano;
     private TaskStatus status;
-    private long period;
-    private TimeUnit unit;
 
-
-    public Task(Runnable runnable, long period, TimeUnit unit) {
-        this.runnable = runnable;
-        this.period = period;
-        this.unit = unit;
+    public Task(Runnable userRunnable, long period, TimeUnit unit) {
+        this.userRunnable = userRunnable;
+        this.periodNano = unit.toNanos(period);
         status = TaskStatus.RUNNING;
         guard = new ReentrantLock();
         running = guard.newCondition();
     }
 
-    private void executeTask() {
+    private void executeTask(long period) {
         long start = System.nanoTime();
 
-        runnable.run();
+        try {
+            userRunnable.run();
+        }catch(Throwable t){
+
+        }
 
         long timeSpan = System.nanoTime() - start;
-        long waitTimeNano =  unit.toNanos(period) - timeSpan;
+        long waitTimeNano =  period - timeSpan;
 
         if (waitTimeNano < 0) {
             waitTimeNano = 0;
@@ -42,15 +43,33 @@ public class Task implements Runnable{
         catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
 
+    @Override
+    public void run() {
+        guard.lock();
+        while (status != TaskStatus.STOPPED) {
+            try {
+                while (status == TaskStatus.SUSPENDED) {
+                    running.await();
+                }
+                if(status == TaskStatus.STOPPED){
+                    break;
+                }
+                var period = periodNano;
+                guard.unlock();
 
-        /*
-        try {
-            running.awaitNanos(waitTimeNano);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+                executeTask(period);
+            }
+            catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            finally {
+                guard.lock();
+            }
         }
-         */
+
+        guard.unlock();
     }
 
     /*
@@ -69,6 +88,7 @@ public class Task implements Runnable{
         guard.lock();
         try {
             this.status = TaskStatus.STOPPED;
+            running.signal();
         }
         finally {
             guard.unlock();
@@ -78,8 +98,10 @@ public class Task implements Runnable{
     public void resume() {
         guard.lock();
         try {
-            this.status = TaskStatus.RUNNING;
-            running.signal();
+            if(status == TaskStatus.SUSPENDED) {
+                this.status = TaskStatus.RUNNING;
+                running.signal();
+            }
         }
         finally {
             guard.unlock();
@@ -96,80 +118,14 @@ public class Task implements Runnable{
         }
     }
 
-    public void setPeriodAndUnit(long period, TimeUnit unit) {
+    public void reschedule(long period, TimeUnit unit) {
         guard.lock();
         try {
-            this.period = period;
-            this.unit = unit;
+            periodNano = unit.toNanos(period);
+            resume();
         }
         finally {
             guard.unlock();
         }
     }
-
-    @Override
-    public void run() {
-
-        guard.lock();
-        while (status != TaskStatus.STOPPED) {
-            try {
-                while (status == TaskStatus.SUSPENDED) {
-                    running.await();
-                }
-                guard.unlock();
-                executeTask();
-            }
-            catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            finally {
-                guard.lock();
-            }
-        }
-        guard.unlock();
-
-
-
-        /*
-        while (status != TaskStatus.STOPPED) {
-            guard.lock();
-            try {
-                while (status == TaskStatus.SUSPENDED) {
-                    running.await();
-                }
-                //executeTask();
-            }
-            catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            finally {
-                guard.unlock();
-            }
-        }
-       */
-
-
-        /*
-        guard.lock();
-        while (status != TaskStatus.STOPPED) {
-            try {
-                while (status == TaskStatus.SUSPENDED) {
-                    running.await();
-                }
-                guard.unlock();
-                executeTask();
-            }
-            catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            finally {
-                guard.lock();
-            }
-        }
-        guard.unlock();
-    */
-
-    }
-
-
 }
