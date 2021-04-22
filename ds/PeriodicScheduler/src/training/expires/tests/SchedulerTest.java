@@ -72,4 +72,48 @@ class SchedulerTest {
 
         scheduler.stopAll();
     }
+
+
+    @Test
+    void schedulerReScheduleTest() {
+        scheduler = new PeriodicScheduler();
+        Func1 f1 = new Func1();
+        Func2 f2 = new Func2();
+
+        scheduler.schedule(f1, 500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(f2, 500, TimeUnit.MILLISECONDS);
+
+        try {
+            Thread.sleep(2000);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        scheduler.suspend(f1);
+
+        try {
+            Thread.sleep(2000);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        scheduler.reSchedule(f1, 1000, TimeUnit.MILLISECONDS);
+
+        try {
+            Thread.sleep(2000);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        scheduler.stopAll();
+    }
+
+
+    @Test
+    void schedulerSuspendAllTest() {
+
+    }
 }
