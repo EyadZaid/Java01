@@ -72,17 +72,6 @@ class Task implements Runnable{
         guard.unlock();
     }
 
-    /*
-    public void updateStatus(TaskStatus status) {
-        guard.lock();
-        try {
-            this.status = status;
-        }
-        finally {
-            guard.unlock();
-        }
-    }
-    */
 
     public void stop() {
         guard.lock();

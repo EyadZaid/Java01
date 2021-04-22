@@ -114,6 +114,29 @@ class SchedulerTest {
 
     @Test
     void schedulerSuspendAllTest() {
+        scheduler = new PeriodicScheduler();
+        Func1 f1 = new Func1();
+        Func2 f2 = new Func2();
 
+        scheduler.schedule(f1, 1000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(f2, 1000, TimeUnit.MILLISECONDS);
+
+        try {
+            Thread.sleep(3000);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        scheduler.suspendAll();
+
+        try {
+            Thread.sleep(2000);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        scheduler.stopAll();
     }
 }
