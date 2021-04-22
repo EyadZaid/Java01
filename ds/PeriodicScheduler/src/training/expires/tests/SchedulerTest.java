@@ -46,7 +46,7 @@ class SchedulerTest {
         scheduler.schedule(f2, 1000, TimeUnit.MILLISECONDS);
 
         try {
-            Thread.sleep(2000);
+            Thread.sleep(3000);
         }
         catch (InterruptedException e) {
             e.printStackTrace();
@@ -55,7 +55,7 @@ class SchedulerTest {
         scheduler.suspend(f1);
 
         try {
-            Thread.sleep(2000);
+            Thread.sleep(3000);
         }
         catch (InterruptedException e) {
             e.printStackTrace();
@@ -64,7 +64,7 @@ class SchedulerTest {
         scheduler.resume(f1);
 
         try {
-            Thread.sleep(2000);
+            Thread.sleep(3000);
         }
         catch (InterruptedException e) {
             e.printStackTrace();

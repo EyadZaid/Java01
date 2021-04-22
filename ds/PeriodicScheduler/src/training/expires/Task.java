@@ -79,6 +79,7 @@ public class Task implements Runnable{
         guard.lock();
         try {
             this.status = TaskStatus.RUNNING;
+            running.signal();
         }
         finally {
             guard.unlock();
