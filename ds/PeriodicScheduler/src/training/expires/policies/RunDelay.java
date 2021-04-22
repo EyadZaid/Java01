@@ -4,6 +4,10 @@ public class RunDelay implements DelayCalculator{
 
     @Override
     public long calculateWaitTime(long timeSpan, long cycle) {
-        return 0;
+        if (timeSpan <= cycle) {
+            return cycle - timeSpan;
+        }
+
+        return cycle - (timeSpan % cycle);
     }
 }
