@@ -1,13 +1,15 @@
 package training.expires;
 
+import training.expires.policies.DelayPolicy;
+
 import java.util.concurrent.TimeUnit;
 
 class ThreadedTask {
     private Task task;
     private Thread thread;
 
-    public ThreadedTask(Runnable runnable, long period, TimeUnit unit) {
-        this.task = new Task(runnable, period, unit);
+    public ThreadedTask(Runnable runnable, long period, TimeUnit unit, DelayPolicy delayPolicy) {
+        this.task = new Task(runnable, period, unit, delayPolicy);
         this.thread = new Thread(task);
         thread.start();
     }

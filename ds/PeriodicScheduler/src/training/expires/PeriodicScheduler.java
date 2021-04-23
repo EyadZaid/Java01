@@ -1,5 +1,7 @@
 package training.expires;
 
+import training.expires.policies.DelayPolicy;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
@@ -11,15 +13,15 @@ public class PeriodicScheduler {
         taskThreadsMap = new ConcurrentHashMap<>();
     }
 
-    public void schedule(Runnable runnable, long period, TimeUnit unit) {
+    public void schedule(Runnable runnable, long period, TimeUnit unit, DelayPolicy delayPolicy) {
         if (taskThreadsMap.get(runnable) == null) {
-            var taskThread = cretaeThreadTask(runnable, period, unit);
+            var taskThread = cretaeThreadTask(runnable, period, unit, delayPolicy);
             taskThreadsMap.put(runnable, taskThread);
         }
     }
 
-    private ThreadedTask cretaeThreadTask(Runnable runnable, long period, TimeUnit unit) {
-        return new ThreadedTask(runnable, period, unit);
+    private ThreadedTask cretaeThreadTask(Runnable runnable, long period, TimeUnit unit, DelayPolicy delayPolicy) {
+        return new ThreadedTask(runnable, period, unit, delayPolicy);
     }
 
     public void stopAll() {
