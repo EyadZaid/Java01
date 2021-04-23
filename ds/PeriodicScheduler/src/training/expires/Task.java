@@ -2,6 +2,8 @@ package training.expires;
 
 import training.expires.policies.DelayCalculator;
 import training.expires.policies.DelayPolicy;
+import training.expires.policies.RunDelay;
+import training.expires.policies.RunImmediately;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
@@ -12,19 +14,21 @@ class Task implements Runnable{
     private final Runnable userRunnable;
     private final Lock guard;
     private final Condition running;
+    private final DelayPolicy delayPolicy;
     private long periodNano;
     private long lastDuration;
     private TaskStatus status;
-    private DelayPolicy delayPolicy;  //------------
     private DelayCalculator delayCalculator;
 
-    public Task(Runnable userRunnable, long period, TimeUnit unit) {
+    public Task(Runnable userRunnable, long period, TimeUnit unit, DelayPolicy delayPolicy) {
         this.userRunnable = userRunnable;
         this.periodNano = unit.toNanos(period);
+        this.delayPolicy = delayPolicy;
         status = TaskStatus.RUNNING;
         guard = new ReentrantLock();
         running = guard.newCondition();
         lastDuration = -1;
+        initDelayCalculator();
     }
 
     private void executeTask() {
@@ -158,6 +162,14 @@ class Task implements Runnable{
         }
         finally {
             guard.unlock();
+        }
+    }
+
+    private void initDelayCalculator() {
+        switch (delayPolicy) {
+            case IMMEDIATELY -> delayCalculator = new RunImmediately();
+
+            case DELAY -> delayCalculator = new RunDelay();
         }
     }
 }
