@@ -1,5 +1,8 @@
 package training.expires;
 
+import training.expires.policies.DelayCalculator;
+import training.expires.policies.DelayPolicy;
+
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -10,7 +13,10 @@ class Task implements Runnable{
     private final Lock guard;
     private final Condition running;
     private long periodNano;
+    private long lastDuration;
     private TaskStatus status;
+    private DelayPolicy delayPolicy;  //------------
+    private DelayCalculator delayCalculator;
 
     public Task(Runnable userRunnable, long period, TimeUnit unit) {
         this.userRunnable = userRunnable;
@@ -18,30 +24,15 @@ class Task implements Runnable{
         status = TaskStatus.RUNNING;
         guard = new ReentrantLock();
         running = guard.newCondition();
+        lastDuration = -1;
     }
 
-    private void executeTask(long period) {
-        long start = System.nanoTime();
+    private void executeTask() {
+        switch (delayPolicy) {
 
-        try {
-            userRunnable.run();
-        }catch(Throwable t){
+            case IMMEDIATELY -> runTaskImmediately();
 
-        }
-
-        long timeSpan = System.nanoTime() - start;
-        long waitTimeNano =  period - timeSpan;
-
-        if (waitTimeNano < 0) {
-            waitTimeNano = 0;
-        }
-
-        long waitTimeMillis = TimeUnit.NANOSECONDS.toMillis(waitTimeNano);
-        try {
-            Thread.sleep(waitTimeMillis);
-        }
-        catch (InterruptedException e) {
-            e.printStackTrace();
+            case DELAY -> runTaskDelay();
         }
     }
 
@@ -59,7 +50,7 @@ class Task implements Runnable{
                 var period = periodNano;
                 guard.unlock();
 
-                executeTask(period);
+                executeTask();
             }
             catch (InterruptedException e) {
                 e.printStackTrace();
@@ -72,6 +63,58 @@ class Task implements Runnable{
         guard.unlock();
     }
 
+    private static void delay(long durationNano) {
+        long durMillis = TimeUnit.NANOSECONDS.toMillis(durationNano);
+        try {
+            Thread.sleep(durMillis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void runTaskImmediately() {
+        long start = System.nanoTime();
+        try {
+            userRunnable.run();
+        }
+        catch(Throwable t){
+
+        }
+        long duration = System.nanoTime() - start;
+        long waitTime = delayCalculator.calculateWaitTime(duration, periodNano);
+        delay(waitTime);
+    }
+
+    private void runTaskDelay() {
+        long duration, start;
+        if (lastDuration == -1) {
+            start = System.nanoTime();
+
+            try {
+                userRunnable.run();
+            }catch(Throwable t){
+            }
+
+            duration = System.nanoTime() - start;
+            long waitTime = delayCalculator.calculateWaitTime(duration, periodNano);
+            delay(waitTime);
+        }
+        else {
+            long waitTime = delayCalculator.calculateWaitTime(lastDuration, periodNano);
+            delay(waitTime);
+
+            start = System.nanoTime();
+            try {
+                userRunnable.run();
+            }
+            catch(Throwable t){
+
+            }
+            duration = System.nanoTime() - start;
+        }
+
+        lastDuration = duration;
+    }
 
     public void stop() {
         guard.lock();
