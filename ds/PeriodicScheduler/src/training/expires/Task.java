@@ -46,7 +46,6 @@ class Task implements Runnable{
         taskInfo.incExecutionTotal();
         taskInfo.setPeriodNano(periodNano);
         taskInfo.setPolicy(delayPolicy);
-        taskInfo.setStatus(status);
         taskInfo.addToTotalTimeExecution(durationRun);
         taskInfo.setLastDuration(lastDuration);
         taskInfo.updateAverageRunTime();

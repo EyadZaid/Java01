@@ -5,7 +5,7 @@ import training.expires.policies.DelayPolicy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskInfo {
+public class TaskInfoObserver implements ITaskInfoObserver{
     private long periodNano;
     private DelayPolicy policy;
     private long lastDuration;
@@ -16,46 +16,34 @@ public class TaskInfo {
     private double averageRunTime;
     private final List<Exception> exceptions;
 
-
-    public TaskInfo() {
+    public TaskInfoObserver() {
         exceptions = new ArrayList<>();
     }
 
-    public void addException(Exception e) {
+
+    @Override
+    public void onTaskStart(long periodNano, DelayPolicy policy) {
+        this.periodNano = periodNano;
+        this.policy = policy;
+        executionTotal++;
+    }
+
+    @Override
+    public void onTaskCompleted() {
+        completedTotal++;
+    }
+
+    @Override
+    public void onException(Exception e) {
+        failuresTotal++;
         exceptions.add(e);
     }
 
-    public void incExecutionTotal() {
-        this.executionTotal++;
-    }
-
-    public void incFailuresTotal() {
-        this.failuresTotal++;
-    }
-
-    public void incCompletedTotal() {
-        this.completedTotal++;
-    }
-
-    public void addToTotalTimeExecution(long timeExecution) {
-        this.totalTimeExecution += timeExecution;
-    }
-
-    public void setPeriodNano(long periodNano) {
-        this.periodNano = periodNano;
-    }
-
-    public void setPolicy(DelayPolicy policy) {
-        this.policy = policy;
-    }
-
-    public void setLastDuration(long lastDuration) {
-        this.lastDuration = lastDuration;
-    }
-
-    public void updateAverageRunTime() {
+    @Override
+    public void onTaskEnd(long lastDuration) {
+        totalTimeExecution += lastDuration;
         if (totalTimeExecution != 0 && executionTotal != 0)
-        this.averageRunTime = (double) totalTimeExecution / executionTotal;
+            averageRunTime = (double) totalTimeExecution / executionTotal;
     }
 
     @Override
@@ -72,4 +60,5 @@ public class TaskInfo {
                 "\nExceptions: " + exceptions +
                 "\n";
     }
+
 }
