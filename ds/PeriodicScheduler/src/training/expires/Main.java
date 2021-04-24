@@ -14,13 +14,12 @@ public class Main {
         Func1 f1 = new Func1();
         Func2 f2 = new Func2();
 
-        scheduler.schedule(f1, 1000, TimeUnit.MILLISECONDS, DelayPolicy.IMMEDIATELY);
-        scheduler.schedule(f2, 1000, TimeUnit.MILLISECONDS, DelayPolicy.IMMEDIATELY);
+        scheduler.schedule(f1, 2000, TimeUnit.MILLISECONDS, DelayPolicy.IMMEDIATELY);
+        scheduler.schedule(f2, 3000, TimeUnit.MILLISECONDS, DelayPolicy.IMMEDIATELY);
 
         try {
-            Thread.sleep(3000);
-        }
-        catch (InterruptedException e) {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
