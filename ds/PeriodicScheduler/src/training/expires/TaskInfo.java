@@ -60,7 +60,7 @@ public class TaskInfo {
 
     public void updateAverageRunTime() {
         if (totalTimeExecution != 0 && executionTotal != 0)
-        this.averageRunTime = totalTimeExecution / executionTotal;
+        this.averageRunTime = (double) totalTimeExecution / executionTotal;
     }
 
     @Override

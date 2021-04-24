@@ -8,8 +8,6 @@ import training.expires.tasksFunctions.Func2;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class SchedulerTest {
     private PeriodicScheduler scheduler;
 
@@ -100,7 +98,7 @@ class SchedulerTest {
             e.printStackTrace();
         }
 
-        scheduler.reSchedule(f1, 1000, TimeUnit.MILLISECONDS);
+        scheduler.reschedule(f1, 1000, TimeUnit.MILLISECONDS);
 
         try {
             Thread.sleep(2000);

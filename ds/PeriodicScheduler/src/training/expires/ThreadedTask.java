@@ -5,21 +5,13 @@ import training.expires.policies.DelayPolicy;
 import java.util.concurrent.TimeUnit;
 
 class ThreadedTask {
-    private Task task;
-    private Thread thread;
+    private final Task task;
+    private final Thread thread;
 
     public ThreadedTask(Runnable runnable, long period, TimeUnit unit, DelayPolicy delayPolicy) {
         this.task = new Task(runnable, period, unit, delayPolicy);
         this.thread = new Thread(task);
         thread.start();
-    }
-
-    public Task getTask() {
-        return task;
-    }
-
-    public Thread getThread() {
-        return thread;
     }
 
     public void suspend() {
@@ -38,6 +30,10 @@ class ThreadedTask {
         catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public void resume() {
+        task.resume();
     }
 
     public String getInfo() {

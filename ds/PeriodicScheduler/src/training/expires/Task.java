@@ -20,7 +20,7 @@ class Task implements Runnable{
     private long durationRun;
     private TaskStatus status;
     private DelayCalculator delayCalculator;
-    private TaskInfo taskInfo;
+    private final TaskInfo taskInfo;
 
 
     public Task(Runnable userRunnable, long period, TimeUnit unit, DelayPolicy delayPolicy) {

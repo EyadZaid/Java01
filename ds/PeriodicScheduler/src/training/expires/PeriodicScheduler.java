@@ -15,8 +15,8 @@ public class PeriodicScheduler {
 
     public void schedule(Runnable runnable, long period, TimeUnit unit, DelayPolicy delayPolicy) {
         if (taskThreadsMap.get(runnable) == null) {
-            var taskThread = createThreadTask(runnable, period, unit, delayPolicy);
-            taskThreadsMap.put(runnable, taskThread);
+            var threadedTask = createThreadTask(runnable, period, unit, delayPolicy);
+            taskThreadsMap.put(runnable, threadedTask);
         }
     }
 
@@ -31,9 +31,9 @@ public class PeriodicScheduler {
     }
 
     public void stop(Runnable runnable) {
-        var taskThread = taskThreadsMap.get(runnable);
-        if (taskThread != null) {
-            taskThread.stop();
+        var threadedTask = taskThreadsMap.get(runnable);
+        if (threadedTask != null) {
+            threadedTask.stop();
         }
     }
 
@@ -44,9 +44,9 @@ public class PeriodicScheduler {
     }
 
     public void suspend(Runnable runnable) {
-        var taskThread = taskThreadsMap.get(runnable);
-        if (taskThread != null) {
-            taskThread.suspend();
+        var threadedTask = taskThreadsMap.get(runnable);
+        if (threadedTask != null) {
+            threadedTask.suspend();
         }
     }
 
@@ -57,23 +57,23 @@ public class PeriodicScheduler {
     }
 
     public void resume(Runnable runnable) {
-        var taskThread = taskThreadsMap.get(runnable);
-        if (taskThread != null) {
-            taskThread.getTask().resume();
+        var threadedTask = taskThreadsMap.get(runnable);
+        if (threadedTask != null) {
+            threadedTask.resume();
         }
     }
 
-    public void reSchedule(Runnable runnable, long period, TimeUnit unit) {
-        var taskThread = taskThreadsMap.get(runnable);
-        if (taskThread != null) {
-            taskThread.reschedule(period, unit);
+    public void reschedule(Runnable runnable, long period, TimeUnit unit) {
+        var threadedTask = taskThreadsMap.get(runnable);
+        if (threadedTask != null) {
+            threadedTask.reschedule(period, unit);
         }
     }
 
     public void getInfo(Runnable runnable) {
-        var taskThread = taskThreadsMap.get(runnable);
-        if (taskThread != null) {
-            System.out.println(taskThread.getInfo());
+        var threadedTask = taskThreadsMap.get(runnable);
+        if (threadedTask != null) {
+            System.out.println(threadedTask.getInfo());
         }
     }
 }
