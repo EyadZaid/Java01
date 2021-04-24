@@ -12,4 +12,5 @@ public interface ITaskInfoObserver {
 
     void onTaskEnd(long lastDuration);
 
+    TaskInfo getInfo();
 }

@@ -21,24 +21,40 @@ public class TaskInfo {
         exceptions = new ArrayList<>();
     }
 
-    public void addException(Exception e) {
-        exceptions.add(e);
+    public long getPeriodNano() {
+        return periodNano;
     }
 
-    public void incExecutionTotal() {
-        this.executionTotal++;
+    public DelayPolicy getPolicy() {
+        return policy;
     }
 
-    public void incFailuresTotal() {
-        this.failuresTotal++;
+    public long getLastDuration() {
+        return lastDuration;
     }
 
-    public void incCompletedTotal() {
-        this.completedTotal++;
+    public long getExecutionTotal() {
+        return executionTotal;
     }
 
-    public void addToTotalTimeExecution(long timeExecution) {
-        this.totalTimeExecution += timeExecution;
+    public long getFailuresTotal() {
+        return failuresTotal;
+    }
+
+    public long getCompletedTotal() {
+        return completedTotal;
+    }
+
+    public long getTotalTimeExecution() {
+        return totalTimeExecution;
+    }
+
+    public double getAverageRunTime() {
+        return averageRunTime;
+    }
+
+    public List<Exception> getExceptions() {
+        return exceptions;
     }
 
     public void setPeriodNano(long periodNano) {
@@ -53,9 +69,24 @@ public class TaskInfo {
         this.lastDuration = lastDuration;
     }
 
-    public void updateAverageRunTime() {
-        if (totalTimeExecution != 0 && executionTotal != 0)
-        this.averageRunTime = (double) totalTimeExecution / executionTotal;
+    public void setExecutionTotal(long executionTotal) {
+        this.executionTotal = executionTotal;
+    }
+
+    public void setFailuresTotal(long failuresTotal) {
+        this.failuresTotal = failuresTotal;
+    }
+
+    public void setCompletedTotal(long completedTotal) {
+        this.completedTotal = completedTotal;
+    }
+
+    public void setTotalTimeExecution(long totalTimeExecution) {
+        this.totalTimeExecution = totalTimeExecution;
+    }
+
+    public void setAverageRunTime(double averageRunTime) {
+        this.averageRunTime = averageRunTime;
     }
 
     @Override

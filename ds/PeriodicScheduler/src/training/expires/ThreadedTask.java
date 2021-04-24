@@ -36,7 +36,11 @@ class ThreadedTask {
         task.resume();
     }
 
-    public String getInfo() {
+    public String getInfoString() {
+        return task.getInfoString();
+    }
+
+    public TaskInfo getInfo() {
         return task.getInfo();
     }
 }

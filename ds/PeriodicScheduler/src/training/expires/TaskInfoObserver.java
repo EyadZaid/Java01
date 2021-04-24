@@ -48,6 +48,21 @@ public class TaskInfoObserver implements ITaskInfoObserver{
     }
 
     @Override
+    public TaskInfo getInfo() {
+        TaskInfo taskInfo = new TaskInfo();
+        taskInfo.setPeriodNano(periodNano);
+        taskInfo.setPolicy(policy);
+        taskInfo.setAverageRunTime(averageRunTime);
+        taskInfo.setTotalTimeExecution(totalTimeExecution);
+        taskInfo.setLastDuration(lastDuration);
+        taskInfo.setFailuresTotal(failuresTotal);
+        taskInfo.setCompletedTotal(completedTotal);
+        taskInfo.setExecutionTotal(executionTotal);
+
+        return taskInfo;
+    }
+
+    @Override
     public String toString() {
         return "\n ## Task Info ##" +
                 "\nPeriod (nano): " + periodNano +

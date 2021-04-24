@@ -183,8 +183,11 @@ class Task implements Runnable{
         }
     }
 
-    public String getInfo() {
+    public String getInfoString() {
         return observer.toString();
     }
 
+    public TaskInfo getInfo() {
+        return observer.getInfo();
+    }
 }

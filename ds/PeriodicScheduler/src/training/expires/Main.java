@@ -25,6 +25,6 @@ public class Main {
 
         scheduler.stopAll();
 
-        scheduler.getInfo(f1);
+        scheduler.getInfoString(f1);
     }
 }

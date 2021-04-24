@@ -70,10 +70,19 @@ public class PeriodicScheduler {
         }
     }
 
-    public void getInfo(Runnable runnable) {
+    public void getInfoString(Runnable runnable) {
         var threadedTask = taskThreadsMap.get(runnable);
         if (threadedTask != null) {
-            System.out.println(threadedTask.getInfo());
+            System.out.println(threadedTask.getInfoString());
         }
     }
+
+    public TaskInfo getInfo(Runnable runnable) {
+        var threadedTask = taskThreadsMap.get(runnable);
+        if (threadedTask != null) {
+            return threadedTask.getInfo();
+        }
+        return null;
+    }
+
 }
