@@ -19,6 +19,11 @@ class Task implements Runnable{
     private long lastDuration;
     private TaskStatus status;
     private DelayCalculator delayCalculator;
+    private TaskInfo taskInfo;
+
+    private Exception exception;
+
+
 
     public Task(Runnable userRunnable, long period, TimeUnit unit, DelayPolicy delayPolicy) {
         this.userRunnable = userRunnable;
@@ -27,6 +32,7 @@ class Task implements Runnable{
         status = TaskStatus.RUNNING;
         guard = new ReentrantLock();
         running = guard.newCondition();
+        taskInfo = new TaskInfo();
         lastDuration = -1;
         initDelayCalculator();
     }
@@ -38,6 +44,8 @@ class Task implements Runnable{
 
             case DELAY -> runTaskDelay();
         }
+
+
     }
 
     @Override
@@ -81,7 +89,9 @@ class Task implements Runnable{
         try {
             userRunnable.run();
         }
-        catch(Throwable t){
+        catch(Exception e){
+            taskInfo.addException(e);
+            taskInfo.
 
         }
         long duration = System.nanoTime() - start;

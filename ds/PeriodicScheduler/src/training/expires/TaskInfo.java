@@ -28,6 +28,22 @@ public class TaskInfo {
         exceptions.add(e);
     }
 
+    public void incExecutionTotal() {
+        this.executionTotal++;
+    }
+
+    public void incFailuresTotal() {
+        this.failuresTotal++;
+    }
+
+    public void incCompletedTotal() {
+        this.completedTotal++;
+    }
+
+    public void addToTotalTimeExecution(long timeExecution) {
+        this.totalTimeExecution += timeExecution;
+    }
+
     public void setPeriod(long period) {
         this.period = period;
     }
@@ -46,22 +62,6 @@ public class TaskInfo {
 
     public void setLastDuration(long lastDuration) {
         this.lastDuration = lastDuration;
-    }
-
-    public void setExecutionTotal(long executionTotal) {
-        this.executionTotal = executionTotal;
-    }
-
-    public void setFailuresTotal(long failuresTotal) {
-        this.failuresTotal = failuresTotal;
-    }
-
-    public void setCompletedTotal(long completedTotal) {
-        this.completedTotal = completedTotal;
-    }
-
-    public void setTotalTimeExecution(long totalTimeExecution) {
-        this.totalTimeExecution = totalTimeExecution;
     }
 
     public void setAverageRunTime(double averageRunTime) {
