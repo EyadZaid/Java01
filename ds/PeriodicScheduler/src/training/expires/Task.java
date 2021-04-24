@@ -20,17 +20,17 @@ class Task implements Runnable{
     private long durationRun;
     private TaskStatus status;
     private DelayCalculator delayCalculator;
-    private final TaskInfo taskInfo;
+    private final ITaskInfoObserver observer;
 
 
-    public Task(Runnable userRunnable, long period, TimeUnit unit, DelayPolicy delayPolicy) {
+    public Task(Runnable userRunnable, long period, TimeUnit unit, DelayPolicy delayPolicy, ITaskInfoObserver observer) {
         this.userRunnable = userRunnable;
         this.periodNano = unit.toNanos(period);
         this.delayPolicy = delayPolicy;
+        this.observer = observer;
         status = TaskStatus.RUNNING;
         guard = new ReentrantLock();
         running = guard.newCondition();
-        taskInfo = new TaskInfo();
         lastDuration = -1;
         initDelayCalculator();
     }
@@ -43,12 +43,7 @@ class Task implements Runnable{
             case DELAY -> runTaskDelay();
         }
 
-        taskInfo.incExecutionTotal();
-        taskInfo.setPeriodNano(periodNano);
-        taskInfo.setPolicy(delayPolicy);
-        taskInfo.addToTotalTimeExecution(durationRun);
-        taskInfo.setLastDuration(lastDuration);
-        taskInfo.updateAverageRunTime();
+        observer.onTaskEnd(lastDuration);
     }
 
     @Override
@@ -62,7 +57,6 @@ class Task implements Runnable{
                 if(status == TaskStatus.STOPPED){
                     break;
                 }
-                var period = periodNano;
                 guard.unlock();
 
                 executeTask();
@@ -93,11 +87,10 @@ class Task implements Runnable{
             userRunnable.run();
         }
         catch(Exception e){
-            taskInfo.addException(e);
-            taskInfo.incFailuresTotal();
+            observer.onException(e);
         }
+        observer.onTaskCompleted();
         lastDuration = durationRun;
-        taskInfo.incCompletedTotal();
         durationRun = System.nanoTime() - start;
         long waitTime = delayCalculator.calculateWaitTime(durationRun, periodNano);
         delay(waitTime);
@@ -111,8 +104,7 @@ class Task implements Runnable{
             try {
                 userRunnable.run();
             }catch(Exception e){
-                taskInfo.addException(e);
-                taskInfo.incFailuresTotal();
+                observer.onException(e);
             }
 
             durationRun = System.nanoTime() - start;
@@ -128,14 +120,12 @@ class Task implements Runnable{
                 userRunnable.run();
             }
             catch(Exception e){
-                taskInfo.addException(e);
-                taskInfo.incFailuresTotal();
+                observer.onException(e);
             }
             durationRun = System.nanoTime() - start;
         }
-
         lastDuration = durationRun;
-        taskInfo.incCompletedTotal();
+        observer.onTaskCompleted();
     }
 
     public void stop() {
@@ -192,7 +182,7 @@ class Task implements Runnable{
     }
 
     public String getInfo() {
-        return taskInfo.toString();
+        return observer.toString();
     }
 
 }

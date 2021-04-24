@@ -9,7 +9,7 @@ class ThreadedTask {
     private final Thread thread;
 
     public ThreadedTask(Runnable runnable, long period, TimeUnit unit, DelayPolicy delayPolicy) {
-        this.task = new Task(runnable, period, unit, delayPolicy);
+        this.task = new Task(runnable, period, unit, delayPolicy, new TaskInfoObserver());
         this.thread = new Thread(task);
         thread.start();
     }

@@ -41,6 +41,7 @@ public class TaskInfoObserver implements ITaskInfoObserver{
 
     @Override
     public void onTaskEnd(long lastDuration) {
+        this.lastDuration = lastDuration;
         totalTimeExecution += lastDuration;
         if (totalTimeExecution != 0 && executionTotal != 0)
             averageRunTime = (double) totalTimeExecution / executionTotal;
