@@ -36,6 +36,8 @@ class Task implements Runnable{
     }
 
     private void executeTask() {
+        observer.onTaskStart(periodNano, delayPolicy);
+
         switch (delayPolicy) {
 
             case IMMEDIATELY -> runTaskImmediately();
