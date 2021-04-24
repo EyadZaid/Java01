@@ -15,12 +15,12 @@ public class PeriodicScheduler {
 
     public void schedule(Runnable runnable, long period, TimeUnit unit, DelayPolicy delayPolicy) {
         if (taskThreadsMap.get(runnable) == null) {
-            var taskThread = cretaeThreadTask(runnable, period, unit, delayPolicy);
+            var taskThread = createThreadTask(runnable, period, unit, delayPolicy);
             taskThreadsMap.put(runnable, taskThread);
         }
     }
 
-    private ThreadedTask cretaeThreadTask(Runnable runnable, long period, TimeUnit unit, DelayPolicy delayPolicy) {
+    private ThreadedTask createThreadTask(Runnable runnable, long period, TimeUnit unit, DelayPolicy delayPolicy) {
         return new ThreadedTask(runnable, period, unit, delayPolicy);
     }
 
@@ -31,7 +31,7 @@ public class PeriodicScheduler {
     }
 
     public void stop(Runnable runnable) {
-        var taskThread = taskThreadsMap.remove(runnable);
+        var taskThread = taskThreadsMap.get(runnable);
         if (taskThread != null) {
             taskThread.stop();
         }
@@ -70,11 +70,10 @@ public class PeriodicScheduler {
         }
     }
 
-    public String getInfo(Runnable runnable) {
+    public void getInfo(Runnable runnable) {
         var taskThread = taskThreadsMap.get(runnable);
         if (taskThread != null) {
-            return taskThread.getInfo();
+            System.out.println(taskThread.getInfo());
         }
-        return "";
     }
 }

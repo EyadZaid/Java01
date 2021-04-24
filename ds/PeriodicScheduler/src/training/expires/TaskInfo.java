@@ -65,7 +65,7 @@ public class TaskInfo {
 
     @Override
     public String toString() {
-        return "Task Info" +
+        return "\n ## Task Info ##" +
                 "\nPeriod (nano): " + periodNano +
                 "\nStatus: " + status +
                 "\nPolicy: " + policy +
