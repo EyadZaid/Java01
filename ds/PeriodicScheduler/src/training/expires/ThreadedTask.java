@@ -39,4 +39,8 @@ class ThreadedTask {
             e.printStackTrace();
         }
     }
+
+    public String getInfo() {
+        return task.getInfo();
+    }
 }

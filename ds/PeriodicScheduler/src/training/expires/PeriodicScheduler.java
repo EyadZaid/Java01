@@ -70,4 +70,11 @@ public class PeriodicScheduler {
         }
     }
 
+    public String getInfo(Runnable runnable) {
+        var taskThread = taskThreadsMap.get(runnable);
+        if (taskThread != null) {
+            return taskThread.getInfo();
+        }
+        return "";
+    }
 }

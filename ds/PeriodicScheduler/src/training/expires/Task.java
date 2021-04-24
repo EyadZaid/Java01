@@ -17,12 +17,10 @@ class Task implements Runnable{
     private final DelayPolicy delayPolicy;
     private long periodNano;
     private long lastDuration;
+    private long durationRun;
     private TaskStatus status;
     private DelayCalculator delayCalculator;
     private TaskInfo taskInfo;
-
-    private long durationRun;
-
 
 
     public Task(Runnable userRunnable, long period, TimeUnit unit, DelayPolicy delayPolicy) {
@@ -99,6 +97,7 @@ class Task implements Runnable{
             taskInfo.addException(e);
             taskInfo.incFailuresTotal();
         }
+        lastDuration = durationRun;
         taskInfo.incCompletedTotal();
         durationRun = System.nanoTime() - start;
         long waitTime = delayCalculator.calculateWaitTime(durationRun, periodNano);
@@ -137,6 +136,7 @@ class Task implements Runnable{
         }
 
         lastDuration = durationRun;
+        taskInfo.incCompletedTotal();
     }
 
     public void stop() {
@@ -191,4 +191,9 @@ class Task implements Runnable{
             case DELAY -> delayCalculator = new RunDelay();
         }
     }
+
+    public String getInfo() {
+        return taskInfo.toString();
+    }
+
 }
