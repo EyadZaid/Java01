@@ -21,7 +21,7 @@ class Task implements Runnable{
     private DelayCalculator delayCalculator;
     private TaskInfo taskInfo;
 
-    private Exception exception;
+    private long durationRun;
 
 
 
@@ -45,7 +45,13 @@ class Task implements Runnable{
             case DELAY -> runTaskDelay();
         }
 
-
+        taskInfo.incExecutionTotal();
+        taskInfo.setPeriodNano(periodNano);
+        taskInfo.setPolicy(delayPolicy);
+        taskInfo.setStatus(status);
+        taskInfo.addToTotalTimeExecution(durationRun);
+        taskInfo.setLastDuration(lastDuration);
+        taskInfo.updateAverageRunTime();
     }
 
     @Override
@@ -91,26 +97,28 @@ class Task implements Runnable{
         }
         catch(Exception e){
             taskInfo.addException(e);
-            taskInfo.
-
+            taskInfo.incFailuresTotal();
         }
-        long duration = System.nanoTime() - start;
-        long waitTime = delayCalculator.calculateWaitTime(duration, periodNano);
+        taskInfo.incCompletedTotal();
+        durationRun = System.nanoTime() - start;
+        long waitTime = delayCalculator.calculateWaitTime(durationRun, periodNano);
         delay(waitTime);
     }
 
     private void runTaskDelay() {
-        long duration, start;
+        long start;
         if (lastDuration == -1) {
             start = System.nanoTime();
 
             try {
                 userRunnable.run();
-            }catch(Throwable t){
+            }catch(Exception e){
+                taskInfo.addException(e);
+                taskInfo.incFailuresTotal();
             }
 
-            duration = System.nanoTime() - start;
-            long waitTime = delayCalculator.calculateWaitTime(duration, periodNano);
+            durationRun = System.nanoTime() - start;
+            long waitTime = delayCalculator.calculateWaitTime(durationRun, periodNano);
             delay(waitTime);
         }
         else {
@@ -121,13 +129,14 @@ class Task implements Runnable{
             try {
                 userRunnable.run();
             }
-            catch(Throwable t){
-
+            catch(Exception e){
+                taskInfo.addException(e);
+                taskInfo.incFailuresTotal();
             }
-            duration = System.nanoTime() - start;
+            durationRun = System.nanoTime() - start;
         }
 
-        lastDuration = duration;
+        lastDuration = durationRun;
     }
 
     public void stop() {

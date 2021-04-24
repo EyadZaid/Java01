@@ -4,11 +4,9 @@ import training.expires.policies.DelayPolicy;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class TaskInfo {
-    private long period;
-    private TimeUnit unit;
+    private long periodNano;
     private TaskStatus status;
     private DelayPolicy policy;
     private long lastDuration;
@@ -44,12 +42,8 @@ public class TaskInfo {
         this.totalTimeExecution += timeExecution;
     }
 
-    public void setPeriod(long period) {
-        this.period = period;
-    }
-
-    public void setUnit(TimeUnit unit) {
-        this.unit = unit;
+    public void setPeriodNano(long periodNano) {
+        this.periodNano = periodNano;
     }
 
     public void setStatus(TaskStatus status) {
@@ -64,7 +58,24 @@ public class TaskInfo {
         this.lastDuration = lastDuration;
     }
 
-    public void setAverageRunTime(double averageRunTime) {
-        this.averageRunTime = averageRunTime;
+    public void updateAverageRunTime() {
+        if (totalTimeExecution != 0 && executionTotal != 0)
+        this.averageRunTime = totalTimeExecution / executionTotal;
+    }
+
+    @Override
+    public String toString() {
+        return "Task Info" +
+                "\nPeriod (nano): " + periodNano +
+                "\nStatus: " + status +
+                "\nPolicy: " + policy +
+                "\nLastDuration: " + lastDuration +
+                "\nExecutionTotal: " + executionTotal +
+                "\nCompletedTotal: " + completedTotal +
+                "\nFailuresTotal: " + failuresTotal +
+                "\nTotalTimeExecution: " + totalTimeExecution +
+                "\nAverageRunTime: " + averageRunTime +
+                "\nExceptions: " + exceptions +
+                "\n";
     }
 }
