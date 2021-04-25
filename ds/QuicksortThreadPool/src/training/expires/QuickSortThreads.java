@@ -9,7 +9,11 @@ public class QuickSortThreads<T extends Comparable<T>> extends RecursiveTask<T> 
     private final int start;
     private final int end;
 
-    public QuickSortThreads(int start, int end, T[] arr) {
+    public QuickSortThreads(T[] arr) {
+        this(0, arr.length-1, arr);
+    }
+
+    private QuickSortThreads(int start, int end, T[] arr) {
         this.arr = arr;
         this.start = start;
         this.end = end;
@@ -17,14 +21,14 @@ public class QuickSortThreads<T extends Comparable<T>> extends RecursiveTask<T> 
 
     public void sort() {
         ForkJoinPool pool = ForkJoinPool.commonPool();
-        pool.invoke(new QuickSortThreads<>(0, arr.length - 1, arr));
+        pool.invoke(new QuickSortThreads<>(start, end, arr));
     }
 
     private int partition(int start, int end) {
         int i = start, j = end;
-        int pivote = new Random().nextInt(j - i) + i;
+        int pivot = new Random().nextInt(end - start) + start;
 
-        swap(pivote, j);
+        swap(pivot, j);
         j--;
 
         while (i <= j) {
@@ -32,12 +36,10 @@ public class QuickSortThreads<T extends Comparable<T>> extends RecursiveTask<T> 
                 i++;
                 continue;
             }
-
             if (arr[j].compareTo(arr[end]) >= 0) {
                 j--;
                 continue;
             }
-
             swap(i, j);
             j--;
             i++;
