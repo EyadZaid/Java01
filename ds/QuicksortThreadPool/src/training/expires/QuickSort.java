@@ -13,26 +13,26 @@ public class QuickSort<T extends Comparable<T>> {
         quickSort(0, arr.length-1);
     }
 
-    private void quickSort(int low, int high) {
-        if (low < high) {
-            int pivot = partition(low, high);
+    private void quickSort(int start, int end) {
+        if (start < end) {
+            int pivot = partition(start, end);
 
-            quickSort(low, pivot - 1);
-            quickSort(pivot + 1, high);
+            quickSort(start, pivot - 1);
+            quickSort(pivot + 1, end);
         }
     }
 
-    private int partition(int low, int high) {
-        T pivot = arr[high];
-        int i = (low - 1);
+    private int partition(int start, int end) {
+        T pivot = arr[end];
+        int i = (start - 1);
 
-        for(int j = low; j <= high - 1; j++) {
+        for(int j = start; j <= end - 1; j++) {
             if (arr[j].compareTo(pivot) < 0) {
                 i++;
                 swap(i, j);
             }
         }
-        swap(i + 1, high);
+        swap(i + 1, end);
         return (i + 1);
     }
 
