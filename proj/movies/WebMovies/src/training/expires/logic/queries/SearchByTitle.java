@@ -10,6 +10,7 @@ import java.util.List;
 
 public class SearchByTitle {
     private final static String API_KEY = "a4038bc6";
+    private final static String URL_TITLE = "http://www.omdbapi.com/?s=";
     private final RequestHttp requestHttp;
 
     public SearchByTitle() {
@@ -17,7 +18,7 @@ public class SearchByTitle {
     }
 
     public List<Movie> search(String title) {
-        String url = "http://www.omdbapi.com/?s=" + title + "&apikey=" + API_KEY;
+        String url = URL_TITLE + title + "&apikey=" + API_KEY;
         String jsonString = requestHttp.getRequest(url);
         List<String> imdbIDsList = new ArrayList<>();
 
