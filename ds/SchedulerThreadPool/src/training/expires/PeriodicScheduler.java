@@ -2,18 +2,25 @@ package training.expires;
 
 import training.expires.policies.DelayPolicy;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.*;
 
 public class PeriodicScheduler {
     private final Map<Runnable, Task> tasksMap;
+
     private final ScheduledThreadPoolExecutor threadPool;
-    //private final Executor threadPool;
+   // private final ExecutorService executor;
+    //private final Map<Runnable, Future<?>> futuresMap;
+
 
     public PeriodicScheduler(int poolSize) {
         tasksMap = new ConcurrentHashMap<>();
+
         threadPool = new ScheduledThreadPoolExecutor(poolSize);
-        //threadPool = Executors.newCachedThreadPool();
+        //executor = Executors.newFixedThreadPool(poolSize);
+        //futuresMap = new ConcurrentHashMap<>();
     }
 
     public PeriodicScheduler() {
@@ -23,7 +30,11 @@ public class PeriodicScheduler {
     public void schedule(Runnable runnable, long period, TimeUnit unit, DelayPolicy delayPolicy) {
         if (tasksMap.get(runnable) == null) {
             Task task = new Task(runnable, period, unit, delayPolicy, new TaskInfoObserver());
+
             threadPool.execute(task);
+            //var future = executor.submit(task);
+            //futuresMap.put(runnable, future);
+
             tasksMap.put(runnable, task);
         }
     }
@@ -33,6 +44,7 @@ public class PeriodicScheduler {
             stop(runnable);
         }
         threadPool.shutdown();
+        //executor.shutdown();
     }
 
     public void stop(Runnable runnable) {
@@ -52,6 +64,7 @@ public class PeriodicScheduler {
         var task = tasksMap.get(runnable);
         if (task != null) {
             task.suspend();
+            //futuresMap.get(runnable).cancel(true);
         }
     }
 
