@@ -1,6 +1,5 @@
 package training.expires;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Movie {
@@ -8,24 +7,26 @@ public class Movie {
     private String title;
     private String rated;
     private String runtime;
-    private int year;
+    private String year;
     private List<String> directorsList;
     private List<String> genreList;
 
-
-    public Movie(String title, int year, String rated, String imdbID) {
-        this.title = title;
-        this.year = year;
-        this.rated = rated;
+    public Movie(String imdbID, String title, String rated, String runtime, String year,
+                 List<String> directorsList, List<String> genreList) {
         this.imdbID = imdbID;
-        this.directorsList = new ArrayList<>();
+        this.title = title;
+        this.rated = rated;
+        this.runtime = runtime;
+        this.year = year;
+        this.directorsList = directorsList;
+        this.genreList = genreList;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
