@@ -2,6 +2,7 @@ package training.expires;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import training.expires.data.Movie;
 
 import java.io.IOException;
 import java.net.URI;
