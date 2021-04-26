@@ -31,10 +31,10 @@ class SchedulerTest {
         scheduler.stopAll();
 
         long executionTotalTask1 = scheduler.getInfo(f1).getExecutionTotal();
-        //assertEquals(3, executionTotalTask1);
+        assertEquals(3, executionTotalTask1);
 
         long executionTotalTask2 = scheduler.getInfo(f2).getExecutionTotal();
-        //assertEquals(2, executionTotalTask2);
+        assertEquals(2, executionTotalTask2);
     }
 
     @Test
@@ -66,9 +66,10 @@ class SchedulerTest {
         scheduler.schedule(f1, 2000, TimeUnit.MILLISECONDS, DelayPolicy.IMMEDIATELY);
         scheduler.schedule(f2, 3000, TimeUnit.MILLISECONDS, DelayPolicy.IMMEDIATELY);
 
-        delay(6000);
+        delay(5000);
 
         scheduler.suspend(f1);
+        scheduler.suspend(f2);
 
         delay(2000);
 
@@ -82,7 +83,7 @@ class SchedulerTest {
         assertEquals(5, executionTotalTask1);
 
         long executionTotalTask2 = scheduler.getInfo(f2).getExecutionTotal();
-        assertEquals(4, executionTotalTask2);
+        assertEquals(3, executionTotalTask2);
     }
 
     @Test
