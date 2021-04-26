@@ -23,23 +23,18 @@ class SchedulerTest {
         Func1 f1 = new Func1();
         Func2 f2 = new Func2();
 
-        scheduler.schedule(f1, 1500, TimeUnit.MILLISECONDS, DelayPolicy.IMMEDIATELY);
+        scheduler.schedule(f1, 2000, TimeUnit.MILLISECONDS, DelayPolicy.IMMEDIATELY);
         scheduler.schedule(f2, 3000, TimeUnit.MILLISECONDS, DelayPolicy.IMMEDIATELY);
 
-        try {
-            Thread.sleep(6000);
-        }
-        catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        delay(5000);
 
         scheduler.stopAll();
 
         long executionTotalTask1 = scheduler.getInfo(f1).getExecutionTotal();
-        //assertEquals(4, executionTotalTask1);
+        //assertEquals(3, executionTotalTask1);
 
         long executionTotalTask2 = scheduler.getInfo(f2).getExecutionTotal();
-        //assertEquals(3, executionTotalTask2);
+        //assertEquals(2, executionTotalTask2);
     }
 
     @Test
@@ -51,20 +46,15 @@ class SchedulerTest {
         scheduler.schedule(f1, 1500, TimeUnit.MILLISECONDS, DelayPolicy.DELAY);
         scheduler.schedule(f2, 3000, TimeUnit.MILLISECONDS, DelayPolicy.DELAY);
 
-        try {
-            Thread.sleep(6000);
-        }
-        catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        delay(5000);
 
         scheduler.stopAll();
 
         long executionTotalTask1 = scheduler.getInfo(f1).getExecutionTotal();
-       //assertEquals(4, executionTotalTask1);
+        assertEquals(4, executionTotalTask1);
 
         long executionTotalTask2 = scheduler.getInfo(f2).getExecutionTotal();
-        //assertEquals(3, executionTotalTask2);
+        assertEquals(2, executionTotalTask2);
     }
 
     @Test
@@ -73,38 +63,23 @@ class SchedulerTest {
         Func1 f1 = new Func1();
         Func2 f2 = new Func2();
 
-        scheduler.schedule(f1, 1500, TimeUnit.MILLISECONDS, DelayPolicy.IMMEDIATELY);
+        scheduler.schedule(f1, 2000, TimeUnit.MILLISECONDS, DelayPolicy.IMMEDIATELY);
         scheduler.schedule(f2, 3000, TimeUnit.MILLISECONDS, DelayPolicy.IMMEDIATELY);
 
-        try {
-            Thread.sleep(6000);
-        }
-        catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        delay(6000);
 
         scheduler.suspend(f1);
 
-        try {
-            Thread.sleep(2000);
-        }
-        catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        delay(2000);
 
         scheduler.resumeAll();
 
-        try {
-            Thread.sleep(2000);
-        }
-        catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        delay(2000);
 
         scheduler.stopAll();
 
         long executionTotalTask1 = scheduler.getInfo(f1).getExecutionTotal();
-        assertEquals(7, executionTotalTask1);
+        assertEquals(5, executionTotalTask1);
 
         long executionTotalTask2 = scheduler.getInfo(f2).getExecutionTotal();
         assertEquals(4, executionTotalTask2);
@@ -119,12 +94,7 @@ class SchedulerTest {
         scheduler.schedule(f1, 1500, TimeUnit.MILLISECONDS, DelayPolicy.IMMEDIATELY);
         scheduler.schedule(f2, 3000, TimeUnit.MILLISECONDS, DelayPolicy.IMMEDIATELY);
 
-        try {
-            Thread.sleep(5000);
-        }
-        catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        delay(5000);
 
         scheduler.suspendAll();
 
@@ -146,21 +116,11 @@ class SchedulerTest {
         scheduler.schedule(f1, 1500, TimeUnit.MILLISECONDS, DelayPolicy.IMMEDIATELY);
         scheduler.schedule(f2, 3000, TimeUnit.MILLISECONDS, DelayPolicy.IMMEDIATELY);
 
-        try {
-            Thread.sleep(4000);
-        }
-        catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        delay(4000);
 
         scheduler.suspend(f1);
 
-        try {
-            Thread.sleep(2000);
-        }
-        catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        delay(2000);
 
         scheduler.reschedule(f1, 1000, TimeUnit.MILLISECONDS);
 
@@ -178,6 +138,16 @@ class SchedulerTest {
 
         long executionTotalTask2 = scheduler.getInfo(f2).getExecutionTotal();
         assertEquals(3, executionTotalTask2);
+    }
+
+
+    private void delay(long millis) {
+        try {
+            Thread.sleep(millis);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }
