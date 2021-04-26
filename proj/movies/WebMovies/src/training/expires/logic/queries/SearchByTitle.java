@@ -8,7 +8,7 @@ import training.expires.logic.RequestHttp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchByTitle {
+public class SearchByTitle implements IQuery{
     private final static String API_KEY = "a4038bc6";
     private final static String URL_TITLE = "http://www.omdbapi.com/?s=";
     private final RequestHttp requestHttp;
@@ -17,6 +17,7 @@ public class SearchByTitle {
         requestHttp = new RequestHttp();
     }
 
+    @Override
     public List<Movie> search(String title) {
         String url = URL_TITLE + title + "&apikey=" + API_KEY;
         String jsonString = requestHttp.getRequest(url);
@@ -37,10 +38,8 @@ public class SearchByTitle {
         SearchByImdbId searchById = new SearchByImdbId();
         List<Movie> movies = new ArrayList<>();
         for (var id : imdbIDsList) {
-            movies.add(searchById.search(id));
+            movies.add(searchById.search(id).get(0));
         }
         return movies;
     }
-
-
 }
