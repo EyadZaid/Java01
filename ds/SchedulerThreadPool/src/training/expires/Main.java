@@ -18,12 +18,21 @@ public class Main {
         scheduler.schedule(f2, 3000, TimeUnit.MILLISECONDS, DelayPolicy.IMMEDIATELY);
 
         try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        scheduler.stop(f1);
+
+        try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         scheduler.stopAll();
+
 
         scheduler.getInfoString(f1);
     }

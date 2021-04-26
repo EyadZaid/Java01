@@ -6,7 +6,7 @@ public class ScheduledThreadPool {
     ScheduledThreadPoolExecutor threadPool;
 
     public ScheduledThreadPool() {
-        this.threadPool = new ScheduledThreadPoolExecutor(2);;
+        this.threadPool = new ScheduledThreadPoolExecutor(2);
     }
 
     public void testScheduledThreadPool() {
