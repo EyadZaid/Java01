@@ -5,8 +5,19 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.concurrent.Callable;
 
-public class RequestHttp {
+public class RequestHttp implements Callable<String> {
+    private String url;
+
+    public RequestHttp(String url) {
+        this.url = url;
+    }
+
+    @Override
+    public String call() throws Exception {
+        return getRequest(url);
+    }
 
     public String getRequest(String url) {
         HttpClient client = HttpClient.newHttpClient();
@@ -25,7 +36,5 @@ public class RequestHttp {
 
         return response.body();
     }
-
-
 
 }

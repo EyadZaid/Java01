@@ -17,6 +17,7 @@ class QueriesTest {
         query = UserQuery.getInstance();
     }
 
+    /*
     @Test
     void searchByImdbIdTest() {
         String idToSearch1 = "tt2948372";
@@ -67,7 +68,7 @@ class QueriesTest {
         assertEquals(idToSearch3, mov3.getImdbID());
 
     }
-
+*/
 
 
 
