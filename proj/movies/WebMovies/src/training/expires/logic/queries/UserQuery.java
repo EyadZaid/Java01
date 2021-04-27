@@ -36,7 +36,7 @@ public class UserQuery {
             case TITLE -> { return searchByTitle(inputToSearch); }
         }
 
-        return null;
+        return new ArrayList<>();
     }
 
     private List<Movie> searchById(String inputToSearch) {
