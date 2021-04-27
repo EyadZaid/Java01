@@ -1,19 +1,27 @@
 package training.expires.ui;
 
 import training.expires.data.Movie;
+import training.expires.logic.outputs.ConsoleWrite;
+import training.expires.logic.outputs.FileWrite;
+import training.expires.logic.outputs.IOutput;
 import training.expires.logic.queries.Query;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
     private final Query query;
+    private final Scanner reader;
+    private IOutput output;
 
     public UserInterface(){
         query = Query.getInstance();
+        reader = new Scanner(System.in);
     }
 
     public void executeApp() {
+        selectDisplay();
         boolean inputLoop = true;
 
         while (inputLoop){
@@ -21,9 +29,7 @@ public class UserInterface {
             System.out.println("Enter 2 to Search by Title");
             System.out.println("Enter 3 to exit");
 
-            Scanner reader = new Scanner(System.in);
             char input = reader.next().charAt(0);
-
             switch (input){
                 case '1' -> searchByImdbId();
                 case '2' -> searchByTitle();
@@ -31,8 +37,8 @@ public class UserInterface {
             }
         }
         query.shutdown();
+        output.close();
     }
-
 
     private void searchByImdbId(){
         Scanner scanner = new Scanner(System.in);
@@ -42,13 +48,12 @@ public class UserInterface {
         Movie movie = query.searchById(inputSearch);
 
         if (movie != null){
-            System.out.println(movie);
+            output.write(movie.toString());
         }
         else {
-            System.out.println("Movie does not exist");
+            output.write("Movie does not exist");
         }
     }
-
 
     private void searchByTitle(){
         Scanner scanner = new Scanner(System.in);
@@ -58,12 +63,27 @@ public class UserInterface {
         List<Movie> moviesList = query.searchByTitle(inputSearch);
 
         if (moviesList != null && moviesList.size() > 0){
-            System.out.println(moviesList);
+            output.write(moviesList.toString());
         }
         else {
-            System.out.println("Movie does not exist");
+            output.write("Movie does not exist");
         }
     }
 
+    private void selectDisplay() {
+        System.out.println("Enter 1 to display results in console");
+        System.out.println("Enter 2 to display results in file");
+        char input = reader.next().charAt(0);
+        if (input == '2') {
+            try {
+                output = new FileWrite("output.txt");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            output = new ConsoleWrite();
+        }
+    }
 
 }
