@@ -18,7 +18,7 @@ class QueriesTest {
     }
 
     @Test
-    void searchByImdbIdTest() {
+    void searchThreeMoviesByImdbIdTest() {
         String idToSearch1 = "tt2948372";
         Movie movie1 = query.searchById(idToSearch1);
         assertEquals(idToSearch1, movie1.getImdbID());
@@ -33,7 +33,7 @@ class QueriesTest {
     }
 
     @Test
-    void searchByTitleTest() {
+    void searchThreeMoviesByTitleTest() {
         String title = "soul";
         List<Movie> movies = query.searchByTitle(title);
 
@@ -61,10 +61,10 @@ class QueriesTest {
 
         assertEquals(10, movies3.size());
 
-        String idToSearch3 = "tt0220264";
+        String idToSearch3 = "tt0057076";
         Movie mov3 = query.searchById(idToSearch3);
 
-        assertEquals(idToSearch3, mov3.getImdbID());
+        assertTrue(movies3.contains(mov3));
     }
 
 
