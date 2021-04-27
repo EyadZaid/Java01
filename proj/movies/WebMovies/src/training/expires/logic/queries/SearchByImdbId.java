@@ -7,19 +7,26 @@ import training.expires.logic.RequestHttp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Callable;
 
-public class SearchByImdbId implements IQuery{
+ class SearchByImdbId implements Callable<List<Movie>> {
     private final static String API_KEY = "a4038bc6";
     private final static String URL_ID = "http://www.omdbapi.com/?i=";
     private final RequestHttp requestHttp;
+    private final String idToSearch;
 
-    public SearchByImdbId() {
+    public SearchByImdbId(String idToSearch) {
         requestHttp = new RequestHttp();
+        this.idToSearch = idToSearch;
     }
 
     @Override
-    public List<Movie> search(String imdbID) {
-        String url = URL_ID + imdbID + "&apikey=" + API_KEY;
+    public List<Movie> call() throws Exception {
+        return search();
+    }
+
+    private List<Movie> search() {
+        String url = URL_ID + idToSearch + "&apikey=" + API_KEY;
         String jsonString = requestHttp.getRequest(url);
 
         JSONObject obj = new JSONObject(jsonString);
@@ -35,7 +42,7 @@ public class SearchByImdbId implements IQuery{
         String genres = obj.getString("Genre");
         List<String> genreList = Arrays.asList(genres.split("\\s*,\\s*"));
 
-        Movie movie = new Movie(imdbID, title, rated, runtime, year, directorsList, genreList);
+        Movie movie = new Movie(idToSearch, title, rated, runtime, year, directorsList, genreList);
         List<Movie> movies = new ArrayList<>();
         movies.add(movie);
         return movies;
