@@ -9,21 +9,22 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Callable;
 
- class SearchByImdbId implements Callable<List<Movie>> {
+ class SearchByImdbId implements Runnable {
     private final static String API_KEY = "a4038bc6";
     private final static String URL_ID = "http://www.omdbapi.com/?i=";
     private final RequestHttp requestHttp;
     private final String idToSearch;
+    private List<Movie> result;
 
     public SearchByImdbId(String idToSearch) {
         requestHttp = new RequestHttp();
         this.idToSearch = idToSearch;
     }
 
-    @Override
-    public List<Movie> call() throws Exception {
-        return search();
-    }
+     @Override
+     public void run() {
+         result = search();
+     }
 
     private List<Movie> search() {
         String url = URL_ID + idToSearch + "&apikey=" + API_KEY;
@@ -47,4 +48,8 @@ import java.util.concurrent.Callable;
         movies.add(movie);
         return movies;
     }
-}
+
+     public List<Movie> getResult() {
+         return result;
+     }
+ }

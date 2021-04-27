@@ -10,12 +10,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-class SearchByTitle implements Callable<List<Movie>> {
+class SearchByTitle implements Runnable {
     private final static String API_KEY = "a4038bc6";
     private final static String URL_TITLE = "http://www.omdbapi.com/?s=";
     private final static String URL_ID = "http://www.omdbapi.com/?i=";
     private final RequestHttp requestHttp;
     private final String titleToSearch;
+    private List<Movie> result;
 
     public SearchByTitle(String titleToSearch) {
         requestHttp = new RequestHttp();
@@ -23,8 +24,8 @@ class SearchByTitle implements Callable<List<Movie>> {
     }
 
     @Override
-    public List<Movie> call() throws Exception {
-        return search();
+    public void run() {
+       result = search();
     }
 
     private List<Movie> search() {
@@ -70,5 +71,9 @@ class SearchByTitle implements Callable<List<Movie>> {
 
         Movie movie = new Movie(id, title, rated, runtime, year, directorsList, genreList);
         return movie;
+    }
+
+    public List<Movie> getResult() {
+        return result;
     }
 }
