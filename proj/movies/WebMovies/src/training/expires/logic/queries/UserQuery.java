@@ -4,20 +4,11 @@ import training.expires.data.Movie;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 public class UserQuery {
     private static UserQuery instance;
-    private final ExecutorService executor;
-    private List<Future<?>> futuresList;
-
 
     private UserQuery() {
-        executor = Executors.newFixedThreadPool(3);
-        futuresList = new ArrayList<>();
 
     }
 
@@ -52,7 +43,6 @@ public class UserQuery {
 
         return searchByImdbId.getResult();
     }
-
 
     private List<Movie> searchByTitle(String inputToSearch) {
         SearchByTitle searchByTitle = new SearchByTitle(inputToSearch);
