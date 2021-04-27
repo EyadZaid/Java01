@@ -67,5 +67,39 @@ class QueriesTest {
         assertTrue(movies3.contains(mov3));
     }
 
+    @Test
+    void searchMovieNotExistByImdbIdTest() {
+        String idToSearch1 = "651561dfv";
+        Movie movie1 = query.searchById(idToSearch1);
+        assertEquals(null, movie1);
 
+        String idToSearch2 = "tt02515";
+        Movie movie2 = query.searchById(idToSearch2);
+        assertEquals(null, movie2);
+
+        String idToSearch3 = "";
+        Movie movie3 = query.searchById(idToSearch3);
+        assertEquals(null, movie3);
+    }
+
+    @Test
+    void searchMovieNotExistByTitleTest() {
+        String title = "davdvfd";
+        List<Movie> movies = query.searchByTitle(title);
+
+        assertEquals(null, movies);
+
+
+        String title2 = "";
+        List<Movie> movies2 = query.searchByTitle(title2);
+
+        assertEquals(null, movies2);
+
+
+        String title3 = "aavfvdaas";
+        List<Movie> movies3 = query.searchByTitle(title3);
+
+        assertEquals(null, movies3);
+
+    }
 }

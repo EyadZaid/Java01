@@ -1,5 +1,7 @@
 package training.expires.logic.queries;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import training.expires.data.Movie;
 
@@ -13,6 +15,10 @@ import java.util.List;
 
     @Override
     public Movie parse(String jsonString) {
+        if (!isJSONValid(jsonString)) {
+            return null;
+        }
+
         JSONObject obj = new JSONObject(jsonString);
         if (obj.has("Response") && !obj.getBoolean("Response")) {
             return null;
@@ -33,4 +39,18 @@ import java.util.List;
         Movie movie = new Movie(imdbId, title, rated, runtime, year, directorsList, genreList);
         return movie;
     }
+
+
+     private boolean isJSONValid(String test) {
+         try {
+             new JSONObject(test);
+         } catch (JSONException ex) {
+             try {
+                 new JSONArray(test);
+             } catch (JSONException ex1) {
+                 return false;
+             }
+         }
+         return true;
+     }
  }
