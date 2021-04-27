@@ -6,12 +6,13 @@ import training.expires.data.Movie;
 import java.util.Arrays;
 import java.util.List;
 
- class ParserJson {
+ class ParserJson implements IParser {
 
     public ParserJson() {
     }
 
-    public Movie parseJsonToMovie(String jsonString) {
+    @Override
+    public Movie parse(String jsonString) {
 
         JSONObject obj = new JSONObject(jsonString);
 

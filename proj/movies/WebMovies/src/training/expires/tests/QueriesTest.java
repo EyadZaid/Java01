@@ -3,18 +3,18 @@ package training.expires.tests;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import training.expires.data.Movie;
-import training.expires.logic.queries.UserQuery;
+import training.expires.logic.queries.Query;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class QueriesTest {
-    private UserQuery query;
+    private Query query;
 
     @BeforeEach
     void setUp() {
-        query = UserQuery.getInstance();
+        query = Query.getInstance();
     }
 
     @Test

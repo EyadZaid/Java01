@@ -12,20 +12,23 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class UserQuery {
-    private final static String API_KEY = "a4038bc6";
+public class Query {
     private final static String URL_ID = "http://www.omdbapi.com/?i=";
     private final static String URL_TITLE = "http://www.omdbapi.com/?s=";
-    private static UserQuery instance;
+    private final static String API_KEY = "a4038bc6";
+    private final static int NUM_THREADS = 10;
+    private static Query instance;
     private final ExecutorService pool;
+    private final IParser parser;
 
-    private UserQuery() {
-        pool = Executors.newFixedThreadPool(2);
+    private Query() {
+        pool = Executors.newFixedThreadPool(NUM_THREADS);
+        parser = new ParserJson();
     }
 
-    public static UserQuery getInstance() {
+    public static Query getInstance() {
         if (instance == null) {
-            instance = new UserQuery();
+            instance = new Query();
         }
         return instance;
     }
@@ -44,8 +47,7 @@ public class UserQuery {
             ex.printStackTrace();
         }
 
-        ParserJson search = new ParserJson();
-        return search.parseJsonToMovie(requestValue);
+        return parser.parse(requestValue);
     }
 
     public List<Movie> searchByTitle(String inputToSearch) {
