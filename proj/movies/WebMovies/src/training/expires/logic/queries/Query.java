@@ -1,6 +1,7 @@
 package training.expires.logic.queries;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import training.expires.data.Movie;
 import training.expires.logic.RequestHttp;
@@ -47,10 +48,15 @@ public class Query {
             ex.printStackTrace();
         }
 
+        if (!isJSONValid(requestValue)) {
+            return null;
+        }
+
         return parser.parse(requestValue);
     }
 
     public List<Movie> searchByTitle(String inputToSearch) {
+        inputToSearch = inputToSearch.trim().replace(' ', '+');
         String url = URL_TITLE + inputToSearch + "&apikey=" + API_KEY;
 
         Future<String> requestResult = pool.submit(new RequestHttp(url));
@@ -61,6 +67,10 @@ public class Query {
 
         } catch (InterruptedException | ExecutionException ex) {
             ex.printStackTrace();
+        }
+
+        if (!isJSONValid(requestValue)) {
+            return null;
         }
 
         List<Movie> moviesList = new ArrayList<>();
@@ -83,5 +93,16 @@ public class Query {
         pool.shutdown();
     }
 
-
+    private boolean isJSONValid(String test) {
+        try {
+            new JSONObject(test);
+        } catch (JSONException ex) {
+            try {
+                new JSONArray(test);
+            } catch (JSONException ex1) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
