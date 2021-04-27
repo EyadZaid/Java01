@@ -3,7 +3,7 @@ package training.expires.tests;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import training.expires.data.Movie;
-import training.expires.logic.queries.Query;
+import training.expires.logic.Query;
 
 import java.util.List;
 

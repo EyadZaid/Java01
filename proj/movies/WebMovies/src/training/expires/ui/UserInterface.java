@@ -4,7 +4,7 @@ import training.expires.data.Movie;
 import training.expires.logic.outputs.ConsoleWrite;
 import training.expires.logic.outputs.FileWrite;
 import training.expires.logic.outputs.IOutput;
-import training.expires.logic.queries.Query;
+import training.expires.logic.Query;
 
 import java.io.IOException;
 import java.util.List;

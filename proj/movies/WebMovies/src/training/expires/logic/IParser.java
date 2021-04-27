@@ -1,4 +1,4 @@
-package training.expires.logic.queries;
+package training.expires.logic;
 
 import training.expires.data.Movie;
 

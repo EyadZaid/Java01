@@ -1,10 +1,9 @@
-package training.expires.logic.queries;
+package training.expires.logic;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import training.expires.data.Movie;
-import training.expires.logic.RequestHttp;
 
 import java.util.ArrayList;
 import java.util.List;
