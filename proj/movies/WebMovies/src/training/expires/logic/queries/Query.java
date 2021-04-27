@@ -36,6 +36,7 @@ public class Query {
 
 
     public Movie searchById(String inputToSearch) {
+        inputToSearch = inputToSearch.trim().replace(' ', '+');
         String url = URL_ID + inputToSearch + "&apikey=" + API_KEY;
 
         Future<String> requestResult = pool.submit(new RequestHttp(url));
