@@ -73,24 +73,26 @@ public class Query {
             return null;
         }
 
-        List<Movie> moviesList = new ArrayList<>();
         JSONObject obj = new JSONObject(requestValue);
         if (obj.has("Response") && !obj.getBoolean("Response")) {
             return null;
         }
-        JSONArray arr = obj.getJSONArray("Search");
-
-        for (int i = 0; i < arr.length(); i++) {
-            var jsonObj = arr.getJSONObject(i);
-            String imdb_id = jsonObj.getString("imdbID");
-            moviesList.add(searchById(imdb_id));
-        }
-        return moviesList;
+        return getMoviesByTitle(obj);
     }
-
 
     public void shutdown() {
         pool.shutdown();
+    }
+
+    private List<Movie> getMoviesByTitle(JSONObject jsonObj) {
+        List<Movie> moviesList = new ArrayList<>();
+        JSONArray arr = jsonObj.getJSONArray("Search");
+
+        for (int i = 0; i < arr.length(); i++) {
+            String imdb_id = arr.getJSONObject(i).getString("imdbID");
+            moviesList.add(searchById(imdb_id));
+        }
+        return moviesList;
     }
 
     private boolean isJSONValid(String test) {

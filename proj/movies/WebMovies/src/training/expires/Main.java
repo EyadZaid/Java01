@@ -9,14 +9,6 @@ public class Main {
         UserInterface ui = new UserInterface();
         ui.executeApp();
 
-        /*
-        Query query = Query.getInstance();
-
-        System.out.println(query.searchById("tt0412142"));
-        System.out.println(query.searchById("tt0220264"));
-        System.out.println(query.searchByTitle("soul"));
-        query.shutdown();
-         */
     }
 
 }
