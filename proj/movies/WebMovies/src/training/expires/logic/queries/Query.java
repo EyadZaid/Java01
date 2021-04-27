@@ -65,6 +65,9 @@ public class Query {
 
         List<Movie> moviesList = new ArrayList<>();
         JSONObject obj = new JSONObject(requestValue);
+        if (obj.has("Response") && !obj.getBoolean("Response")) {
+            return null;
+        }
         JSONArray arr = obj.getJSONArray("Search");
 
         for (int i = 0; i < arr.length(); i++) {

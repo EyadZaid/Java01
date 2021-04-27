@@ -13,8 +13,10 @@ import java.util.List;
 
     @Override
     public Movie parse(String jsonString) {
-
         JSONObject obj = new JSONObject(jsonString);
+        if (obj.has("Response") && !obj.getBoolean("Response")) {
+            return null;
+        }
 
         String imdbId = obj.getString("imdbID");
         String title = obj.getString("Title");
