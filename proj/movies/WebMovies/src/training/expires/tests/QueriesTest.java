@@ -1,8 +1,8 @@
 package training.expires.tests;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import training.expires.data.Movie;
-import training.expires.logic.queries.QueryType;
 import training.expires.logic.queries.UserQuery;
 
 import java.util.List;
@@ -12,11 +12,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class QueriesTest {
     private UserQuery query;
 
-    @org.junit.jupiter.api.BeforeEach
+    @BeforeEach
     void setUp() {
         query = UserQuery.getInstance();
     }
-
 
     @Test
     void searchByImdbIdTest() {
@@ -66,7 +65,6 @@ class QueriesTest {
         Movie mov3 = query.searchById(idToSearch3);
 
         assertEquals(idToSearch3, mov3.getImdbID());
-
     }
 
 
