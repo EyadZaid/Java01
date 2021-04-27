@@ -45,12 +45,12 @@ class QueriesTest {
         assertTrue(movies.contains(mov));
 
 
-        String title2 = "house";
+        String title2 = "the russia house";
         List<Movie> movies2 = query.searchByTitle(title2);
 
-        assertEquals(10, movies2.size());
+        assertEquals(1, movies2.size());
 
-        String idToSearch2 = "tt0412142";
+        String idToSearch2 = "tt0100530";
         Movie mov2 = query.searchById(idToSearch2);
 
         assertTrue(movies2.contains(mov2));
