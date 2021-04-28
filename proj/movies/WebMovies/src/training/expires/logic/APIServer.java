@@ -7,10 +7,10 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.concurrent.Callable;
 
-public class RequestHttp implements Callable<String> {
+public class APIServer implements Callable<String> {
     private String url;
 
-    public RequestHttp(String url) {
+    public APIServer(String url) {
         this.url = url;
     }
 

@@ -1,27 +1,29 @@
 package training.expires.ui;
 
-import training.expires.data.Movie;
+import training.expires.logic.QueryResults;
 import training.expires.logic.outputs.ConsoleWrite;
 import training.expires.logic.outputs.FileWrite;
 import training.expires.logic.outputs.IOutput;
-import training.expires.logic.Query;
+import training.expires.logic.QueryManager;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
-    private final Query query;
+    private QueryManager queryManager;
     private final Scanner reader;
+    private boolean activeResults;
     private IOutput output;
 
     public UserInterface(){
-        query = Query.getInstance();
         reader = new Scanner(System.in);
     }
 
     public void executeApp() {
         selectDisplay();
+        queryManager = new QueryManager(new QueryResults(output));
+        activeResults = true;
+        runGetResults();
         boolean inputLoop = true;
 
         while (inputLoop){
@@ -36,7 +38,8 @@ public class UserInterface {
                 case '3' -> inputLoop = false;
             }
         }
-        query.shutdown();
+        activeResults = false;
+        queryManager.shutdown();
         output.close();
     }
 
@@ -45,14 +48,7 @@ public class UserInterface {
         System.out.println("Enter imdbId:");
         String inputSearch = scanner.nextLine();
 
-        Movie movie = query.searchById(inputSearch);
-
-        if (movie != null){
-            output.write(movie.toString());
-        }
-        else {
-            output.write("Movie does not exist");
-        }
+        queryManager.searchById(inputSearch);
     }
 
     private void searchByTitle(){
@@ -60,14 +56,7 @@ public class UserInterface {
         System.out.println("Enter title:");
         String inputSearch = scanner.nextLine();
 
-        List<Movie> moviesList = query.searchByTitle(inputSearch);
-
-        if (moviesList != null && moviesList.size() > 0){
-            output.write(moviesList.toString());
-        }
-        else {
-            output.write("Movie does not exist");
-        }
+       queryManager.searchByTitle(inputSearch);
     }
 
     private void selectDisplay() {
@@ -86,4 +75,21 @@ public class UserInterface {
         }
     }
 
+    private void runGetResults() {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (activeResults) {
+                    queryManager.getResults();
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        thread.start();
+    }
 }
