@@ -5,11 +5,8 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class ChatClientHandler implements Runnable {
-
-    // runnable for each client thread
-
-    private final Socket client;
     private final ChatServer server;
+    private final Socket client;
     private Scanner inputStream;
 
     public ChatClientHandler(Socket client, ChatServer server) {

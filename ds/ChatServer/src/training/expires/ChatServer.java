@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ChatServer {
-    private final int port = 7777;
-    private ServerSocket serverSocket;
+    private final static int PORT = 7777;
     private final ArrayList<Socket> clientList;
+    private ServerSocket serverSocket;
 
     public ChatServer() {
         try {
-            serverSocket = new ServerSocket(port);
+            serverSocket = new ServerSocket(PORT);
             serverSocket.setReuseAddress(true);
         } catch (IOException e) {
             System.out.println(e.getStackTrace());
@@ -43,7 +43,6 @@ public class ChatServer {
                 PrintWriter pw = new PrintWriter(client.getOutputStream());
                 pw.println(msg);
                 pw.flush();
-                //System.out.println("Sent to: " + client.getRemoteSocketAddress());
             }
         }
     }
