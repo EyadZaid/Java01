@@ -8,11 +8,12 @@ import java.net.UnknownHostException;
 import java.util.Scanner;
 
 public class ChatClient implements Runnable {
-    private Socket socket;
+    private final static String ADDRESS = "127.0.0.1";
+    private final static int PORT = 7777;
     private PrintWriter outputStream;
     private Scanner inputStream;
-    private int port = 7777;
-    private String nick;
+    private String username;
+    private Socket socket;
 
     public ChatClient() throws IOException {
         initialize();
@@ -27,19 +28,16 @@ public class ChatClient implements Runnable {
     }
 
     private void initialize() throws IOException {
-        // get server address
         Scanner keyboard = new Scanner(System.in);
-        System.out.println("What is the chat server's ip address?");
-        String str = keyboard.next();
 
-        // get user nick
-        System.out.println("What is your nick?");
-        nick = keyboard.next();
+        // get user nickname
+        System.out.println("What is your name?");
+        username = keyboard.next();
 
         // connect to server
         InetAddress host = null;
         try {
-            host = InetAddress.getByName(str);
+            host = InetAddress.getByName(ADDRESS);
         } catch (UnknownHostException e1) {
             System.out.println("Host not found");
         }
@@ -47,7 +45,7 @@ public class ChatClient implements Runnable {
 
         socket = null;
         try {
-            socket = new Socket(host, port);
+            socket = new Socket(host, PORT);
             socket.setReuseAddress(true);
         } catch (IOException e) {
             e.printStackTrace();
@@ -57,14 +55,13 @@ public class ChatClient implements Runnable {
         outputStream = new PrintWriter(socket.getOutputStream());
 
         // start new thread to listen from server
-        // one runnable, two threads... in which cases is this legal?
         Thread t = new Thread(this);
         t.start();
 
         // continuously listen your user input
         while (keyboard.hasNextLine()) {
             String msg = keyboard.nextLine();
-            outputStream.println(nick + " says: " + msg);
+            outputStream.println(username + " says: " + msg);
             outputStream.flush();
         }
     }
