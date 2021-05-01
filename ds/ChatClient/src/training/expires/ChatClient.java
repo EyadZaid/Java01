@@ -42,6 +42,7 @@ public class ChatClient implements Runnable {
             System.out.println("Host not found");
         }
         System.out.println("You are now connected to: " + host.getHostAddress());
+        System.out.println("Start typing: ");
 
         socket = null;
         try {
@@ -61,7 +62,9 @@ public class ChatClient implements Runnable {
         // continuously listen your user input
         while (keyboard.hasNextLine()) {
             String msg = keyboard.nextLine();
-            outputStream.println(username + " says: " + msg);
+            if (msg.trim().length() != 0) {
+                outputStream.println(username + " says: " + msg);
+            }
             outputStream.flush();
         }
     }
