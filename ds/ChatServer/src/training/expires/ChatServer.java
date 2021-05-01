@@ -36,10 +36,10 @@ public class ChatServer {
         }
     }
 
-    public synchronized void sendChatMessageToAll(String msg) throws IOException {
+    public synchronized void sendChatMessageToAll(String msg, Socket senderClient) throws IOException {
         for (Iterator<Socket> it = clientList.iterator(); it.hasNext(); ) {
             Socket client = it.next();
-            if (!client.isClosed()) {
+            if (!client.isClosed() && !client.equals(senderClient)) {
                 PrintWriter pw = new PrintWriter(client.getOutputStream());
                 pw.println(msg);
                 pw.flush();
