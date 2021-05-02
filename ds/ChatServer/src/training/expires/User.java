@@ -1,5 +1,4 @@
 package training.expires;
 
-public class Room {
-
+public class User {
 }
