@@ -1,6 +1,7 @@
 package training.expires;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 
@@ -29,5 +30,9 @@ public class User {
 
     public void setRoom(Room room) {
         this.room = room;
+    }
+
+    public InputStream getInputStream() throws IOException {
+        return socket.getInputStream();
     }
 }
