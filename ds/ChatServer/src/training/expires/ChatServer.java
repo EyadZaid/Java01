@@ -1,16 +1,16 @@
 package training.expires;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 
 public class ChatServer {
     private final static int PORT = 7777;
-    private final ArrayList<Socket> clientList;
     private ServerSocket serverSocket;
+    private final List<Room> rooms;
+    private final List<User> users;
 
     public ChatServer() {
         try {
@@ -19,31 +19,34 @@ public class ChatServer {
         } catch (IOException e) {
             System.out.println(e.getStackTrace());
         }
-        clientList = new ArrayList<Socket>();
+
+        rooms = new ArrayList<>();
+        users = new ArrayList<>();
     }
 
     public void startServer() throws IOException {
+        Room room1 = new Room("room1");
+        rooms.add(room1);
+
         System.out.println("Accepting clients...");
         while (true) {
             // wait for a client
-            Socket client = serverSocket.accept();
-            clientList.add(client);
-            System.out.println("New client accepted..." + client.getRemoteSocketAddress());
-            System.out.println("Total users: " + clientList.size());
-            ChatClientHandler handler = new ChatClientHandler(client, this);
-            Thread t = new Thread(handler);
+            Socket socket = serverSocket.accept();
+            System.out.println("New user accepted...");
+
+            // Available rooms
+            //Room name
+            //Select room
+
+            User user = new User(socket, room1);
+            users.add(user);
+            rooms.get(0).addUser(user);
+
+            ThreadUser threadUser = new ThreadUser(user, this);
+
+            Thread t = new Thread(threadUser);
             t.start();
         }
     }
 
-    public synchronized void sendChatMessageToAll(String msg, Socket senderClient) throws IOException {
-        for (Iterator<Socket> it = clientList.iterator(); it.hasNext(); ) {
-            Socket client = it.next();
-            if (!client.isClosed() && !client.equals(senderClient)) {
-                PrintWriter pw = new PrintWriter(client.getOutputStream());
-                pw.println(msg);
-                pw.flush();
-            }
-        }
-    }
 }

@@ -1,21 +1,20 @@
 package training.expires;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Room {
     private final List<User> users;
-    private final int number;
+    private final String name;
 
-    public Room(int number) {
+    public Room(String name) {
         users = new ArrayList<>();
-        this.number = number;
+        this.name = name;
     }
 
-    public int getNumber() {
-        return number;
+    public String getName() {
+        return name;
     }
 
     public void sendMessage(String msg) throws IOException {
