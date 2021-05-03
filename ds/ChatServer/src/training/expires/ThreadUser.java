@@ -7,10 +7,12 @@ public class ThreadUser implements Runnable {
     private final ChatServer server;
     private final User user;
     private Scanner inputStream;
+    private ChatManager chatManager;
 
     public ThreadUser(User user, ChatServer server) {
         this.user = user;
         this.server = server;
+        chatManager = ChatManager.getInstance();
     }
 
     @Override
@@ -18,12 +20,12 @@ public class ThreadUser implements Runnable {
         try {
             inputStream = new Scanner(user.getInputStream());
             while(true) {
-                if(!inputStream.hasNext()) {
+                if (!inputStream.hasNext()) {
                     return;
                 }
-                String chatLine = inputStream.nextLine();
-                System.out.println(chatLine);
-                user.getRoom().sendMessage(chatLine);
+                String input = inputStream.nextLine();
+                InputHandler inputHandler = new InputHandler(input, user);
+                inputHandler.handleInput();
             }
         } catch (IOException e) {
             e.printStackTrace();
