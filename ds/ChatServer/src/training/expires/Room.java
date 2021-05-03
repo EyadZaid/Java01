@@ -1,15 +1,14 @@
 package training.expires;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 
 public class Room {
-    private final List<User> users;
+    private final HashSet<User> users;
     private final String name;
 
     public Room(String name) {
-        users = new ArrayList<>();
+        users = new HashSet<>();
         this.name = name;
     }
 
@@ -30,5 +29,4 @@ public class Room {
     public void removeUser(User user) {
         users.remove(user);
     }
-
 }
