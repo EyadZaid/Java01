@@ -41,8 +41,7 @@ public class ChatClient implements Runnable {
         } catch (UnknownHostException e1) {
             System.out.println("Host not found");
         }
-        System.out.println("You are now connected to: " + host.getHostAddress());
-        System.out.println("Start typing: ");
+        System.out.println("Enter a command: ");
 
         socket = null;
         try {
@@ -61,9 +60,9 @@ public class ChatClient implements Runnable {
 
         // continuously listen your user input
         while (keyboard.hasNextLine()) {
-            String msg = keyboard.nextLine();
-            if (msg.trim().length() != 0) {
-                outputStream.println(username + " says: " + msg);
+            String input = keyboard.nextLine();
+            if (input.trim().length() != 0) {
+                outputStream.println(input);
             }
             outputStream.flush();
         }
