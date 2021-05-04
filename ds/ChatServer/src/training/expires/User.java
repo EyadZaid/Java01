@@ -5,17 +5,20 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Objects;
+import java.util.UUID;
 
 public class User {
     private final Socket socket;
     private final PrintWriter writer;
     private Room room;
     private String nickname;
+    private final String uniqueID;
 
     public User(Socket socket) throws IOException{
         this.socket = socket;
         writer = new PrintWriter(socket.getOutputStream());
         nickname = "Anonymous";
+        uniqueID = UUID.randomUUID().toString();
     }
 
     public void sendMessage(String msg) {
@@ -50,11 +53,11 @@ public class User {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return Objects.equals(nickname, user.nickname);
+        return Objects.equals(uniqueID, user.uniqueID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nickname);
+        return Objects.hash(uniqueID);
     }
 }

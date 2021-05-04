@@ -1,9 +1,6 @@
 package training.expires;
 
-import training.expires.commands.CommandType;
-import training.expires.commands.ICommand;
-import training.expires.commands.MessageCommand;
-import training.expires.commands.SelectRoomCommand;
+import training.expires.commands.*;
 
 public class InputHandler {
     private final String input;
@@ -28,6 +25,8 @@ public class InputHandler {
             case ROOM_MSG -> command = new MessageCommand();
 
             case ROOM -> command = new SelectRoomCommand();
+
+            case NICKNAME -> command = new NicknameCommand();
 
             default -> command = null;
         }
