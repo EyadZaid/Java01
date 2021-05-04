@@ -58,6 +58,8 @@ public class ChatClient implements Runnable {
         Thread t = new Thread(this);
         t.start();
 
+        outputStream.println("nickname " + username.trim());
+
         // continuously listen your user input
         while (keyboard.hasNextLine()) {
             String input = keyboard.nextLine();
