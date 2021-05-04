@@ -21,9 +21,9 @@ public class User {
         uniqueID = UUID.randomUUID().toString();
     }
 
-    public void sendMessage(String msg) {
+    public void sendMessage(String msg, User user) {
         if (!socket.isClosed()) {
-            writer.println(nickname + ": " + msg);
+            writer.println(user.getNickname() + ": " + msg);
             writer.flush();
         }
     }

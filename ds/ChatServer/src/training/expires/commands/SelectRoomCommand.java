@@ -21,6 +21,11 @@ public class SelectRoomCommand implements ICommand {
             return;
         }
 
+        Room oldRoom = user.getRoom();
+        if (oldRoom != null) {
+            oldRoom.removeUser(user);
+        }
+
         user.setRoom(room);
         room.addUser(user);
     }

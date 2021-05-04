@@ -19,7 +19,7 @@ public class Room {
     public void sendMessage(String msg, User user) throws IOException {
         for (var u : users) {
             if (!u.equals(user)) {
-                u.sendMessage(msg);
+                u.sendMessage(msg, user);
             }
         }
     }
