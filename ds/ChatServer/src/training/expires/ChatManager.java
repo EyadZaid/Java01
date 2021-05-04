@@ -37,6 +37,15 @@ public class ChatManager {
         return users;
     }
 
+    public User getUserByName(String name) {
+        for (var u : users) {
+            if (u.getNickname().equals(name)) {
+                return u;
+            }
+        }
+        return null;
+    }
+
     public void initializeRooms() {
         for (int i=0; i<5; i++) {
             rooms.put("room" + i ,new Room("room" + i));
