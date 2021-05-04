@@ -28,9 +28,15 @@ public class InputHandler {
 
             case NICKNAME -> command = new NicknameCommand();
 
+            case LIST -> command = new ListCommand();
+
+            case LEAVE -> command = new LeaveCommand();
+
             default -> command = null;
         }
-        
-        command.execute(input, user);
+
+        if (command != null) {
+            command.execute(input, user);
+        }
     }
 }
