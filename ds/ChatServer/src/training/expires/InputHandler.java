@@ -1,6 +1,7 @@
 package training.expires;
 
 import training.expires.commands.*;
+import training.expires.userHandler.User;
 
 public class InputHandler {
     private final String input;
@@ -31,6 +32,8 @@ public class InputHandler {
             case LIST -> command = new ListCommand();
 
             case LEAVE -> command = new LeaveCommand();
+
+            case PRIVATE_MSG -> command = new PrivateMsgCommand();
 
             default -> command = null;
         }

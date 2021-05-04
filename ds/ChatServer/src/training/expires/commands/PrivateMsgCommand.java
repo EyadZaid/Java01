@@ -1,6 +1,6 @@
 package training.expires.commands;
 
-import training.expires.User;
+import training.expires.userHandler.User;
 
 public class PrivateMsgCommand implements ICommand {
 

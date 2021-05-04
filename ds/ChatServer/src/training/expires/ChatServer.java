@@ -1,5 +1,8 @@
 package training.expires;
 
+import training.expires.userHandler.ThreadUser;
+import training.expires.userHandler.User;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;

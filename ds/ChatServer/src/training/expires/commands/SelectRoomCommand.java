@@ -2,7 +2,7 @@ package training.expires.commands;
 
 import training.expires.ChatManager;
 import training.expires.Room;
-import training.expires.User;
+import training.expires.userHandler.User;
 
 public class SelectRoomCommand implements ICommand {
 

@@ -1,4 +1,6 @@
-package training.expires;
+package training.expires.userHandler;
+
+import training.expires.Room;
 
 import java.io.IOException;
 import java.io.InputStream;

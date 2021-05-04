@@ -1,7 +1,7 @@
 package training.expires.commands;
 
 import training.expires.Room;
-import training.expires.User;
+import training.expires.userHandler.User;
 
 import java.io.IOException;
 

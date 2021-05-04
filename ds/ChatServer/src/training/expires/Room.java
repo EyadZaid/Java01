@@ -1,5 +1,7 @@
 package training.expires;
 
+import training.expires.userHandler.User;
+
 import java.io.IOException;
 import java.util.HashSet;
 

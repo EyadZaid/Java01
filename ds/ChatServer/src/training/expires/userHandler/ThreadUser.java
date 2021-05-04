@@ -1,4 +1,7 @@
-package training.expires;
+package training.expires.userHandler;
+
+import training.expires.ChatServer;
+import training.expires.InputHandler;
 
 import java.io.IOException;
 import java.util.Scanner;
