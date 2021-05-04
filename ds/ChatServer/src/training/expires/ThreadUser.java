@@ -6,17 +6,15 @@ import java.util.Scanner;
 public class ThreadUser implements Runnable {
     private final ChatServer server;
     private final User user;
-    private Scanner inputStream;
-    private ChatManager chatManager;
 
     public ThreadUser(User user, ChatServer server) {
         this.user = user;
         this.server = server;
-        chatManager = ChatManager.getInstance();
     }
 
     @Override
     public void run() {
+        Scanner inputStream;
         try {
             inputStream = new Scanner(user.getInputStream());
             while(true) {

@@ -10,19 +10,27 @@ public class User {
     private final Socket socket;
     private final PrintWriter writer;
     private Room room;
-    private String name;
+    private String nickname;
 
     public User(Socket socket) throws IOException{
         this.socket = socket;
         writer = new PrintWriter(socket.getOutputStream());
+        nickname = "Anonymous";
     }
 
-    //--------------------------------------------
     public void sendMessage(String msg) {
         if (!socket.isClosed()) {
-            writer.println(msg);
+            writer.println(nickname + ": " + msg);
             writer.flush();
         }
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public Room getRoom() {
@@ -42,11 +50,11 @@ public class User {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return Objects.equals(name, user.name);
+        return Objects.equals(nickname, user.nickname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(nickname);
     }
 }
