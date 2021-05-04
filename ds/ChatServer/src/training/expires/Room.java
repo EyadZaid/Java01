@@ -16,9 +16,11 @@ public class Room {
         return name;
     }
 
-    public void sendMessage(String msg) throws IOException {
+    public void sendMessage(String msg, User user) throws IOException {
         for (var u : users) {
-            u.sendMessage(msg);
+            if (!u.equals(user)) {
+                u.sendMessage(msg);
+            }
         }
     }
 
