@@ -9,12 +9,13 @@ import java.util.List;
 public class ChatManager {
     private static ChatManager instance = null;
     private final HashMap<String, Room> rooms;
+    private final HashMap<User,Thread> threads;
     private final List<User> users;
 
     private ChatManager() {
         rooms = new HashMap<>();
+        threads = new HashMap<>();
         users = new ArrayList<>();
-
         initializeRooms();
     }
 
@@ -29,12 +30,20 @@ public class ChatManager {
         users.add(user);
     }
 
+    public void addThread(User user, Thread thread) {
+        threads.put(user, thread);
+    }
+
     public HashMap<String, Room> getRooms() {
         return rooms;
     }
 
     public List<User> getUsers() {
         return users;
+    }
+
+    public HashMap<User, Thread> getThreads() {
+        return threads;
     }
 
     public User getUserByName(String name) {

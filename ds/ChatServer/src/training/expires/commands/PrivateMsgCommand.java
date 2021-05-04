@@ -7,7 +7,7 @@ public class PrivateMsgCommand implements ICommand {
 
     @Override
     public void execute(String input, User user) {
-        String[] arrInput = input.split(" ", 2);
+        String[] arrInput = input.split(" ", 3);
 
         if (arrInput.length < 3) {
             return;
@@ -20,6 +20,6 @@ public class PrivateMsgCommand implements ICommand {
             return;
         }
 
-        toUser.sendMessage(input, user);
+        toUser.sendMessage(arrInput[2], user);
     }
 }

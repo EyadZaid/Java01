@@ -9,6 +9,7 @@ import java.net.Socket;
 
 public class ChatServer {
     private final static int PORT = 7777;
+    private final ChatManager chatManager;
     private ServerSocket serverSocket;
 
     public ChatServer() {
@@ -18,6 +19,7 @@ public class ChatServer {
         } catch (IOException e) {
             System.out.println(e.getStackTrace());
         }
+        chatManager = ChatManager.getInstance();
     }
 
     public void startServer() throws IOException {
@@ -29,10 +31,12 @@ public class ChatServer {
             System.out.println("New user accepted...");
 
             User user = new User(socket);
+            chatManager.addUser(user);
             ThreadUser threadUser = new ThreadUser(user, this);
 
-            Thread t = new Thread(threadUser);
-            t.start();
+            Thread thread = new Thread(threadUser);
+            thread.start();
+            chatManager.addThread(user, thread);
         }
     }
 

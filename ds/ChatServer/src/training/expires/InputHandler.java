@@ -35,6 +35,8 @@ public class InputHandler {
 
             case PRIVATE_MSG -> command = new PrivateMsgCommand();
 
+            case QUIT -> command = new QuitCommand();
+
             default -> command = null;
         }
 

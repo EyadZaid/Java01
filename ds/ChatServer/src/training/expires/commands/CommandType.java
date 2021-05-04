@@ -19,7 +19,7 @@ public enum CommandType {
 
             case "quit" -> { return QUIT; }
 
-            default -> { return null; }
+            default -> { return ROOM_MSG; }
         }
     }
 }
