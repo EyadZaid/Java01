@@ -1,11 +1,14 @@
 package training.expires.userHandler;
 
+import training.expires.ChatManager;
 import training.expires.Room;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -26,6 +29,21 @@ public class User {
     public void sendMessage(String msg, User user) {
         if (!socket.isClosed()) {
             writer.println(user.getNickname() + ": " + msg);
+            writer.flush();
+        }
+    }
+
+    public void availableRooms() {
+        StringBuilder str = new StringBuilder("Available Rooms:\n");
+        ChatManager chatManager = ChatManager.getInstance();
+        List<Room> rooms = new ArrayList<Room> (chatManager.getRooms().values());
+
+        for (var r : rooms) {
+            str.append(r.getName() + "\n");
+        }
+
+        if (!socket.isClosed()) {
+            writer.println(str);
             writer.flush();
         }
     }

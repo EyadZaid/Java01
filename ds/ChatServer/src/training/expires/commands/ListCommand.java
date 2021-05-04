@@ -7,5 +7,7 @@ public class ListCommand implements ICommand {
     @Override
     public void execute(String input, User user) {
 
+        user.availableRooms();
+
     }
 }
