@@ -10,14 +10,15 @@ import java.util.Scanner;
 public class ChatClient implements Runnable {
     private final static String ADDRESS = "127.0.0.1";
     private final static int PORT = 7777;
+    private final Scanner keyboard;
     private PrintWriter outputStream;
     private Scanner inputStream;
-    private String username;
-    private Socket socket;
     private boolean active;
 
     public ChatClient() throws IOException {
-        initialize();
+        keyboard = new Scanner(System.in);
+        active = true;
+        start();
     }
 
     @Override
@@ -31,13 +32,10 @@ public class ChatClient implements Runnable {
         }
     }
 
-    private void initialize() throws IOException {
-        active = true;
-        Scanner keyboard = new Scanner(System.in);
-
+    private void start() throws IOException {
         // get user nickname
         System.out.println("What is your name?");
-        username = keyboard.next();
+        String username = keyboard.next();
 
         // connect to server
         InetAddress host = null;
@@ -46,9 +44,9 @@ public class ChatClient implements Runnable {
         } catch (UnknownHostException e1) {
             System.out.println("Host not found");
         }
-        System.out.println("Enter a command: ");
+        System.out.println("Start typing: ");
 
-        socket = null;
+        Socket socket = null;
         try {
             socket = new Socket(host, PORT);
             socket.setReuseAddress(true);
@@ -65,8 +63,13 @@ public class ChatClient implements Runnable {
 
         outputStream.println("nickname " + username.trim());
 
-
         // continuously listen your user input
+        listenUserInput();
+
+        socket.close();
+    }
+
+    private void listenUserInput() {
         while (active && keyboard.hasNextLine()) {
             String input = keyboard.nextLine();
             if (input.trim().length() != 0) {
@@ -78,6 +81,5 @@ public class ChatClient implements Runnable {
                 active = false;
             }
         }
-        socket.close();
     }
 }
