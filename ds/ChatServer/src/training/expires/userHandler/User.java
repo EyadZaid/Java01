@@ -7,10 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class User {
     private final Socket socket;
@@ -18,17 +16,22 @@ public class User {
     private Room room;
     private String nickname;
     private final String uniqueID;
+    private final Date date;
+    private final SimpleDateFormat formatter;
 
     public User(Socket socket) throws IOException{
         this.socket = socket;
         writer = new PrintWriter(socket.getOutputStream());
         nickname = "Anonymous";
         uniqueID = UUID.randomUUID().toString();
+        date = new Date();
+        formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
     }
 
     public void sendMessage(String msg, User user) {
         if (!socket.isClosed()) {
-            writer.println(user.getNickname() + ": " + msg);
+            writer.println("[" + formatter.format(date) + " from:" +
+                    user.getNickname() + "]"+ ": " + msg);
             writer.flush();
         }
     }

@@ -12,7 +12,7 @@ public class MessageCommand implements ICommand {
         Room room = user.getRoom();
         if (room != null) {
             try {
-                room.sendMessage(input, user);
+                room.sendMsgAllUsersRoom(input, user);
             } catch (IOException e) {
                 e.printStackTrace();
             }

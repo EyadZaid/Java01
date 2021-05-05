@@ -22,12 +22,10 @@ public class Room {
         return name;
     }
 
-    public void sendMessage(String msg, User user) throws IOException {
+    public void sendMsgAllUsersRoom(String msg, User user) throws IOException {
         msg = moderator.censor(msg);
         for (var u : users) {
-            if (!u.equals(user)) {
-                u.sendMessage(msg, user);
-            }
+            u.sendMessage(msg, user);
         }
     }
 
