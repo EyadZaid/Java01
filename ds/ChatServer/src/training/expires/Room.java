@@ -8,10 +8,12 @@ import java.util.HashSet;
 public class Room {
     private final HashSet<User> users;
     private final String name;
+    private final Moderator moderator;
 
     public Room(String name) {
         users = new HashSet<>();
         this.name = name;
+        moderator = new Moderator();
     }
 
     public String getName() {
@@ -19,6 +21,7 @@ public class Room {
     }
 
     public void sendMessage(String msg, User user) throws IOException {
+        moderator.censor(msg);
         for (var u : users) {
             if (!u.equals(user)) {
                 u.sendMessage(msg, user);

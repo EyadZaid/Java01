@@ -37,6 +37,7 @@ public class ChatServer {
             Thread thread = new Thread(threadUser);
             thread.start();
             chatManager.addThread(user, thread);
+            chatManager.addUserThread(user, threadUser);
         }
     }
 

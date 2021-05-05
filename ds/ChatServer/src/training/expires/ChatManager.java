@@ -1,5 +1,6 @@
 package training.expires;
 
+import training.expires.userHandler.ThreadUser;
 import training.expires.userHandler.User;
 
 import java.util.ArrayList;
@@ -10,11 +11,13 @@ public class ChatManager {
     private static ChatManager instance = null;
     private final HashMap<String, Room> rooms;
     private final HashMap<User,Thread> threads;
+    private final HashMap<User, ThreadUser> threadUserMap;
     private final List<User> users;
 
     private ChatManager() {
         rooms = new HashMap<>();
         threads = new HashMap<>();
+        threadUserMap = new HashMap<>();
         users = new ArrayList<>();
         initializeRooms();
     }
@@ -34,6 +37,10 @@ public class ChatManager {
         threads.put(user, thread);
     }
 
+    public void addUserThread(User user, ThreadUser threadUser) {
+        threadUserMap.put(user, threadUser);
+    }
+
     public HashMap<String, Room> getRooms() {
         return rooms;
     }
@@ -44,6 +51,10 @@ public class ChatManager {
 
     public HashMap<User, Thread> getThreads() {
         return threads;
+    }
+
+    public HashMap<User, ThreadUser> getThreadUserMap() {
+        return threadUserMap;
     }
 
     public User getUserByName(String name) {

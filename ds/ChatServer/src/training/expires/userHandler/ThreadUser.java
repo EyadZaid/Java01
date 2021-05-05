@@ -9,10 +9,12 @@ import java.util.Scanner;
 public class ThreadUser implements Runnable {
     private final ChatServer server;
     private final User user;
+    private volatile boolean active;
 
     public ThreadUser(User user, ChatServer server) {
         this.user = user;
         this.server = server;
+        active = true;
     }
 
     @Override
@@ -20,7 +22,7 @@ public class ThreadUser implements Runnable {
         Scanner inputStream;
         try {
             inputStream = new Scanner(user.getInputStream());
-            while(true) {
+            while(active) {
                 if (!inputStream.hasNext()) {
                     return;
                 }
@@ -31,6 +33,10 @@ public class ThreadUser implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void stop() {
+        active = false;
     }
 
 }
