@@ -1,5 +1,6 @@
 package training.expires;
 
+import training.expires.bots.AdditionBot;
 import training.expires.userHandler.ThreadUser;
 import training.expires.userHandler.User;
 
@@ -68,7 +69,7 @@ public class ChatManager {
 
     private void initializeRooms() {
         for (int i=0; i<5; i++) {
-            rooms.put("room" + i ,new Room("room" + i));
+            rooms.put("room" + i ,new Room("room" + i, new AdditionBot()));
         }
     }
 }

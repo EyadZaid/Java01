@@ -1,5 +1,6 @@
 package training.expires;
 
+import training.expires.bots.IBot;
 import training.expires.userHandler.User;
 
 import java.io.IOException;
@@ -10,10 +11,12 @@ public class Room {
     private final HashSet<User> users;
     private final String name;
     private final Moderator moderator;
+    private IBot bot;
 
-    public Room(String name) {
-        users = new HashSet<>();
+    public Room(String name, IBot bot) {
         this.name = name;
+        this.bot = bot;
+        users = new HashSet<>();
         moderator = new Moderator();
         initializeModerator();
     }
