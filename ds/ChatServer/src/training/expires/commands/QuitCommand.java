@@ -10,6 +10,7 @@ public class QuitCommand implements ICommand {
         var threadUser = chatManager.getThreadUserMap().get(user);
 
         threadUser.stop();
+        user.closeSocket();
 
         var thread = chatManager.getThreads().get(user);
 

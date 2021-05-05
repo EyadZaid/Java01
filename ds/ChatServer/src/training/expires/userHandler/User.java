@@ -68,6 +68,14 @@ public class User {
         return socket.getInputStream();
     }
 
+    public void closeSocket() {
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
