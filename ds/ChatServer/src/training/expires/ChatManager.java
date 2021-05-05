@@ -46,10 +46,6 @@ public class ChatManager {
         return rooms;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
     public HashMap<User, Thread> getThreads() {
         return threads;
     }
