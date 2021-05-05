@@ -6,19 +6,17 @@ import training.expires.userHandler.User;
 public class QuitCommand implements ICommand {
     @Override
     public void execute(String input, User user) {
+        var chatManager = ChatManager.getInstance();
+        var threadUser = chatManager.getThreadUserMap().get(user);
 
-        var userThreads = ChatManager.getInstance().getThreadUserMap();
-        for (var userThread : userThreads.values()) {
-            userThread.stop();
-        }
+        threadUser.stop();
 
-        var threads = ChatManager.getInstance().getThreads();
-        for (var thread : threads.values()) {
-            try {
-                thread.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        var thread = chatManager.getThreads().get(user);
+
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
