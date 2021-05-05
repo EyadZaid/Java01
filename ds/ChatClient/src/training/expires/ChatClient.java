@@ -14,6 +14,7 @@ public class ChatClient implements Runnable {
     private Scanner inputStream;
     private String username;
     private Socket socket;
+    private boolean active;
 
     public ChatClient() throws IOException {
         initialize();
@@ -21,13 +22,17 @@ public class ChatClient implements Runnable {
 
     @Override
     public void run() {
-        while (true) {
-            if (inputStream.hasNextLine())
-                System.out.println(inputStream.nextLine());
+        while (active) {
+            if (inputStream.hasNextLine()) {
+
+                String str = inputStream.nextLine();
+                System.out.println(str);
+            }
         }
     }
 
     private void initialize() throws IOException {
+        active = true;
         Scanner keyboard = new Scanner(System.in);
 
         // get user nickname
@@ -60,13 +65,19 @@ public class ChatClient implements Runnable {
 
         outputStream.println("nickname " + username.trim());
 
+
         // continuously listen your user input
-        while (keyboard.hasNextLine()) {
+        while (active && keyboard.hasNextLine()) {
             String input = keyboard.nextLine();
             if (input.trim().length() != 0) {
                 outputStream.println(input);
             }
             outputStream.flush();
+
+            if (input.trim().toLowerCase().equals("quit")) {
+                active = false;
+            }
         }
+        socket.close();
     }
 }
