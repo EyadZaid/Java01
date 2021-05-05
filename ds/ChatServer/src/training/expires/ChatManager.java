@@ -66,7 +66,7 @@ public class ChatManager {
         return null;
     }
 
-    public void initializeRooms() {
+    private void initializeRooms() {
         for (int i=0; i<5; i++) {
             rooms.put("room" + i ,new Room("room" + i));
         }

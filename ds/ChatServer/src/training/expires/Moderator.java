@@ -14,25 +14,28 @@ public class Moderator {
         badWords.add(word);
     }
 
+    public void addListWords(List<String> list) {
+        badWords.addAll(list);
+    }
+
     public String censor(String msg) {
         StringBuilder newMsg = new StringBuilder();
         String[] arrMsg = msg.split(" ");
 
         for (var w : arrMsg) {
-            if (!stringMatch(w)) {
-                newMsg.append(w + " ");
-            }
+            newMsg.append(wordCensor(w) + " ");
         }
 
         return newMsg.toString();
     }
 
-    private boolean stringMatch(String word) {
+    private String wordCensor(String word) {
         for (var w : badWords) {
-            if (w.equals(word)) {
-                return true;
+            if (word.contains(w)) {
+                String str = "*".repeat(w.length());
+                word = word.replace(w, str);
             }
         }
-        return false;
+        return word;
     }
 }

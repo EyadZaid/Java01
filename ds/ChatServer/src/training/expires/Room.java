@@ -3,6 +3,7 @@ package training.expires;
 import training.expires.userHandler.User;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class Room {
@@ -14,6 +15,7 @@ public class Room {
         users = new HashSet<>();
         this.name = name;
         moderator = new Moderator();
+        initializeModerator();
     }
 
     public String getName() {
@@ -21,7 +23,7 @@ public class Room {
     }
 
     public void sendMessage(String msg, User user) throws IOException {
-        moderator.censor(msg);
+        msg = moderator.censor(msg);
         for (var u : users) {
             if (!u.equals(user)) {
                 u.sendMessage(msg, user);
@@ -35,5 +37,10 @@ public class Room {
 
     public void removeUser(User user) {
         users.remove(user);
+    }
+
+    private void initializeModerator() {
+        var list = Arrays.asList("fuck","piss","damn","shit","asshole");
+        moderator.addListWords(list);
     }
 }
