@@ -1,14 +1,13 @@
-package training.expires;
+package training.expires.userHandler;
 
 import training.expires.commands.*;
-import training.expires.userHandler.User;
 
-public class InputHandler {
+public class UserInputHandler {
     private final String input;
     private final User user;
     private final FactoryCommand factoryCommand;
 
-    public InputHandler(String input, User user) {
+    public UserInputHandler(String input, User user) {
         this.input = input;
         this.user = user;
         factoryCommand = new FactoryCommand();

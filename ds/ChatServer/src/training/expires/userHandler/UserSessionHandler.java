@@ -1,7 +1,6 @@
 package training.expires.userHandler;
 
 import training.expires.ChatServer;
-import training.expires.InputHandler;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -27,8 +26,8 @@ public class UserSessionHandler implements Runnable {
                     return;
                 }
                 String input = inputStream.nextLine();
-                InputHandler inputHandler = new InputHandler(input, user);
-                inputHandler.handleInput();
+                UserInputHandler userInputHandler = new UserInputHandler(input, user);
+                userInputHandler.handleInput();
             }
         } catch (IOException e) {
             e.printStackTrace();
