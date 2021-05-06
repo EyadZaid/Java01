@@ -6,12 +6,12 @@ import training.expires.InputHandler;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class ThreadUser implements Runnable {
+public class UserSessionHandler implements Runnable {
     private final ChatServer server;
     private final User user;
     private volatile boolean active;
 
-    public ThreadUser(User user, ChatServer server) {
+    public UserSessionHandler(User user, ChatServer server) {
         this.user = user;
         this.server = server;
         active = true;

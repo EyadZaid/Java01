@@ -1,6 +1,6 @@
 package training.expires;
 
-import training.expires.userHandler.ThreadUser;
+import training.expires.userHandler.UserSessionHandler;
 import training.expires.userHandler.User;
 
 import java.io.IOException;
@@ -32,12 +32,12 @@ public class ChatServer {
 
             User user = new User(socket);
             chatManager.addUser(user);
-            ThreadUser threadUser = new ThreadUser(user, this);
+            UserSessionHandler userSessionHandler = new UserSessionHandler(user, this);
 
-            Thread thread = new Thread(threadUser);
+            Thread thread = new Thread(userSessionHandler);
             thread.start();
             chatManager.addThread(user, thread);
-            chatManager.addUserThread(user, threadUser);
+            chatManager.addUserThread(user, userSessionHandler);
         }
     }
 
