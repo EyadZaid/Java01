@@ -1,6 +1,7 @@
 package training.expires;
 
 import training.expires.bots.IBot;
+import training.expires.moderators.Moderator;
 import training.expires.userHandler.User;
 
 import java.io.IOException;

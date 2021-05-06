@@ -1,4 +1,4 @@
-package training.expires;
+package training.expires.moderators;
 
 import java.util.ArrayList;
 import java.util.List;
