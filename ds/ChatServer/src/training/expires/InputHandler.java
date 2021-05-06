@@ -6,10 +6,12 @@ import training.expires.userHandler.User;
 public class InputHandler {
     private final String input;
     private final User user;
+    private final FactoryCommand factoryCommand;
 
     public InputHandler(String input, User user) {
         this.input = input;
         this.user = user;
+        factoryCommand = new FactoryCommand();
     }
 
     public void handleInput() {
@@ -20,25 +22,7 @@ public class InputHandler {
         }
 
         CommandType commandType = CommandType.getCommandType(arrInput[0]);
-        ICommand command;
-
-        switch (commandType) {
-            case ROOM_MSG -> command = new MessageCommand();
-
-            case ROOM -> command = new SelectRoomCommand();
-
-            case NICKNAME -> command = new NicknameCommand();
-
-            case LIST -> command = new ListCommand();
-
-            case LEAVE -> command = new LeaveCommand();
-
-            case PRIVATE_MSG -> command = new PrivateMsgCommand();
-
-            case QUIT -> command = new QuitCommand();
-
-            default -> command = null;
-        }
+        ICommand command = factoryCommand.getCommand(commandType);
 
         if (command != null) {
             command.execute(input, user);
