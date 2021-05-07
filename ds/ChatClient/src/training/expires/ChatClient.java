@@ -6,6 +6,8 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class ChatClient implements Runnable {
     private final static String ADDRESS = "127.0.0.1";
@@ -14,18 +16,41 @@ public class ChatClient implements Runnable {
     private PrintWriter outputStream;
     private Scanner inputStream;
     private boolean active;
+    private final Lock lock;
+    private long timeLastCommand;
 
     public ChatClient() throws IOException {
+        lock = new ReentrantLock();
         keyboard = new Scanner(System.in);
         active = true;
+        timeLastCommand = -1;
         start();
+    }
+
+    public boolean isActive() {
+        lock.lock();
+        boolean temp = active;
+        lock.unlock();
+        return temp;
+    }
+
+    public void setActive(boolean active) {
+        lock.lock();
+        this.active = active;
+        lock.unlock();
     }
 
     @Override
     public void run() {
-        while (active) {
+        while (isActive()) {
+            if (timeLastCommand != -1) {
+                long currentTime = System.currentTimeMillis() - timeLastCommand;
+                if ( currentTime > 10_000) {
+                    setActive(false);
+                    break;
+                }
+            }
             if (inputStream.hasNextLine()) {
-
                 String str = inputStream.nextLine();
                 System.out.println(str);
             }
@@ -70,7 +95,9 @@ public class ChatClient implements Runnable {
     }
 
     private void listenUserInput() {
-        while (active && keyboard.hasNextLine()) {
+        timeLastCommand = System.currentTimeMillis();
+        while (System.currentTimeMillis() - timeLastCommand < 1000 && keyboard.hasNextLine()) {
+            timeLastCommand = System.currentTimeMillis();
             String input = keyboard.nextLine();
             if (input.trim().length() != 0) {
                 outputStream.println(input);
@@ -78,7 +105,7 @@ public class ChatClient implements Runnable {
             outputStream.flush();
 
             if (input.trim().toLowerCase().equals("quit")) {
-                active = false;
+                setActive(false);
             }
         }
     }
