@@ -1,18 +1,14 @@
 package training.expires.userHandler;
 
-import training.expires.ChatServer;
-
 import java.io.IOException;
 import java.util.Scanner;
 
 public class UserSessionHandler implements Runnable {
-    private final ChatServer server;
     private final User user;
     private volatile boolean active;
 
-    public UserSessionHandler(User user, ChatServer server) {
+    public UserSessionHandler(User user) {
         this.user = user;
-        this.server = server;
         active = true;
     }
 

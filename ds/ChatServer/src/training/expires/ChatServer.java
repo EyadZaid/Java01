@@ -36,7 +36,7 @@ public class ChatServer {
 
             User user = new User(socket);
             chatManager.addUser(user);
-            UserSessionHandler userSessionHandler = new UserSessionHandler(user, this);
+            UserSessionHandler userSessionHandler = new UserSessionHandler(user);
 
             Thread thread = new Thread(userSessionHandler);
             thread.start();

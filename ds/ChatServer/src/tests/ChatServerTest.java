@@ -15,7 +15,7 @@ class ChatServerTest {
     }
 
     @Test
-    void testModerator() {
+    void testModeratorWithBadWords() {
         Moderator moderator = new Moderator();
         var list = Arrays.asList("fuck","piss","damn","shit","asshole");
         moderator.addListWords(list);
@@ -31,6 +31,28 @@ class ChatServerTest {
 
         actual = moderator.censor("shitFFF shit world");
         expected = "****FFF **** world";
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    void testModeratorWithoutBadWords() {
+        Moderator moderator = new Moderator();
+        var list = Arrays.asList("fuck","piss","damn","shit","asshole");
+        moderator.addListWords(list);
+
+        String actual = moderator.censor("Hello world");
+        String expected = "Hello world";
+        assertEquals(expected, actual);
+
+
+        actual = moderator.censor("");
+        expected = "";
+        assertEquals(expected, actual);
+
+
+        actual = moderator.censor("asshole");
+        expected = "*******";
         assertEquals(expected, actual);
     }
 
