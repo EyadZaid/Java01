@@ -20,7 +20,6 @@ public class ChatClient implements Runnable {
     public ChatClient() throws IOException {
         keyboard = new Scanner(System.in);
         active = true;
-        timeLastCommand = -1;
         start();
     }
 
@@ -65,6 +64,8 @@ public class ChatClient implements Runnable {
 
         outputStream.println("nickname " + username.trim());
 
+        timeLastCommand = System.currentTimeMillis();
+
         // continuously listen your user input
         listenUserInput();
 
@@ -89,11 +90,10 @@ public class ChatClient implements Runnable {
         }
     }
 
-
     private boolean checkInactiveUser() {
         if (timeLastCommand != -1) {
             long currentTime = System.currentTimeMillis() - timeLastCommand;
-            if (currentTime >= 8000) {
+            if (currentTime >= 20_000) {
                 active =false;
                 return false;
             }
