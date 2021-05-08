@@ -1,6 +1,7 @@
 package training.expires;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -18,6 +19,7 @@ public class ChatClient implements Runnable {
     private boolean active;
     private final Lock lock;
     private long timeLastCommand;
+    private Socket socket;
 
     public ChatClient() throws IOException {
         lock = new ReentrantLock();
@@ -42,14 +44,7 @@ public class ChatClient implements Runnable {
 
     @Override
     public void run() {
-        while (isActive()) {
-            if (timeLastCommand != -1) {
-                long currentTime = System.currentTimeMillis() - timeLastCommand;
-                if ( currentTime > 10_000) {
-                    setActive(false);
-                    break;
-                }
-            }
+        while (active) {
             if (inputStream.hasNextLine()) {
                 String str = inputStream.nextLine();
                 System.out.println(str);
@@ -71,7 +66,7 @@ public class ChatClient implements Runnable {
         }
         System.out.println("Start typing: ");
 
-        Socket socket = null;
+        socket = null;
         try {
             socket = new Socket(host, PORT);
             socket.setReuseAddress(true);
@@ -91,22 +86,44 @@ public class ChatClient implements Runnable {
         // continuously listen your user input
         listenUserInput();
 
-        socket.close();
+        stop();
     }
 
     private void listenUserInput() {
-        timeLastCommand = System.currentTimeMillis();
-        while (System.currentTimeMillis() - timeLastCommand < 1000 && keyboard.hasNextLine()) {
-            timeLastCommand = System.currentTimeMillis();
+        while (keyboard.hasNextLine()) {
             String input = keyboard.nextLine();
+            if (!checkInactiveUser()) {
+                break;
+            }
             if (input.trim().length() != 0) {
                 outputStream.println(input);
             }
             outputStream.flush();
 
             if (input.trim().toLowerCase().equals("quit")) {
-                setActive(false);
+                active =false;
             }
+            timeLastCommand = System.currentTimeMillis();
+        }
+    }
+
+
+    private boolean checkInactiveUser() {
+        if (timeLastCommand != -1) {
+            long currentTime = System.currentTimeMillis() - timeLastCommand;
+            if (currentTime > 8_000) {
+                active =false;
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void stop() {
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
