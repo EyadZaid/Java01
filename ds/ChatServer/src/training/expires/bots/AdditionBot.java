@@ -12,7 +12,7 @@ public class AdditionBot implements IBot {
     @Override
     public String doSomething() {
         int num = rand.nextInt(100);
-        String str = "Solve: " + num + " + " + " 10 =";
+        String str = "Solve: " + num + " + " + " 10 ";
         return str;
     }
 }

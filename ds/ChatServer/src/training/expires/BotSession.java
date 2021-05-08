@@ -18,12 +18,15 @@ public class BotSession  implements Runnable{
 
     @Override
     public void run() {
+        int flag = 1;
 
         while (true) {
             for (var e : rooms.values()) {
                 if (e.getNumberOfUsers() > 0) {
                     try {
-                        e.botSendMsgInRoom(firstBot.doSomething());
+                        String str = (flag >  0) ? firstBot.doSomething() : secondBot.doSomething();
+                        e.botSendMsgInRoom(str);
+                        flag *= -1;
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }

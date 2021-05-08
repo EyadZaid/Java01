@@ -38,7 +38,7 @@ public class User {
 
     public void sendMessage(String msg) {
         if (!socket.isClosed()) {
-            writer.println("[" + formatter.format(date) + "]"+ ": " + msg);
+            writer.println("\n[" + formatter.format(date) + "]"+ ": " + msg);
             writer.flush();
         }
     }
