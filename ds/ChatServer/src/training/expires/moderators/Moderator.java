@@ -25,10 +25,14 @@ public class Moderator {
         StringBuilder newMsg = new StringBuilder();
         String[] arrMsg = msg.split(" ");
 
-        for (var w : arrMsg) {
-            newMsg.append(wordCensor(w) + " ");
+        for (int i=0; i<arrMsg.length; i++) {
+            if (i != arrMsg.length-1) {
+                newMsg.append(wordCensor(arrMsg[i]) + " ");
+            }
+            else {
+                newMsg.append(wordCensor(arrMsg[i]));
+            }
         }
-
         return newMsg.toString();
     }
 
