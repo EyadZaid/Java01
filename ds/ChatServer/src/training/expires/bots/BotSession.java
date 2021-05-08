@@ -36,7 +36,7 @@ public class BotSession  implements Runnable{
 
 
             try {
-                Thread.sleep(15_000);
+                Thread.sleep(30_000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -18,6 +18,7 @@ public class User {
     private final String uniqueID;
     private final Date date;
     private final SimpleDateFormat formatter;
+    private int countCensor;
 
     public User(Socket socket) throws IOException{
         this.socket = socket;
@@ -26,6 +27,7 @@ public class User {
         uniqueID = UUID.randomUUID().toString();
         date = new Date();
         formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        countCensor = 0;
     }
 
     public void sendMessage(String msg, User user) {
@@ -84,6 +86,18 @@ public class User {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void incCountCensor() {
+        countCensor++;
+    }
+
+    public int getCountCensor() {
+        return countCensor;
+    }
+
+    public void setCountCensor(int countCensor) {
+        this.countCensor = countCensor;
     }
 
     @Override

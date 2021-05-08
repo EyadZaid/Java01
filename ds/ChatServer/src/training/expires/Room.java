@@ -25,10 +25,30 @@ public class Room {
     }
 
     public void sendMsgAllUsersRoom(String msg, User user) throws IOException {
-        msg = moderator.censor(msg);
-        for (var u : users) {
-            u.sendMessage(msg, user);
+
+        String newMsg = moderator.censor(msg);
+
+        if (checkMuchCurses(user)) {
+            return;
         }
+
+        for (var u : users) {
+            u.sendMessage(newMsg, user);
+        }
+    }
+
+    private boolean checkMuchCurses(User user) {
+        if (moderator.isCensored()) {
+            user.incCountCensor();
+
+            if (user.getCountCensor() == 3) {
+                user.setCountCensor(0);
+                removeUser(user);
+                user.setRoom(null);
+                return true;
+            }
+        }
+        return false;
     }
 
     public void botSendMsgInRoom(String msg) throws IOException {

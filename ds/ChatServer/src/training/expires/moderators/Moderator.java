@@ -5,9 +5,11 @@ import java.util.List;
 
 public class Moderator {
     private final List<String>  badWords;
+    private boolean isCensored;
 
     public Moderator() {
         this.badWords = new ArrayList<>();
+        isCensored = false;
     }
 
     public void addWord(String word) {
@@ -19,6 +21,7 @@ public class Moderator {
     }
 
     public String censor(String msg) {
+        isCensored = false;
         StringBuilder newMsg = new StringBuilder();
         String[] arrMsg = msg.split(" ");
 
@@ -34,8 +37,13 @@ public class Moderator {
             if (word.contains(w)) {
                 String str = "*".repeat(w.length());
                 word = word.replace(w, str);
+                isCensored = true;
             }
         }
         return word;
+    }
+
+    public boolean isCensored() {
+        return isCensored;
     }
 }
