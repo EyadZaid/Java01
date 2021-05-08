@@ -36,6 +36,13 @@ public class User {
         }
     }
 
+    public void sendMessage(String msg) {
+        if (!socket.isClosed()) {
+            writer.println("[" + formatter.format(date) + "]"+ ": " + msg);
+            writer.flush();
+        }
+    }
+
     public void availableRooms() {
         StringBuilder str = new StringBuilder("Available Rooms:\n");
         ChatManager chatManager = ChatManager.getInstance();

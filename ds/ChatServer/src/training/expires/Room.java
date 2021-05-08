@@ -1,6 +1,5 @@
 package training.expires;
 
-import training.expires.bots.IBot;
 import training.expires.moderators.Moderator;
 import training.expires.userHandler.User;
 
@@ -12,11 +11,10 @@ public class Room {
     private final HashSet<User> users;
     private final String name;
     private final Moderator moderator;
-    private IBot bot;
 
-    public Room(String name, IBot bot) {
+
+    public Room(String name) {
         this.name = name;
-        this.bot = bot;
         users = new HashSet<>();
         moderator = new Moderator();
         initializeModerator();
@@ -31,6 +29,17 @@ public class Room {
         for (var u : users) {
             u.sendMessage(msg, user);
         }
+    }
+
+    public void botSendMsgInRoom(String msg) throws IOException {
+        msg = moderator.censor(msg);
+        for (var u : users) {
+            u.sendMessage(msg);
+        }
+    }
+
+    public int getNumberOfUsers() {
+        return users.size();
     }
 
     public void addUser(User user) {

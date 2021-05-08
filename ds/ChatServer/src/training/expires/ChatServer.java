@@ -1,5 +1,7 @@
 package training.expires;
 
+import training.expires.bots.AdditionBot;
+import training.expires.bots.lettersBot;
 import training.expires.userHandler.UserSessionHandler;
 import training.expires.userHandler.User;
 
@@ -38,6 +40,10 @@ public class ChatServer {
             thread.start();
             chatManager.addThread(user, thread);
             chatManager.addUserThread(user, userSessionHandler);
+
+            BotSession botSession = new BotSession(new AdditionBot(), new lettersBot());
+            Thread t = new Thread(botSession);
+            t.start();
         }
     }
 
