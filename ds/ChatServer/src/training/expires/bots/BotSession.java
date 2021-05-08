@@ -1,6 +1,7 @@
-package training.expires;
+package training.expires.bots;
 
-import training.expires.bots.IBot;
+import training.expires.ChatManager;
+import training.expires.Room;
 
 import java.io.IOException;
 import java.util.HashMap;

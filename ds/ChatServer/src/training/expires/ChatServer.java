@@ -1,6 +1,7 @@
 package training.expires;
 
 import training.expires.bots.AdditionBot;
+import training.expires.bots.BotSession;
 import training.expires.bots.lettersBot;
 import training.expires.userHandler.UserSessionHandler;
 import training.expires.userHandler.User;
