@@ -14,8 +14,10 @@ public class ChatServer {
     private final static int PORT = 7777;
     private final ChatManager chatManager;
     private ServerSocket serverSocket;
+    private boolean active;
 
     public ChatServer() {
+        active = true;
         try {
             serverSocket = new ServerSocket(PORT);
             serverSocket.setReuseAddress(true);
@@ -26,9 +28,8 @@ public class ChatServer {
     }
 
     public void startServer() throws IOException {
-
         System.out.println("Accepting clients...");
-        while (true) {
+        while (active) {
             // wait for a client
             Socket socket = serverSocket.accept();
             System.out.println("New user accepted...");
@@ -48,6 +49,8 @@ public class ChatServer {
         }
     }
 
-
+    public void stopServer() {
+        active = false;
+    }
 
 }
