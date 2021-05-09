@@ -13,5 +13,11 @@ class TrappedAreaWaterTest {
 
         int actual = TrappedAreaWater.trappedArea(arr);
         assertEquals(11, actual);
+
+
+        int[] arr2 = { 1, 2, 0, 1, 5, 8, 1, 2, 6, 1, 3};
+
+        actual = TrappedAreaWater.trappedArea(arr2);
+        assertEquals(14, actual);
     }
 }

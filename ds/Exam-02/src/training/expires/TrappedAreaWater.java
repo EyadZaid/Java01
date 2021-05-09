@@ -3,7 +3,7 @@ package training.expires;
 public class TrappedAreaWater {
 
     public static int trappedArea(int[] arr) {
-        int res = 0;
+        int result = 0;
 
         for (int i = 1; i < arr.length - 1; i++) {
             int left = arr[i];
@@ -17,9 +17,9 @@ public class TrappedAreaWater {
                 right = Math.max(right, arr[j]);
             }
 
-            res += Math.min(left, right) - arr[i];
+            result += Math.min(left, right) - arr[i];
         }
-        return res;
+        return result;
     }
 
 }
