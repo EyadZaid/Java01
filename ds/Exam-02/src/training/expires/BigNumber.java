@@ -1,12 +1,12 @@
 package training.expires;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class BigNumber {
     private List<Integer> list;
+    private char sign;
 
     public BigNumber(String digits) {
         list = convertToList(digits);
@@ -14,6 +14,20 @@ public class BigNumber {
 
     private List<Integer> convertToList(String digits) {
         List<Integer> result = new ArrayList<>();
+        /*
+        if (digits.length() > 0 && !(digits.charAt(0) >= '0' && digits.charAt(0) <= '9')) {
+            if (digits.charAt(0) == '-') {
+                sign = '-';
+            }
+            else {
+                sign = '+';
+            }
+        }
+        else {
+            result.add(digits.charAt(0) - '0');
+        }
+         */
+
         for (int i=0; i<digits.length(); i++) {
             result.add(digits.charAt(i) - '0');
         }
@@ -112,6 +126,25 @@ public class BigNumber {
             bigNumber.list.add(result[i--]);
         }
         return bigNumber;
+    }
+
+    public static BigNumber absoluteNumber(BigNumber bigNumber) {
+        bigNumber.sign = '+';
+        return bigNumber;
+    }
+
+    public static boolean checkPalindrome(BigNumber number) {
+        return checkPalindrome(number.convertToString());
+    }
+
+    private static boolean checkPalindrome(String str) {
+        if(str.length() == 0 || str.length() == 1) {
+            return true;
+        }
+        if(str.charAt(0) == str.charAt(str.length() - 1)) {
+            return checkPalindrome(str.substring(1, str.length() - 1));
+        }
+        return false;
     }
 
     @Override
