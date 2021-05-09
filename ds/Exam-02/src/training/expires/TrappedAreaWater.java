@@ -3,23 +3,31 @@ package training.expires;
 public class TrappedAreaWater {
 
     public static int trappedArea(int[] arr) {
-        int result = 0;
+        int leftMax = 0, rightMax = 0, result = 0;
+        int lo = 0, hi = arr.length - 1;
 
-        for (int i = 1; i < arr.length - 1; i++) {
-            int left = arr[i];
-
-            for(int j = 0; j < i; j++) {
-                left = Math.max(left, arr[j]);
+        while (lo <= hi) {
+            if (arr[lo] < arr[hi]) {
+                if (arr[lo] > leftMax) {
+                    leftMax = arr[lo];
+                }
+                else {
+                    result += leftMax - arr[lo];
+                }
+                    lo++;
             }
-
-            int right = arr[i];
-            for(int j = i + 1; j < arr.length; j++) {
-                right = Math.max(right, arr[j]);
+            else {
+                if (arr[hi] > rightMax) {
+                    rightMax = arr[hi];
+                }
+                else {
+                    result += rightMax - arr[hi];
+                }
+                hi--;
             }
-
-            result += Math.min(left, right) - arr[i];
         }
         return result;
     }
+
 
 }
