@@ -1,7 +1,7 @@
 package training.expires;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -63,6 +63,54 @@ public class BigNumber {
 
         Collections.reverse(result);
         BigNumber bigNumber = new BigNumber(convertToString(result));
+        return bigNumber;
+    }
+
+    public static BigNumber multiple(BigNumber number1, BigNumber number2) {
+        BigNumber bigNumber = new BigNumber("");
+        int len1 = number1.list.size();
+        int len2 = number2.list.size();
+        if (len1 == 0 || len2 == 0) {
+            bigNumber.list.add(0);
+            return bigNumber;
+        }
+
+        int result[] = new int[len1 + len2];
+        int i_n1 = 0;
+        int i_n2 = 0;
+
+        for (int i = len1 - 1; i >= 0; i--) {
+            int carry = 0;
+            int n1 = number1.list.get(i);
+            i_n2 = 0;
+
+            for (int j = len2 - 1; j >= 0; j--) {
+                int n2 = number2.list.get(j);
+                int sum = n1 * n2 + result[i_n1+i_n2] + carry;
+                carry = sum / 10;
+                result[i_n1 + i_n2] = sum % 10;
+                i_n2++;
+            }
+
+            if (carry > 0) {
+                result[i_n1 + i_n2] += carry;
+            }
+            i_n1++;
+        }
+
+        int i = result.length - 1;
+        while (i >= 0 && result[i] == 0) {
+            i--;
+        }
+
+        if (i == -1) {
+            bigNumber.list.add(0);
+            return bigNumber;
+        }
+
+        while (i >= 0) {
+            bigNumber.list.add(result[i--]);
+        }
         return bigNumber;
     }
 

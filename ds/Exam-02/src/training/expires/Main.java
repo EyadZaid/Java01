@@ -4,14 +4,14 @@ public class Main {
 
     public static void main(String[] args) {
         BigNumber number1 = new BigNumber("123456");
-        BigNumber number2 = new BigNumber("123");
+        BigNumber number2 = new BigNumber("100");
 
         System.out.println(number1);
 
         System.out.println(number1.convertToString());
 
 
-        System.out.println(BigNumber.add(number1, number2));
+        System.out.println(BigNumber.multiple(number1, number2));
 
 
     }
