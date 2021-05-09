@@ -16,22 +16,12 @@ class BigNumberTest {
         String expected = "1234421";
         assertEquals(expected, result.convertToString());
 
-        /*
-        BigNumber result = BigNumber.multiple(number1, number2);
-        String expected = "123432100";
-        assertEquals(expected, result.convertToString());
-
-        result = BigNumber.add(number1, number2);
-        expected = "1234421";
-        assertEquals(expected, result.convertToString());
-
         result = BigNumber.absoluteNumber(number1);
-        expected = "1234321";
+        expected = "1234421";
         assertEquals(expected, result.convertToString());
 
         boolean isPalindrome = BigNumber.checkPalindrome(number1);
         assertTrue(isPalindrome);
 
-         */
     }
 }

@@ -1,6 +1,7 @@
 package training.expires;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,6 +26,18 @@ public class BigNumber {
 
     public BigNumber(Node node) {
         head = node;
+    }
+
+    public String convertToString() {
+        StringBuilder str = new StringBuilder();
+        Node h = head;
+
+        while(h != null) {
+            str.append(h.data);
+            h = h.next;
+        }
+
+        return str.toString();
     }
 
     private Node convertToLinkedList(String digits) {
@@ -118,123 +131,18 @@ public class BigNumber {
         return head;
     }
 
-    public String convertToString() {
-        StringBuilder str = new StringBuilder();
-        Node h = head;
-
-        while(h != null) {
-            str.append(h.data);
-            h = h.next;
-        }
-
-        return str.toString();
+    public static BigNumber multiply(BigNumber num1, BigNumber num2) {
+        String str1 = num1.convertToString();
+        String str2 = num2.convertToString();
+        String res = multiply(str1, str2);
+        return new BigNumber(res);
     }
 
-
-
-
-
-
-
-
-
-
-    public void traverse(BigNumber number)
-    {
-        Node h = number.head;
-        while(h != null)
-        {
-            System.out.print(h.data + "->");
-            h = h.next;
-        }
-    }
-
-
-
-
-    /*
-    private List<Integer> list;
-    private char sign;
-
-    public BigNumber(String digits) {
-        list = convertToList(digits);
-    }
-
-    private List<Integer> convertToList(String digits) {
-        List<Integer> result = new ArrayList<>();
-        /*
-        if (digits.length() > 0 && !(digits.charAt(0) >= '0' && digits.charAt(0) <= '9')) {
-            if (digits.charAt(0) == '-') {
-                sign = '-';
-            }
-            else {
-                sign = '+';
-            }
-        }
-        else {
-            result.add(digits.charAt(0) - '0');
-        }
-         */
-/*
-        for (int i=0; i<digits.length(); i++) {
-            result.add(digits.charAt(i) - '0');
-        }
-        return result;
-    }
-
-    public String convertToString() {
-        return convertToString(list);
-    }
-
-    private static String convertToString(List<Integer> numbers) {
-        StringBuilder str = new StringBuilder();
-        for (var e : numbers) {
-            str.append(e);
-        }
-        return str.toString();
-    }
-
-    public static BigNumber add(BigNumber number1, BigNumber number2) {
-        if (number1.list.size() > number2.list.size()){
-            BigNumber t = number1;
-            number1 = number2;
-            number2 = t;
-        }
-
-        List<Integer> result = new ArrayList<>();
-
-        int n1 = number1.list.size(), n2 = number2.list.size();
-        int diff = n2 - n1;
-        int carry = 0;
-
-        for (int i = n1 - 1; i>=0; i--) {
-            int sum = number1.list.get(i) + number2.list.get(i+diff) + carry;
-            result.add(sum % 10);
-            carry = sum / 10;
-        }
-
-        for (int i = n2 - n1 - 1; i >= 0; i--) {
-            int sum = number2.list.get(i) + carry;
-            result.add(sum % 10);
-            carry = sum / 10;
-        }
-
-        if (carry > 0) {
-            result.add(carry);
-        }
-
-        Collections.reverse(result);
-        BigNumber bigNumber = new BigNumber(convertToString(result));
-        return bigNumber;
-    }
-
-    public static BigNumber multiple(BigNumber number1, BigNumber number2) {
-        BigNumber bigNumber = new BigNumber("");
-        int len1 = number1.list.size();
-        int len2 = number2.list.size();
+    private static String multiply(String num1, String num2) {
+        int len1 = num1.length();
+        int len2 = num2.length();
         if (len1 == 0 || len2 == 0) {
-            bigNumber.list.add(0);
-            return bigNumber;
+            return "0";
         }
 
         int result[] = new int[len1 + len2];
@@ -243,12 +151,12 @@ public class BigNumber {
 
         for (int i = len1 - 1; i >= 0; i--) {
             int carry = 0;
-            int n1 = number1.list.get(i);
+            int n1 = num1.charAt(i) - '0';
             i_n2 = 0;
 
             for (int j = len2 - 1; j >= 0; j--) {
-                int n2 = number2.list.get(j);
-                int sum = n1 * n2 + result[i_n1+i_n2] + carry;
+                int n2 = num2.charAt(j) - '0';
+                int sum = n1 * n2 + result[i_n1 + i_n2] + carry;
                 carry = sum / 10;
                 result[i_n1 + i_n2] = sum % 10;
                 i_n2++;
@@ -266,18 +174,19 @@ public class BigNumber {
         }
 
         if (i == -1) {
-            bigNumber.list.add(0);
-            return bigNumber;
+            return "0";
         }
 
+        String s = "";
         while (i >= 0) {
-            bigNumber.list.add(result[i--]);
+            s += (result[i--]);
         }
-        return bigNumber;
+
+        return s;
     }
 
     public static BigNumber absoluteNumber(BigNumber bigNumber) {
-        bigNumber.sign = '+';
+        bigNumber.isPositive = true;
         return bigNumber;
     }
 
@@ -295,12 +204,4 @@ public class BigNumber {
         return false;
     }
 
-    @Override
-    public String toString() {
-        return "BigNumber{" +
-                "list=" + list +
-                '}';
-    }
-
- */
 }
