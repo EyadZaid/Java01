@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9347aa4b-9668-4134-ab45-86d5343a6416" name="Default Changelist" comment="ChatServer: Added test moderatorWithBadWords" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1rsz5ZwOxCBHk5zTwFd4PaxMzyG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="company" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Repository.Attach.Annotations" value="true" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ChatClient" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="tests" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="training.expires.Main" />
+      <module name="ChatServer" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ChatServerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ChatServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.ChatServerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ChatServerTest.testModerator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ChatServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.ChatServerTest" />
+      <option name="METHOD_NAME" value="testModerator" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.ChatServerTest" />
+        <item itemvalue="JUnit.ChatServerTest.testModerator" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9347aa4b-9668-4134-ab45-86d5343a6416" name="Default Changelist" comment="" />
+      <created>1619779405122</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1619779405122</updated>
+    </task>
+    <task id="LOCAL-00005" summary="ChatServer: fixed some issues">
+      <created>1619792263850</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1619792263850</updated>
+    </task>
+    <task id="LOCAL-00006" summary="ChatServer: fixed some issues">
+      <created>1619883866477</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1619883866477</updated>
+    </task>
+    <task id="LOCAL-00007" summary="ChatServer: Added class room">
+      <created>1619949809228</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1619949809228</updated>
+    </task>
+    <task id="LOCAL-00008" summary="ChatServer: Added User class">
+      <created>1619950294022</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1619950294022</updated>
+    </task>
+    <task id="LOCAL-00009" summary="ChatServer: Implement Room class">
+      <created>1619951944207</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1619951944207</updated>
+    </task>
+    <task id="LOCAL-00010" summary="ChatServer: Implement User class">
+      <created>1619954883379</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1619954883379</updated>
+    </task>
+    <task id="LOCAL-00011" summary="ChatServer: Update User class">
+      <created>1619957150940</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1619957150940</updated>
+    </task>
+    <task id="LOCAL-00012" summary="ChatServer: Added rooms to chat server">
+      <created>1619957187990</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1619957187990</updated>
+    </task>
+    <task id="LOCAL-00013" summary="ChatServer: Added ChatManager class">
+      <created>1620075380354</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1620075380354</updated>
+    </task>
+    <task id="LOCAL-00014" summary="ChatServer: Added InputHandler class">
+      <created>1620075401129</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1620075401129</updated>
+    </task>
+    <task id="LOCAL-00015" summary="ChatServer: Room chat updated">
+      <created>1620075433673</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1620075433673</updated>
+    </task>
+    <task id="LOCAL-00016" summary="ChatServer: user class updated">
+      <created>1620075466730</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1620075466730</updated>
+    </task>
+    <task id="LOCAL-00017" summary="ChatServer: added user to send msg function">
+      <created>1620113008309</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1620113008309</updated>
+    </task>
+    <task id="LOCAL-00018" summary="ChatServer: nickname added to user">
+      <created>1620113729355</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1620113729355</updated>
+    </task>
+    <task id="LOCAL-00019" summary="ChatServer: added NicknameCommand class">
+      <created>1620113745385</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1620113745385</updated>
+    </task>
+    <task id="LOCAL-00020" summary="ChatServer: added Nickname to InputHandler">
+      <created>1620115372588</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1620115372588</updated>
+    </task>
+    <task id="LOCAL-00021" summary="ChatServer: added Nickname to client">
+      <created>1620115395321</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1620115395321</updated>
+    </task>
+    <task id="LOCAL-00022" summary="ChatServer: added user to send msg">
+      <created>1620116071403</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1620116071403</updated>
+    </task>
+    <task id="LOCAL-00023" summary="ChatServer: added list command">
+      <created>1620120561698</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1620120561698</updated>
+    </task>
+    <task id="LOCAL-00024" summary="ChatServer: added LeaveCommand">
+      <created>1620121347525</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1620121347525</updated>
+    </task>
+    <task id="LOCAL-00025" summary="ChatServer: added QuitCommand">
+      <created>1620121399509</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1620121399509</updated>
+    </task>
+    <task id="LOCAL-00026" summary="ChatServer: added PrivateMsgCommand">
+      <created>1620121505936</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1620121505936</updated>
+    </task>
+    <task id="LOCAL-00027" summary="ChatServer: added new package userHandler">
+      <created>1620121831268</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1620121831268</updated>
+    </task>
+    <task id="LOCAL-00028" summary="ChatServer: Updated leave room">
+      <created>1620157642633</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1620157642648</updated>
+    </task>
+    <task id="LOCAL-00029" summary="ChatServer: Implement PrivateMsgCommand">
+      <created>1620158785449</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1620158785449</updated>
+    </task>
+    <task id="LOCAL-00030" summary="ChatServer: Implement PrivateMsgCommand">
+      <created>1620158801385</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1620158801385</updated>
+    </task>
+    <task id="LOCAL-00031" summary="ChatServer: Implement QuitCommand">
+      <created>1620164694591</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1620164694591</updated>
+    </task>
+    <task id="LOCAL-00032" summary="ChatServer: Implement ListCommand">
+      <created>1620168725266</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1620168725266</updated>
+    </task>
+    <task id="LOCAL-00033" summary="ChatServer: Added moderator">
+      <created>1620197743133</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1620197743133</updated>
+    </task>
+    <task id="LOCAL-00034" summary="ChatServer: Update user loge out">
+      <created>1620220878838</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1620220878838</updated>
+    </task>
+    <task id="LOCAL-00035" summary="ChatServer: Update user loge out">
+      <created>1620220893634</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1620220893634</updated>
+    </task>
+    <task id="LOCAL-00036" summary="ChatServer: added close socket">
+      <created>1620221397579</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1620221397579</updated>
+    </task>
+    <task id="LOCAL-00037" summary="ChatServer: Implement Moderator">
+      <created>1620228742994</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1620228742994</updated>
+    </task>
+    <task id="LOCAL-00038" summary="ChatServer: Added time and date to msg">
+      <created>1620236743818</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1620236743818</updated>
+    </task>
+    <task id="LOCAL-00039" summary="ChatServer: Added bot addition">
+      <created>1620243102719</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1620243102719</updated>
+    </task>
+    <task id="LOCAL-00040" summary="ChatServer: Added letters Bot">
+      <created>1620243828285</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1620243828285</updated>
+    </task>
+    <task id="LOCAL-00041" summary="ChatServer: ChatManager updated">
+      <created>1620245765544</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1620245765544</updated>
+    </task>
+    <task id="LOCAL-00042" summary="ChatServer: Added FactoryCommand">
+      <created>1620332905607</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1620332905607</updated>
+    </task>
+    <task id="LOCAL-00043" summary="ChatServer: InputHandler updated">
+      <created>1620333511737</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1620333511737</updated>
+    </task>
+    <task id="LOCAL-00044" summary="ChatServer: package moderators added">
+      <created>1620334304946</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1620334304946</updated>
+    </task>
+    <task id="LOCAL-00045" summary="ChatServer: UserSessionHandler updated">
+      <created>1620336668807</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1620336668807</updated>
+    </task>
+    <task id="LOCAL-00046" summary="ChatServer: UserInputHandler updated">
+      <created>1620336937400</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1620336937400</updated>
+    </task>
+    <task id="LOCAL-00047" summary="ChatServer: Implement BotSession">
+      <created>1620497794006</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1620497794006</updated>
+    </task>
+    <task id="LOCAL-00048" summary="ChatServer: Update BotSession">
+      <created>1620498274210</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1620498274210</updated>
+    </task>
+    <task id="LOCAL-00049" summary="ChatServer: change package">
+      <created>1620498780619</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1620498780619</updated>
+    </task>
+    <task id="LOCAL-00050" summary="ChatServer: too much curses --&gt; kick out from room">
+      <created>1620503113217</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1620503113217</updated>
+    </task>
+    <task id="LOCAL-00051" summary="ChatServer: Added tests package">
+      <created>1620508122704</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1620508122704</updated>
+    </task>
+    <task id="LOCAL-00052" summary="ChatServer: Added test Moderator">
+      <created>1620514489498</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1620514489498</updated>
+    </task>
+    <task id="LOCAL-00053" summary="ChatServer: Added test moderatorWithBadWords">
+      <created>1620515061737</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1620515061737</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ChatServer: added new package userHandler" />
+    <MESSAGE value="ChatServer: Updated leave room" />
+    <MESSAGE value="ChatServer: Implement PrivateMsgCommand" />
+    <MESSAGE value="ChatServer: Implement QuitCommand" />
+    <MESSAGE value="ChatServer: Implement ListCommand" />
+    <MESSAGE value="ChatServer: Added moderator" />
+    <MESSAGE value="ChatServer: Update user loge out" />
+    <MESSAGE value="ChatServer: added close socket" />
+    <MESSAGE value="ChatServer: Implement Moderator" />
+    <MESSAGE value="ChatServer: Added time and date to msg" />
+    <MESSAGE value="ChatServer: Added bot addition" />
+    <MESSAGE value="ChatServer: Added letters Bot" />
+    <MESSAGE value="ChatServer: ChatManager updated" />
+    <MESSAGE value="ChatServer: Added FactoryCommand" />
+    <MESSAGE value="ChatServer: InputHandler updated" />
+    <MESSAGE value="ChatServer: package moderators added" />
+    <MESSAGE value="ChatServer: UserSessionHandler updated" />
+    <MESSAGE value="ChatServer: UserInputHandler updated" />
+    <MESSAGE value="ChatServer: Implement BotSession" />
+    <MESSAGE value="ChatServer: Update BotSession" />
+    <MESSAGE value="ChatServer: change package" />
+    <MESSAGE value="ChatServer: too much curses --&gt; kick out from room" />
+    <MESSAGE value="ChatServer: Added tests package" />
+    <MESSAGE value="ChatServer: Added test Moderator" />
+    <MESSAGE value="ChatServer: Added test moderatorWithBadWords" />
+    <option name="LAST_COMMIT_MESSAGE" value="ChatServer: Added test moderatorWithBadWords" />
+  </component>
+</project>

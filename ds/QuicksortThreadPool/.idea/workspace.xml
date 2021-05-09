@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8ec84fa1-e11b-43d3-9100-a641790d007f" name="Default Changelist" comment="QuickSort: Added test big array" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1relw6Xli0VYOPdQ6bY5mlUfaDS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="company" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Repository.Attach.Annotations" value="true" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="training.expires" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.QuickSortThreadsTest">
+    <configuration name="QuickSortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="QuickSortThreadPool" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="training.expires.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="training.expires" />
+      <option name="MAIN_CLASS_NAME" value="training.expires.QuickSortTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuickSortTest.quickSortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="QuickSortThreadPool" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="training.expires.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="training.expires" />
+      <option name="MAIN_CLASS_NAME" value="training.expires.QuickSortTest" />
+      <option name="METHOD_NAME" value="quickSortTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuickSortThreadsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="QuickSortThreadPool" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="training.expires.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="training.expires" />
+      <option name="MAIN_CLASS_NAME" value="training.expires.QuickSortThreadsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuickSortThreadsTest.quickSortBigArrayTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="QuickSortThreadPool" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="training.expires.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="training.expires" />
+      <option name="MAIN_CLASS_NAME" value="training.expires.QuickSortThreadsTest" />
+      <option name="METHOD_NAME" value="quickSortBigArrayTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuickSortThreadsTest.quickSortThreadTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="QuickSortThreadPool" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="training.expires.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="training.expires" />
+      <option name="MAIN_CLASS_NAME" value="training.expires.QuickSortThreadsTest" />
+      <option name="METHOD_NAME" value="quickSortThreadTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.QuickSortTest.quickSortTest" />
+      <item itemvalue="JUnit.QuickSortThreadsTest.quickSortThreadTest" />
+      <item itemvalue="JUnit.QuickSortTest" />
+      <item itemvalue="JUnit.QuickSortThreadsTest.quickSortBigArrayTest" />
+      <item itemvalue="JUnit.QuickSortThreadsTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.QuickSortThreadsTest" />
+        <item itemvalue="JUnit.QuickSortThreadsTest.quickSortThreadTest" />
+        <item itemvalue="JUnit.QuickSortThreadsTest.quickSortBigArrayTest" />
+        <item itemvalue="JUnit.QuickSortTest" />
+        <item itemvalue="JUnit.QuickSortTest.quickSortTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8ec84fa1-e11b-43d3-9100-a641790d007f" name="Default Changelist" comment="" />
+      <created>1619344676002</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1619344676002</updated>
+    </task>
+    <task id="LOCAL-00001" summary="QuickSort: implement QuickSort">
+      <created>1619345672852</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1619345672852</updated>
+    </task>
+    <task id="LOCAL-00002" summary="QuickSort: added test for QuickSort">
+      <created>1619347357733</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1619347357733</updated>
+    </task>
+    <task id="LOCAL-00003" summary="QuickSort: Implement QuickSort thread pool">
+      <created>1619350319638</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1619350319638</updated>
+    </task>
+    <task id="LOCAL-00004" summary="QuickSort: QuickSort thread pool Tested">
+      <created>1619350367690</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1619350367690</updated>
+    </task>
+    <task id="LOCAL-00005" summary="QuickSort: update fork join">
+      <created>1619388869847</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1619388869847</updated>
+    </task>
+    <task id="LOCAL-00006" summary="QuickSort: Added test big array">
+      <created>1619389558286</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1619389558286</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="QuickSort: implement QuickSort" />
+    <MESSAGE value="QuickSort: added test for QuickSort" />
+    <MESSAGE value="QuickSort: Implement QuickSort thread pool" />
+    <MESSAGE value="QuickSort: QuickSort thread pool Tested" />
+    <MESSAGE value="QuickSort: update fork join" />
+    <MESSAGE value="QuickSort: Added test big array" />
+    <option name="LAST_COMMIT_MESSAGE" value="QuickSort: Added test big array" />
+  </component>
+</project>

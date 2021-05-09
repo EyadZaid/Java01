@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="576ed699-b187-40d3-87c7-470298c58cf7" name="Default Changelist" comment="Threads: fix some warning" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1r6WaMSL2rzisPUkPFHd8kX7AUF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="company" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Repository.Attach.Annotations" value="true" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="training.expires.tests" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.training.expires.tests in Threads">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="training.expires.Main" />
+      <module name="Threads" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="training.expires.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CountPairsSumTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Threads" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="training.expires.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="training.expires.tests" />
+      <option name="MAIN_CLASS_NAME" value="training.expires.tests.CountPairsSumTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CountPairsSumTest.countPairsWithSumThreeWithNegative" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Threads" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="training.expires.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="training.expires.tests" />
+      <option name="MAIN_CLASS_NAME" value="training.expires.tests.CountPairsSumTest" />
+      <option name="METHOD_NAME" value="countPairsWithSumThreeWithNegative" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ParallelFindTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Threads" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="training.expires.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="training.expires.tests" />
+      <option name="MAIN_CLASS_NAME" value="training.expires.tests.ParallelFindTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="training.expires.tests in Threads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Threads" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="training.expires.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="training.expires.tests" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.ParallelFindTest" />
+      <item itemvalue="JUnit.training.expires.tests in Threads" />
+      <item itemvalue="JUnit.CountPairsSumTest.countPairsWithSumThreeWithNegative" />
+      <item itemvalue="JUnit.CountPairsSumTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.training.expires.tests in Threads" />
+        <item itemvalue="JUnit.ParallelFindTest" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.CountPairsSumTest" />
+        <item itemvalue="JUnit.CountPairsSumTest.countPairsWithSumThreeWithNegative" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="576ed699-b187-40d3-87c7-470298c58cf7" name="Default Changelist" comment="" />
+      <created>1618297084450</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1618297084450</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Threads: Implement ArraySummary">
+      <created>1618297888062</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1618297888062</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Threads: added ArraySummary test">
+      <created>1618298859901</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1618298859901</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Threads: Implement ArraySort">
+      <created>1618306692997</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1618306692997</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Threads: Update ArraySort">
+      <created>1618307720267</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1618307720267</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Threads: Update ArraySort">
+      <created>1618307813679</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1618307813679</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Threads: Added ArraySort test">
+      <created>1618308821066</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1618308821066</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Threads: Fix array summary">
+      <created>1618311549037</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1618311549037</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Threads: Update array summary">
+      <created>1618493892583</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1618493892583</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Threads: Update array sort">
+      <created>1618518011790</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1618518011790</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Threads: Implement ParallelFind">
+      <created>1618579141326</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1618579141326</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Threads: Added test ParallelFind">
+      <created>1618579533355</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1618579533355</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Threads: Threads: Implement CountPairsRunnable">
+      <created>1618585543203</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1618585543203</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Threads: Threads: Added test countPairsWithSum">
+      <created>1618585793669</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1618585793669</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Threads: Added test to CountPairsSum">
+      <created>1618586078805</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1618586078805</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Threads: Added test to ArraySort">
+      <created>1618602676212</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1618602676212</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Threads: Added test to ArraySort - empty array">
+      <created>1618603056916</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1618603056916</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Threads: Added tests to ArraySummary">
+      <created>1618603818421</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1618603818421</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Threads: Added tests to CountPairsSum">
+      <created>1618604100221</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1618604100221</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Threads: Added tests to ParallelFind">
+      <created>1618604800423</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1618604800423</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Threads: Change name of variable in ParallelFind">
+      <created>1618605049475</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1618605049475</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Threads: Added test negative to CountPairsSum">
+      <created>1618607940672</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1618607940672</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Threads: fix some warning">
+      <created>1618690231291</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1618690231291</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Threads: Implement ArraySummary" />
+    <MESSAGE value="Threads: added ArraySummary test" />
+    <MESSAGE value="Threads: Implement ArraySort" />
+    <MESSAGE value="Threads: Update ArraySort" />
+    <MESSAGE value="Threads: Added ArraySort test" />
+    <MESSAGE value="Threads: Fix array summary" />
+    <MESSAGE value="Threads: Update array summary" />
+    <MESSAGE value="Threads: Update array sort" />
+    <MESSAGE value="Threads: Implement ParallelFind" />
+    <MESSAGE value="Threads: Added test ParallelFind" />
+    <MESSAGE value="Threads: Threads: Implement CountPairsRunnable" />
+    <MESSAGE value="Threads: Threads: Added test countPairsWithSum" />
+    <MESSAGE value="Threads: Added test to CountPairsSum" />
+    <MESSAGE value="Threads: Added test to ArraySort" />
+    <MESSAGE value="Threads: Added test to ArraySort - empty array" />
+    <MESSAGE value="Threads: Added tests to ArraySummary" />
+    <MESSAGE value="Threads: Added tests to CountPairsSum" />
+    <MESSAGE value="Threads: Added tests to ParallelFind" />
+    <MESSAGE value="Threads: Change name of variable in ParallelFind" />
+    <MESSAGE value="Threads: Added test negative to CountPairsSum" />
+    <MESSAGE value="Threads: fix some warning" />
+    <option name="LAST_COMMIT_MESSAGE" value="Threads: fix some warning" />
+  </component>
+</project>
