@@ -5,6 +5,154 @@ import java.util.Collections;
 import java.util.List;
 
 public class BigNumber {
+
+    static class Node {
+        int data;
+        Node next;
+
+        Node(int d) {
+            data = d;
+            next = null;
+        }
+    }
+
+    private Node head;
+    private boolean isPositive;
+
+    public BigNumber(String digits) {
+        head = convertToLinkedList(digits);
+    }
+
+    public BigNumber(Node node) {
+        head = node;
+    }
+
+    private Node convertToLinkedList(String digits) {
+        Node res = null;
+
+        if (digits.length() < 1) {
+            return null;
+        }
+
+        char firstChar = digits.charAt(0);
+        if (firstChar == '-') {
+            isPositive = false;
+        }
+        else {
+            isPositive = true;
+        }
+
+        if (firstChar >= '0' && firstChar <= '9') {
+            res = new Node(firstChar - '0');
+        }
+
+        for (int i=1; i<digits.length(); i++) {
+            Node new_node = new Node(digits.charAt(i) - '0');
+            new_node.next = res;
+            res = new_node;
+        }
+
+        return reverse(res);
+    }
+
+    public static BigNumber add(BigNumber num1, BigNumber num2) {
+        Node nodeN1 = num1.head;
+        Node nodeN2 = num2.head;
+        if (nodeN2 == null) {
+            return num1;
+        }
+
+        if (nodeN1 == null) {
+            return num2;
+        }
+
+        nodeN1 = reverse(nodeN1);
+        nodeN2 = reverse(nodeN2);
+
+        Node head = nodeN1;
+        Node prev = null;
+        int sum, carry =0;
+
+        while(nodeN1 != null && nodeN2 != null) {
+            sum = carry + nodeN1.data + nodeN2.data;
+            nodeN1.data = sum % 10;
+            carry = sum / 10;
+            prev = nodeN1;
+            nodeN1 = nodeN1.next;
+            nodeN2 = nodeN2.next;
+        }
+
+        if(nodeN1 != null || nodeN2 != null) {
+            if(nodeN2 != null) {
+                prev.next = nodeN2;
+            }
+            nodeN1 = prev.next;
+            while(nodeN1 != null) {
+                sum = carry + nodeN1.data;
+                nodeN1.data = sum % 10;
+                carry = sum / 10;
+                prev = nodeN1;
+                nodeN1 = nodeN1.next;
+            }
+        }
+        if(carry > 0) {
+            prev.next = new Node(carry);
+        }
+
+        return  new BigNumber(reverse(head));
+    }
+
+    private static Node reverse(Node head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        Node current = head;
+        Node previous = null;
+        while(current != null) {
+            Node temp = current.next;
+            current.next = previous;
+            previous = current;
+            current = temp;
+        }
+        head = previous;
+        return head;
+    }
+
+    public String convertToString() {
+        StringBuilder str = new StringBuilder();
+        Node h = head;
+
+        while(h != null) {
+            str.append(h.data);
+            h = h.next;
+        }
+
+        return str.toString();
+    }
+
+
+
+
+
+
+
+
+
+
+    public void traverse(BigNumber number)
+    {
+        Node h = number.head;
+        while(h != null)
+        {
+            System.out.print(h.data + "->");
+            h = h.next;
+        }
+    }
+
+
+
+
+    /*
     private List<Integer> list;
     private char sign;
 
@@ -27,7 +175,7 @@ public class BigNumber {
             result.add(digits.charAt(0) - '0');
         }
          */
-
+/*
         for (int i=0; i<digits.length(); i++) {
             result.add(digits.charAt(i) - '0');
         }
@@ -153,4 +301,6 @@ public class BigNumber {
                 "list=" + list +
                 '}';
     }
+
+ */
 }
