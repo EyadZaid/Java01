@@ -20,8 +20,13 @@ class BigNumberTest {
         expected = "1234421";
         assertEquals(expected, result.convertToString());
 
+
+        expected = "1234321";
+        assertEquals(expected, number1.convertToString());
+
+        /*
         boolean isPalindrome = BigNumber.checkPalindrome(number1);
         assertTrue(isPalindrome);
-
+*/
     }
 }
