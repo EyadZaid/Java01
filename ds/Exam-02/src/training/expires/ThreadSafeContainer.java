@@ -22,10 +22,14 @@ public class ThreadSafeContainer<T> {
         else {
             queue.add(item);
         }
+
+        if (!threadsID.contains(threadID)) {
+            threadsID.add(threadID);
+        }
     }
 
-    public T[] get() {
-        T[] twoItems = (T[]) new Object[2];
+    public Object[] get() {
+        Object[] twoItems = new Object[2];
 
         for (var id : threadsID) {
             var queue = container.get(id);
