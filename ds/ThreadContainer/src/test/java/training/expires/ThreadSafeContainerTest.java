@@ -2,14 +2,39 @@ package training.expires;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import static org.junit.Assert.*;
 
 public class ThreadSafeContainerTest {
+    private ThreadSafeContainer<Integer> container;
+    private ExecutorService pool;
 
     @org.junit.Before
     public void setUp() throws Exception {
+        container = new ThreadSafeContainer<Integer>();
+        pool = Executors.newFixedThreadPool(3);
     }
 
+    @Test
+    public void threadContainerTest() {
+        var list1 = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        var list2 = Arrays.asList(100, 200, 300, 400, 500, 600, 700, 800, 900, 1000);
+
+        Producer<Integer> prod1 = new Producer<>(container, list1);
+        Producer<Integer> prod2 = new Producer<>(container, list2);
+
+        Consumer<Integer> consumer = new Consumer<>(container, 10);
+
+        pool.submit(prod1);
+        pool.submit(prod2);
+        pool.submit(consumer);
+        pool.shutdown();
+    }
+
+    /*
     @Test
     public void threadContainerTest() {
         var container = new ThreadSafeContainer<String>();
@@ -34,14 +59,6 @@ public class ThreadSafeContainerTest {
         actual = container.get();
         assertEquals(expected3, actual);
     }
-
-    @Test
-    public void put() {
-    }
-
-    @Test
-    public void get() {
-    }
-
+*/
 
 }

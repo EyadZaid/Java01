@@ -20,8 +20,8 @@ public class ThreadSafeContainer<T> {
         havePairs = new LinkedList<>();
     }
 
-    public void put(T item, long threadID) {        // --threadID
-        //long threadID = Thread.currentThread().getId();
+    public void put(T item) {
+        long threadID = Thread.currentThread().getId();
         lock.lock();
         try {
             var firstItem = itemsMap.get(threadID);
