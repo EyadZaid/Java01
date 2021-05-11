@@ -22,17 +22,17 @@ public class ThreadSafeContainerTest {
         container.put("C", 1);
         container.put("Y", 3);
 
-        String[] expected1 = {"A", "B"};
+        var expected1 = new Pair<>("A", "B");
         var actual = container.get();
-        assertArrayEquals(expected1, actual);
+        assertEquals(expected1, actual);
 
-        String[] expected2 = {"D", "E"};
+        var expected2 = new Pair<>("D", "E");
         actual = container.get();
-        assertArrayEquals(expected2, actual);
+        assertEquals(expected2, actual);
 
-        String[] expected3 = {"X", "Y"};
+        var expected3 = new Pair<>("X", "Y");
         actual = container.get();
-        assertArrayEquals(expected3, actual);
+        assertEquals(expected3, actual);
     }
 
     @Test

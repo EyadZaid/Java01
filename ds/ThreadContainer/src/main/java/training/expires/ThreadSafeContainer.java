@@ -9,7 +9,6 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ThreadSafeContainer<T> {
     private final Map<Long, T> itemsMap;
     private final Queue<Pair<T>> readyPairs;
-
     private final Queue<Condition> havePairs;
     private final Lock lock;
 
@@ -27,11 +26,8 @@ public class ThreadSafeContainer<T> {
         try {
             var firstItem = itemsMap.get(threadID);
             if (firstItem != null) {
-
-                Pair<T> pair = new Pair<>(firstItem, item);
-                readyPairs.add(pair);
+                addPairToReadyPairs(firstItem, item);
                 itemsMap.remove(threadID);
-
                 signalWaiter();
             }
             else {
@@ -41,7 +37,6 @@ public class ThreadSafeContainer<T> {
         finally {
             lock.unlock();
         }
-
     }
 
     public Pair<T> get() {
@@ -49,12 +44,11 @@ public class ThreadSafeContainer<T> {
         try {
            var condition = lock.newCondition();
            havePairs.add(condition);
-
            if (havePairs.size() > 1) {
                condition.await();
            }
 
-            if (readyPairs.isEmpty()) {
+           if (readyPairs.isEmpty()) {
                 condition.await();
             }
 
@@ -67,6 +61,11 @@ public class ThreadSafeContainer<T> {
         }
 
         return readyPairs.poll();
+    }
+
+    private void addPairToReadyPairs(T firstItem, T item) {
+        Pair<T> pair = new Pair<>(firstItem, item);
+        readyPairs.add(pair);
     }
 
     private void signalWaiter() {
