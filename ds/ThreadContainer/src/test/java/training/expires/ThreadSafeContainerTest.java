@@ -26,12 +26,14 @@ public class ThreadSafeContainerTest {
         Producer<Integer> prod1 = new Producer<>(container, list1);
         Producer<Integer> prod2 = new Producer<>(container, list2);
 
-        Consumer<Integer> consumer = new Consumer<>(container, 10);
+        Consumer<Integer> consumer = new Consumer<>(container, 100);
 
         pool.submit(prod1);
         pool.submit(prod2);
         pool.submit(consumer);
         pool.shutdown();
+
+        System.out.println(consumer.getList());
     }
 
     /*
