@@ -39,4 +39,9 @@ public class Pair<T> {
     public int hashCode() {
         return Objects.hash(firstItem, secondItem);
     }
+
+    @Override
+    public String toString() {
+        return "Pair( " +  firstItem + ",  " + secondItem + ')';
+    }
 }
