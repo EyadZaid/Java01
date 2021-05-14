@@ -47,4 +47,27 @@ public class Main {
         }
         return user;
     }
+
+
+    public static User getAllAlbums() {
+        User user = null;
+        String sql = "SELECT FirstName, City, Email FROM customers" +
+                " where CustomerId = " + id;
+
+        try (var conn = connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                String name = rs.getString("FirstName");
+                String city = rs.getString("City");
+                String email = rs.getString("Email");
+                user = new User(id, name, email, city);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return user;
+    }
 }
