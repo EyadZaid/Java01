@@ -1,6 +1,8 @@
 package com.training.experis;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -14,6 +16,9 @@ public class Main {
         if (user != null) {
             System.out.println(user);
         }
+
+        System.out.println(getAllAlbumsByArtistId("1"));
+
     }
 
     public static Connection connect() throws SQLException {
@@ -49,25 +54,25 @@ public class Main {
     }
 
 
-    public static User getAllAlbums() {
-        User user = null;
-        String sql = "SELECT FirstName, City, Email FROM customers" +
-                " where CustomerId = " + id;
+    public static List<Album> getAllAlbumsByArtistId(String artistId) {
+        List<Album> albums = new ArrayList<>();
+        String sql = "SELECT AlbumId, Title, ArtistId FROM albums " +
+                "where ArtistId = " + artistId;
 
         try (var conn = connect();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
-                String name = rs.getString("FirstName");
-                String city = rs.getString("City");
-                String email = rs.getString("Email");
-                user = new User(id, name, email, city);
+                String id = rs.getString("AlbumId");
+                String title = rs.getString("Title");
+                Album album = new Album(id, title, artistId);
+                albums.add(album);
             }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return user;
+        return albums;
     }
 }

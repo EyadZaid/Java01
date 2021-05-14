@@ -22,4 +22,13 @@ public class Album {
     public String getArtistId() {
         return artistId;
     }
+
+    @Override
+    public String toString() {
+        return "Album{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", artistId='" + artistId + '\'' +
+                '}';
+    }
 }
