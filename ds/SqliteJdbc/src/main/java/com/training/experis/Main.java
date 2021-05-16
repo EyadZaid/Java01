@@ -19,6 +19,8 @@ public class Main {
 
         System.out.println(getAllAlbumsByArtistId("1"));
 
+        System.out.println(getAllTracksByAlbumId("10"));
+
     }
 
     public static Connection connect() throws SQLException {
@@ -74,5 +76,35 @@ public class Main {
             System.out.println(e.getMessage());
         }
         return albums;
+    }
+
+    public static List<Track> getAllTracksByAlbumId(String albumId) {
+        List<Track> tracks = new ArrayList<>();
+        String sql = "SELECT * FROM tracks " +
+                "where AlbumId = " + albumId;
+
+        try (var conn = connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                String id = rs.getString("TrackId");
+                String name = rs.getString("Name");
+                String mediaTypeId = rs.getString("MediaTypeId");
+                String genreId = rs.getString("GenreId");
+                String composer = rs.getString("Composer");
+                int milliseconds = rs.getInt("Milliseconds");
+                int bytes = rs.getInt("Bytes");
+                float unitPrice = rs.getInt("UnitPrice");
+
+                Track track = new Track(id, name, albumId, mediaTypeId, genreId, composer,
+                        milliseconds, bytes, unitPrice);
+                tracks.add(track);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return tracks;
     }
 }
