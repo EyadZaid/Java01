@@ -3,38 +3,28 @@ package com.training.experis;
 import java.util.Date;
 
 public class InvoiceItems {
+    private final String id;
     private final String invoiceId;
-    private final String customerId;
-    private final Date invoiceDate;
-    private final String billingCity;
-    private final String billingState;
-    private final String billingCountry;
-    private final String billingPostalCode;
-    private final float total;
+    private final String trackId;
+    private final float unitPrice;
+    private final int quantity;
 
-    public InvoiceItems(String invoiceId, String customerId, Date invoiceDate, String billingCity,
-                        String billingState, String billingCountry, String billingPostalCode, float total) {
+    public InvoiceItems(String id, String invoiceId, String trackId, float unitPrice, int quantity) {
+        this.id = id;
         this.invoiceId = invoiceId;
-        this.customerId = customerId;
-        this.invoiceDate = invoiceDate;
-        this.billingCity = billingCity;
-        this.billingState = billingState;
-        this.billingCountry = billingCountry;
-        this.billingPostalCode = billingPostalCode;
-        this.total = total;
+        this.trackId = trackId;
+        this.unitPrice = unitPrice;
+        this.quantity = quantity;
     }
 
     @Override
     public String toString() {
         return "InvoiceItems{" +
-                "invoiceId='" + invoiceId + '\'' +
-                ", customerId='" + customerId + '\'' +
-                ", invoiceDate=" + invoiceDate +
-                ", billingCity='" + billingCity + '\'' +
-                ", billingState='" + billingState + '\'' +
-                ", billingCountry='" + billingCountry + '\'' +
-                ", billingPostalCode='" + billingPostalCode + '\'' +
-                ", total=" + total +
+                "id='" + id + '\'' +
+                ", invoiceId='" + invoiceId + '\'' +
+                ", trackId='" + trackId + '\'' +
+                ", unitPrice=" + unitPrice +
+                ", quantity=" + quantity +
                 '}';
     }
 }
