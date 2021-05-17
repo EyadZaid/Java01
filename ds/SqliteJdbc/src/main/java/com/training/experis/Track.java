@@ -34,16 +34,10 @@ public class Track {
 
     @Override
     public String toString() {
-        return "Track{" +
-                "trackId=" + trackId +
-                ", name='" + name + '\'' +
-                ", albumId=" + albumId +
-                ", mediaTypeId=" + mediaTypeId +
-                ", genreId=" + genreId +
-                ", composer='" + composer + '\'' +
-                ", milliseconds=" + milliseconds +
-                ", bytes=" + bytes +
-                ", unitPrice=" + unitPrice +
-                '}';
+        StringBuilder str = new StringBuilder("Track Id: ");
+        str.append(trackId);
+        str.append(", Name: ");
+        str.append(name);
+        return str.toString();
     }
 }

@@ -4,33 +4,51 @@ import java.sql.*;
 import java.util.*;
 
 public class SqlJdbc {
+    private final Scanner scanner = new Scanner(System.in);
 
     public void run () {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Enter your id: ");
-        int userId = scanner.nextInt();
-
-        User user = getUserById(userId);
-        if (user != null) {
-            System.out.println(user);
-        }
+        User user = getUser();
 
         scanner.nextLine();
         System.out.println("\nEnter artist name: ");
         String artistName = scanner.nextLine();
-        System.out.println(getAlbumsByArtistName(artistName));
+        var albums = getAlbumsByArtistName(artistName);
+        for (var e : albums) {
+            System.out.println(e);
+        }
 
         System.out.println("\nEnter album id: ");
         int albumId = scanner.nextInt();
         Map<Integer, Track> tracks = getAllTracksByAlbumId(albumId);
-        System.out.println(tracks);
+        for (var e : tracks.values()) {
+            System.out.println(e);
+        }
 
-        System.out.println("\nEnter track id: ");
-        int trackId = scanner.nextInt();
-
+        int trackId = getTrackId(tracks);
         Track track = tracks.get(trackId);
         createInvoice(user, track, 1);
+    }
+
+    private User getUser() {
+        User user;
+        do {
+            System.out.println("Enter your id: ");
+            int userId = scanner.nextInt();
+
+            user = getUserById(userId);
+        } while (user == null);
+
+        return user;
+    }
+
+    private int getTrackId(Map<Integer, Track> tracks) {
+        int trackId;
+        do {
+            System.out.println("\nEnter track id: ");
+            trackId = scanner.nextInt();
+        } while (!tracks.containsKey(trackId));
+
+        return trackId;
     }
 
     private Connection connect() throws SQLException {
