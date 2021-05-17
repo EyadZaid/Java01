@@ -9,28 +9,29 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter your id: ");
-        int id = scanner.nextInt();
 
-        User user = getUserById(id);
+        System.out.println("Enter your id: ");
+        int userId = scanner.nextInt();
+
+        User user = getUserById(userId);
         if (user != null) {
             System.out.println(user);
         }
 
-        System.out.println(getAlbumsByArtistName("police"));
+        scanner.nextLine();
+        System.out.println("\nEnter artist name: ");
+        String artistName = scanner.nextLine();
+        System.out.println(getAlbumsByArtistName(artistName));
 
-        System.out.println(getAllTracksByAlbumId(215));
-
-
+        System.out.println("\nEnter album id: ");
+        int albumId = scanner.nextInt();
+        System.out.println(getAllTracksByAlbumId(albumId));
     }
 
     public static Connection connect() throws SQLException {
         var url = "jdbc:sqlite:";
         var dbFile = "src\\main\\resources\\chinook.db";
-
         Connection conn = DriverManager.getConnection(url + dbFile);
-
-        System.out.println("Connection to SQLite has been established.");
         return conn;
     }
 

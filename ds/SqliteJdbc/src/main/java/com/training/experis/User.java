@@ -15,13 +15,12 @@ public class User {
 
     @Override
     public String toString() {
-        StringBuilder str = new StringBuilder("\nUser name: ");
+        StringBuilder str = new StringBuilder("User name: ");
         str.append(name);
-        str.append("City: ");
+        str.append("\nCity: ");
         str.append(city);
-        str.append("Email: ");
+        str.append("\nEmail: ");
         str.append(email);
-        str.append("\n");
         return str.toString();
     }
 }

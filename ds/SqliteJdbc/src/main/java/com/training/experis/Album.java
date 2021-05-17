@@ -13,10 +13,10 @@ public class Album {
 
     @Override
     public String toString() {
-        return "Album{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", artistId=" + artistId +
-                '}';
+        StringBuilder str = new StringBuilder("Album Id: ");
+        str.append(id);
+        str.append(", Title: ");
+        str.append(title);
+        return str.toString();
     }
 }
