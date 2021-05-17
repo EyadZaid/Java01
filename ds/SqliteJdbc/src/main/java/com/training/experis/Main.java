@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your id: ");
-        String id = scanner.nextLine();
+        int id = scanner.nextInt();
 
         User user = getUserById(id);
         if (user != null) {
@@ -19,15 +19,9 @@ public class Main {
 
         System.out.println(getAlbumsByArtistName("police"));
 
+        System.out.println(getAllTracksByAlbumId(215));
 
 
-        /*
-        System.out.println(getAllAlbumsByArtistId("1"));
-
-        System.out.println(getAllTracksByAlbumId("10"));
-
-        createInvoice();
-*/
     }
 
     public static Connection connect() throws SQLException {
@@ -40,7 +34,7 @@ public class Main {
         return conn;
     }
 
-    public static User getUserById(String id) {
+    public static User getUserById(int id) {
         User user = null;
         String sql = "SELECT FirstName, City, Email FROM customers" +
                 " where CustomerId = " + id;
@@ -62,8 +56,7 @@ public class Main {
         return user;
     }
 
-
-    public static List<Album> getAllAlbumsByArtistId(String artistId) {
+    public static List<Album> getAllAlbumsByArtistId(int artistId) {
         List<Album> albums = new ArrayList<>();
         String sql = "SELECT AlbumId, Title, ArtistId FROM albums " +
                 "where ArtistId = " + artistId;
@@ -73,7 +66,7 @@ public class Main {
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
-                String id = rs.getString("AlbumId");
+                int id = rs.getInt("AlbumId");
                 String title = rs.getString("Title");
                 Album album = new Album(id, title, artistId);
                 albums.add(album);
@@ -85,7 +78,7 @@ public class Main {
         return albums;
     }
 
-    public static List<Track> getAllTracksByAlbumId(String albumId) {
+    public static List<Track> getAllTracksByAlbumId(int albumId) {
         List<Track> tracks = new ArrayList<>();
         String sql = "SELECT * FROM tracks " +
                 "where AlbumId = " + albumId;
@@ -95,10 +88,10 @@ public class Main {
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
-                String id = rs.getString("TrackId");
+                int id = rs.getInt("TrackId");
                 String name = rs.getString("Name");
-                String mediaTypeId = rs.getString("MediaTypeId");
-                String genreId = rs.getString("GenreId");
+                int mediaTypeId = rs.getInt("MediaTypeId");
+                int genreId = rs.getInt("GenreId");
                 String composer = rs.getString("Composer");
                 int milliseconds = rs.getInt("Milliseconds");
                 int bytes = rs.getInt("Bytes");
@@ -114,7 +107,6 @@ public class Main {
         }
         return tracks;
     }
-
 
     public static void createInvoice() {
         String sql = "INSERT INTO invoices (CustomerId, InvoiceDate, BillingAddress, BillingCity, " +
@@ -132,7 +124,6 @@ public class Main {
         }
     }
 
-
     public static List<Album> getAlbumsByArtistName(String artistName) {
         List<Album> albums = new ArrayList<>();
         String sql = "SELECT alb.AlbumId, alb.Title, alb.ArtistId FROM artists as art inner join albums alb on art.ArtistId = alb.ArtistId " +
@@ -143,9 +134,9 @@ public class Main {
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
-                String id = rs.getString("AlbumId");
+                int id = rs.getInt("AlbumId");
                 String title = rs.getString("Title");
-                String artistId = rs.getString("ArtistId");
+                int artistId = rs.getInt("ArtistId");
                 Album album = new Album(id, title, artistId);
                 albums.add(album);
             }

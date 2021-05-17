@@ -3,18 +3,18 @@ package com.training.experis;
 import java.util.Date;
 
 public class Invoice {
-    private String id;
-    private String customerId;
-    private Date invoiceDate;
-    private String billingAddress;
-    private String billingCity;
-    private String billingState;
-    private String billingCountry;
-    private String billingPostalCode;
-    private float total;
+    private final int id;
+    private final int customerId;
+    private final Date invoiceDate;
+    private final String billingAddress;
+    private final String billingCity;
+    private final String billingState;
+    private final String billingCountry;
+    private final String billingPostalCode;
+    private final float total;
 
-    public Invoice(String id, String customerId, Date invoiceDate, String billingAddress, String billingCity,
-                   String billingState, String billingCountry, String billingPostalCode, float total) {
+    public Invoice(int id, int customerId, Date invoiceDate, String billingAddress, String billingCity, String billingState,
+                   String billingCountry, String billingPostalCode, float total) {
         this.id = id;
         this.customerId = customerId;
         this.invoiceDate = invoiceDate;
@@ -29,8 +29,8 @@ public class Invoice {
     @Override
     public String toString() {
         return "Invoice{" +
-                "id='" + id + '\'' +
-                ", customerId='" + customerId + '\'' +
+                "id=" + id +
+                ", customerId=" + customerId +
                 ", invoiceDate=" + invoiceDate +
                 ", billingAddress='" + billingAddress + '\'' +
                 ", billingCity='" + billingCity + '\'' +

@@ -1,38 +1,23 @@
 package com.training.experis;
 
 public class User {
-    private String id;
-    private String name;
-    private String email;
-    private String city;
+    private final int id;
+    private final String name;
+    private final String email;
+    private final String city;
 
-    public User(String id, String name, String email, String city) {
+    public User(int id, String name, String email, String city) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.city = city;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
     @Override
     public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", city='" + city + '\'' +
                 '}';
