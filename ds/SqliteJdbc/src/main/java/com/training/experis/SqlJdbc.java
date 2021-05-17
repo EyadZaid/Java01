@@ -40,11 +40,15 @@ public class SqlJdbc {
         return conn;
     }
 
-    private User getUserById(int id) {
+    private User getUserById(int userId) {
         User user = null;
-        String sql = "SELECT FirstName, Email, City, Address, State, Country, " +
-                "PostalCode FROM customers" +
-                " where CustomerId = " + id;
+
+        var sqlPattern = """
+                SELECT FirstName, Email, City, Address, State, Country, PostalCode FROM customers 
+                where CustomerId = %d;
+                """;
+
+        var sql = String.format(sqlPattern, userId);
 
         try (var conn = connect();
              Statement stmt = conn.createStatement();
@@ -58,7 +62,7 @@ public class SqlJdbc {
                 String state = rs.getString("State");
                 String country = rs.getString("Country");
                 String postalCode = rs.getString("PostalCode");
-                user = new User(id, name, email, city, address, state, country, postalCode);
+                user = new User(userId, name, email, city, address, state, country, postalCode);
             }
 
         } catch (SQLException e) {
@@ -69,12 +73,15 @@ public class SqlJdbc {
 
     private List<Album> getAlbumsByArtistName(String artistName) {
         List<Album> albums = new ArrayList<>();
-        String sql = "SELECT alb.AlbumId, alb.Title, alb.ArtistId FROM artists as art inner join albums alb on art.ArtistId = alb.ArtistId " +
-                "WHERE art.NAME LIKE '%" + artistName + "%';";
+
+        StringBuilder sql = new StringBuilder("SELECT alb.AlbumId, alb.Title, alb.ArtistId FROM artists as art ");
+        sql.append("inner join albums alb on art.ArtistId = alb.ArtistId WHERE art.NAME LIKE '%");
+        sql.append(artistName);
+        sql.append("%';");
 
         try (var conn = connect();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+             ResultSet rs = stmt.executeQuery(sql.toString())) {
 
             while (rs.next()) {
                 int id = rs.getInt("AlbumId");
@@ -92,8 +99,13 @@ public class SqlJdbc {
 
     private Map<Integer, Track> getAllTracksByAlbumId(int albumId) {
         Map<Integer, Track> tracks = new HashMap<>();
-        String sql = "SELECT * FROM tracks " +
-                "where AlbumId = " + albumId;
+
+        var sqlPattern = """
+                SELECT * FROM tracks 
+                WHERE AlbumId = %d;
+                """;
+
+        var sql = String.format(sqlPattern, albumId);
 
         try (var conn = connect();
              Statement stmt = conn.createStatement();
