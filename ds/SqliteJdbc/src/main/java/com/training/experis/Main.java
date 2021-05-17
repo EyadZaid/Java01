@@ -21,6 +21,8 @@ public class Main {
 
         System.out.println(getAllTracksByAlbumId("10"));
 
+        createInvoice();
+
     }
 
     public static Connection connect() throws SQLException {
@@ -106,5 +108,22 @@ public class Main {
             System.out.println(e.getMessage());
         }
         return tracks;
+    }
+
+
+    public static void createInvoice() {
+        String sql = "INSERT INTO invoices (CustomerId, InvoiceDate, BillingAddress, BillingCity, " +
+                "BillingState, BillingCountry, BillingPostalCode, Total) " +
+                "VALUES (5, '', 'aaa', 'bbb', 'ccc', 'ddd', 'eee', 0.99);";
+
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            conn = connect();
+            stmt = conn.createStatement();
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
