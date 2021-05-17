@@ -17,7 +17,9 @@ public class Main {
             System.out.println(user);
         }
 
-        System.out.println(getArtistsByName("Body"));
+        System.out.println(getAlbumsByArtistName("police"));
+
+
 
         /*
         System.out.println(getAllAlbumsByArtistId("1"));
@@ -131,26 +133,27 @@ public class Main {
     }
 
 
-    public static List<Artist> getArtistsByName(String input) {
-        List<Artist> artists = new ArrayList<>();
-        String sql = "SELECT ArtistId, Name FROM artists " +
-                "where NAME LIKE '%" + input + "%';";
+    public static List<Album> getAlbumsByArtistName(String artistName) {
+        List<Album> albums = new ArrayList<>();
+        String sql = "SELECT alb.AlbumId, alb.Title, alb.ArtistId FROM artists as art inner join albums alb on art.ArtistId = alb.ArtistId " +
+        "WHERE art.NAME LIKE '%" + artistName + "%';";
 
         try (var conn = connect();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
-                int id = rs.getInt("ArtistId");
-                String name = rs.getString("Name");
-                Artist artist = new Artist(id, name);
-                artists.add(artist);
+                String id = rs.getString("AlbumId");
+                String title = rs.getString("Title");
+                String artistId = rs.getString("ArtistId");
+                Album album = new Album(id, title, artistId);
+                albums.add(album);
             }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return artists;
+        return albums;
     }
 
 
