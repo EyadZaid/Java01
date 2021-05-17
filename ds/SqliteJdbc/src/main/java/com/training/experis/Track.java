@@ -24,6 +24,14 @@ public class Track {
         this.unitPrice = unitPrice;
     }
 
+    public int getTrackId() {
+        return trackId;
+    }
+
+    public float getUnitPrice() {
+        return unitPrice;
+    }
+
     @Override
     public String toString() {
         return "Track{" +

@@ -2,9 +2,7 @@ package com.training.experis;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -26,13 +24,14 @@ public class Main {
 
         System.out.println("\nEnter album id: ");
         int albumId = scanner.nextInt();
-        System.out.println(getAllTracksByAlbumId(albumId));
+        Map<Integer, Track> tracks = getAllTracksByAlbumId(albumId);
+        System.out.println(tracks);
 
         System.out.println("\nEnter track id: ");
         int trackId = scanner.nextInt();
 
-        createInvoice(user, trackId, 1);
-
+        Track track = tracks.get(trackId);
+        createInvoice(user, track, 1);
 
     }
 
@@ -92,8 +91,8 @@ public class Main {
         return albums;
     }
 
-    public static List<Track> getAllTracksByAlbumId(int albumId) {
-        List<Track> tracks = new ArrayList<>();
+    public static Map<Integer, Track> getAllTracksByAlbumId(int albumId) {
+        Map<Integer, Track> tracks = new HashMap<>();
         String sql = "SELECT * FROM tracks " +
                 "where AlbumId = " + albumId;
 
@@ -109,11 +108,11 @@ public class Main {
                 String composer = rs.getString("Composer");
                 int milliseconds = rs.getInt("Milliseconds");
                 int bytes = rs.getInt("Bytes");
-                float unitPrice = rs.getInt("UnitPrice");
+                float unitPrice = rs.getFloat("UnitPrice");
 
                 Track track = new Track(id, name, albumId, mediaTypeId, genreId, composer,
                         milliseconds, bytes, unitPrice);
-                tracks.add(track);
+                tracks.put(id, track);
             }
 
         } catch (SQLException e) {
@@ -122,7 +121,14 @@ public class Main {
         return tracks;
     }
 
-    public static void createInvoice(User user, int trackId, int quantity) {
+    public static void createInvoice(User user, Track track, int quantity) {
+        float total = quantity * track.getUnitPrice();
+        int invoiceId = insertInvoice(user, total);
+        insertInvoiceItems(track, invoiceId, quantity);
+    }
+
+    public static int insertInvoice(User user, float total) {
+        int invoiceId = 0;
         var sqlPattern = """
                 INSERT INTO invoices (CustomerId, InvoiceDate, BillingAddress, BillingCity, 
                 BillingState, BillingCountry, BillingPostalCode, Total) 
@@ -130,10 +136,30 @@ public class Main {
                 """;
 
         var date = java.time.LocalDate.now();
-        float total = 20.5f;
-
         var sql = String.format(sqlPattern, user.getId(), date, user.getAddress(), user.getCity(),
                 user.getState(), user.getCountry(), user.getPostalCode(), total);
+
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            conn = connect();
+            stmt = conn.createStatement();
+            stmt.execute(sql);
+            invoiceId = stmt.getGeneratedKeys().getInt(1);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return invoiceId;
+    }
+
+    public static void insertInvoiceItems(Track track, int invoiceId, int quantity) {
+        var sqlPattern = """
+                INSERT INTO invoice_items (InvoiceId, TrackId, UnitPrice, Quantity) 
+                VALUES (%d, %d, %f, %d);
+                """;
+
+        var sql = String.format(sqlPattern, invoiceId, track.getTrackId(),
+                track.getUnitPrice(), quantity);
 
         Connection conn = null;
         Statement stmt = null;
