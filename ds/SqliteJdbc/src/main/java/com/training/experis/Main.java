@@ -9,13 +9,14 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter your id");
-
+        System.out.println("Enter your id: ");
         String id = scanner.nextLine();
+
         User user = getUserById(id);
         if (user != null) {
             System.out.println(user);
         }
+
 
         System.out.println(getAllAlbumsByArtistId("1"));
 
@@ -126,4 +127,7 @@ public class Main {
             System.out.println(e.getMessage());
         }
     }
+
+
+
 }
