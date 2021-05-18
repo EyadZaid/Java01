@@ -4,10 +4,7 @@ import com.training.experis.data.Album;
 import com.training.experis.data.Track;
 import com.training.experis.data.User;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,14 +22,13 @@ public class DbService implements IService {
 
         var sqlPattern = """
                 SELECT FirstName, Email, City, Address, State, Country, PostalCode FROM customers 
-                where CustomerId = %s;
+                where CustomerId = ?;
                 """;
-
-        var sql = String.format(sqlPattern, userId);
-
-        try (var conn = sqlHandler.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+        try {
+            var conn = sqlHandler.connect();
+            PreparedStatement stmt = conn.prepareStatement(sqlPattern);
+            stmt.setString(1, userId);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 String name = rs.getString("FirstName");
@@ -44,7 +40,6 @@ public class DbService implements IService {
                 String postalCode = rs.getString("PostalCode");
                 user = new User(userId, name, email, city, address, state, country, postalCode);
             }
-
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -54,14 +49,16 @@ public class DbService implements IService {
     public List<Album> getAlbumsByArtistName(String artistName) {
         List<Album> albums = new ArrayList<>();
 
-        StringBuilder sql = new StringBuilder("SELECT alb.AlbumId, alb.Title, alb.ArtistId FROM artists as art ");
-        sql.append("inner join albums alb on art.ArtistId = alb.ArtistId WHERE art.NAME LIKE '%");
-        sql.append(artistName);
-        sql.append("%';");
+        var sqlPattern = """
+                SELECT alb.AlbumId, alb.Title, alb.ArtistId FROM artists as art 
+                inner join albums alb on art.ArtistId = alb.ArtistId WHERE art.NAME LIKE ?;
+                """;
 
-        try (var conn = sqlHandler.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql.toString())) {
+        try {
+            var conn = sqlHandler.connect();
+            PreparedStatement stmt = conn.prepareStatement(sqlPattern);
+            stmt.setString(1, "%" + artistName + "%");
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 String id = rs.getString("AlbumId");
@@ -70,10 +67,10 @@ public class DbService implements IService {
                 Album album = new Album(id, title, artistId);
                 albums.add(album);
             }
-
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
         return albums;
     }
 
@@ -82,14 +79,14 @@ public class DbService implements IService {
 
         var sqlPattern = """
                 SELECT * FROM tracks 
-                WHERE AlbumId = %s;
+                WHERE AlbumId = ?;
                 """;
 
-        var sql = String.format(sqlPattern, albumId);
-
-        try (var conn = sqlHandler.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+        try {
+            var conn = sqlHandler.connect();
+            PreparedStatement stmt = conn.prepareStatement(sqlPattern);
+            stmt.setString(1, albumId);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 String id = rs.getString("TrackId");
@@ -105,15 +102,12 @@ public class DbService implements IService {
                         milliseconds, bytes, unitPrice);
                 tracks.put(id, track);
             }
-
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
         return tracks;
     }
-
-
-
 
 
     public void createInvoice(User user, Track track, int quantity) {
