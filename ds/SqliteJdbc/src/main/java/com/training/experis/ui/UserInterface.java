@@ -23,13 +23,13 @@ public class UserInterface {
         System.out.println("\nEnter artist name: ");
         String artistName = scanner.nextLine();
         var albums = iService.getAlbumsByArtistName(artistName);
-        for (var e : albums) {
+        for (var e : albums.values()) {
             System.out.println(e);
         }
 
         System.out.println("\nEnter album id: ");
         String albumId = scanner.nextLine();
-        var tracks = iService.getAllTracksByAlbumId(albumId);
+        var tracks = iService.getTracksByAlbumId(albumId);
         for (var e : tracks.values()) {
             System.out.println(e);
         }

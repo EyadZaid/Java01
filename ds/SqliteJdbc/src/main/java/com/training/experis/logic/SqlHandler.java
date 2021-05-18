@@ -1,8 +1,6 @@
 package com.training.experis.logic;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class SqlHandler implements ISqlHandler {
 
@@ -12,6 +10,21 @@ public class SqlHandler implements ISqlHandler {
         var dbFile = "src\\main\\resources\\chinook.db";
         Connection conn = DriverManager.getConnection(url + dbFile);
         return conn;
+    }
+
+    @Override
+    public ResultSet executeQuery(String sqlPattern, String parameter) {
+        try {
+            var conn = connect();
+            PreparedStatement stmt = conn.prepareStatement(sqlPattern);
+            stmt.setString(1, parameter);
+            return stmt.executeQuery();
+        }
+        catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return null;
     }
 
 }
