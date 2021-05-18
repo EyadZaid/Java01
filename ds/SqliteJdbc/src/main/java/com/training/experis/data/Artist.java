@@ -1,4 +1,4 @@
-package com.training.experis;
+package com.training.experis.data;
 
 public class Artist {
     private final int id;

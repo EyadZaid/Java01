@@ -22,21 +22,21 @@ public class UserInterface {
         scanner.nextLine();
         System.out.println("\nEnter artist name: ");
         String artistName = scanner.nextLine();
-        var albums = getAlbumsByArtistName(artistName);
+        var albums = iService.getAlbumsByArtistName(artistName);
         for (var e : albums) {
             System.out.println(e);
         }
 
         System.out.println("\nEnter album id: ");
         int albumId = scanner.nextInt();
-        Map<Integer, Track> tracks = getAllTracksByAlbumId(albumId);
+        Map<Integer, Track> tracks = iService.getAllTracksByAlbumId(albumId);
         for (var e : tracks.values()) {
             System.out.println(e);
         }
 
         int trackId = getTrackId(tracks);
         Track track = tracks.get(trackId);
-        createInvoice(user, track, 1);
+        iService.createInvoice(user, track, 1);
     }
 
     private User getUser() {
@@ -45,7 +45,7 @@ public class UserInterface {
             System.out.println("Enter your id: ");
             int userId = scanner.nextInt();
 
-            user = getUserById(userId);
+            user = iService.getUserById(userId);
         } while (user == null);
 
         return user;

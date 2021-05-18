@@ -13,14 +13,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DbService {
+public class DbService implements IService {
     private final ISqlHandler sqlHandler;
 
     public DbService(ISqlHandler sqlHandler) {
         this.sqlHandler = sqlHandler;
     }
 
-    private User getUserById(int userId) {
+    public User getUserById(int userId) {
         User user = null;
 
         var sqlPattern = """
@@ -51,7 +51,7 @@ public class DbService {
         return user;
     }
 
-    private List<Album> getAlbumsByArtistName(String artistName) {
+    public List<Album> getAlbumsByArtistName(String artistName) {
         List<Album> albums = new ArrayList<>();
 
         StringBuilder sql = new StringBuilder("SELECT alb.AlbumId, alb.Title, alb.ArtistId FROM artists as art ");
@@ -77,7 +77,7 @@ public class DbService {
         return albums;
     }
 
-    private Map<Integer, Track> getAllTracksByAlbumId(int albumId) {
+    public Map<Integer, Track> getAllTracksByAlbumId(int albumId) {
         Map<Integer, Track> tracks = new HashMap<>();
 
         var sqlPattern = """
@@ -116,7 +116,7 @@ public class DbService {
 
 
 
-    private void createInvoice(User user, Track track, int quantity) {
+    public void createInvoice(User user, Track track, int quantity) {
         float total = quantity * track.getUnitPrice();
         int invoiceId = insertInvoice(user, total);
         insertInvoiceItems(track, invoiceId, quantity);
