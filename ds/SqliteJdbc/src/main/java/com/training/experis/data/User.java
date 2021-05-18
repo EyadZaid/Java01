@@ -1,7 +1,7 @@
 package com.training.experis.data;
 
 public class User {
-    private final int id;
+    private final String id;
     private final String name;
     private final String email;
     private final String city;
@@ -10,7 +10,7 @@ public class User {
     private final String country;
     private final String postalCode;
 
-    public User(int id, String name, String email, String city, String address, String state,
+    public User(String id, String name, String email, String city, String address, String state,
                 String country, String postalCode) {
         this.id = id;
         this.name = name;
@@ -22,7 +22,7 @@ public class User {
         this.postalCode = postalCode;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

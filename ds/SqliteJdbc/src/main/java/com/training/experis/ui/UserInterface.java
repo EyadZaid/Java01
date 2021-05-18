@@ -18,8 +18,8 @@ public class UserInterface {
 
     public void run () {
         User user = getUser();
+        System.out.println(user);
 
-        scanner.nextLine();
         System.out.println("\nEnter artist name: ");
         String artistName = scanner.nextLine();
         var albums = iService.getAlbumsByArtistName(artistName);
@@ -28,13 +28,13 @@ public class UserInterface {
         }
 
         System.out.println("\nEnter album id: ");
-        int albumId = scanner.nextInt();
-        Map<Integer, Track> tracks = iService.getAllTracksByAlbumId(albumId);
+        String albumId = scanner.nextLine();
+        var tracks = iService.getAllTracksByAlbumId(albumId);
         for (var e : tracks.values()) {
             System.out.println(e);
         }
 
-        int trackId = getTrackId(tracks);
+        var trackId = getTrackId(tracks);
         Track track = tracks.get(trackId);
         iService.createInvoice(user, track, 1);
     }
@@ -43,7 +43,7 @@ public class UserInterface {
         User user;
         do {
             System.out.println("Enter your id: ");
-            int userId = scanner.nextInt();
+            String userId = scanner.nextLine();
 
             user = iService.getUserById(userId);
         } while (user == null);
@@ -51,11 +51,11 @@ public class UserInterface {
         return user;
     }
 
-    private int getTrackId(Map<Integer, Track> tracks) {
-        int trackId;
+    private String getTrackId(Map<String, Track> tracks) {
+        String trackId;
         do {
             System.out.println("\nEnter track id: ");
-            trackId = scanner.nextInt();
+            trackId = scanner.nextLine();
         } while (!tracks.containsKey(trackId));
 
         return trackId;

@@ -8,9 +8,12 @@ import java.util.List;
 import java.util.Map;
 
 public interface IService {
-    User getUserById(int userId);
+    User getUserById(String userId);
+
     List<Album> getAlbumsByArtistName(String artistName);
-    Map<Integer, Track> getAllTracksByAlbumId(int albumId);
+
+    Map<String, Track> getAllTracksByAlbumId(String albumId);
+
     void createInvoice(User user, Track track, int quantity);
 
 }

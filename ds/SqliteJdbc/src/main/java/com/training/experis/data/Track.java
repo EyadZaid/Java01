@@ -1,17 +1,17 @@
 package com.training.experis.data;
 
 public class Track {
-    private final int trackId;
+    private final String trackId;
     private final String name;
-    private final int albumId;
-    private final int mediaTypeId;
-    private final int genreId;
+    private final String albumId;
+    private final String mediaTypeId;
+    private final String genreId;
     private final String composer;
     private final int milliseconds;
     private final int bytes;
     private final float unitPrice;
 
-    public Track(int trackId, String name, int albumId, int mediaTypeId, int genreId, String composer,
+    public Track(String trackId, String name, String albumId, String mediaTypeId, String genreId, String composer,
                  int milliseconds, int bytes, float unitPrice) {
         this.trackId = trackId;
         this.name = name;
@@ -24,7 +24,7 @@ public class Track {
         this.unitPrice = unitPrice;
     }
 
-    public int getTrackId() {
+    public String getTrackId() {
         return trackId;
     }
 

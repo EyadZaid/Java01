@@ -20,12 +20,12 @@ public class DbService implements IService {
         this.sqlHandler = sqlHandler;
     }
 
-    public User getUserById(int userId) {
+    public User getUserById(String userId) {
         User user = null;
 
         var sqlPattern = """
                 SELECT FirstName, Email, City, Address, State, Country, PostalCode FROM customers 
-                where CustomerId = %d;
+                where CustomerId = %s;
                 """;
 
         var sql = String.format(sqlPattern, userId);
@@ -64,7 +64,7 @@ public class DbService implements IService {
              ResultSet rs = stmt.executeQuery(sql.toString())) {
 
             while (rs.next()) {
-                int id = rs.getInt("AlbumId");
+                String id = rs.getString("AlbumId");
                 String title = rs.getString("Title");
                 int artistId = rs.getInt("ArtistId");
                 Album album = new Album(id, title, artistId);
@@ -77,12 +77,12 @@ public class DbService implements IService {
         return albums;
     }
 
-    public Map<Integer, Track> getAllTracksByAlbumId(int albumId) {
-        Map<Integer, Track> tracks = new HashMap<>();
+    public Map<String, Track> getAllTracksByAlbumId(String albumId) {
+        Map<String, Track> tracks = new HashMap<>();
 
         var sqlPattern = """
                 SELECT * FROM tracks 
-                WHERE AlbumId = %d;
+                WHERE AlbumId = %s;
                 """;
 
         var sql = String.format(sqlPattern, albumId);
@@ -92,10 +92,10 @@ public class DbService implements IService {
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
-                int id = rs.getInt("TrackId");
+                String id = rs.getString("TrackId");
                 String name = rs.getString("Name");
-                int mediaTypeId = rs.getInt("MediaTypeId");
-                int genreId = rs.getInt("GenreId");
+                String mediaTypeId = rs.getString("MediaTypeId");
+                String genreId = rs.getString("GenreId");
                 String composer = rs.getString("Composer");
                 int milliseconds = rs.getInt("Milliseconds");
                 int bytes = rs.getInt("Bytes");
@@ -127,7 +127,7 @@ public class DbService implements IService {
         var sqlPattern = """
                 INSERT INTO invoices (CustomerId, InvoiceDate, BillingAddress, BillingCity, 
                 BillingState, BillingCountry, BillingPostalCode, Total) 
-                VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', %f);
+                VALUES (%s, '%s', '%s', '%s', '%s', '%s', '%s', %f);
                 """;
 
         var date = java.time.LocalDate.now();
@@ -150,7 +150,7 @@ public class DbService implements IService {
     private void insertInvoiceItems(Track track, int invoiceId, int quantity) {
         var sqlPattern = """
                 INSERT INTO invoice_items (InvoiceId, TrackId, UnitPrice, Quantity) 
-                VALUES (%d, %d, %f, %d);
+                VALUES (%s, %s, %f, %d);
                 """;
 
         var sql = String.format(sqlPattern, invoiceId, track.getTrackId(),

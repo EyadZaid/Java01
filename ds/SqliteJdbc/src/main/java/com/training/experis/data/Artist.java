@@ -1,10 +1,10 @@
 package com.training.experis.data;
 
 public class Artist {
-    private final int id;
+    private final String id;
     private final String name;
 
-    public Artist(int id, String name) {
+    public Artist(String id, String name) {
         this.id = id;
         this.name = name;
     }

@@ -3,8 +3,8 @@ package com.training.experis.data;
 import java.util.Date;
 
 public class Invoice {
-    private final int id;
-    private final int customerId;
+    private final String id;
+    private final String customerId;
     private final Date invoiceDate;
     private final String billingAddress;
     private final String billingCity;
@@ -13,7 +13,7 @@ public class Invoice {
     private final String billingPostalCode;
     private final float total;
 
-    public Invoice(int id, int customerId, Date invoiceDate, String billingAddress, String billingCity, String billingState,
+    public Invoice(String id, String customerId, Date invoiceDate, String billingAddress, String billingCity, String billingState,
                    String billingCountry, String billingPostalCode, float total) {
         this.id = id;
         this.customerId = customerId;
