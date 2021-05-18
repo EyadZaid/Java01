@@ -1,7 +1,5 @@
 package com.training.experis.data;
 
-import java.util.Date;
-
 public class InvoiceItems {
     private final String id;
     private final String invoiceId;

@@ -106,7 +106,7 @@ public class DbService implements IService {
 
         var date = java.time.LocalDate.now();
         try {
-            var conn = sqlHandler.connect();
+            var conn = sqlHandler.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sqlPattern);
             stmt.setString(1, user.getId());
             stmt.setObject(2, date);
@@ -133,7 +133,7 @@ public class DbService implements IService {
                 """;
 
         try {
-            var conn = sqlHandler.connect();
+            var conn = sqlHandler.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sqlPattern);
             stmt.setInt(1, invoiceId);
             stmt.setString(2, track.getTrackId());
