@@ -7,11 +7,11 @@ import com.training.experis.logic.IService;
 import java.util.Map;
 import java.util.Scanner;
 
-public class UserInterface {
+public class Application {
     private final Scanner scanner;
     private final IService iService;
 
-    public UserInterface(IService iService) {
+    public Application(IService iService) {
         this.scanner = new Scanner(System.in);
         this.iService = iService;
     }
