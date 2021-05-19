@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DbService implements IService {
+public class DbService implements IDbService {
     private final ISqlHandler sqlHandler;
 
     public DbService(ISqlHandler sqlHandler) {

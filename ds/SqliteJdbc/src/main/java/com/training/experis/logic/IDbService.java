@@ -6,7 +6,7 @@ import com.training.experis.data.User;
 
 import java.util.Map;
 
-public interface IService {
+public interface IDbService {
     User getUserById(String userId);
 
     Map<String, Album> getAlbumsByArtistName(String artistName);

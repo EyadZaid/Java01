@@ -3,18 +3,18 @@ package com.training.experis.ui;
 import com.training.experis.data.Album;
 import com.training.experis.data.Track;
 import com.training.experis.data.User;
-import com.training.experis.logic.IService;
+import com.training.experis.logic.IDbService;
 
 import java.util.Map;
 import java.util.Scanner;
 
 public class Application {
     private final Scanner scanner;
-    private final IService iService;
+    private final IDbService iDbService;
 
-    public Application(IService iService) {
+    public Application(IDbService iDbService) {
         this.scanner = new Scanner(System.in);
-        this.iService = iService;
+        this.iDbService = iDbService;
     }
 
     public void run () {
@@ -33,7 +33,7 @@ public class Application {
 
         var trackId = getTrackId(tracks);
         Track track = tracks.get(trackId);
-        iService.createInvoice(user, track, 1);
+        iDbService.createInvoice(user, track, 1);
     }
 
     private User getUser() {
@@ -42,7 +42,7 @@ public class Application {
             System.out.println("Enter your id: ");
             String userId = scanner.nextLine();
 
-            user = iService.getUserById(userId);
+            user = iDbService.getUserById(userId);
         } while (user == null);
 
         return user;
@@ -63,7 +63,7 @@ public class Application {
         do {
             System.out.println("\nEnter artist name: ");
             String artistName = scanner.nextLine();
-            albums = iService.getAlbumsByArtistName(artistName);
+            albums = iDbService.getAlbumsByArtistName(artistName);
         } while (albums.isEmpty());
 
         return albums;
@@ -74,7 +74,7 @@ public class Application {
         do {
             System.out.println("\nEnter album id: ");
             String albumId = scanner.nextLine();
-            tracks = iService.getTracksByAlbumId(albumId);
+            tracks = iDbService.getTracksByAlbumId(albumId);
         } while (tracks.isEmpty());
 
         return tracks;
