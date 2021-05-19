@@ -107,6 +107,9 @@ public class DbService implements IDbService {
         var date = java.time.LocalDate.now();
         try {
             var conn = sqlHandler.getConnection();
+            conn.setAutoCommit(false);
+            conn.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+
             PreparedStatement stmt = conn.prepareStatement(sqlPattern);
             stmt.setString(1, user.getId());
             stmt.setObject(2, date);
@@ -119,10 +122,14 @@ public class DbService implements IDbService {
 
             stmt.execute();
             invoiceId = stmt.getGeneratedKeys().getInt(1);
+
+            conn.commit();
+            conn.setAutoCommit(true);
         }
         catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
         return invoiceId;
     }
 
@@ -134,6 +141,9 @@ public class DbService implements IDbService {
 
         try {
             var conn = sqlHandler.getConnection();
+            conn.setAutoCommit(false);
+            conn.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+
             PreparedStatement stmt = conn.prepareStatement(sqlPattern);
             stmt.setInt(1, invoiceId);
             stmt.setString(2, track.getTrackId());
@@ -141,6 +151,8 @@ public class DbService implements IDbService {
             stmt.setInt(4, quantity);
 
             stmt.execute();
+            conn.commit();
+            conn.setAutoCommit(true);
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
