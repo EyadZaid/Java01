@@ -1,5 +1,6 @@
 package com.training.experis.ui;
 
+import com.training.experis.data.Album;
 import com.training.experis.data.Track;
 import com.training.experis.data.User;
 import com.training.experis.logic.IService;
@@ -20,16 +21,12 @@ public class Application {
         User user = getUser();
         System.out.println(user);
 
-        System.out.println("\nEnter artist name: ");
-        String artistName = scanner.nextLine();
-        var albums = iService.getAlbumsByArtistName(artistName);
+        var albums = getAlbumsByArtistName();
         for (var e : albums.values()) {
             System.out.println(e);
         }
 
-        System.out.println("\nEnter album id: ");
-        String albumId = scanner.nextLine();
-        var tracks = iService.getTracksByAlbumId(albumId);
+        var tracks = getTracksByAlbumId();
         for (var e : tracks.values()) {
             System.out.println(e);
         }
@@ -59,5 +56,27 @@ public class Application {
         } while (!tracks.containsKey(trackId));
 
         return trackId;
+    }
+
+    private Map<String, Album> getAlbumsByArtistName() {
+        Map<String, Album> albums;
+        do {
+            System.out.println("\nEnter artist name: ");
+            String artistName = scanner.nextLine();
+            albums = iService.getAlbumsByArtistName(artistName);
+        } while (albums.isEmpty());
+
+        return albums;
+    }
+
+    private Map<String, Track> getTracksByAlbumId() {
+        Map<String, Track> tracks;
+        do {
+            System.out.println("\nEnter album id: ");
+            String albumId = scanner.nextLine();
+            tracks = iService.getTracksByAlbumId(albumId);
+        } while (tracks.isEmpty());
+
+        return tracks;
     }
 }
