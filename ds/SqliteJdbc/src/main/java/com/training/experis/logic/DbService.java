@@ -15,6 +15,7 @@ public class DbService implements IDbService {
         this.sqlHandler = sqlHandler;
     }
 
+    @Override
     public User getUserById(String userId) {
         User user = null;
 
@@ -40,6 +41,7 @@ public class DbService implements IDbService {
         return user;
     }
 
+    @Override
     public Map<String, Album> getAlbumsByArtistName(String artistName) {
         Map<String, Album> albums = new HashMap<>();
 
@@ -65,6 +67,7 @@ public class DbService implements IDbService {
         return albums;
     }
 
+    @Override
     public Map<String, Track> getTracksByAlbumId(String albumId) {
         Map<String, Track> tracks = new HashMap<>();
 
@@ -90,10 +93,15 @@ public class DbService implements IDbService {
         return tracks;
     }
 
-    public void createInvoice(User user, Track track, int quantity) {
+    @Override
+    public boolean createInvoice(User user, Track track, int quantity) {
         float total = quantity * track.getUnitPrice();
         int invoiceId = insertInvoice(user, total);
-        insertInvoiceItems(track, invoiceId, quantity);
+        if (invoiceId == -1){
+            return false;
+        }
+
+        return insertInvoiceItems(track, invoiceId, quantity);
     }
 
     private int insertInvoice(User user, float total) {
@@ -120,7 +128,17 @@ public class DbService implements IDbService {
             stmt.setString(7, user.getPostalCode());
             stmt.setFloat(8, total);
 
-            stmt.execute();
+            if (stmt.executeUpdate() == 0) {
+                throw new SQLException("Insert failed, no rows affected");
+            }
+
+            var keys = stmt.getGeneratedKeys();
+            if (!keys.next()) {
+                conn.rollback();
+                conn.setAutoCommit(true);
+                return -1;
+            }
+
             invoiceId = stmt.getGeneratedKeys().getInt(1);
 
             conn.commit();
@@ -133,7 +151,7 @@ public class DbService implements IDbService {
         return invoiceId;
     }
 
-    private void insertInvoiceItems(Track track, int invoiceId, int quantity) {
+    private boolean insertInvoiceItems(Track track, int invoiceId, int quantity) {
         var sqlPattern = """
                 INSERT INTO invoice_items (InvoiceId, TrackId, UnitPrice, Quantity) 
                 VALUES (?, ?, ?, ?);
@@ -150,12 +168,23 @@ public class DbService implements IDbService {
             stmt.setFloat(3, track.getUnitPrice());
             stmt.setInt(4, quantity);
 
-            stmt.execute();
+            if (stmt.executeUpdate() == 0) {
+                throw new SQLException("Insert failed, no rows affected");
+            }
+
+            var keys = stmt.getGeneratedKeys();
+            if (!keys.next()) {
+                conn.rollback();
+                conn.setAutoCommit(true);
+                return false;
+            }
+
             conn.commit();
             conn.setAutoCommit(true);
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return true;
     }
 }

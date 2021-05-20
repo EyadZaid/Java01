@@ -13,6 +13,6 @@ public interface IDbService {
 
     Map<String, Track> getTracksByAlbumId(String albumId);
 
-    void createInvoice(User user, Track track, int quantity);
+    boolean createInvoice(User user, Track track, int quantity);
 
 }

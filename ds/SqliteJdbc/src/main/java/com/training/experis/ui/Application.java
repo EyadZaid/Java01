@@ -33,7 +33,12 @@ public class Application {
 
         var trackId = getTrackId(tracks);
         Track track = tracks.get(trackId);
-        iDbService.createInvoice(user, track, 1);
+        if (iDbService.createInvoice(user, track, 1)) {
+            System.out.println("Inserted Successfully !!!");
+        }
+        else {
+            System.out.println("Insert Failed !!!");
+        }
     }
 
     private User getUser() {
