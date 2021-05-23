@@ -1,4 +1,4 @@
-package com.experis;
+package com.experis.tests;
 
 import org.junit.jupiter.api.Test;
 
