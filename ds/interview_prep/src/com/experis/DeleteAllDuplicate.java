@@ -1,20 +1,19 @@
 package com.experis;
 
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.LinkedList;
 
 public class DeleteAllDuplicate<T> {
 
     public static <T extends Comparable<? super T>> void deleteDuplicate(LinkedList<T> list) {
-        LinkedList<T> result = new LinkedList<T>();
-        Iterator<T> itr = list.iterator();
-        while(itr.hasNext()) {
-            T currentTest = itr.next();
-            if (!result.contains(currentTest)) {
-                result.add(currentTest);
+        for (int i=0; i<list.size(); i++) {
+            T currentItem = list.get(i);
+            list.remove(currentItem);
+            if (list.contains(currentItem)) {
+                list.removeAll(Collections.singleton(currentItem));
             }
             else {
-                itr.remove();
+                list.add(currentItem);
             }
         }
     }
