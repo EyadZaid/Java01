@@ -136,5 +136,14 @@ inner join Customer c on c.Id = ord.CustomerId;
 -- table sorted by Employee ID.
 select e1.Id, e1.LastName, e1.FirstName, e2.LastName, e2.LastName
 from Employee as e1, Employee as e2
-where e1.ReportsTo == e2.ReportsTo
+where e1.Id = e2.ReportsTo
+order by e1.Id;
+
+
+--17
+-- Same as above, but the report should also include a row for each manager that reports
+-- to no one.
+select e1.Id, e1.LastName, e1.FirstName, e2.LastName, e2.LastName
+from Employee as e1, Employee as e2
+where e1.ReportsTo = e2.Id
 order by e1.Id;
