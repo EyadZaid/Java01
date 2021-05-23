@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="48a1b18d-05d2-4fd8-8071-19ca02876e72" name="Default Changelist" comment="ThreadContainer: test container updated" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit4 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1sNijspAu3N0aBCr2PwW8NCycB7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="training.expires" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.ThreadSafeContainerTest.threadContainerTest">
+    <configuration name="ThreadSafeContainerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ThreadContainer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="training.expires.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="training.expires" />
+      <option name="MAIN_CLASS_NAME" value="training.expires.ThreadSafeContainerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ThreadSafeContainerTest.threadContainerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ThreadContainer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="training.expires.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="training.expires" />
+      <option name="MAIN_CLASS_NAME" value="training.expires.ThreadSafeContainerTest" />
+      <option name="METHOD_NAME" value="threadContainerTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ThreadSafeContainerTest.threadContainerTest" />
+        <item itemvalue="JUnit.ThreadSafeContainerTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="48a1b18d-05d2-4fd8-8071-19ca02876e72" name="Default Changelist" comment="" />
+      <created>1620719585887</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1620719585887</updated>
+      <workItem from="1620796756384" duration="321000" />
+      <workItem from="1620852825484" duration="1666000" />
+      <workItem from="1620854545146" duration="1300000" />
+    </task>
+    <task id="LOCAL-00001" summary="ThreadContainer: initialize new project">
+      <created>1620723838240</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1620723838240</updated>
+    </task>
+    <task id="LOCAL-00002" summary="ThreadContainer: implement ThreadSafeContainer class">
+      <created>1620723868462</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1620723868462</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ThreadContainer: added threadContainerTest">
+      <created>1620723882636</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1620723882636</updated>
+    </task>
+    <task id="LOCAL-00004" summary="ThreadContainer: added safe lock">
+      <created>1620727507650</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1620727507650</updated>
+    </task>
+    <task id="LOCAL-00005" summary="ThreadContainer: added pair class">
+      <created>1620764422878</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1620764422878</updated>
+    </task>
+    <task id="LOCAL-00006" summary="ThreadContainer: update ThreadSafeContainer">
+      <created>1620770099921</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1620770099921</updated>
+    </task>
+    <task id="LOCAL-00007" summary="ThreadContainer: equals added">
+      <created>1620771029321</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1620771029321</updated>
+    </task>
+    <task id="LOCAL-00008" summary="ThreadContainer: added Consumer class">
+      <created>1620774157584</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1620774157584</updated>
+    </task>
+    <task id="LOCAL-00009" summary="ThreadContainer: added Producer class">
+      <created>1620774167023</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1620774167023</updated>
+    </task>
+    <task id="LOCAL-00010" summary="ThreadContainer: added test to container">
+      <created>1620774188877</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1620774188877</updated>
+    </task>
+    <task id="LOCAL-00011" summary="ThreadContainer: test container updated">
+      <created>1620853016587</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1620853016587</updated>
+    </task>
+    <task id="LOCAL-00012" summary="ThreadContainer: test container updated">
+      <created>1620854297623</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1620854297623</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ThreadContainer: initialize new project" />
+    <MESSAGE value="ThreadContainer: implement ThreadSafeContainer class" />
+    <MESSAGE value="ThreadContainer: added threadContainerTest" />
+    <MESSAGE value="ThreadContainer: added safe lock" />
+    <MESSAGE value="ThreadContainer: added pair class" />
+    <MESSAGE value="ThreadContainer: update ThreadSafeContainer" />
+    <MESSAGE value="ThreadContainer: equals added" />
+    <MESSAGE value="ThreadContainer: added Consumer class" />
+    <MESSAGE value="ThreadContainer: added Producer class" />
+    <MESSAGE value="ThreadContainer: added test to container" />
+    <MESSAGE value="ThreadContainer: test container updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="ThreadContainer: test container updated" />
+  </component>
+</project>

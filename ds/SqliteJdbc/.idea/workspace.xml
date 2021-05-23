@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="36510e81-93d0-45a6-bd64-cf78438cdd49" name="Default Changelist" comment="SqliteJdbc: create bank DB" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/training/experis/Main.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProjectId" id="1sU7oD0paHMtFYTBUWFFxCv19Pm" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="sqlite" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../JavaCourse" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\JavaHomework\Java01\ds\SqliteJdbc\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.training.experis.Main" />
+      <module name="SqliteJdbc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.training.experis.data.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="36510e81-93d0-45a6-bd64-cf78438cdd49" name="Default Changelist" comment="" />
+      <created>1620915487431</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1620915487431</updated>
+      <workItem from="1620915488900" duration="2417000" />
+      <workItem from="1620927635879" duration="5253000" />
+      <workItem from="1620941273925" duration="63515000" />
+      <workItem from="1621366019797" duration="1154000" />
+      <workItem from="1621367257338" duration="40904000" />
+      <workItem from="1621668850246" duration="13866000" />
+      <workItem from="1621747819821" duration="2454000" />
+    </task>
+    <task id="LOCAL-00001" summary="SqliteJdbc: initialize new project">
+      <created>1620916579204</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1620916579204</updated>
+    </task>
+    <task id="LOCAL-00002" summary="SqliteJdbc: connect to DB added">
+      <created>1620917484291</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1620917484291</updated>
+    </task>
+    <task id="LOCAL-00003" summary="SqliteJdbc: added local DB">
+      <created>1620917509336</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1620917509336</updated>
+    </task>
+    <task id="LOCAL-00004" summary="SqliteJdbc: implement user class">
+      <created>1620928851584</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1620928851584</updated>
+    </task>
+    <task id="LOCAL-00005" summary="SqliteJdbc: implement get user by id">
+      <created>1620935870256</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1620935870256</updated>
+    </task>
+    <task id="LOCAL-00006" summary="SqliteJdbc: implement Album class">
+      <created>1620970536171</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1620970536171</updated>
+    </task>
+    <task id="LOCAL-00007" summary="SqliteJdbc: implement getAllAlbumsByArtistId">
+      <created>1620971291047</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1620971291047</updated>
+    </task>
+    <task id="LOCAL-00008" summary="SqliteJdbc: implement Track class">
+      <created>1621139359936</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1621139359936</updated>
+    </task>
+    <task id="LOCAL-00009" summary="SqliteJdbc: update Track class">
+      <created>1621140862740</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1621140862740</updated>
+    </task>
+    <task id="LOCAL-00010" summary="SqliteJdbc: added getAllTracksByAlbumId">
+      <created>1621140890957</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1621140890957</updated>
+    </task>
+    <task id="LOCAL-00011" summary="SqliteJdbc: added InvoiceItems class">
+      <created>1621143645422</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1621143645422</updated>
+    </task>
+    <task id="LOCAL-00012" summary="SqliteJdbc: added Invoice class">
+      <created>1621186515494</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1621186515494</updated>
+    </task>
+    <task id="LOCAL-00013" summary="SqliteJdbc: Implement create invoice">
+      <created>1621230718779</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1621230718779</updated>
+    </task>
+    <task id="LOCAL-00014" summary="SqliteJdbc: Added Artist class">
+      <created>1621233304827</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1621233304827</updated>
+    </task>
+    <task id="LOCAL-00015" summary="SqliteJdbc: Implement getArtistsByName">
+      <created>1621234469025</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1621234469025</updated>
+    </task>
+    <task id="LOCAL-00016" summary="SqliteJdbc: Implement getAlbumsByArtistName">
+      <created>1621240691316</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1621240691316</updated>
+    </task>
+    <task id="LOCAL-00017" summary="SqliteJdbc: id changed to integer">
+      <created>1621243116038</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1621243116038</updated>
+    </task>
+    <task id="LOCAL-00018" summary="SqliteJdbc: toString user updated">
+      <created>1621244172882</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1621244172882</updated>
+    </task>
+    <task id="LOCAL-00019" summary="SqliteJdbc: toString album updated">
+      <created>1621245215364</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1621245215364</updated>
+    </task>
+    <task id="LOCAL-00020" summary="SqliteJdbc: Implement create invoice">
+      <created>1621254980437</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1621254980437</updated>
+    </task>
+    <task id="LOCAL-00021" summary="SqliteJdbc: Implement create invoice items">
+      <created>1621264207543</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1621264207543</updated>
+    </task>
+    <task id="LOCAL-00022" summary="SqliteJdbc: class SqlJdbc added">
+      <created>1621275167544</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1621275167544</updated>
+    </task>
+    <task id="LOCAL-00023" summary="SqliteJdbc: class SqlJdbc updated">
+      <created>1621277455973</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1621277455973</updated>
+    </task>
+    <task id="LOCAL-00024" summary="SqliteJdbc: class SqlJdbc updated">
+      <created>1621284867013</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1621284867013</updated>
+    </task>
+    <task id="LOCAL-00025" summary="SqliteJdbc: IService interface added">
+      <created>1621327129849</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1621327129849</updated>
+    </task>
+    <task id="LOCAL-00026" summary="SqliteJdbc: ISqlHandler interface added">
+      <created>1621327143752</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1621327143752</updated>
+    </task>
+    <task id="LOCAL-00027" summary="SqliteJdbc: DbService class added">
+      <created>1621327172030</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1621327172030</updated>
+    </task>
+    <task id="LOCAL-00028" summary="SqliteJdbc: SqlHandler class added">
+      <created>1621327184989</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1621327184989</updated>
+    </task>
+    <task id="LOCAL-00029" summary="SqliteJdbc: UserInterface class added">
+      <created>1621327200742</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1621327200742</updated>
+    </task>
+    <task id="LOCAL-00030" summary="SqliteJdbc: packages updated">
+      <created>1621329085072</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1621329085072</updated>
+    </task>
+    <task id="LOCAL-00031" summary="SqliteJdbc: key changed to string">
+      <created>1621330511719</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1621330511719</updated>
+    </task>
+    <task id="LOCAL-00032" summary="SqliteJdbc: sql injection">
+      <created>1621333575222</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1621333575222</updated>
+    </task>
+    <task id="LOCAL-00033" summary="SqliteJdbc: updated">
+      <created>1621370621010</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1621370621010</updated>
+    </task>
+    <task id="LOCAL-00034" summary="SqliteJdbc: connection updated">
+      <created>1621372694220</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1621372694220</updated>
+    </task>
+    <task id="LOCAL-00035" summary="SqliteJdbc: Updated ui">
+      <created>1621400658831</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1621400658831</updated>
+    </task>
+    <task id="LOCAL-00036" summary="SqliteJdbc: getTracksByAlbumId updated">
+      <created>1621402038718</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1621402038718</updated>
+    </task>
+    <task id="LOCAL-00037" summary="SqliteJdbc: IDbService name changed">
+      <created>1621403139678</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1621403139678</updated>
+    </task>
+    <task id="LOCAL-00038" summary="SqliteJdbc: Adde TRANSACTION_SERIALIZABLE">
+      <created>1621417334171</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1621417334171</updated>
+    </task>
+    <task id="LOCAL-00039" summary="SqliteJdbc: createInvoice updated">
+      <created>1621487672770</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1621487672770</updated>
+    </task>
+    <task id="LOCAL-00040" summary="SqliteJdbc: create bank DB">
+      <created>1621510932895</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1621510932895</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="SqliteJdbc: Implement getArtistsByName" />
+    <MESSAGE value="SqliteJdbc: Implement getAlbumsByArtistName" />
+    <MESSAGE value="SqliteJdbc: id changed to integer" />
+    <MESSAGE value="SqliteJdbc: toString user updated" />
+    <MESSAGE value="SqliteJdbc: toString album updated" />
+    <MESSAGE value="SqliteJdbc: Implement create invoice" />
+    <MESSAGE value="SqliteJdbc: Implement create invoice items" />
+    <MESSAGE value="SqliteJdbc: class SqlJdbc added" />
+    <MESSAGE value="SqliteJdbc: class SqlJdbc updated" />
+    <MESSAGE value="SqliteJdbc: IService interface added" />
+    <MESSAGE value="SqliteJdbc: ISqlHandler interface added" />
+    <MESSAGE value="SqliteJdbc: DbService class added" />
+    <MESSAGE value="SqliteJdbc: SqlHandler class added" />
+    <MESSAGE value="SqliteJdbc: UserInterface class added" />
+    <MESSAGE value="SqliteJdbc: packages updated" />
+    <MESSAGE value="SqliteJdbc: key changed to string" />
+    <MESSAGE value="SqliteJdbc: sql injection" />
+    <MESSAGE value="SqliteJdbc: updated" />
+    <MESSAGE value="SqliteJdbc: connection updated" />
+    <MESSAGE value="SqliteJdbc: Updated ui" />
+    <MESSAGE value="SqliteJdbc: getTracksByAlbumId updated" />
+    <MESSAGE value="SqliteJdbc: IDbService name changed" />
+    <MESSAGE value="SqliteJdbc: Adde TRANSACTION_SERIALIZABLE" />
+    <MESSAGE value="SqliteJdbc: createInvoice updated" />
+    <MESSAGE value="SqliteJdbc: create bank DB" />
+    <option name="LAST_COMMIT_MESSAGE" value="SqliteJdbc: create bank DB" />
+  </component>
+</project>
