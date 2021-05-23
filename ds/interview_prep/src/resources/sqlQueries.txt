@@ -145,5 +145,5 @@ order by e1.Id;
 -- to no one.
 select e1.Id, e1.LastName, e1.FirstName, e2.LastName, e2.LastName
 from Employee as e1, Employee as e2
-where e1.ReportsTo = e2.Id
+where e1.Id = e2.Id or e1.Id = null
 order by e1.Id;
