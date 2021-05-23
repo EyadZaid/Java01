@@ -11,6 +11,12 @@ public class FibonacciTest {
     public void testFibonacci() {
         int n = 12;
         assertEquals(144, fibonacci(n));
+
+        n = 0;
+        assertEquals(0, fibonacci(n));
+
+        n = 1;
+        assertEquals(1, fibonacci(n));
     }
 
 }
