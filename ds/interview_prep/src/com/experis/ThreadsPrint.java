@@ -5,7 +5,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ThreadsPrint {
-    private int number = 1;
+    private int number = 0;
     private final int size;
 
     private final Lock lock;
@@ -26,7 +26,6 @@ public class ThreadsPrint {
                 while (number % 2 == 1) {
                     evenNumber.await();
                 }
-
                 System.out.print(number + " ");
                 number++;
 
@@ -49,7 +48,6 @@ public class ThreadsPrint {
                 while (number % 2 == 0) {
                     oddNumber.await();
                 }
-
                 System.out.print(number + " ");
                 number++;
 
