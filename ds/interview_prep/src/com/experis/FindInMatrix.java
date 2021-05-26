@@ -2,9 +2,9 @@ package com.experis;
 
 public class FindInMatrix {
 
-    public void find(int[][] mat, int x) {
+    public PairNumbers find(int[][] mat, int x) {
         if (mat == null) {
-            return;
+            return null;
         }
 
         int row = mat.length;
@@ -14,8 +14,7 @@ public class FindInMatrix {
 
         while (i < row && j >= 0) {
             if (mat[i][j] == x) {
-                System.out.print("i=" + i + "  j=" + j);
-                return;
+                return new PairNumbers(i, j);
             }
             if (mat[i][j] > x)
                 j--;
@@ -23,6 +22,6 @@ public class FindInMatrix {
                 i++;
         }
 
-        System.out.print("Not found");
+        return new PairNumbers(-1, -1);
     }
 }
