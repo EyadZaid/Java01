@@ -15,4 +15,13 @@ class CountsPairsTest {
         int expected = CountsPairs.countsPairsBits(decimal);
         assertEquals(3, expected);
     }
+
+    @Test
+    void countsPairsBitsConsecutive() {
+        String binaryString="00011001110101";
+        long decimal = Long.parseLong(binaryString, 2);
+
+        int expected = CountsPairs.countsPairsBitsConsecutive(decimal);
+        assertEquals(2, expected);
+    }
 }
