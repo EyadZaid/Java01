@@ -1,5 +1,6 @@
 package com.experis;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,12 +19,14 @@ public class MultiValuedMap<K, V> {
         }
     }
 
+    //private static List<?> TheEmptySet = new ArrayList<>();
     public List<V> get(K key) {
-        var cell = map.get(key);
-        if (key == null) {
-            return null;
-        }
-        return cell.getValues();
+        return map.getOrDefault(key, new Cell<>()).getValues();
+
+
+//        var cell = map.get(key);
+//        return cell == null? null : cell.getValues();
+//
     }
 
 
