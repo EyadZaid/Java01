@@ -6,13 +6,13 @@ import java.util.Set;
 public class CountDistinct {
 
    public static int CountDistinctNumbers(int[] arr) {
-       Set<Integer> s = new HashSet<Integer>();
+       Set<Integer> set = new HashSet<Integer>();
 
        for (int i = 0 ; i < arr.length; i++) {
-           s.add(Math.abs(arr[i]));
+           set.add(Math.abs(arr[i]));
        }
 
-       return s.size();
+       return set.size();
     }
 
 }
