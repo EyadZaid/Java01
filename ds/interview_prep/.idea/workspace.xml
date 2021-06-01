@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="06b64c18-84f6-4f2b-a0ee-f4129837ed5e" name="Default Changelist" comment="interview_prep: RotatedArray updated" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1svdvp0UH4LVG90L7AKm649O8iB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="company" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Repository.Attach.Annotations" value="true" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\JavaHomework\Java01\ds\interview_prep\src\resources" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.experis.tests" />
+      <recent name="com.experis" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.CountsPairsBitsTest">
+    <configuration name="CountsPairsBitsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="interview_prep" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.experis.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.experis.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.experis.tests.CountsPairsBitsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CountsPairsBitsTest.countsPairsBitsPart2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="interview_prep" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.experis.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.experis.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.experis.tests.CountsPairsBitsTest" />
+      <option name="METHOD_NAME" value="countsPairsBitsPart2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NumPowerOfEightTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="interview_prep" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.experis.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.experis.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.experis.tests.NumPowerOfEightTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NumPowerOfEightTest.checkNumPowerOf8" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="interview_prep" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.experis.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.experis.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.experis.tests.NumPowerOfEightTest" />
+      <option name="METHOD_NAME" value="checkNumPowerOf8" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NumPowerOfEightTest.checkNumPowerOfEight" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="interview_prep" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.experis.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.experis.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.experis.tests.NumPowerOfEightTest" />
+      <option name="METHOD_NAME" value="checkNumPowerOfEight" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.NumPowerOfEightTest" />
+      <item itemvalue="JUnit.NumPowerOfEightTest.checkNumPowerOf8" />
+      <item itemvalue="JUnit.NumPowerOfEightTest.checkNumPowerOfEight" />
+      <item itemvalue="JUnit.CountsPairsBitsTest" />
+      <item itemvalue="JUnit.CountsPairsBitsTest.countsPairsBitsPart2" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.CountsPairsBitsTest" />
+        <item itemvalue="JUnit.CountsPairsBitsTest.countsPairsBitsPart2" />
+        <item itemvalue="JUnit.NumPowerOfEightTest" />
+        <item itemvalue="JUnit.NumPowerOfEightTest.checkNumPowerOfEight" />
+        <item itemvalue="JUnit.NumPowerOfEightTest.checkNumPowerOf8" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="06b64c18-84f6-4f2b-a0ee-f4129837ed5e" name="Default Changelist" comment="" />
+      <created>1621757230322</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1621757230322</updated>
+      <workItem from="1621757231978" duration="25389000" />
+      <workItem from="1622000030058" duration="17996000" />
+      <workItem from="1622054476643" duration="21499000" />
+      <workItem from="1622353386192" duration="8967000" />
+      <workItem from="1622556288720" duration="133000" />
+    </task>
+    <task id="LOCAL-00001" summary="interview_prep: initialize new project">
+      <created>1621758354027</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1621758354027</updated>
+    </task>
+    <task id="LOCAL-00002" summary="interview_prep: implement Fibonacci">
+      <created>1621758704036</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1621758704036</updated>
+    </task>
+    <task id="LOCAL-00003" summary="interview_prep: Added test to Fibonacci">
+      <created>1621759036272</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1621759036272</updated>
+    </task>
+    <task id="LOCAL-00004" summary="interview_prep: Added test to Fibonacci">
+      <created>1621759094595</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1621759094595</updated>
+    </task>
+    <task id="LOCAL-00005" summary="interview_prep: Implement MissingNumber class">
+      <created>1621759515328</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1621759515328</updated>
+    </task>
+    <task id="LOCAL-00006" summary="interview_prep: Added MissingNumberTest">
+      <created>1621759724185</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1621759724185</updated>
+    </task>
+    <task id="LOCAL-00007" summary="interview_prep: Added class DeleteAllDuplicate">
+      <created>1621760263943</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1621760263943</updated>
+    </task>
+    <task id="LOCAL-00008" summary="interview_prep: Added test DeleteAllDuplicate">
+      <created>1621761569454</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1621761569454</updated>
+    </task>
+    <task id="LOCAL-00009" summary="interview_prep: Implement MultiValuedMap class">
+      <created>1621763651087</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1621763651087</updated>
+    </task>
+    <task id="LOCAL-00010" summary="interview_prep: Added north_data.sqlite DB">
+      <created>1621764261650</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1621764261650</updated>
+    </task>
+    <task id="LOCAL-00011" summary="interview_prep: Added sqlQueries.txt">
+      <created>1621771346888</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1621771346888</updated>
+    </task>
+    <task id="LOCAL-00012" summary="interview_prep: Updated sqlQueries.txt">
+      <created>1621771895350</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1621771895350</updated>
+    </task>
+    <task id="LOCAL-00013" summary="interview_prep: Updated sqlQueries.txt">
+      <created>1621772040190</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1621772040190</updated>
+    </task>
+    <task id="LOCAL-00014" summary="interview_prep: DeleteAllDuplicate updated">
+      <created>1621804328725</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1621804328725</updated>
+    </task>
+    <task id="LOCAL-00015" summary="interview_prep: MultiValuedMap cell changed">
+      <created>1622002057915</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1622002057915</updated>
+    </task>
+    <task id="LOCAL-00016" summary="interview_prep: Implement ThreadsPrint class">
+      <created>1622002087503</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1622002087503</updated>
+    </task>
+    <task id="LOCAL-00017" summary="interview_prep: Added test to ThreadsPrint">
+      <created>1622002116754</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1622002116754</updated>
+    </task>
+    <task id="LOCAL-00018" summary="interview_prep: Added test to FindInMatrix">
+      <created>1622005139976</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1622005139976</updated>
+    </task>
+    <task id="LOCAL-00019" summary="interview_prep: Implement FindInMatrix class">
+      <created>1622005164228</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1622005164228</updated>
+    </task>
+    <task id="LOCAL-00020" summary="interview_prep: Added PairNumbers class">
+      <created>1622007807775</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1622007807775</updated>
+    </task>
+    <task id="LOCAL-00021" summary="interview_prep: changed return function FindInMatrix">
+      <created>1622007855122</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1622007855122</updated>
+    </task>
+    <task id="LOCAL-00022" summary="interview_prep: Implement mergeLists class">
+      <created>1622023194726</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1622023194726</updated>
+    </task>
+    <task id="LOCAL-00023" summary="interview_prep: Added test to mergeLists">
+      <created>1622023218411</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1622023218411</updated>
+    </task>
+    <task id="LOCAL-00024" summary="interview_prep: updated ThreadsPrint">
+      <created>1622023243052</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1622023243052</updated>
+    </task>
+    <task id="LOCAL-00025" summary="interview_prep: Implement SortSpecialArray class">
+      <created>1622024975524</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1622024975524</updated>
+    </task>
+    <task id="LOCAL-00026" summary="interview_prep: Added test to SortSpecialArray">
+      <created>1622025006100</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1622025006100</updated>
+    </task>
+    <task id="LOCAL-00027" summary="interview_prep: Implement count pairs bit class">
+      <created>1622029617723</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1622029617723</updated>
+    </task>
+    <task id="LOCAL-00028" summary="interview_prep: Added test to countsPairsBits">
+      <created>1622029646392</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1622029646392</updated>
+    </task>
+    <task id="LOCAL-00029" summary="interview_prep: Implement countPairsBitsConsecutive">
+      <created>1622030122481</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1622030122481</updated>
+    </task>
+    <task id="LOCAL-00030" summary="interview_prep: Implement NumPowerOfEight class">
+      <created>1622059046243</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1622059046243</updated>
+    </task>
+    <task id="LOCAL-00031" summary="interview_prep: Added NumPowerOfEightTest">
+      <created>1622059063825</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1622059063825</updated>
+    </task>
+    <task id="LOCAL-00032" summary="interview_prep: CountsPairsBits updated">
+      <created>1622062271953</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1622062271953</updated>
+    </task>
+    <task id="LOCAL-00033" summary="interview_prep: RotatedArray updated">
+      <created>1622556371880</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1622556371880</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="interview_prep: Added test DeleteAllDuplicate" />
+    <MESSAGE value="interview_prep: Implement MultiValuedMap class" />
+    <MESSAGE value="interview_prep: Added north_data.sqlite DB" />
+    <MESSAGE value="interview_prep: Added sqlQueries.txt" />
+    <MESSAGE value="interview_prep: Updated sqlQueries.txt" />
+    <MESSAGE value="interview_prep: DeleteAllDuplicate updated" />
+    <MESSAGE value="interview_prep: MultiValuedMap cell changed" />
+    <MESSAGE value="interview_prep: Implement ThreadsPrint class" />
+    <MESSAGE value="interview_prep: Added test to ThreadsPrint" />
+    <MESSAGE value="interview_prep: Added test to FindInMatrix" />
+    <MESSAGE value="interview_prep: Implement FindInMatrix class" />
+    <MESSAGE value="interview_prep: Added PairNumbers class" />
+    <MESSAGE value="interview_prep: changed return function FindInMatrix" />
+    <MESSAGE value="interview_prep: Implement mergeLists class" />
+    <MESSAGE value="interview_prep: Added test to mergeLists" />
+    <MESSAGE value="interview_prep: updated ThreadsPrint" />
+    <MESSAGE value="interview_prep: Implement SortSpecialArray class" />
+    <MESSAGE value="interview_prep: Added test to SortSpecialArray" />
+    <MESSAGE value="interview_prep: Implement count pairs bit class" />
+    <MESSAGE value="interview_prep: Added test to countsPairsBits" />
+    <MESSAGE value="interview_prep: Implement countPairsBitsConsecutive" />
+    <MESSAGE value="interview_prep: Implement NumPowerOfEight class" />
+    <MESSAGE value="interview_prep: Added NumPowerOfEightTest" />
+    <MESSAGE value="interview_prep: CountsPairsBits updated" />
+    <MESSAGE value="interview_prep: RotatedArray updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="interview_prep: RotatedArray updated" />
+  </component>
+</project>
