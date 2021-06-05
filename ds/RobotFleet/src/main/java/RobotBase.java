@@ -4,8 +4,9 @@ import java.util.List;
 public class RobotBase implements IRobot{
     private String name;
     private String callSign;
-    private final List<ITool> tools;
+    private IState state;
     private RobotModel model;
+    private final List<ITool> tools;
 
     public RobotBase() {
         tools = new ArrayList<>();
