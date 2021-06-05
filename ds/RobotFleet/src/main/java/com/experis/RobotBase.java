@@ -13,12 +13,12 @@ public class RobotBase implements IRobot{
     private final RobotModel model;
     private final List<ITool> tools;
 
-    public RobotBase(String name, String callSign, RobotModel model) {
+    public RobotBase(String name, String callSign, RobotModel model, List<ITool> tools) {
         this.name = name;
         this.callSign = callSign;
         this.model = model;
+        this.tools = tools;
         state = new ActiveState();
-        tools = new ArrayList<>();
     }
 
     @Override
