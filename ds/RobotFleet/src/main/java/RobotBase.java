@@ -5,6 +5,7 @@ public class RobotBase implements IRobot{
     private String name;
     private String callSign;
     private final List<ITool> tools;
+    private RobotModel model;
 
     public RobotBase() {
         tools = new ArrayList<>();
