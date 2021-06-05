@@ -1,3 +1,7 @@
+package com.experis.robotState;
+
+import com.experis.IRobot;
+
 public class WorkState implements IRobotState {
     @Override
     public IRobotState active(IRobot robot) {

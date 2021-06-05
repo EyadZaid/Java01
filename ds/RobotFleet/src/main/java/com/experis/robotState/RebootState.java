@@ -1,19 +1,22 @@
-public class ActiveState implements IRobotState{
+package com.experis.robotState;
 
+import com.experis.IRobot;
+import com.experis.robotState.IRobotState;
+
+public class RebootState implements IRobotState {
     @Override
     public IRobotState active(IRobot robot) {
-        return this;
+        throw new IllegalStateException();
     }
 
     @Override
     public IRobotState reboot(IRobot robot) {
-        robot.reboot();
-        return new RebootState();
+        return this;
     }
 
     @Override
     public IRobotState work(IRobot robot) {
-        return new WorkState();
+        throw new IllegalStateException();
     }
 
     @Override

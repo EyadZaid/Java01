@@ -1,3 +1,7 @@
+package com.experis.robotState;
+
+import com.experis.IRobot;
+
 public interface IRobotState {
     IRobotState active(IRobot robot);
 
