@@ -18,6 +18,6 @@ public class FailureState implements IRobotState {
 
     @Override
     public IRobotState failure(IRobot robot) {
-        return new FailureState();
+        return this;
     }
 }
