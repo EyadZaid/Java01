@@ -8,7 +8,9 @@ public class RobotBase implements IRobot{
     private RobotModel model;
     private final List<ITool> tools;
 
-    public RobotBase() {
+    public RobotBase(String name, RobotModel model) {
+        this.name = name;
+        this.model = model;
         tools = new ArrayList<>();
     }
 
