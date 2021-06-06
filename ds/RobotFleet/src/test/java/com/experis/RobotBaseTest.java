@@ -15,5 +15,8 @@ class RobotBaseTest {
     void createRobotTest() {
         RobotFactory robotFactory = new RobotFactory();
         robotFactory.getRobot("Alfa", "A", RobotModel.HAL9000);
+        robotFactory.getRobot("Beta", "A", RobotModel.MASCHINENMENSCH);
+        robotFactory.getRobot("Gama", "B", RobotModel.JOHNNY5);
+
     }
 }
