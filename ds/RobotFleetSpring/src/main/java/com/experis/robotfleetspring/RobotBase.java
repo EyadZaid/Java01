@@ -3,11 +3,9 @@ package com.experis.robotfleetspring;
 import com.experis.robotfleetspring.tool.ITool;
 import com.experis.robotfleetspring.robotState.ActiveState;
 import com.experis.robotfleetspring.robotState.IRobotState;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
 public class RobotBase implements IRobot {
     private String name;
     private String callSign;
@@ -83,6 +81,17 @@ public class RobotBase implements IRobot {
 
     @Override
     public void diagnostics() {
+        state.failure(this);
+        System.out.println("Robot " + name + " was diagnosed");
+        state.active(this);
+    }
 
+    @Override
+    public String toString() {
+        return "RobotBase{" +
+                "name='" + name + '\'' +
+                ", callSign='" + callSign + '\'' +
+                ", model=" + model +
+                '}';
     }
 }

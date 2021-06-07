@@ -21,6 +21,6 @@ public class ActiveState implements IRobotState {
 
     @Override
     public IRobotState failure(IRobot robot) {
-        throw new IllegalStateException();
+        return new FailureState();
     }
 }

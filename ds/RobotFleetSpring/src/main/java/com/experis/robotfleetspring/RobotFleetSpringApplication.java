@@ -7,24 +7,27 @@ public class RobotFleetSpringApplication {
     public static void main(String[] args) {
 
         var ctx = new AnnotationConfigApplicationContext(AppConfiguration.class);
+        var fleet = ctx.getBean(RobotsFleet.class);
 
-        System.out.println("\n\nUp and ready");
+        System.out.println();
+        System.out.println(fleet);
 
-        var robot1 = ctx.getBean("robot_HAL9000", RobotBase.class);
-        robot1.setName("Alfa");
-        robot1.setCallSign("A");
-        robot1.dispatch();
-        robot1.reboot();
+        fleet.reboot();
+        System.out.println();
+        fleet.dispatch();
+        System.out.println();
+        fleet.diagnostics();
 
-        var robot2 = ctx.getBean("robot_JOHNNY5", RobotBase.class);
-        robot2.setName("Beta");
-        robot2.setCallSign("B");
-        robot2.dispatch();
+        //var robot1 = ctx.getBean("robot_HAL9000", RobotBase.class);
+        //robots.addRobot(robot1);
 
-        var robot3 = ctx.getBean("robot_JOHNNY5", RobotBase.class);
-        robot2.setName("Gama");
-        robot2.setCallSign("C");
-        robot3.dispatch();
+        //var robot2 = ctx.getBean("robot_JOHNNY5", RobotBase.class);
+        //robots.addRobot(robot2);
+
+//        var robot3 = ctx.getBean("robot_JOHNNY5", RobotBase.class);
+//        robot2.setName("Gama");
+//        robot2.setCallSign("C");
+//        robot3.dispatch();
 
     }
 
