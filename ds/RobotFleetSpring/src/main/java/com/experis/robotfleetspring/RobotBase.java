@@ -89,7 +89,7 @@ public class RobotBase implements IRobot {
 
     @Override
     public String toString() {
-        return "RobotBase{" +
+        return "Robot{" +
                 "name='" + name + '\'' +
                 ", callSign='" + callSign + '\'' +
                 ", model=" + model +

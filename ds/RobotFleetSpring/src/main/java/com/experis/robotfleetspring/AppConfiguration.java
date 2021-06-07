@@ -21,10 +21,10 @@ public class AppConfiguration {
                                    Map<RobotModel, Set<ITool>> robotTools) {
         RobotsFleet fleet = new RobotsFleet();
         for (int i=1; i<=size; i++) {
-            fleet.addRobot(robot_hal9000(name + i, callSign, robotTools.get(RobotModel.HAL9000)));
-            fleet.addRobot(robot_tachikomas(name + i, callSign, robotTools.get(RobotModel.TACHIKOMAS)));
-            fleet.addRobot(robot_johnny5(name + i, callSign, robotTools.get(RobotModel.JOHNNY5)));
-            fleet.addRobot(robot_maschinenmensch(name + i, callSign, robotTools.get(RobotModel.MASCHINENMENSCH)));
+            fleet.addRobot(robot_hal9000(name + i, callSign + i, robotTools.get(RobotModel.HAL9000)));
+            fleet.addRobot(robot_tachikomas(name + i, callSign + i, robotTools.get(RobotModel.TACHIKOMAS)));
+            fleet.addRobot(robot_johnny5(name + i, callSign + i, robotTools.get(RobotModel.JOHNNY5)));
+            fleet.addRobot(robot_maschinenmensch(name + i, callSign + i, robotTools.get(RobotModel.MASCHINENMENSCH)));
         }
         return fleet;
     }

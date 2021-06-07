@@ -12,6 +12,7 @@ public class RobotFleetSpringApplication {
         System.out.println();
         System.out.println(fleet);
 
+        System.out.println();
         fleet.reboot();
 
         System.out.println();
