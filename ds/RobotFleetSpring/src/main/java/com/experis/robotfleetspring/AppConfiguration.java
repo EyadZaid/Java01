@@ -45,11 +45,9 @@ public class AppConfiguration {
 
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    public IRobot robotAlfa(){
+    public IRobot robot_HAL9000(){
         var tools = tools();
         var robot = new RobotBase();
-        robot.setName("Alfa");
-        robot.setCallSign("A");
         robot.setModel(RobotModel.HAL9000);
         robot.setTools(tools);
         return robot;
@@ -57,12 +55,11 @@ public class AppConfiguration {
 
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    public IRobot robotBeta(){
+    public IRobot robot_JOHNNY5(){
         var tools = tools();
         var robot = new RobotBase();
-        robot.setName("Beta");
-        robot.setCallSign("A");
-        robot.setModel(RobotModel.HAL9000);
+
+        robot.setModel(RobotModel.JOHNNY5);
         robot.setTools(tools);
         return robot;
     }
