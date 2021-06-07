@@ -1,23 +1,13 @@
 package com.experis.robotfleetspring.tool;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class ToolBase implements ITool {
-    private ToolType type;
+    private String name;
     private ToolState state;
 
-    public ToolBase(ToolType type) {
-        this.type = type;
+    public ToolBase(String name) {
         state = ToolState.READY;
-    }
+        this.name = name;
 
-    public ToolBase() {
-
-    }
-
-    public ToolType getType() {
-        return type;
     }
 
     public ToolState getState() {
@@ -28,8 +18,12 @@ public class ToolBase implements ITool {
         this.state = state;
     }
 
-    public void setType(ToolType type) {
-        this.type = type;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override

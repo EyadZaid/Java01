@@ -5,12 +5,14 @@ import com.experis.robotfleetspring.tool.ToolFactory;
 import com.experis.robotfleetspring.tool.ToolType;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class RobotFactory {
     public IRobot getRobot(String name, String callSign, RobotModel model) {
         ToolFactory toolFactory = new ToolFactory();
-        List<ITool> tools = new ArrayList<>();
+        Set<ITool> tools = new HashSet<>();
 
         switch (model) {
             case HAL9000 -> {

@@ -5,15 +5,16 @@ import com.experis.robotfleetspring.robotState.ActiveState;
 import com.experis.robotfleetspring.robotState.IRobotState;
 
 import java.util.List;
+import java.util.Set;
 
 public class RobotBase implements IRobot {
     private String name;
     private String callSign;
     private IRobotState state;
     private RobotModel model;
-    private List<ITool> tools;
+    private Set<ITool> tools;
 
-    public RobotBase(String name, String callSign, RobotModel model, List<ITool> tools) {
+    public RobotBase(String name, String callSign, RobotModel model, Set<ITool> tools) {
         this.name = name;
         this.callSign = callSign;
         this.model = model;
@@ -57,11 +58,11 @@ public class RobotBase implements IRobot {
         this.model = model;
     }
 
-    public List<ITool> getTools() {
+    public Set<ITool> getTools() {
         return tools;
     }
 
-    public void setTools(List<ITool> tools) {
+    public void setTools(Set<ITool> tools) {
         this.tools = tools;
     }
 
