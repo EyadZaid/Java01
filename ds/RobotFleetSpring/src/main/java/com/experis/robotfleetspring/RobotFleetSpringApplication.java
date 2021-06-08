@@ -6,7 +6,7 @@ public class RobotFleetSpringApplication {
 
     public static void main(String[] args) {
 
-        var ctx = new AnnotationConfigApplicationContext(AppConfiguration.class);
+        var ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         var fleet = ctx.getBean(RobotsFleet.class);
 
         System.out.println();

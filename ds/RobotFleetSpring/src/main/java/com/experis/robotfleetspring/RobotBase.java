@@ -1,24 +1,30 @@
 package com.experis.robotfleetspring;
 
-import com.experis.robotfleetspring.tool.ITool;
+import com.experis.robotfleetspring.tools.ITool;
 import com.experis.robotfleetspring.robotState.ActiveState;
 import com.experis.robotfleetspring.robotState.IRobotState;
+import com.experis.robotfleetspring.weapons.Weapon;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.Set;
 
+@Component
+@Scope("prototype")
 public class RobotBase implements IRobot {
     private String name;
     private String callSign;
     private IRobotState state;
     private RobotModel model;
     private Set<ITool> tools;
+    private Set<Weapon> weapons;
 
-    public RobotBase(String name, String callSign, RobotModel model, Set<ITool> tools) {
+    public RobotBase(String name, String callSign, RobotModel model, Set<ITool> tools, Set<Weapon> weapons) {
         this.name = name;
         this.callSign = callSign;
         this.model = model;
         this.tools = tools;
+        this.weapons = weapons;
         state = new ActiveState();
     }
 
@@ -64,6 +70,14 @@ public class RobotBase implements IRobot {
 
     public void setTools(Set<ITool> tools) {
         this.tools = tools;
+    }
+
+    public Set<Weapon> getWeapons() {
+        return weapons;
+    }
+
+    public void setWeapons(Set<Weapon> weapons) {
+        this.weapons = weapons;
     }
 
     @Override

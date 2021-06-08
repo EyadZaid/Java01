@@ -1,4 +1,4 @@
-package com.experis.robotfleetspring.tool;
+package com.experis.robotfleetspring.tools;
 
 public class ToolBase implements ITool {
     private String name;

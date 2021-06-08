@@ -1,4 +1,4 @@
-package com.experis.robotfleetspring.tool;
+package com.experis.robotfleetspring.tools;
 
 public class ToolFactory {
     public ITool getTool(ToolType type) {

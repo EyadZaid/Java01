@@ -1,6 +1,6 @@
 package com.experis.robotfleetspring;
 
-import com.experis.robotfleetspring.tool.*;
+import com.experis.robotfleetspring.tools.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Configuration
-public class ToolsConfiguration {
+public class ToolsConfig {
 
     @Bean
     @Scope("prototype")

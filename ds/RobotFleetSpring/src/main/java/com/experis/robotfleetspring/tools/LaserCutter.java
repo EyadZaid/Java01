@@ -1,4 +1,4 @@
-package com.experis.robotfleetspring.tool;
+package com.experis.robotfleetspring.tools;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
