@@ -1,14 +1,10 @@
 package com.experis.robotfleetspring;
 
-import com.experis.robotfleetspring.robotState.FailureState;
 import com.experis.robotfleetspring.tools.ITool;
 import com.experis.robotfleetspring.robotState.ActiveState;
 import com.experis.robotfleetspring.robotState.IRobotState;
 import com.experis.robotfleetspring.weapons.Weapon;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import java.util.Random;
 import java.util.Set;
