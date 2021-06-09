@@ -1,5 +1,7 @@
 package com.experis.robotfleetspring;
 
+import com.experis.robotfleetspring.robotState.IRobotState;
+
 public interface IRobot {
     void dispatch();
 
@@ -8,5 +10,7 @@ public interface IRobot {
     void diagnostics();
 
     void raysImpact();
+
+    void setState(IRobotState state);
 
 }

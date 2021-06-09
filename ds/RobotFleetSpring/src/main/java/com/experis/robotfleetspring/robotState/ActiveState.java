@@ -5,22 +5,27 @@ import com.experis.robotfleetspring.IRobot;
 public class ActiveState implements IRobotState {
 
     @Override
-    public IRobotState active(IRobot robot) {
-        return this;
+    public void active(IRobot robot) {
+        robot.setState(this);
     }
 
     @Override
-    public IRobotState reboot(IRobot robot) {
-        return new RebootState();
+    public void reboot(IRobot robot) {
+        robot.setState(new RebootState());
     }
 
     @Override
-    public IRobotState work(IRobot robot) {
-        return new WorkState();
+    public void work(IRobot robot) {
+        robot.setState(new WorkState());
     }
 
     @Override
-    public IRobotState failure(IRobot robot) {
-        return new FailureState();
+    public void failure(IRobot robot) {
+        robot.setState(new FailureState());
+    }
+
+    @Override
+    public String toString() {
+        return "State = Active";
     }
 }

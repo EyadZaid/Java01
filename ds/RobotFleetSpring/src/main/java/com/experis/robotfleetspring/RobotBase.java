@@ -1,5 +1,6 @@
 package com.experis.robotfleetspring;
 
+import com.experis.robotfleetspring.robotState.FailureState;
 import com.experis.robotfleetspring.tools.ITool;
 import com.experis.robotfleetspring.robotState.ActiveState;
 import com.experis.robotfleetspring.robotState.IRobotState;
@@ -55,10 +56,6 @@ public class RobotBase implements IRobot {
         return state;
     }
 
-    public void setState(IRobotState state) {
-        this.state = state;
-    }
-
     public RobotModel getModel() {
         return model;
     }
@@ -81,6 +78,11 @@ public class RobotBase implements IRobot {
 
     public void setWeapons(Set<Weapon> weapons) {
         this.weapons = weapons;
+    }
+
+    @Override
+    public void setState(IRobotState state) {
+        this.state = state;
     }
 
     @Override
@@ -110,7 +112,7 @@ public class RobotBase implements IRobot {
         int number = rnd.nextInt(100);
         if (number < 10) {
             state.failure(this);
-            System.out.println(this);
+            System.out.println("\n" + this);
         }
     }
 
@@ -120,6 +122,7 @@ public class RobotBase implements IRobot {
                 "name='" + name + '\'' +
                 ", callSign='" + callSign + '\'' +
                 ", model=" + model +
+                ", " + state +
                 '}';
     }
 }

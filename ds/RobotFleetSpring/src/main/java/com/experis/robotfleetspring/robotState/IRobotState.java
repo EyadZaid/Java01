@@ -3,11 +3,12 @@ package com.experis.robotfleetspring.robotState;
 import com.experis.robotfleetspring.IRobot;
 
 public interface IRobotState {
-    IRobotState active(IRobot robot);
+    void active(IRobot robot);
 
-    IRobotState reboot(IRobot robot);
+    void reboot(IRobot robot);
 
-    IRobotState work(IRobot robot);
+    void work(IRobot robot);
 
-    IRobotState failure(IRobot robot);
+    void failure(IRobot robot);
+
 }
