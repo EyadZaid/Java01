@@ -7,4 +7,6 @@ public interface ISqlHandler {
     Connection getConnection();
 
     ResultSet executeQuery(String sqlPattern, String parameter);
+
+    ResultSet executeQuery(String sqlPattern);
 }

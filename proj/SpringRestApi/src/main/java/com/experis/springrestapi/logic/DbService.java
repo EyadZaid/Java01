@@ -1,11 +1,14 @@
 package com.experis.springrestapi.logic;
 
 import com.experis.springrestapi.data.Album;
+import com.experis.springrestapi.data.Artist;
 import com.experis.springrestapi.data.Track;
 import com.experis.springrestapi.data.User;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DbService implements IDbService {
@@ -102,6 +105,30 @@ public class DbService implements IDbService {
         }
 
         return insertInvoiceItems(track, invoiceId, quantity);
+    }
+
+    @Override
+    public List<Artist> getAllArtists() {
+        List<Artist> artists = new ArrayList<>();
+
+        var sqlPattern = """
+                SELECT ArtistId, Name FROM artists;
+                """;
+
+        var rs = sqlHandler.executeQuery(sqlPattern);
+        try {
+            while (rs.next()) {
+                String id = rs.getString("ArtistId");
+                String name = rs.getString("Name");
+
+                Artist artist = new Artist(id, name);
+                artists.add(artist);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return artists;
     }
 
     private int insertInvoice(User user, float total) {

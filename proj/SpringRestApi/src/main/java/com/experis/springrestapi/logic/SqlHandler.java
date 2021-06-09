@@ -34,4 +34,17 @@ public class SqlHandler implements ISqlHandler {
         return null;
     }
 
+    @Override
+    public ResultSet executeQuery(String sqlPattern) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sqlPattern);
+            return stmt.executeQuery();
+        }
+        catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return null;
+    }
+
 }
