@@ -14,7 +14,7 @@ import java.util.List;
 @Component
 public class RobotsFleet implements BeanFactoryAware, ApplicationContextAware {
     private final List<IRobot> fleet;
-    private BeanFactory beanFactory;
+    //private BeanFactory beanFactory;
 
     public RobotsFleet() {
         this.fleet = new ArrayList<>();
@@ -49,13 +49,9 @@ public class RobotsFleet implements BeanFactoryAware, ApplicationContextAware {
     //------------
 
 
-//    public void testWeapon() {
-//        var weapons = ((RobotBase)fleet.get(0)).getWeapons();
-//        var iterator = weapons.iterator();
-//        iterator.next().doAction();
-//        iterator.next().doAction();
-//        iterator.next().doAction();
-//    }
+    public List<IRobot> getFleet() {
+        return fleet;
+    }
 
     @Override
     public String toString() {

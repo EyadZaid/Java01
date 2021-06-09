@@ -7,4 +7,6 @@ public interface IRobot {
 
     void diagnostics();
 
+    void raysImpact();
+
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.util.Random;
 import java.util.Set;
 
 public class RobotBase implements IRobot {
@@ -101,6 +102,16 @@ public class RobotBase implements IRobot {
         state.failure(this);
         System.out.println("Robot " + name + " was diagnosed");
         state.active(this);
+    }
+
+    @Override
+    public void raysImpact() {
+        Random rnd = new Random();
+        int number = rnd.nextInt(100);
+        if (number < 10) {
+            state.failure(this);
+            System.out.println(this);
+        }
     }
 
     @Override

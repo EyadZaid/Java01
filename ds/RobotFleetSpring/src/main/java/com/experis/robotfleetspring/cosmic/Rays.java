@@ -12,6 +12,9 @@ public class Rays {
 
     @Scheduled(fixedRate = 2500)
     public void impact(){
+        for (var r : fleet.getFleet()) {
+            r.raysImpact();
+        }
 
     }
 
