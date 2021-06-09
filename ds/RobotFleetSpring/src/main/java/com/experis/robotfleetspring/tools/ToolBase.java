@@ -30,4 +30,12 @@ public class ToolBase implements ITool {
     public void executeFunc() {
 
     }
+
+    @Override
+    public String toString() {
+        return "Tool{" +
+                "name='" + name + '\'' +
+                ", state=" + state +
+                '}';
+    }
 }

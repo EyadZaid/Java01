@@ -1,10 +1,10 @@
 package com.experis.robotfleetspring.weapons;
 
+import com.experis.robotfleetspring.QuantumWeapon;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-@Component
-@Scope("prototype")
+@QuantumWeapon
 public class Dagger implements Weapon {
 
     @Override
