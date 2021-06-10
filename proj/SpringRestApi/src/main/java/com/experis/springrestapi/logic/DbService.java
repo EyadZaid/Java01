@@ -59,7 +59,7 @@ public class DbService implements IDbService {
             while (rs.next()) {
                 String id = rs.getString("AlbumId");
                 String title = rs.getString("Title");
-                int artistId = rs.getInt("ArtistId");
+                String artistId = rs.getString("ArtistId");
                 Album album = new Album(id, title, artistId);
                 albums.put(id, album);
             }
@@ -129,6 +129,69 @@ public class DbService implements IDbService {
         }
 
         return artists;
+    }
+
+    @Override
+    public List<Album> getAlbumsByArtistId(String artistId) {
+        List<Album> albums = new ArrayList<>();
+
+        var sqlPattern = """
+                SELECT AlbumId, Title, ArtistId FROM albums 
+                WHERE ArtistId = ?;
+                """;
+
+        var rs = sqlHandler.executeQuery(sqlPattern, artistId);
+        try {
+            while (rs.next()) {
+                String albumId = rs.getString("AlbumId");
+                String title = rs.getString("Title");
+
+                Album album = new Album(albumId, title, artistId);
+                albums.add(album);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return albums;
+    }
+
+    @Override
+    public Map<Artist, List<Album>> getArtistsAndAlbums() {
+        Map<Artist, List<Album>> map = new HashMap<>();
+
+        var sqlPattern = """
+                SELECT art.ArtistId, art.Name, alb.Title, alb.AlbumId  
+                FROM artists as art 
+                inner join albums alb on art.ArtistId = alb.ArtistId;
+                """;
+
+        var rs = sqlHandler.executeQuery(sqlPattern);
+        try {
+            while (rs.next()) {
+                String artistId = rs.getString("ArtistId");
+                String name = rs.getString("Name");
+                String albumId = rs.getString("AlbumId");
+                String title = rs.getString("Title");
+
+                Artist artist = new Artist(artistId, name);
+                Album album = new Album(albumId, title, artistId);
+
+                var albums = map.get(artist);
+                if (albums != null ) {
+                    albums.add(album);
+                }
+                else {
+                    albums = new ArrayList<Album>();
+                    albums.add(album);
+                    map.put(artist, albums);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return map;
     }
 
     private int insertInvoice(User user, float total) {

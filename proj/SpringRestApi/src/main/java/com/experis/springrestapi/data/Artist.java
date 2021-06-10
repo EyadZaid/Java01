@@ -1,5 +1,7 @@
 package com.experis.springrestapi.data;
 
+import java.util.Objects;
+
 public class Artist {
     private final String id;
     private final String name;
@@ -22,5 +24,18 @@ public class Artist {
         return "Artist{" +
                 "name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Artist artist = (Artist) o;
+        return Objects.equals(id, artist.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

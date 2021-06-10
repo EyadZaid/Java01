@@ -19,4 +19,8 @@ public interface IDbService {
 
     List<Artist> getAllArtists();
 
+    List<Album> getAlbumsByArtistId(String artistId);
+
+    Map<Artist, List<Album>> getArtistsAndAlbums();
+
 }
