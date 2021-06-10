@@ -21,6 +21,8 @@ public interface IDbService {
 
     List<Album> getAlbumsByArtistId(String artistId);
 
+    boolean createArtist(String name);
+
     Map<Artist, List<Album>> getArtistsAndAlbums();
 
 }

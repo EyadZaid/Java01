@@ -157,6 +157,41 @@ public class DbService implements IDbService {
     }
 
     @Override
+    public boolean createArtist(String name) {
+        var sqlPattern = """
+                INSERT INTO artists (NAME) 
+                VALUES (?);
+                """;
+
+        try {
+            var conn = sqlHandler.getConnection();
+            conn.setAutoCommit(false);
+            conn.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+
+            PreparedStatement stmt = conn.prepareStatement(sqlPattern);
+            stmt.setString(1, name);
+
+            if (stmt.executeUpdate() == 0) {
+                throw new SQLException("Insert failed, no rows affected");
+            }
+
+            var keys = stmt.getGeneratedKeys();
+            if (!keys.next()) {
+                conn.rollback();
+                conn.setAutoCommit(true);
+                return false;
+            }
+
+            conn.commit();
+            conn.setAutoCommit(true);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return true;
+    }
+
+    @Override
     public Map<Artist, List<Album>> getArtistsAndAlbums() {
         Map<Artist, List<Album>> map = new HashMap<>();
 
