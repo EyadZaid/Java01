@@ -1,9 +1,9 @@
 package com.experis.springrestapi.ui;
 
-import com.experis.springrestapi.data.Album;
-import com.experis.springrestapi.data.Track;
-import com.experis.springrestapi.data.User;
-import com.experis.springrestapi.logic.IDbService;
+import com.experis.springrestapi.entities.Album;
+import com.experis.springrestapi.entities.Track;
+import com.experis.springrestapi.entities.User;
+import com.experis.springrestapi.services.IDbService;
 
 import java.util.Map;
 import java.util.Scanner;

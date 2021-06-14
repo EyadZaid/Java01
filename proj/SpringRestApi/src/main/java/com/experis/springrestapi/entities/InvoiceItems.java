@@ -1,4 +1,4 @@
-package com.experis.springrestapi.data;
+package com.experis.springrestapi.entities;
 
 public class InvoiceItems {
     private final String id;

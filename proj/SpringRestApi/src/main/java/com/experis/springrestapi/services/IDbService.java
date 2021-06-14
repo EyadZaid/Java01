@@ -1,9 +1,9 @@
-package com.experis.springrestapi.logic;
+package com.experis.springrestapi.services;
 
-import com.experis.springrestapi.data.Album;
-import com.experis.springrestapi.data.Artist;
-import com.experis.springrestapi.data.Track;
-import com.experis.springrestapi.data.User;
+import com.experis.springrestapi.entities.Album;
+import com.experis.springrestapi.entities.Artist;
+import com.experis.springrestapi.entities.Track;
+import com.experis.springrestapi.entities.User;
 
 import java.util.List;
 import java.util.Map;

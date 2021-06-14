@@ -1,7 +1,10 @@
-package com.experis.springrestapi.logic;
+package com.experis.springrestapi.services;
+
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 
+@Component
 public class SqlHandler implements ISqlHandler {
     private static final String dbFile = "src\\main\\resources\\chinook.db";
     private static final String url = "jdbc:sqlite:";

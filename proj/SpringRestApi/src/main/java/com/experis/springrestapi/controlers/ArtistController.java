@@ -1,21 +1,18 @@
-package com.experis.springrestapi.layout;
+package com.experis.springrestapi.controlers;
 
-import com.experis.springrestapi.data.Album;
-import com.experis.springrestapi.data.Artist;
-import com.experis.springrestapi.logic.DbService;
-import com.experis.springrestapi.logic.IDbService;
-import com.experis.springrestapi.logic.SqlHandler;
+import com.experis.springrestapi.entities.Album;
+import com.experis.springrestapi.entities.Artist;
+import com.experis.springrestapi.services.IDbService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class ArtistController {
-    private final IDbService iDbService;
+    @Autowired
+    private IDbService iDbService;
 
-    public ArtistController() {
-        iDbService = new DbService(new SqlHandler());
-    }
 
     /**
      * Get all artists
@@ -24,6 +21,7 @@ public class ArtistController {
     public @ResponseBody List<Artist> getArtists() {
         return iDbService.getAllArtists();
     }
+
 
     /**
      * Get albums by artist id

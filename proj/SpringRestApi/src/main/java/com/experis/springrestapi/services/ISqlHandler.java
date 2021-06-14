@@ -1,4 +1,4 @@
-package com.experis.springrestapi.logic;
+package com.experis.springrestapi.services;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
