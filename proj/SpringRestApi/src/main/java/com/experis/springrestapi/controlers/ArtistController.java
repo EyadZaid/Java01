@@ -3,6 +3,7 @@ package com.experis.springrestapi.controlers;
 import com.experis.springrestapi.entities.Album;
 import com.experis.springrestapi.entities.Artist;
 import com.experis.springrestapi.services.IDbService;
+import com.experis.springrestapi.services.jdbcTemplate.AlbumsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,8 @@ public class ArtistController {
     @Autowired
     private IDbService iDbService;
 
+    @Autowired
+    private AlbumsService albumsService;
 
     /**
      * Get all artists
@@ -28,7 +31,8 @@ public class ArtistController {
      */
     @GetMapping("/artist")
     public List<Album> getAlbumsByArtistId(@RequestParam(value = "id", defaultValue = "2") String artistId) {
-        return iDbService.getAlbumsByArtistId(artistId);
+        //return iDbService.getAlbumsByArtistId(artistId);
+        return albumsService.getAlbumsByArtistId(artistId);
     }
 
 
