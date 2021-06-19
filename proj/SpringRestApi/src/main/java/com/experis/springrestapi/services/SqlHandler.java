@@ -1,10 +1,12 @@
 package com.experis.springrestapi.services;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.sql.*;
 
 @Component
+@Profile("dev")
 public class SqlHandler implements ISqlHandler {
     private static final String dbFile = "src\\main\\resources\\chinook.db";
     private static final String url = "jdbc:sqlite:";

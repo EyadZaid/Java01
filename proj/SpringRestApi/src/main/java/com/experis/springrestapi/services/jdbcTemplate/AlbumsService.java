@@ -2,15 +2,16 @@ package com.experis.springrestapi.services.jdbcTemplate;
 
 import com.experis.springrestapi.entities.Album;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
-import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@Profile("dev")
 public class AlbumsService {
 
     @Autowired

@@ -5,6 +5,7 @@ import com.experis.springrestapi.entities.Artist;
 import com.experis.springrestapi.entities.Track;
 import com.experis.springrestapi.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
+@Profile("dev")
 public class DbService implements IDbService {
     @Autowired
     private final ISqlHandler sqlHandler;

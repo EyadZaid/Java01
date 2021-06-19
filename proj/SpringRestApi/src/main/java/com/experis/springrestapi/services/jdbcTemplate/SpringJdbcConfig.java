@@ -2,12 +2,14 @@ package com.experis.springrestapi.services.jdbcTemplate;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 
 @Component
+@Profile("dev")
 public class SpringJdbcConfig {
 
     @Bean
