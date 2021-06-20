@@ -8,5 +8,6 @@ import java.util.List;
 public interface LanguageRepository extends MongoRepository<Language, String> {
     List<Language> findByName(String name);
 
-    //Language createLanguage(Language language);
+    List<Language> findByYearAfter(int year);
+
 }

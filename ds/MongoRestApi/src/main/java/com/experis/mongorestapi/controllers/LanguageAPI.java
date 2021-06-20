@@ -15,11 +15,33 @@ public class LanguageAPI {
     @Autowired
     private LanguageRepository repository;
 
-    @GetMapping("/{name}")
+    /**
+     * Get all languages
+     */
+    @GetMapping("/all")
+    public ResponseEntity<List<Language>> getAll(){
+        return ResponseEntity.ok(repository.findAll());
+    }
+
+    /**
+     * Get languages by name
+     */
+    @GetMapping("/name/{name}")
     public ResponseEntity<List<Language>> findByName(@PathVariable String name){
         return ResponseEntity.ok(repository.findByName(name));
     }
 
+    /**
+     * Get languages after year
+     */
+    @GetMapping("/year/{year}")
+    public ResponseEntity<List<Language>> findByYearAfter(@PathVariable int year){
+        return ResponseEntity.ok(repository.findByYearAfter(year));
+    }
+
+    /**
+     * Add new language
+     */
     @PostMapping("/add")
     public ResponseEntity<Language> addLanguage(@RequestParam("name") String name,
                                                    @RequestParam("creator") String creator,
