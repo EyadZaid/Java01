@@ -20,12 +20,12 @@ public class LanguageAPI {
         return ResponseEntity.ok(repository.findByName(name));
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<Language> createLanguage(@RequestParam("name") String name,
+    @PostMapping("/add")
+    public ResponseEntity<Language> addLanguage(@RequestParam("name") String name,
                                                    @RequestParam("creator") String creator,
                                                    @RequestParam("year") int year,
                                                    @RequestParam("lastVersion") float lastVersion){
-        return ResponseEntity.ok(repository.save(new Language(name,creator, year, lastVersion)));
+        return ResponseEntity.ok(repository.save(new Language(name, creator, year, lastVersion)));
     }
 
 }
