@@ -16,8 +16,6 @@ public class Language {
     private int year;
     private float lastVersion;
 
-    public Language() {
-    }
 
     public Language(String name, String creator, int year, float lastVersion) {
         this.name = name;
