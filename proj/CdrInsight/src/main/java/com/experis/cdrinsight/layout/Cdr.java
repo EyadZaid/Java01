@@ -20,8 +20,8 @@ public class Cdr {
     private String msisdn;
     private Date date;
     private int duration;
-    private long bytesReceived;
-    private long bytesTransmitted;
+    private int bytesReceived;
+    private int bytesTransmitted;
     private String partyImsi;
     private String partyMsisdn;
 }
