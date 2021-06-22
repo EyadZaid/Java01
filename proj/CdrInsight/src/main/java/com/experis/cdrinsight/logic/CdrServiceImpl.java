@@ -1,9 +1,6 @@
 package com.experis.cdrinsight.logic;
 
-import com.experis.cdrinsight.entities.CallCdr;
-import com.experis.cdrinsight.entities.DataCdr;
-import com.experis.cdrinsight.entities.LogItem;
-import com.experis.cdrinsight.entities.SmsCdr;
+import com.experis.cdrinsight.entities.*;
 import com.experis.cdrinsight.layout.Cdr;
 import com.experis.cdrinsight.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +61,21 @@ public class CdrServiceImpl implements CdrService {
                 cdr.getPartyMsisdn());
 
         callRepository.save(callCdr);
-        /// To do: update bill and subscriber
+        updateSubscriber(cdr);
+
+        var opBill = billRepository.findById(cdr.getMsisdn());
+        var bill = opBill.orElseGet(Bill::new);
+
+        if (cdr.getUsageType() == UsageType.MOC) {
+            bill.setVoiceOut(bill.getVoiceOut() + cdr.getDuration());
+        }
+        else {
+            if (cdr.getUsageType() == UsageType.MTC) {
+                bill.setVoiceIn(bill.getVoiceIn() + cdr.getDuration());
+            }
+        }
+        bill.setMsisdn(cdr.getMsisdn());
+        billRepository.save(bill);
     }
 
     private void insertSmsCdr(Cdr cdr, LogItem logItem) {
@@ -73,7 +84,21 @@ public class CdrServiceImpl implements CdrService {
                 logItem);
 
         smsRepository.save(smsCdr);
-        /// To do: update bill and subscriber
+        updateSubscriber(cdr);
+
+        var opBill = billRepository.findById(cdr.getMsisdn());
+        var bill = opBill.orElseGet(Bill::new);
+
+        if (cdr.getUsageType() == UsageType.SMS_MO) {
+            bill.setSmsOut(bill.getSmsOut() + 1);
+        }
+        else {
+            if (cdr.getUsageType() == UsageType.MTC) {
+                bill.setSmsIn(bill.getSmsIn() + 1);
+            }
+        }
+        bill.setMsisdn(cdr.getMsisdn());
+        billRepository.save(bill);
     }
 
     private void insertDataCdr(Cdr cdr, LogItem logItem) {
@@ -84,6 +109,26 @@ public class CdrServiceImpl implements CdrService {
                 cdr.getBytesTransmitted());
 
         dataRepository.save(dataCdr);
-        /// To do: update bill and subscriber
+        updateSubscriber(cdr);
+
+        var opBill = billRepository.findById(cdr.getMsisdn());
+        var bill = opBill.orElseGet(Bill::new);
+
+        if (cdr.getUsageType() == UsageType.D) {
+            bill.setDataIn(bill.getDataIn() + cdr.getBytesReceived());
+            bill.setDataOut(bill.getDataOut() + cdr.getBytesTransmitted());
+        }
+        bill.setMsisdn(cdr.getMsisdn());
+        billRepository.save(bill);
+    }
+
+    private void updateSubscriber(Cdr cdr) {
+        if (! subscriberRepository.findById(cdr.getMsisdn()).isPresent()) {
+            Subscriber subscriber = new Subscriber(
+                    cdr.getMsisdn(),
+                    cdr.getImsi(),
+                    cdr.getImei());
+            subscriberRepository.save(subscriber);
+        }
     }
 }
