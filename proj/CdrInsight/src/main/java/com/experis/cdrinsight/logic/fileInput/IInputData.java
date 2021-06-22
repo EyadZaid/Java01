@@ -1,4 +1,4 @@
-package com.experis.cdrinsight.logic.inputs;
+package com.experis.cdrinsight.logic.fileInput;
 
 public interface IInputData {
     String readline();

@@ -1,4 +1,4 @@
-package com.experis.cdrinsight.logic.inputs;
+package com.experis.cdrinsight.logic.fileInput;
 
 import com.experis.cdrinsight.layout.Cdr;
 import com.experis.cdrinsight.logic.IllegalDataFormatException;

@@ -1,4 +1,4 @@
-package com.experis.cdrinsight.logic.inputs;
+package com.experis.cdrinsight.logic.fileInput;
 
 import com.experis.cdrinsight.entities.UsageType;
 import com.experis.cdrinsight.layout.Cdr;
@@ -40,8 +40,8 @@ public class InputParser implements IDataFormat {
         //----------------------------------------------
 
         int duration = Integer.parseInt(details[7]);
-        long bytesReceived = Long.parseLong(details[8]);
-        long bytesTransmitted = Long.parseLong(details[9]);;
+        int bytesReceived = Integer.parseInt(details[8]);
+        int bytesTransmitted = Integer.parseInt(details[9]);;
         String partyImsi = details[10];
         String partyMsisdn = details[11];
 
