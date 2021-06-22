@@ -16,6 +16,6 @@ public class DataCdr {
     @Id
     private String id;
     private LogItem logItem;
-    private int bytesReceived;
-    private int bytesTransmitted;
+    private long bytesReceived;
+    private long bytesTransmitted;
 }
