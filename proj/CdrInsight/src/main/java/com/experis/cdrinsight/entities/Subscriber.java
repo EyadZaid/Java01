@@ -14,8 +14,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 public class Subscriber {
     @Id
-    private String msin;
+    private String msisdn;
     private String imsi;
     private String imei;
-    private String msisdn;
+
 }

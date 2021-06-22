@@ -1,6 +1,5 @@
 package com.experis.cdrinsight.controllers;
 
-import com.experis.cdrinsight.entities.Cdr;
 import com.experis.cdrinsight.services.CdrRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
