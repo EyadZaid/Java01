@@ -1,24 +1,32 @@
 package com.experis.cdrinsight.controllers;
 
+import com.experis.cdrinsight.entities.Bill;
 import com.experis.cdrinsight.entities.UsageType;
 import com.experis.cdrinsight.layout.Cdr;
+import com.experis.cdrinsight.logic.CdrFromFileService;
 import com.experis.cdrinsight.logic.CdrService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/cdr")
 public class CdrApi {
 
     @Autowired
-    CdrService cdrService;
+    private CdrService cdrService;
 
-//    @GetMapping("/all")
-//    public List<Cdr> getAllCdr(){
-//        return repository.findAll();
-//    }
+
+//    @Autowired
+//    private CdrFromFileService fileService;
+
+
+    @GetMapping("/msisdn/{msisdn}")
+    public Optional<Bill> getBill(@PathVariable String msisdn){
+        return cdrService.getBill(msisdn);
+    }
 
     @PostMapping
     public void pushCdr(){
@@ -37,4 +45,7 @@ public class CdrApi {
 
         cdrService.insertCdr(cdr);
     }
+
+
+
 }

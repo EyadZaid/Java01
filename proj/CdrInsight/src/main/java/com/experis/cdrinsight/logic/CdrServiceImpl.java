@@ -6,6 +6,8 @@ import com.experis.cdrinsight.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CdrServiceImpl implements CdrService {
     private final CallCdrRepository callRepository;
@@ -50,6 +52,11 @@ public class CdrServiceImpl implements CdrService {
                 insertDataCdr(cdr, logItem);
                 break;
         }
+    }
+
+    @Override
+    public Optional<Bill> getBill(String msisdn) {
+        return billRepository.findById(msisdn);
     }
 
     private void insertCallCdr(Cdr cdr, LogItem logItem) {
